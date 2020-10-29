@@ -1,0 +1,79 @@
+{ pkgs, lib, ... }:
+
+{
+  imports = [
+    ../options/settings
+    ../modules/avahi.nix
+    ../modules/networking
+    ../modules/nix.nix
+    ../modules/mtr.nix
+    ../modules/users.nix
+    ../modules/zsh.nix
+  ];
+
+  boot = {
+    tmpOnTmpfs = true;
+    cleanTmpDir = true;
+  };
+
+  console.earlySetup = true;
+
+  documentation.dev.enable = true;
+
+  environment = {
+    systemPackages = with pkgs; [
+      bat
+      customized-neovim
+      file
+      fzf
+      htop
+      jq
+      ldns
+      libarchive
+      openssl
+      manpages
+      nixpkgs-fmt
+      nix-prefetch-github
+      nix-prefetch-scripts
+      pass
+      ripgrep
+      tree
+      unrar
+      unzip
+      zstd
+
+      postgresql_13
+      pspg
+
+      git
+
+      blktrace
+      iotop
+      lsof
+      nload
+      pciutils
+      smartmontools
+      sysstat
+      usbutils
+    ];
+  };
+
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
+    ];
+  };
+
+  console.keyMap = "us";
+
+  services = {
+    fstrim.enable = lib.mkDefault true;
+
+    zfs.autoScrub.enable = lib.mkDefault true;
+  };
+
+  time.timeZone = "Asia/Shanghai";
+}

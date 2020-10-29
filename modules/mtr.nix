@@ -1,0 +1,5 @@
+{ ... }:
+
+{
+  programs.mtr.enable = true;
+}
