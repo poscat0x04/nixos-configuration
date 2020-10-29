@@ -6,6 +6,7 @@
     home-manager.url = github:nix-community/home-manager;
     nix-repo.url = github:poscat0x04/nix-repo;
     nix-secrets.url = github:poscat0x04/nix-secrets; 
+    hath-nix.url = github:poscat0x04/hath-nix;
 
     home-manager.inputs.nixpkgs.follows = "/nixpkgs";
     nix-secrets.inputs.nixpkgs.follows = "/nixpkgs";

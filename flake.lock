@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "hath-nix": {
+      "locked": {
+        "lastModified": 1601722555,
+        "narHash": "sha256-Ov5Y099ebuCuQ8/mXBsvUxsLWnRYHE5aPVRZKchUlwA=",
+        "owner": "poscat0x04",
+        "repo": "hath-nix",
+        "rev": "34127ba441372616c4c240f6fa11d65e40688b10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "hath-nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -78,6 +93,7 @@
     },
     "root": {
       "inputs": {
+        "hath-nix": "hath-nix",
         "home-manager": "home-manager",
         "nix-repo": "nix-repo",
         "nix-secrets": "nix-secrets",
