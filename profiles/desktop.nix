@@ -49,6 +49,8 @@
       gnumake
       # Rust
       rust-analyzer
+      # ATS
+      ats2
       # Dhall
       dhall
       dhall-lsp-server
