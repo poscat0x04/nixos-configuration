@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../modules/agda.nix
     ../modules/audio.nix
     ../modules/chromium.nix
     ../modules/fonts.nix
