@@ -1,16 +1,19 @@
 {
-  description = "NixOS system configuration";
-
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
-    home-manager.url = github:nix-community/home-manager;
-    nix-repo.url = github:poscat0x04/nix-repo;
-    nix-secrets.url = github:poscat0x04/nix-secrets; 
+    home-manager = {
+      url = github:nix-community/home-manager;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
+    nix-repo = {
+      url = github:poscat0x04/nix-repo;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
+    nix-secrets = {
+      url = github:poscat0x04/nix-secrets;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
     hath-nix.url = github:poscat0x04/hath-nix;
-
-    home-manager.inputs.nixpkgs.follows = "/nixpkgs";
-    nix-secrets.inputs.nixpkgs.follows = "/nixpkgs";
-    nix-repo.inputs.nixpkgs.follows = "/nixpkgs";
   };
 
 
