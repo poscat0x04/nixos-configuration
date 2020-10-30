@@ -39,7 +39,7 @@
             };
 
             modules =
-              (optional overlay { nixpkgs.overlays = mkBefore [ inputs.nix-repo.overlay ]; })
+              (optional overlay { nixpkgs.overlays = mkBefore [ inputs.nix-repo.overlay inputs.hath-nix.overlay ]; })
               ++ 
                 [
                   {
