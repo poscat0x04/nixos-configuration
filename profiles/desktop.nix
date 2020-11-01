@@ -5,6 +5,7 @@
     ../modules/agda.nix
     ../modules/audio.nix
     ../modules/chromium.nix
+    ../modules/firefox.nix
     ../modules/fonts.nix
     ../modules/gnupg.nix
     ../modules/im.nix
@@ -56,7 +57,6 @@
       dhall
       dhall-lsp-server
       # Misc
-      firefox
       thunderbird
       qimgv
       transmission-qt
@@ -69,6 +69,7 @@
       ffsend
       shellcheck
       youtube-dl
+      profile-cleaner
     ];
   };
 
