@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     hath-nix.url = github:poscat0x04/hath-nix;
+    nur.url = github:nix-community/NUR;
   };
 
 
