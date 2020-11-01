@@ -56,6 +56,7 @@
       dhall
       dhall-lsp-server
       # Misc
+      firefox
       thunderbird
       qimgv
       transmission-qt
