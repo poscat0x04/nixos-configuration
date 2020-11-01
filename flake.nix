@@ -18,7 +18,7 @@
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nix-secrets, ... }@inputs: with nixpkgs.lib;
+  outputs = { self, nixpkgs, home-manager, nix-secrets, nur, nix-repo, hath-nix, ... }@inputs: with nixpkgs.lib;
     let
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
@@ -40,7 +40,7 @@
             };
 
             modules =
-              (optional overlay { nixpkgs.overlays = mkBefore [ inputs.nix-repo.overlay inputs.hath-nix.overlay ]; })
+              (optional overlay { nixpkgs.overlays = mkBefore [ nix-repo.overlay hath-nix.overlay nur.overlay ]; })
               ++ 
                 [
                   {
