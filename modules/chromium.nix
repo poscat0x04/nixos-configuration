@@ -22,6 +22,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # floccus
+      "fnaicdffflnofjppbagibeoednhnbjhg"
       "cobieddmkhhnbeldhncnfcgcaccmehgn"
       "jdocbkpgdakpekjlhemmfcncgdjeiika"
       "cjpalhdlnbpafiamejdnhcphjbkeiagm"
