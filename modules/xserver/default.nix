@@ -6,6 +6,7 @@
       ./libinput.nix
       ./display-manager
       ./desktop-manager
+      ./window-manager
       ../../patches/nixos/modules/services/x11/desktop-managers
       ../../patches/nixos/modules/services/x11/display-managers
       ../../patches/nixos/modules/services/x11/window-managers
