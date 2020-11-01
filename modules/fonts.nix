@@ -16,7 +16,6 @@
       noto-fonts-cjk
       noto-fonts-emoji
       noto-fonts-extra
-      #vistafonts
       ttf-ms-win10
       iosevka
       roboto
