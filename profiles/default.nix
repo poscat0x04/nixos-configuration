@@ -33,6 +33,7 @@
       openssl
       manpages
       nixpkgs-fmt
+      nix-index
       nix-prefetch-github
       nix-prefetch-scripts
       pass
