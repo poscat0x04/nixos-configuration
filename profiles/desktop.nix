@@ -57,6 +57,7 @@
       dhall
       dhall-lsp-server
       # Misc
+      anki
       thunderbird
       qimgv
       transmission-qt
