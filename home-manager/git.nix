@@ -22,6 +22,7 @@ in
         editor = "nvim";
         excludesfile = "${gitignore}";
       };
+      pull.rebase = true;
     };
   };
 }
