@@ -18,6 +18,7 @@
       noto-fonts-extra
       ttf-ms-win10
       iosevka
+      sarasa-gothic
       roboto
     ];
   };
