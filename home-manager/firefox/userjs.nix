@@ -24,4 +24,6 @@
   "browser.safebrowsing.malware.enabled" = false;
   "browser.safebrowsing.phishing.enabled" = false;
   "browser.safebrowsing.downloads.enabled" = false;
+  # Disable letterboxing
+  "privacy.resistFingerprinting.letterboxing" = false;
 }
