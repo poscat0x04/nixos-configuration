@@ -36,6 +36,11 @@
         # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
+      shellAliases = {
+        cb = "cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'";
+        ct = "cabal new-test --test-show-details=streaming --disable-documentation";
+        pb = "curl -F 'c=@-' 'https://fars.ee/'";
+      };
     };
   };
 }

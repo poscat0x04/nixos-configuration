@@ -43,19 +43,6 @@
         theme = "OneHalfDark";
       };
     };
-
-    zsh = {
-      enable = true;
-
-      enableCompletion = false;
-      envExtra = ''
-        alias fs="nix-env -f '<nixpkgs>' -qaP -A"
-        alias cb="hpack && cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'"
-        alias ct="cabal new-test --test-show-details=streaming --disable-documentation"
-        alias doc="hpack && cabal haddock"
-        alias pb="curl -F 'c=@-' 'https://fars.ee/'"
-      '';
-    };
   };
 
   home.stateVersion = "20.09";
