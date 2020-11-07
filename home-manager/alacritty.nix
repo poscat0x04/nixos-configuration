@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  theme = builtins.fromJSON (builtins.readFile "${pkgs.extra-files.alacritty-nord}");
+  theme = builtins.fromJSON (builtins.readFile "${pkgs.extra-files.nord-alacritty}");
   base_settings = {
     window.startup_mode = "Maximized";
 
