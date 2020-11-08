@@ -9,6 +9,11 @@
 
     binaryCaches = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://hydra.iohk.io"
+    ];
+
+    binaryCachePublicKeys = [
+      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
     ];
 
     package = pkgs.nixUnstable;
