@@ -7,6 +7,7 @@
     ./alacritty.nix
     ./firefox
     ./git.nix
+    ./konsole.nix
     ./mpv.nix
   ];
 
