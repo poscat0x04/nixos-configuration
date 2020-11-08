@@ -237,7 +237,10 @@ in
         fi
       '');
       shellAliases = mkForce custom-aliases;
-      autosuggestions.enable = true;
+      autosuggestions = {
+        enable = true;
+        highlightStyle = "fg=#9e9e9e";
+      };
       syntaxHighlighting = {
         enable = true;
         highlighters = [
