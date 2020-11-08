@@ -40,6 +40,7 @@
       darcs
       # Editors
       customized-neovim-qt
+      vscode-insiders-with-extensions
       # Consoles
       alacritty
       # IMs
