@@ -8,7 +8,7 @@
     ../modules/nix.nix
     ../modules/mtr.nix
     ../modules/users.nix
-    ../modules/zsh.nix
+    ../modules/zsh
   ];
 
   boot = {
