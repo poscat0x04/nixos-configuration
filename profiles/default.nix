@@ -21,6 +21,11 @@
   documentation.dev.enable = true;
 
   environment = {
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "code";
+    };
+
     systemPackages = with pkgs; [
       bat
       customized-neovim
