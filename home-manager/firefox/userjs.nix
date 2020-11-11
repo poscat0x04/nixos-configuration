@@ -26,4 +26,19 @@
   "browser.safebrowsing.downloads.enabled" = false;
   # Disable letterboxing
   "privacy.resistFingerprinting.letterboxing" = false;
+  # Disable OCSP
+  "security.OCSP.require" = false;
+  # Don't clear stuff on shutdown
+  "privacy.sanitize.sanitizeOnShutdown" = false;
+  # Don't save passwords
+  "signon.rememberSignons" = false;
+
+  ## Ergonomics
+  # Enable search suggestions
+  "browser.search.suggest.enabled" = true;
+  "browser.urlbar.suggest.searches" = true;
+  # Enable searching implicitly in address bar
+  "keyword.enabled" = true;
+  # Disable address bar zoom
+  "browser.urlbar.openViewOnFocus" = false;
 }
