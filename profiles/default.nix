@@ -24,6 +24,7 @@
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "code";
+      LESSHISTSIZE = "0";
     };
 
     systemPackages = with pkgs; [

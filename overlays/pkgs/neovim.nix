@@ -5,6 +5,7 @@ rec {
       customRC = ''
         let g:deoplete#enable_at_startup = 1
         let g:vimtex_compiler_progname = 'nvr'
+        let g:tex_flavor = 'latex'
 
         let g:lightline = {
           \ 'colorscheme': 'nord',
