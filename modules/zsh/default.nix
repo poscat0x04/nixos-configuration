@@ -207,6 +207,8 @@ in
 
         source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+        source ${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
+
         for keymap in 'emacs' 'viins'; do
           bindkey -M "$keymap" "$key_info[Up]" history-substring-search-up
           bindkey -M "$keymap" "$key_info[Down]" history-substring-search-down
