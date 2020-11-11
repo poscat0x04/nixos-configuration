@@ -2,8 +2,8 @@
     {
         "name": "rest-client",
         "publisher": "humao",
-        "sha256": "1pb30rxg5f0s20x1s8h51kblgyv6idnm50qm21sfv9n0vw00wipk",
-        "version": "0.24.3"
+        "sha256": "19gx5p7h3faipvi39n13xk3a86iaaga6ng6m18hrhv5qyjfa6j9m",
+        "version": "0.24.4"
     },
     {
         "name": "crates",
