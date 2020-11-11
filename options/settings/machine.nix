@@ -11,22 +11,12 @@ with lib;
       '';
     };
 
-    screen = {
-      width = mkOption {
-        type = types.int;
-        default = 3840;
-        description = ''
-          Screen width
-        '';
-      };
-
-      height = mkOption {
-        type = types.int;
-        default = 2160;
-        description = ''
-          Screen height
-        '';
-      };
+    dpi = mkOption {
+      type = types.nullOr types.int;
+      default = null;
+      description = ''
+        The desired dpi of the machine
+      '';
     };
   };
 }

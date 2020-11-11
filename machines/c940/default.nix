@@ -19,10 +19,9 @@
         core = -70;
         gpu = -70;
       };
+      dpi = 240;
     };
   };
-
-  fonts.fontconfig.dpi = 240;
 
   environment.sessionVariables = {
     "LIBVA_DRIVER_NAME" = "iHD";

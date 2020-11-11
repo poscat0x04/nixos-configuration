@@ -9,7 +9,10 @@ with config.nixos;
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users."${settings.system.user}" = import ../home-manager;
+    users."${settings.system.user}" = { ... }: {
+      _module.args = { sysConfig = config; };
+      imports = [ ../home-manager ];
+    };
   };
 
   users = {
