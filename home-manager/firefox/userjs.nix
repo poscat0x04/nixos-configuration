@@ -39,6 +39,8 @@
   "browser.urlbar.suggest.searches" = true;
   # Enable searching implicitly in address bar
   "keyword.enabled" = true;
-  # Disable address bar zoom
-  "browser.urlbar.openViewOnFocus" = false;
+  # Hide title bar
+  "browser.tabs.drawInTitlebar" = true;
+  # Consolas
+  "font.size.monospace.x-western" = 14;
 }
