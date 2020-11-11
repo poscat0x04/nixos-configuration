@@ -52,6 +52,7 @@
       gnumake
       # Rust
       rust-analyzer
+      cargo
       # ATS
       ats2
       # Dhall
@@ -59,12 +60,15 @@
       dhall-lsp-server
       # Misc
       anki
+      ark
+      krita
       thunderbird
       qimgv
       transmission-qt
       zotero
       zathura
       # Utils
+      bench
       loc
       lm_sensors
       flameshot
@@ -72,6 +76,7 @@
       shellcheck
       youtube-dl
       profile-cleaner
+      postman
     ];
   };
 
