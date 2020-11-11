@@ -7,13 +7,8 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-$HOME}/.zcompcache"
 
 # Case-insensitive (all), partial-word, and then substring completion.
-if zstyle -t ':prezto:module:completion:*' case-sensitive; then
-  zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-  setopt CASE_GLOB
-else
-  zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-  unsetopt CASE_GLOB
-fi
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+unsetopt CASE_GLOB
 
 # Group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
@@ -60,9 +55,8 @@ zstyle ':completion:*:history-words' menu yes
 # Environmental Variables
 zstyle ':completion::*:(-command-|export):*' fake-parameters ${${${_comps[(I)-value-*]#*,}%%,*}:#-*-}
 
-# Populate hostname completion. But allow ignoring custom entries from static
-# */etc/hosts* which might be uninteresting.
-zstyle -a ':prezto:module:completion:*:hosts' etc-host-ignores '_etc_host_ignores'
+# Populate hostname completion.
+export _etc_host_ignores=("0.0.0.0")
 
 zstyle -e ':completion:*:hosts' hosts 'reply=(
   ${=${=${=${${(f)"$(cat {/etc/ssh/ssh_known_hosts,~/.ssh/known_hosts}(|2)(N) 2> /dev/null)"}%%[#| ]*}//\]:[0-9]*/ }//,/ }//\[/ }

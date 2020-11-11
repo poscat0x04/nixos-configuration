@@ -53,8 +53,9 @@ let
     df = "df -kh";
     du = "du -kh";
 
-    history-stat = "history 0 | awk '{print \\$2}' | sort | uniq -c | sort -n -r | head";
+    history-stat = "history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head";
 
+    fs = "nix-env -f '<nixpkgs>' -qaP -A";
     cb = "cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'";
     ct = "cabal new-test --test-show-details=streaming --disable-documentation";
     pb = "curl -F 'c=@-' 'https://fars.ee/'";
@@ -64,6 +65,7 @@ in
 {
   environment.systemPackages = with pkgs; [
     nix-index
+    zsh-completions
   ];
 
   programs = {
@@ -137,9 +139,10 @@ in
         alias ln="''${aliases[ln]:-ln} -i"
         alias ls="''${aliases[ls]:-ls} --color=auto"
 
+        eval $(dircolors ${pkgs.extra-files.nord-dircolors})
+
       '' + (readFile ./completion.zsh) +
       ''
-        eval $(dircolors ${pkgs.extra-files.nord-dircolors})
 
         ZSH_AUTOSUGGEST_USE_ASYNC=1
 
@@ -210,7 +213,8 @@ in
         done
 
         fpath=(${./functions} $fpath)
-        autoload -Uz archive unarchive lsarchive _unarchive _lsarchive
+        autoload -U archive lsarchive unarchive
+        autoload -U compinit && compinit -u
 
         source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
 
@@ -241,6 +245,7 @@ in
         enable = true;
         highlightStyle = "fg=#9e9e9e";
       };
+      enableGlobalCompInit = false;
       syntaxHighlighting = {
         enable = true;
         highlighters = [
