@@ -52,18 +52,14 @@ rec {
         imap <S-Insert> <C-R>*
         set clipboard=unnamedplus
 
-        autocmd vimenter * NERDTree
+        autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" && !&readonly| NERDTree | endif
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
         map <C-n> :NERDTreeToggle<CR>
-
-        augroup NERD
-          au!
-          autocmd VimEnter * NERDTree
-          autocmd VimEnter * wincmd p
-        augroup END
 
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
       '';
       packages.myVimPackage = with super.pkgs.vimPlugins; {
         start = [
