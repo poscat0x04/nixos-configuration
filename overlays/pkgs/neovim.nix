@@ -77,6 +77,7 @@ rec {
           ats-vim
           nerdtree
           ultisnips
+          vim-plugin-AnsiEsc
         ];
         opt = [ ];
       };
