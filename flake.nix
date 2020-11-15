@@ -56,6 +56,11 @@
               ./machines/c940
             ];
           };
+	  t460p = baseSystem {
+	    modules = [
+              ./machines/t460p
+	    ];
+	  };
         };
       };
 }
