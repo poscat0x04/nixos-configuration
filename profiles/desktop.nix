@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
+
+let
+  dpi = config.nixos.settings.machine.dpi;
+in
 
 {
   imports = [
@@ -85,7 +89,7 @@
  services.printing.enable = true;
 
  console = {
-    font = "ter-u28n";
+    font = if dpi >= 196 then "ter-u28n" else "ter-u18n";
     packages = [ pkgs.terminus_font ];
   };
 }

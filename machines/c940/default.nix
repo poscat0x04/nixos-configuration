@@ -11,6 +11,8 @@
     ./hardware-configuration.nix
   ];
 
+  boot.loader.systemd-boot.consoleMode = "max";
+
   nixos.settings = {
     system.user = "poscat";
     machine = {
