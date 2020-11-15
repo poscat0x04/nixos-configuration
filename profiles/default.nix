@@ -16,6 +16,7 @@
   boot = {
     tmpOnTmpfs = true;
     cleanTmpDir = true;
+    supportedFilesystems = [ "ntfs" ];
   };
 
   console.earlySetup = true;
