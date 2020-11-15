@@ -41,7 +41,7 @@ let
     ll = "ls -lh";
     lr = "ll -R";
     la = "ll -A";
-    lm = "la | \"$PAGER\"";
+    lm = "la | less -R";
     lx = "ll -XB";
     lk = "ll -Sr";
     lt = "ll -tr";
