@@ -32,6 +32,9 @@ with config.nixos;
 
         shell = pkgs.zsh;
       };
+      root = {
+        hashedPassword = settings.system.password;
+      };
     };
     mutableUsers = false;
   };
