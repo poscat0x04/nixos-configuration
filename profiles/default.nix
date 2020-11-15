@@ -7,6 +7,7 @@
     ../modules/networking
     ../modules/nix.nix
     ../modules/mtr.nix
+    ../modules/openssh.nix
     ../modules/users.nix
     ../modules/zsh
   ];

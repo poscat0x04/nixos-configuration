@@ -2,6 +2,5 @@
 
 {
   imports = [
-    ../modules/openssh.nix
   ];
 }
