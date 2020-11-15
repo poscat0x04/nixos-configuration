@@ -17,6 +17,31 @@
     dnssec = lib.mkDefault "false";
   };
 
+  systemd.suppressedSystemUnits = [
+    "systemd-networkd-wait-online.service"
+  ];
+
+  systemd.services."systemd-network-wait-online" = {
+    description = "Wait for Network to be Configured";
+    documentation = [ "man:systemd-networkd-wait-online.service(8)" ];
+    conflicts = [ "shutdown.target" ];
+    requires = [ "systemd-networkd.service" ];
+    after = [ "systemd-networkd.service" ];
+    before = [
+      "network-online.target"
+      "shutdown.target"
+    ];
+    wantedBy = [ "network-online.target" ];
+    unitConfig = {
+      DefaultDependencies = false;
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"; 
+      RemainAfterExit = true;
+    };
+  };
+
   systemd.network = {
     enable = true;
 
