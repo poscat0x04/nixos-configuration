@@ -1,9 +1,7 @@
 self: super:
 
-with builtins;
-
 let
-  extensions = with self.pkgs; with vscode-extensions; with vscode-utils; [
+  extensions = with self.pkgs.vscode-extensions; [
     redhat.vscode-yaml
     vscodevim.vim
     bbenoist.Nix
@@ -12,7 +10,16 @@ let
     justusadam.language-haskell
     dhall.dhall-lang
     dhall.vscode-dhall-lsp-server
-  ] ++ extensionsFromVscodeMarketplace (fromJSON (readFile ./extensions.json));
+
+    haskell.haskell
+    banacorn.agda-mode
+    serayuzgur.crates
+    arcticicestudio.nord-visual-studio-code
+    PKief.material-icon-theme
+    dbaeumer.vscode-eslint
+    timonwong.shellcheck
+    wayou.vscode-todo-highlight
+  ];
 in
   {
     vscode-insiders-with-extensions = super.vscode-insiders-with-extensions.override {
