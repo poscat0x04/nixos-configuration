@@ -14,11 +14,10 @@
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     hath-nix.url = github:poscat0x04/hath-nix;
-    nur.url = github:nix-community/NUR;
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nix-secrets, nur, nix-repo, hath-nix, ... }@inputs: with nixpkgs.lib;
+  outputs = { self, nixpkgs, home-manager, nix-secrets, nix-repo, hath-nix, ... }@inputs: with nixpkgs.lib;
     let
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
@@ -40,7 +39,7 @@
             };
 
             modules =
-              (optional overlay { nixpkgs.overlays = mkBefore [ nix-repo.overlay hath-nix.overlay nur.overlay ]; })
+              (optional overlay { nixpkgs.overlays = mkBefore [ nix-repo.overlay hath-nix.overlay ]; })
               ++ 
                 [
                   {

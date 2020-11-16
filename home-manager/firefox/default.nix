@@ -9,7 +9,7 @@ let
 in {
   programs.firefox = {
     enable = true;
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    extensions = with pkgs.firefox-addons; [
       ublock-origin
       i-dont-care-about-cookies
       link-cleaner
