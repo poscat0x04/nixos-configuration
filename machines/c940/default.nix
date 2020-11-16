@@ -32,7 +32,7 @@
     "GTK_DPI_SCALE" = "1";
   };
 
-  networking.hostId = "1242827d";
+  networking.hostId = "cc0285b2";
 
   system.stateVersion = "20.03";
 }
