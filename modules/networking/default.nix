@@ -48,7 +48,7 @@
     networks.default = rec {
       DHCP = "yes";
 
-      matchConfig.Name = "!docker* virbr* tun*";
+      matchConfig.Name = "!docker* virbr* tun* lo";
 
       networkConfig = {
         IPv6AcceptRA = true;
