@@ -32,6 +32,8 @@
   "privacy.sanitize.sanitizeOnShutdown" = false;
   # Don't save passwords
   "signon.rememberSignons" = false;
+  # Pixiv
+  "network.http.referer.XOriginPolicy" = 0;
 
   ## Ergonomics
   # Enable search suggestions
