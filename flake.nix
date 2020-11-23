@@ -19,6 +19,18 @@
 
   outputs = { self, nixpkgs, home-manager, nix-secrets, nix-repo, hath-nix, ... }@inputs: with nixpkgs.lib;
     let
+      systems = [
+        "x86_64-linux"
+        "i686-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "armv6l-linux"
+        "armv7l-linux"
+      ];
+
+      forAllSystems = f: genAttrs systems (system: f system);
+
+      overlays = [ nix-repo.overlay hath-nix.overlay ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
@@ -39,7 +51,7 @@
             };
 
             modules =
-              (optional overlay { nixpkgs.overlays = mkBefore [ nix-repo.overlay hath-nix.overlay ]; })
+              (optional overlay { nixpkgs.overlays = mkBefore overlays; })
               ++ 
                 [
                   {
@@ -61,5 +73,7 @@
 	    ];
 	  };
         };
+
+        legacyPackages = forAllSystems (system: import nixpkgs { inherit system overlays; });
       };
 }

@@ -22,6 +22,20 @@
     nixPath = [
       "nixpkgs=${flakes.nixpkgs.path}"
     ];
+
+    registry = {
+      config = {
+        from = {
+          id = "pkgs";
+          type = "indirect";
+        };
+
+        to = {
+          path = toString flakes.self.path;
+          type = "path";
+        };
+      };
+    };
   };
 
   nixpkgs = {
