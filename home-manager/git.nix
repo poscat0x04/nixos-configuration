@@ -22,7 +22,7 @@ in
         editor = "nvim";
         excludesfile = "${gitignore}";
       };
-      pull.rebase = true;
+      pull.ff = true;
       merge = {
         tool = "nvimdiff";
         conflictstyle = "diff3";
