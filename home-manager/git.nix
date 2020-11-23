@@ -23,6 +23,11 @@ in
         excludesfile = "${gitignore}";
       };
       pull.rebase = true;
+      merge = {
+        tool = "nvimdiff";
+        conflictstyle = "diff3";
+      };
+      mergetool.prompt = false;
     };
   };
 }
