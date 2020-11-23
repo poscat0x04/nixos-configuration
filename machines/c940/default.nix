@@ -22,11 +22,11 @@
         gpu = -70;
       };
       dpi = 240;
+      ihd = true;
     };
   };
 
   environment.sessionVariables = {
-    "LIBVA_DRIVER_NAME" = "iHD";
     "PLASMA_USE_QT_SCALING" = "1";
     "GTK_SCALE" = "2";
     "GTK_DPI_SCALE" = "1";
