@@ -220,6 +220,8 @@ in
 
         source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
 
+        zsh-newuser-install() { :; }
+
         nixos-option () {
           local flakePath="${./../..}"
           local option
