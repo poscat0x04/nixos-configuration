@@ -22,6 +22,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # pixiv downloader
+      "dkndmhgdcmjdmkdonmbgjpijejdcilfh"
       # floccus
       "fnaicdffflnofjppbagibeoednhnbjhg"
       "cobieddmkhhnbeldhncnfcgcaccmehgn"
