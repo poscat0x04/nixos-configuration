@@ -53,7 +53,7 @@
 
             modules =
               (optional overlay { nixpkgs.overlays = mkBefore overlays; })
-              ++ 
+              ++
                 [
                   {
                     _module.args.system = system;
@@ -64,15 +64,15 @@
     in
       { nixosConfigurations = {
           c940 = baseSystem rec {
-            modules = [ 
+            modules = [
               ./machines/c940
             ];
           };
-	  t460p = baseSystem {
-	    modules = [
+          t460p = baseSystem {
+            modules = [
               ./machines/t460p
-	    ];
-	  };
+            ];
+          };
         };
 
         legacyPackages = forAllSystems (system: import nixpkgs { inherit system overlays; });
