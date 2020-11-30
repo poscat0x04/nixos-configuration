@@ -56,6 +56,7 @@ let
     history-stat = "history 0 | awk '{print $2}' | sort | uniq -c | sort -n -r | head";
 
     fs = "nix-env -f '<nixpkgs>' -qaP -A";
+    ns = "nix develop -c zsh";
     cb = "cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'";
     ct = "cabal new-test --test-show-details=streaming --disable-documentation";
     pb = "curl -F 'c=@-' 'https://fars.ee/'";
