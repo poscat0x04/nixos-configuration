@@ -43,6 +43,7 @@ in
       gitAndTools.gh
       darcs
       # Editors
+      customized-emacs
       customized-neovim-qt
       vscode-insiders-with-extensions
       # Consoles

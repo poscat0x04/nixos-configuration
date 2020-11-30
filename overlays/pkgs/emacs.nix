@@ -1,0 +1,92 @@
+self: super:
+
+{
+  customized-emacs =
+    let
+      emacsPackages = with super; emacsPackagesFor emacsGcc;
+      inherit (emacsPackages) emacsWithPackages;
+      extraPackages = epkgs: with epkgs.melpaPackages; [
+        epkgs.elpaPackages.auctex
+        use-package
+        ripgrep
+        haskell-mode
+        hl-todo
+        quickrun
+        treemacs
+        treemacs-evil
+        treemacs-projectile
+        treemacs-magit
+        flycheck
+        ivy-xref
+        rainbow-delimiters
+        projectile
+        dhall-mode
+        nix-mode
+        toml-mode
+        yaml-mode
+        pkgbuild-mode
+        evil
+        evil-leader
+        evil-nerd-commenter
+        evil-surround
+        evil-magit
+        try
+        magit
+        diff-hl
+        gitattributes-mode
+        gitconfig-mode
+        gitignore-mode
+        company
+        company-prescient
+        company-lsp
+        lsp-mode
+        lsp-ui
+        org-bullets
+        yasnippet-snippets
+        yasnippet
+        page-break-lines
+        dashboard
+        which-key
+        rg
+        fzf
+        avy
+        ivy
+        counsel
+        ace-window
+        markdown-mode
+        vterm
+        vterm-toggle
+        gcmh
+        dash
+        edit-indirect
+        webpaste
+        atomic-chrome
+        grip-mode
+        doom-themes
+        doom-modeline
+        golden-ratio
+        proof-general
+        company-coq
+        lsp-haskell
+        direnv
+        haskell-snippets
+        flycheck-haskell
+        flycheck-liquidhs
+        idris-mode
+        helm-idris
+        company-auctex
+        company-math
+        auctex-latexmk
+        purescript-mode
+        psc-ide
+        rust-mode
+        cargo
+        flycheck-rust
+        xah-math-input
+        ormolu
+        direnv
+        flycheck-aspell
+        separedit
+      ];
+    in emacsWithPackages extraPackages;
+}

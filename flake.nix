@@ -14,10 +14,11 @@
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     hath-nix.url = github:poscat0x04/hath-nix;
+    nixos-emacs.url = github:nix-community/emacs-overlay;
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nix-secrets, nix-repo, hath-nix, ... }@inputs: with nixpkgs.lib;
+  outputs = { self, nixpkgs, home-manager, nix-secrets, nix-repo, hath-nix, nixos-emacs, ... }@inputs: with nixpkgs.lib;
     let
       systems = [
         "x86_64-linux"
@@ -30,7 +31,7 @@
 
       forAllSystems = f: genAttrs systems (system: f system);
 
-      overlays = [ nix-repo.overlay hath-nix.overlay ];
+      overlays = [ nix-repo.overlay hath-nix.overlay nixos-emacs.overlay ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {

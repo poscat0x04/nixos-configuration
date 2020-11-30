@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: c2hs function
+# key: fun
+# key: funh
+# binding: C-c C-f
+# --
+{#fun $1 as ${2:^} {$3} -> $4 #}

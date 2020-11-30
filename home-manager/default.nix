@@ -8,6 +8,7 @@ in
 
     imports = [
       ./alacritty.nix
+      ./emacs.nix
       ./firefox
       ./git.nix
       ./konsole.nix

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: c2hs pointer
+# key: ptr
+# --
+{#pointer *$1 as $2 ${3:newtype} #}

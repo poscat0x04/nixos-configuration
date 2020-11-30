@@ -1,0 +1,24 @@
+# Compiled
+*.elc
+
+# Packaging
+.cask
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
+
+.cache/
+.extension/
+elpa/
+straight/
+var/
+transient/
+
+projectile-bookmarks.eld
+recentf
+places
+.lsp-session-v1
+

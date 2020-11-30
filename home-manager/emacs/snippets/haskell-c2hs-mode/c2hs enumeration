@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: c2hs enumeration
+# key: enum
+# --
+{#enum $1 as $2 {underscoreToCase$3} deriving (Show, Eq, Ord)$4 #}
