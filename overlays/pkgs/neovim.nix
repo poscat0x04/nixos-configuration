@@ -37,7 +37,8 @@ rec {
         let g:LanguageClient_serverCommands = {
           \ 'rust': ['rust-analyzer'],
           \ 'dhall' : ['dhall-lsp-server'],
-          \ 'purescript' : ['purs', 'ide', 'server']
+          \ 'purescript' : ['purs', 'ide', 'server'],
+          \ 'nix': ['rnix-lsp']
           \ }
 
         nnoremap <F5> :call LanguageClient_contextMenu()<CR>
