@@ -14,6 +14,15 @@ in {
       i-dont-care-about-cookies
       link-cleaner
       plasma-integration
+      https-everywhere
+      transmission-easy-client
+      ctrl-number-to-switch-tabs
+      privacy-badger
+      pixiv-toolkit
+      grammarly
+      floccus
+      absolute-enable-right-click
+      save-to-the-wayback-machine
     ];
     profiles.default = {
       id = 0;
