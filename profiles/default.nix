@@ -47,6 +47,7 @@
       nix-prefetch-scripts
       pass
       ripgrep
+      rnix-lsp
       tree
       unrar
       unzip
