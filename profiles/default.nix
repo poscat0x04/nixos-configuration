@@ -51,6 +51,7 @@
       tree
       unrar
       unzip
+      zip
       zstd
 
       postgresql_13
