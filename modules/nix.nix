@@ -9,13 +9,11 @@
 
     binaryCaches = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://hydra.iohk.io"
       "https://nix-community.cachix.org"
       "https://nix-repo.cachix.org"
     ];
 
     binaryCachePublicKeys = [
-      "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-repo.cachix.org-1:npOkN9JTf5FvMkTRrvaDd3GvGVO1mBkNU8y6t5UQllk="
     ];
