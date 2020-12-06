@@ -2,6 +2,10 @@
 
 let
   dpi = config.nixos.settings.machine.dpi;
+  haskell-packages = with pkgs.haskellPackages; map pkgs.haskell.lib.justStaticExecutables [
+    cabal-fmt
+    ats-format
+  ];
 in
 
 {
@@ -82,7 +86,7 @@ in
       youtube-dl
       profile-cleaner
       postman
-    ];
+    ] ++ haskell-packages;
   };
 
  security.rngd.enable = false;
