@@ -15,23 +15,23 @@
     };
     hath-nix.url = github:poscat0x04/hath-nix;
     nixos-emacs.url = github:nix-community/emacs-overlay;
+    flake-utils.url = github:poscat0x04/flake-utils;
   };
 
 
-  outputs = { self, nixpkgs, home-manager, nix-secrets, nix-repo, hath-nix, nixos-emacs, ... }@inputs: with nixpkgs.lib;
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , nix-secrets
+    , nix-repo
+    , hath-nix
+    , nixos-emacs
+    , flake-utils
+    , ...
+    }@inputs: with flake-utils;
     let
-      systems = [
-        "x86_64-linux"
-        "i686-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
-        "armv6l-linux"
-        "armv7l-linux"
-      ];
-
-      forAllSystems = f: genAttrs systems (system: f system);
-
-      overlays = [ nix-repo.overlay hath-nix.overlay nixos-emacs.overlay ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
@@ -39,30 +39,34 @@
             specialArgs = rec {
               secrets = nix-secrets;
               flakes = genAttrs (builtins.attrNames inputs)
-                (flake:
-                  (if (inputs.${flake} ? packages && inputs.${flake}.packages ? ${system})
-                    then inputs.${flake}.packages.${system}
-                    else {})
-                  // {
-                    path = inputs.${flake};
-                    nixosModules = inputs.${flake}.nixosModules or {};
-                  });
+                (
+                  flake:
+                    (
+                      if (inputs.${flake} ? packages && inputs.${flake}.packages ? ${system})
+                      then inputs.${flake}.packages.${system}
+                      else {}
+                    )
+                    // {
+                      path = inputs.${flake};
+                      nixosModules = inputs.${flake}.nixosModules or {};
+                    }
+                );
 
               nixosModules = foldl recursiveUpdate {} (map (flake: flake.nixosModules or {}) (attrValues flakes));
             };
 
             modules =
               (optional overlay { nixpkgs.overlays = mkBefore overlays; })
-              ++
-                [
-                  {
-                    _module.args.system = system;
-                  }
-                ]
+              ++ [
+                {
+                  _module.args.system = system;
+                }
+              ]
               ++ config.modules;
           };
     in
-      { nixosConfigurations = {
+      {
+        nixosConfigurations = {
           c940 = baseSystem rec {
             modules = [
               ./machines/c940
@@ -75,6 +79,9 @@
           };
         };
 
-        legacyPackages = forAllSystems (system: import nixpkgs { inherit system overlays; });
-      };
+      } // eachDefaultSystem (
+        system: {
+          legacyPackages = import nixpkgs { inherit system overlays; };
+        }
+      );
 }
