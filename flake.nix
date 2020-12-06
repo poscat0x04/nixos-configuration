@@ -29,7 +29,7 @@
     , nixos-emacs
     , flake-utils
     , ...
-    }@inputs: with flake-utils;
+    }@inputs: with flake-utils; with nixpkgs.lib;
     let
       overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs ];
       baseSystem =

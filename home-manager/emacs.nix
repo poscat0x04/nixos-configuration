@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 with lib; with builtins;
 
@@ -9,4 +9,9 @@ in
 
 {
   xdg.configFile = listToAttrs config;
+
+  services.emacs = {
+    enable = true;
+    package = pkgs.customized-emacs;
+  };
 }
