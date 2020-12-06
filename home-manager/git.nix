@@ -17,6 +17,10 @@ in
       signByDefault = true;
     };
 
+    aliases = {
+      amend = "commit --amend --no-edit";
+    };
+
     extraConfig = {
       core = {
         editor = "nvim";
