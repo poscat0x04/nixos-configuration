@@ -3,7 +3,7 @@ self: super:
 {
   customized-emacs =
     let
-      emacsPackages = with super; emacsPackagesFor emacsGcc;
+      emacsPackages = with super; emacsPackagesFor emacsGit;
       inherit (emacsPackages) emacsWithPackages;
       extraPackages = epkgs: with epkgs.melpaPackages; [
         epkgs.elpaPackages.auctex
