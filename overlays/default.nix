@@ -14,5 +14,5 @@ self: super: let
       )
     );
 in
-  with self.pkgs; subOverlays // {
+  subOverlays // {
   }
