@@ -61,6 +61,9 @@ rec {
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+        let g:better_whitespace_enabled=1
+        let g:strip_whitespace_on_save = 1
+        let g:strip_whitespace_confirm=0
       '';
       packages.myVimPackage = with super.pkgs.vimPlugins; {
         start = [
@@ -79,6 +82,7 @@ rec {
           nerdtree
           ultisnips
           vim-plugin-AnsiEsc
+          vim-better-whitespace
         ];
         opt = [ ];
       };
