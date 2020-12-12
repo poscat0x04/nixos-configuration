@@ -2,6 +2,7 @@
 
 let
   dpi = config.nixos.settings.machine.dpi;
+  user = config.nixos.settings.system.user;
 in
   {
     services.xserver.displayManager = {
@@ -13,5 +14,9 @@ in
         '';
       };
       defaultSession = lib.mkDefault "plasma5";
+      autoLogin = {
+        enable = true;
+        inherit user;
+      };
     };
   }
