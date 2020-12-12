@@ -4,6 +4,8 @@ let
   extensions = with self.pkgs.vscode-extensions; [
     matklad.rust-analyzer
     ms-python.python
+    WakaTime.vscode-wakatime
+    vadimcn.vscode-lldb
 
     redhat.vscode-yaml
     vscodevim.vim
@@ -24,6 +26,12 @@ let
     james-yu.latex-workshop
     GitHub.vscode-pull-request-github
     mr-konn.generic-input-method
+    christian-kohler.path-intellisense
+    aaronduino.nix-lsp
+    ms-vscode.hexeditor
+    be5invis.toml
+    ban.spellright
+    jroesch.lean
   ];
 in
   {
