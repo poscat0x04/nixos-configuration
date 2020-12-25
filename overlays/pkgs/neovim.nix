@@ -83,6 +83,7 @@ rec {
           ultisnips
           vim-plugin-AnsiEsc
           vim-better-whitespace
+          vim-toml
         ];
         opt = [ ];
       };
