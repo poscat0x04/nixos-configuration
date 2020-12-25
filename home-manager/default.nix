@@ -8,6 +8,7 @@ in
 
     imports = [
       ./alacritty.nix
+      ./cabal.nix
       ./emacs.nix
       ./firefox
       ./git.nix
@@ -16,7 +17,7 @@ in
     ];
 
     xresources.properties = {
-      "Xft.dpi" = lib.mkIf (dpi != null) dpi; 
+      "Xft.dpi" = lib.mkIf (dpi != null) dpi;
     };
 
     programs = {
