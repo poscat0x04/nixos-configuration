@@ -86,6 +86,7 @@ in
       youtube-dl
       profile-cleaner
       postman
+      hinit
     ] ++ haskell-packages;
   };
 

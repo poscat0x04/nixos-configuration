@@ -2,11 +2,11 @@
   "nodes": {
     "NUR": {
       "locked": {
-        "lastModified": 1607573651,
-        "narHash": "sha256-fJa75KnqNepMu/YFsC8ndrYfjwID90KoEv/6LreZv5s=",
+        "lastModified": 1608853385,
+        "narHash": "sha256-djB6F9w3ZNDTUcB+iT3tbOFPJb0ZV/Ekeb7wCxQ4ofc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "1251f6a8ac130cc5cc5606c5c580bd68b54044d5",
+        "rev": "2f7ce3f7ba2e139149071fc87e5dc1b0758cce45",
         "type": "github"
       },
       "original": {
@@ -60,6 +60,30 @@
         "type": "github"
       }
     },
+    "hinit": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "spdx-license": "spdx-license"
+      },
+      "locked": {
+        "lastModified": 1608808413,
+        "narHash": "sha256-TFvI533DyUUDu0ubw86JufeiCoA2DrRvN8Nb9klND3k=",
+        "owner": "poscat0x04",
+        "repo": "hinit",
+        "rev": "055a7ef5d25ab10dae78e05e0f5ca688021a588e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "hinit",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -67,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1607553951,
-        "narHash": "sha256-pFlfqnG1pJzCgJGcTBIJJfJdqy0GJdSqGrmLSzcDn/w=",
+        "lastModified": 1608681543,
+        "narHash": "sha256-6YNP8GBG0nhqLMQVkCBxRirTYaaGhI8gKCwgcJ5+sLc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "e6a58a7e718ac5b21fa8bc9e937cc19bcd8d9293",
+        "rev": "3627ec4de58d7fbda13c82dfec94eace10198f23",
         "type": "github"
       },
       "original": {
@@ -89,11 +113,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1607575745,
-        "narHash": "sha256-mFLMVC9wniOt7qIUWw1/LGTrnN7tcIVsBX4I5ldDOvE=",
+        "lastModified": 1608860380,
+        "narHash": "sha256-pwtLWfhrSFp2jsCmK753Mfynz+78J3pweBJerkdLvMw=",
         "owner": "poscat0x04",
         "repo": "nix-repo",
-        "rev": "bf4aa3927efba4316a69cfa9f280eb0bc912dbed",
+        "rev": "0ff24f5801eaa75905d3fd45eb2d29b94566bc71",
         "type": "github"
       },
       "original": {
@@ -109,11 +133,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1604799629,
-        "narHash": "sha256-N00T3SMLwncVQxuYi/57X9gsKsSqNX9o93eRLMOqLlA=",
+        "lastModified": 1608810424,
+        "narHash": "sha256-k2q80SoqV9pYldYiFVTcJGXDN7KKk7MuRE4NHXypTUo=",
         "owner": "poscat0x04",
         "repo": "nix-secrets",
-        "rev": "18ca1dc3646eddef704edee5dc22257013915026",
+        "rev": "2c0b6eb2011c9c7f167161b8a9a4769773dca772",
         "type": "github"
       },
       "original": {
@@ -124,11 +148,11 @@
     },
     "nixos-emacs": {
       "locked": {
-        "lastModified": 1607574544,
-        "narHash": "sha256-hFaJgvEgFHLRxvCsnqwijPEC5rNxda/5ufzzWNwPoyI=",
+        "lastModified": 1608855581,
+        "narHash": "sha256-J0HzPtikeSbU0gCvuY3FySEWwK7o6uxXSkm5HQ9Lb5I=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "4b154d8046bf12c33c986a1c19997c7c479a1de2",
+        "rev": "88d77bca47d0e8e6fc4fe5585df1e368852e640a",
         "type": "github"
       },
       "original": {
@@ -139,11 +163,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1607522989,
-        "narHash": "sha256-o/jWhOSAlaK7y2M57OIriRt6whuVVocS/T0mG7fd1TI=",
+        "lastModified": 1608755064,
+        "narHash": "sha256-nx/o32ipf2YH8WTff7uYwWOwTI+Vtrr49mgxEPdK5bw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e9158eca70ae59e73fae23be5d13d3fa0cfc78b4",
+        "rev": "57a787c9fa91f149c86a1ce83d57e07cfa589e07",
         "type": "github"
       },
       "original": {
@@ -157,11 +181,36 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "hath-nix": "hath-nix",
+        "hinit": "hinit",
         "home-manager": "home-manager",
         "nix-repo": "nix-repo",
         "nix-secrets": "nix-secrets",
         "nixos-emacs": "nixos-emacs",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "spdx-license": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1608621700,
+        "narHash": "sha256-6zuXXs8HhkYWtC1JFtxLzZAe72BkuA5rEcZumHnFifg=",
+        "owner": "poscat0x04",
+        "repo": "spdx-license",
+        "rev": "1d6e212451ac00f1223d7059f591a4799455816a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "ref": "0.1.0",
+        "repo": "spdx-license",
+        "type": "github"
       }
     }
   },

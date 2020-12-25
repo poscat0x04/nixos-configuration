@@ -13,6 +13,13 @@
       url = github:poscat0x04/nix-secrets;
       inputs.nixpkgs.follows = "/nixpkgs";
     };
+    hinit = {
+      url = github:poscat0x04/hinit;
+      inputs = {
+        nixpkgs.follows = "/nixpkgs";
+        flake-utils.follows = "/flake-utils";
+      };
+    };
     hath-nix.url = github:poscat0x04/hath-nix;
     nixos-emacs.url = github:nix-community/emacs-overlay;
     flake-utils.url = github:poscat0x04/flake-utils;
@@ -28,10 +35,11 @@
     , hath-nix
     , nixos-emacs
     , flake-utils
+    , hinit
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs hinit ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
