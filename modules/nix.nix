@@ -1,10 +1,15 @@
 { secrets, flakes, pkgs, config, lib, ... }:
 
+let
+  flakesEmpty = pkgs.writeText "flakes-empty.json" (builtins.toJSON { flakes = []; version = 2; });
+in
+
 {
   nix = {
     extraOptions = ''
       experimental-features = flakes nix-command
       access-tokens = github.com=${secrets.credentials.github}
+      flake-registry = ${flakesEmpty}
     '';
 
     binaryCaches = [
