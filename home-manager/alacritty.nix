@@ -18,6 +18,6 @@ in
   {
     programs.alacritty = {
       enable = true;
-      settings = base_settings // theme; 
+      settings = base_settings // theme;
     };
   }
