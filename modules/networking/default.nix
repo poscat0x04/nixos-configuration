@@ -1,6 +1,14 @@
 { config, lib, pkgs, secrets, ... }:
 
 {
+  imports = [
+    ../../patches/resolved.nix
+  ];
+
+  disabledModules = [
+    "system/boot/resolved.nix"
+  ];
+
   networking = {
     hostName = config.nixos.settings.machine.hostname;
     useDHCP = false;
@@ -9,7 +17,7 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
-      networks = secrets.wireless; 
+      networks = secrets.wireless;
     };
   };
 
@@ -37,7 +45,7 @@
     };
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any"; 
+      ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any";
       RemainAfterExit = true;
     };
   };
