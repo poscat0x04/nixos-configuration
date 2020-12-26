@@ -1,14 +1,6 @@
 { config, lib, pkgs, secrets, ... }:
 
 {
-  imports = [
-    ../../patches/resolved.nix
-  ];
-
-  disabledModules = [
-    "system/boot/resolved.nix"
-  ];
-
   networking = {
     hostName = config.nixos.settings.machine.hostname;
     useDHCP = false;
