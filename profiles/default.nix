@@ -46,7 +46,6 @@
       nix-prefetch-github
       nix-prefetch-scripts
       pass
-      project-init
       ripgrep
       rnix-lsp
       tree
