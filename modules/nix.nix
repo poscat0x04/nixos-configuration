@@ -53,10 +53,6 @@ in
             nix = config.nix.package;
           };
 
-          nix-index = prev.nix-index.override {
-            nix = config.nix.package;
-          };
-
           nix-prefetch-scripts = prev.nix-prefetch-scripts.override {
             nix = config.nix.package;
           };
