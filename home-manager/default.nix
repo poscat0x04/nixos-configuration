@@ -8,9 +8,9 @@ in
 
     imports = [
       ./alacritty.nix
-      ./cabal.nix
       ./emacs.nix
       ./firefox
+      ./haskell.nix
       ./git.nix
       ./konsole.nix
       ./mpv.nix
