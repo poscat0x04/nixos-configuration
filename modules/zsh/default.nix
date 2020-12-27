@@ -60,7 +60,6 @@ let
     cb = "cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'";
     ct = "cabal new-test --test-show-details=streaming --disable-documentation";
     pb = "curl -F 'c=@-' 'https://fars.ee/'";
-    code = "code-insiders";
   };
 in
 
@@ -238,6 +237,8 @@ in
 
           nix eval "$@" "$flakePath#${system}.config.$option"
         }
+
+        bindkey '^?' backward-delete-char
 
         export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
         export SSH_AGENT_PID=

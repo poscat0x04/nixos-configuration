@@ -49,7 +49,7 @@ in
       # Editors
       customized-emacs
       customized-neovim-qt
-      vscode-insiders-with-extensions
+      vscode-with-extensions
       # Consoles
       alacritty
       # IMs

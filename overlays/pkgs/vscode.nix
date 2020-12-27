@@ -30,12 +30,14 @@ let
     aaronduino.nix-lsp
     ms-vscode.hexeditor
     be5invis.toml
-    ban.spellright
     jroesch.lean
   ];
 in
   {
     vscode-insiders-with-extensions = super.vscode-insiders-with-extensions.override {
+      vscodeExtensions = extensions;
+    };
+    vscode-with-extensions = super.vscode-with-extensions.override {
       vscodeExtensions = extensions;
     };
   }
