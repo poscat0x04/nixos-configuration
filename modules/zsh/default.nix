@@ -60,6 +60,7 @@ let
     cb = "cabal build --ghc-options='-Wall -fno-warn-unused-do-bind'";
     ct = "cabal new-test --test-show-details=streaming --disable-documentation";
     pb = "curl -F 'c=@-' 'https://fars.ee/'";
+    code = "code-insiders";
   };
 in
 
