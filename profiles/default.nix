@@ -28,6 +28,7 @@
       EDITOR = "nvim";
       VISUAL = "code";
       LESSHISTSIZE = "0";
+      PSQL_PAGER = "pspg";
     };
 
     systemPackages = with pkgs; [
