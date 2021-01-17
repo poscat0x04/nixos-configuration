@@ -7,7 +7,6 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/profiles/laptop.nix
     ../../hardware/profiles/intel.nix
-    ../../hardware/machines/c940/thermald
     ./hardware-configuration.nix
   ];
 
