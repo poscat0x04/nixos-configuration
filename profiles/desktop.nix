@@ -13,7 +13,6 @@ in
     ../modules/agda.nix
     ../modules/audio.nix
     ../modules/chromium.nix
-    ../modules/direnv.nix
     ../modules/firefox.nix
     ../modules/fonts.nix
     ../modules/gnupg.nix
