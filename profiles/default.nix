@@ -17,6 +17,10 @@
     tmpOnTmpfs = true;
     cleanTmpDir = true;
     supportedFilesystems = [ "ntfs" ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "msr.allow_writes=on"
+    ];
   };
 
   console.earlySetup = true;
