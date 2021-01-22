@@ -3,10 +3,9 @@ self: super:
 let
   extensions = with self.pkgs.vscode-extensions; [
     matklad.rust-analyzer
-    ms-python.python
-    WakaTime.vscode-wakatime
-    vadimcn.vscode-lldb
 
+    vadimcn.vscode-lldb
+    ms-python.python
     redhat.vscode-yaml
     vscodevim.vim
     bbenoist.Nix
