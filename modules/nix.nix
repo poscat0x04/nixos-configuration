@@ -56,6 +56,10 @@ in
           nix-prefetch-scripts = prev.nix-prefetch-scripts.override {
             nix = config.nix.package;
           };
+
+          vaapiIntel = prev.vaapiIntel.override {
+            enableHybridCodec = true;
+          };
         }
       )
     ] ++ map
@@ -64,9 +68,6 @@ in
 
     config = {
       allowUnfree = true;
-      packageOverrides = pkgs: {
-        vaapiIntel = pkgs.vaapiIntel.override { enableHybridCodec = true; };
-      };
     };
   };
 
