@@ -4,7 +4,8 @@ let
   dpi = config.nixos.settings.machine.dpi;
   haskell-packages = with pkgs.haskellPackages; map pkgs.haskell.lib.justStaticExecutables [
     cabal-fmt
-    ats-format
+    hp2pretty
+    ghc-prof-flamegraph
   ];
 in
 
@@ -54,11 +55,13 @@ in
       alacritty
       # IMs
       tdesktop
+      discord
+      konversation
       # LaTeX
-      # commented due to #101459
-      # texlive.combined.scheme-full
+      texlive.combined.scheme-full
       # Build Tools
       gnumake
+      gcc
       # Rust
       rust-analyzer
       cargo
@@ -81,7 +84,8 @@ in
       loc
       lm_sensors
       flameshot
-      ffsend
+      flamegraph
+      graphviz
       shellcheck
       youtube-dl
       profile-cleaner
@@ -89,8 +93,6 @@ in
       hinit
     ] ++ haskell-packages;
   };
-
- security.rngd.enable = false;
 
  services.printing.enable = true;
 
