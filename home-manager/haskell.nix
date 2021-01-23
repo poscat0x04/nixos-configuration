@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, secrets, ... }:
 
 let
   hackage-password = pkgs.writeShellScript "hackage-password" ''
-    echo ".i3\rT38AtjR((Y8}i"
+    echo "${secrets.credentials.haskell}"
   '';
 in
 

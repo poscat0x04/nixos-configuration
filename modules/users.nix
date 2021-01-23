@@ -1,4 +1,4 @@
-{ nixosModules, config, pkgs, ... }:
+{ nixosModules, config, pkgs, secrets, ... }:
 
 with config.nixos;
 {
@@ -10,7 +10,7 @@ with config.nixos;
     useGlobalPkgs = true;
     useUserPackages = true;
     users."${settings.system.user}" = { ... }: {
-      _module.args = { sysConfig = config; };
+      _module.args = { sysConfig = config; inherit secrets; };
       imports = [ ../home-manager ];
     };
   };
