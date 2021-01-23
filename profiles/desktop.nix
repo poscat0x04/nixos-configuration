@@ -20,6 +20,7 @@ in
     ../modules/im.nix
     ../modules/lorri.nix
     ../modules/privacy-haters.nix
+    ../modules/rust.nix
     ../modules/unbound.nix
     ../modules/v2ray
     ../modules/xserver
@@ -62,9 +63,6 @@ in
       # Build Tools
       gnumake
       gcc
-      # Rust
-      rust-analyzer
-      cargo
       # ATS
       ats2
       # Dhall

@@ -22,6 +22,10 @@
     };
     hath-nix.url = github:poscat0x04/hath-nix;
     nixos-emacs.url = github:nix-community/emacs-overlay;
+    rust-overlay = {
+      url = github:oxalica/rust-overlay;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
     flake-utils.url = github:poscat0x04/flake-utils;
   };
 
@@ -34,12 +38,13 @@
     , nix-repo
     , hath-nix
     , nixos-emacs
+    , rust-overlay
     , flake-utils
     , hinit
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs hinit ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay hinit ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
