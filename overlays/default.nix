@@ -1,6 +1,6 @@
 self: super: let
   subOverlays = let
-    lib = super.stdenv.lib;
+    lib = super.lib;
   in
     builtins.listToAttrs (
       lib.flatten (
