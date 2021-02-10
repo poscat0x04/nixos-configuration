@@ -3,7 +3,9 @@
 {
   services.xserver.libinput = {
     enable = true;
-    naturalScrolling = true;
-    disableWhileTyping = true;
+    touchpad = {
+      naturalScrolling = true;
+      disableWhileTyping = true;
+    };
   };
 }
