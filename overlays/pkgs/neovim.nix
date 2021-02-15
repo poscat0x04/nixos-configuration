@@ -36,8 +36,9 @@ rec {
 
         let g:LanguageClient_serverCommands = {
           \ 'rust': ['rust-analyzer'],
-          \ 'dhall' : ['dhall-lsp-server'],
-          \ 'purescript' : ['purs', 'ide', 'server'],
+          \ 'dhall': ['dhall-lsp-server'],
+          \ 'haskell': ['haskell-language-server', '--lsp'],
+          \ 'purescript': ['purs', 'ide', 'server'],
           \ 'nix': ['rnix-lsp']
           \ }
 
