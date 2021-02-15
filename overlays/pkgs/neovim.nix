@@ -65,6 +65,8 @@ rec {
         let g:better_whitespace_enabled=1
         let g:strip_whitespace_on_save = 1
         let g:strip_whitespace_confirm=0
+        let mapleader = "\\"
+        let maplocalleader = ","
       '';
       packages.myVimPackage = with super.pkgs.vimPlugins; {
         start = [
@@ -85,6 +87,7 @@ rec {
           vim-plugin-AnsiEsc
           vim-better-whitespace
           vim-toml
+          idris2-vim
         ];
         opt = [ ];
       };
