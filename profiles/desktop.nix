@@ -49,7 +49,7 @@ in
       gitAndTools.gh
       darcs
       # Editors
-      customized-emacs
+      #customized-emacs
       customized-neovim-qt
       vscode-with-extensions
       # Consoles

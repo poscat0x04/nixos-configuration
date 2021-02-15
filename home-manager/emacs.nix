@@ -11,7 +11,7 @@ in
   xdg.configFile = listToAttrs config;
 
   services.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.customized-emacs;
   };
 }
