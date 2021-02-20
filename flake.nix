@@ -88,8 +88,13 @@
           t460p = baseSystem {
             modules = [
               ./machines/t460p
-            ];
-          };
+	    ];
+	  };
+	  thinkcentre = baseSystem {
+	    modules = [
+	      ./machines/thinkcentre
+	    ];
+	  };
         };
 
       } // eachDefaultSystem (

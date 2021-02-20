@@ -95,7 +95,7 @@ in
  services.printing.enable = true;
 
  console = {
-    font = if dpi >= 196 then "ter-u28n" else "ter-u18n";
+    font = if dpi != null && dpi >= 196 then "ter-u28n" else "ter-u18n";
     packages = [ pkgs.terminus_font ];
   };
 }
