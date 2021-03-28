@@ -9,11 +9,11 @@
     etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
     systemPackages = [
       (pkgs.chromium.override {
-        enableVaapi = true;
         commandLineArgs = lib.intersperse " " ([
           "--password-store=basic"
           "--ignore-gpu-blacklist"
           "--enable-gpu-rasterization"
+          "--enable-features=VaapiVideoDecoder"
         ] ++ config.programs.chromium.cliArgs);
       })
     ];
