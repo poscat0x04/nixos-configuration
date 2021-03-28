@@ -3,7 +3,7 @@ let
   gitignore = builtins.fetchurl {
     url = "https://www.toptal.com/developers/gitignore/api/intellij,vscode,emacs,vim,linux,macos,git";
     name = "gitignore";
-    sha256 = "1h9hsf1qvs1chl4xh43r1255sgcd4mcmiqa1jgfgg5ahsh2irp50";
+    sha256 = "1db6fp0xqmwx5apfx4h21ghd60pgxbflxqp3xzf5w2wjv2lfpgyf";
   };
 in
 {
@@ -24,7 +24,7 @@ in
     extraConfig = {
       core = {
         editor = "nvim";
-        excludesfile = "${gitignore}";
+        excludesFile = "${gitignore}";
       };
       pull.ff = true;
       merge = {
