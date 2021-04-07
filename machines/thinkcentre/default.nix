@@ -7,6 +7,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/profiles/laptop.nix
     ../../hardware/profiles/intel.nix
+    ../../hardware/profiles/r8168.nix
     ../../modules/shared-user.nix
     ./hardware-configuration.nix
   ];
