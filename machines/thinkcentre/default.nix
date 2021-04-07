@@ -8,6 +8,7 @@
     ../../hardware/profiles/laptop.nix
     ../../hardware/profiles/intel.nix
     ../../hardware/profiles/r8168.nix
+    ../../hardware/gpu/nvidia
     ../../modules/shared-user.nix
     ./hardware-configuration.nix
   ];
@@ -22,6 +23,13 @@
       };
     };
   };
+
+  hardware.nvidia.prime = {
+    intelBusId = "PCI:0:2:0";
+
+    nvidiaBusId = "PCI:1:0:1";
+  };
+
   services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 
   networking.hostId = "12345678";
