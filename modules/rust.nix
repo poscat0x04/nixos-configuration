@@ -1,20 +1,21 @@
 { lib, pkgs, ... }:
 
 let
-  rust-stable = pkgs.rust-bin.stable.latest.rust.override {
-    extensions = [ "rust-src" ];
+  rust-stable = pkgs.rust-bin.stable.latest.minimal.override {
+    extensions = [
+      "rust-src"
+      "rustfmt-preview"
+      "clippy-preview"
+      "rls-preview"
+    ];
   };
 in
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     rust-stable
+    rust-analyzer
+    cargo-asm
+    cargo-bloat
+    cargo-flamegraph
   ];
-
-  nixpkgs.overlays = lib.singleton (final: prev: {
-    vscode-extensions = prev.vscode-extensions // {
-      matklad.rust-analyzer = prev.vscode-extensions.matklad.rust-analyzer.override {
-       rust-analyzer = rust-stable;
-      };
-    };
-  });
 }
