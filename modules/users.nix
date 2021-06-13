@@ -20,6 +20,7 @@ with config.nixos;
       "${settings.system.user}" = {
         uid = 1000;
         createHome = true;
+        isNormalUser = true;
 
         home = settings.system.home;
         hashedPassword = settings.system.password;

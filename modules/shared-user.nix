@@ -6,6 +6,7 @@
       shared = {
         uid = 2000;
         createHome = true;
+        isNormalUser = true;
 
         home = "/home/shared";
         hashedPassword = "";
