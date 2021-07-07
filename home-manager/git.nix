@@ -1,9 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 let
-  gitignore = builtins.fetchurl {
+  gitignore = pkgs.fetchurl {
     url = "https://www.toptal.com/developers/gitignore/api/intellij,vscode,emacs,vim,linux,macos,git";
     name = "gitignore";
     sha256 = "1db6fp0xqmwx5apfx4h21ghd60pgxbflxqp3xzf5w2wjv2lfpgyf";
+    curlOpts = "-H user-agent:curl/7.76.1";
   };
 in
 {
