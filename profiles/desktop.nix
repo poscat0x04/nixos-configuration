@@ -63,6 +63,10 @@ in
       # Build Tools
       gnumake
       gcc
+      cmake
+      clang
+      clang-tools
+      binutils-unwrapped
       # ATS
       ats2
       # Dhall
@@ -79,7 +83,7 @@ in
       zathura
       # Utils
       bench
-      loc
+      tokei
       lm_sensors
       flameshot
       flamegraph
@@ -88,6 +92,7 @@ in
       youtube-dl
       profile-cleaner
       postman
+      standardnotes
       hinit
     ] ++ haskell-packages;
   };
