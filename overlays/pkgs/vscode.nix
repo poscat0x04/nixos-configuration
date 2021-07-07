@@ -29,6 +29,11 @@ let
     ms-vscode.hexeditor
     be5invis.toml
     jroesch.lean
+    # c stuff
+    ms-vscode.cmake-tools
+    twxs.cmake
+    cschlosser.doxdocgen
+    llvm-vs-code-extensions.vscode-clangd
   ];
 in
   {
