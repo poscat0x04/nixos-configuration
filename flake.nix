@@ -88,6 +88,11 @@
               ./machines/t460p
 	    ];
 	  };
+          x1y = baseSystem {
+            modules = [
+              ./machines/x1y
+            ];
+          };
 	  thinkcentre = baseSystem {
 	    modules = [
 	      ./machines/thinkcentre
