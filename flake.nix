@@ -71,6 +71,12 @@
           };
     in
       {
+        isoImage = (baseSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./profiles/iso.nix
+          ];
+        });
         nixosConfigurations = {
           c940 = baseSystem rec {
             modules = [
