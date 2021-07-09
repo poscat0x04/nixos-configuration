@@ -12,7 +12,7 @@ in
       ./emacs.nix
       ./firefox
       ./haskell.nix
-      ./git.nix
+      ./git
       ./konsole.nix
       ./mpv.nix
     ];
