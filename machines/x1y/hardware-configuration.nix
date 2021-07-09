@@ -34,6 +34,10 @@
       fsType = "vfat";
     };
 
+  networking.wireless.interfaces = [
+    "wlp0s20f3"
+  ];
+
   swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
