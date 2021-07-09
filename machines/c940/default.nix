@@ -27,8 +27,8 @@
 
   environment.sessionVariables = {
     "PLASMA_USE_QT_SCALING" = "1";
-    "GTK_SCALE" = "2";
-    "GTK_DPI_SCALE" = "1";
+    "GDK_SCALE" = "2";
+    "GDK_DPI_SCALE" = "1";
   };
 
   networking.hostId = "cc0285b2";
