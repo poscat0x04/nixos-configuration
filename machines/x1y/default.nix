@@ -16,7 +16,7 @@
   nixos.settings = {
     system.user = "poscat";
     machine = {
-      hostname = "x1ygen6";
+      hostname = "x1y";
       undervolt = rec {
         core = -70;
         gpu = -70;
@@ -32,7 +32,7 @@
     "GDK_DPI_SCALE" = "1";
   };
 
-  networking.hostId = "2166050a";
+  networking.hostId = "8625dcca";
 
   system.stateVersion = "21.11";
 }
