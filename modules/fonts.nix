@@ -22,7 +22,6 @@ in
         noto-fonts-emoji-blob-bin
         noto-fonts-extra
         ttf-ms-win10
-        opensans-ttf
         iosevka
         sarasa-gothic
         roboto
