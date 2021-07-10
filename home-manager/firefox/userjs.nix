@@ -1,14 +1,15 @@
 {
   ## Enable hardware video acceleration
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1619585
-  "security.sandbox.content.level" = 0;
   "media.ffmpeg.vaapi.enabled" = true;
   "media.ffvpx.enabled" = false;
-  "media.av1.enabled" = false;
+  "media.rdd-vpx.enabled" = false;
+  "security.sandbox.content.level" = 0;
+  "media.navigator.mediadatadecoder_vpx_enabled" = true;
 
   ## Enable WebRender compositor
   "gfx.webrender.all" = true;
-  
+
   ## Privacy stuff
   # Disable VR
   "dom.vr.enabled" = false;
