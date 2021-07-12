@@ -24,6 +24,7 @@
 
     systemPackages = with pkgs; [
       git
+      jq
       customized-neovim
     ];
   };
