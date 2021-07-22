@@ -1,5 +1,8 @@
-{ modulesPath, lib, ... }:
+{ modulesPath, lib, config, ... }:
 
+let
+  dpi = config.nixos.settings.machine.dpi;
+in
 {
   imports =
     [
@@ -12,6 +15,7 @@
   services.xserver = {
     enable = true;
     layout = "us";
+    dpi = lib.mkIf (dpi != null) dpi;
     xkbOptions = lib.mkDefault "eurosign:e";
   };
 }
