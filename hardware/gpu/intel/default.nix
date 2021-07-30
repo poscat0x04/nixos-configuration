@@ -7,12 +7,24 @@ in
 {
   config = {
     boot.kernelParams = [
-      # Enable frame buffer compression
+      # Enable power-saving display C-states
+      "i915.enable_dc=1"
+      # Enable frame buffer compression for power savings
       "i915.enable_fbc=1"
+      # Enable PSR
+      "i915.enable_psr=1"
       # Enable fastboot
       "i915.fastboot=1"
       # Enable GuC / HuC firmware loading
-      "i915.enable_guc=2"
+      "i915.enable_guc=-1"
+      # Enable GVT-g
+      "i915.enable_gvt=1"
+    ];
+
+    boot.kernelModules = [
+      "kvmgt"
+      "vfio-iommu-type1"
+      "vfio-mdev"
     ];
 
     environment = {

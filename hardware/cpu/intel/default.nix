@@ -5,6 +5,12 @@
     ../../../modules/intel-undervolt.nix
   ];
 
+  boot.kernelParams = [
+    # enable IOMMU
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
+
   environment.systemPackages = with pkgs; [ pcm config.boot.kernelPackages.intel-speed-select ];
 
   hardware = {
