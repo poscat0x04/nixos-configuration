@@ -88,11 +88,6 @@
               ./machines/t460p
             ];
           };
-          x1y = baseSystem {
-            modules = [
-              ./machines/x1y
-            ];
-          };
           x1c = baseSystem {
             modules = [
               ./machines/x1c
