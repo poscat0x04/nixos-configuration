@@ -26,6 +26,7 @@ in
     ../modules/xserver
     ../hardware/profiles/wacom.nix
     ../hardware/profiles/yubikey.nix
+    ./default.nix
   ];
 
   boot = {

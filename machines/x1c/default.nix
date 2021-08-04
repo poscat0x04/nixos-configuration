@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ../../profiles/default.nix
     ../../profiles/desktop.nix
     ../../hardware/profiles/uefi.nix
     ../../hardware/profiles/laptop.nix
