@@ -6,6 +6,9 @@
     useDHCP = false;
     useNetworkd = true;
     resolvconf.useLocalResolver = false;
+    timeServers = [
+      "ntp.ntsc.ac.cn"
+    ];
     wireless = {
       enable = true;
       userControlled.enable = true;
