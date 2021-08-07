@@ -48,31 +48,99 @@
   systemd.network = {
     enable = true;
 
-    networks.default = rec {
-      DHCP = "yes";
-
-      matchConfig.Name = "!docker* virbr* tun* lo";
-
-      networkConfig = {
-        IPv6AcceptRA = true;
-        IPv6PrivacyExtensions = "yes";
-      };
-    };
-
     networks = {
-      eth = {
-        matchConfig.Name = "eth* ens*";
-        dhcpV4Config.RouteMetric = 10;
-      };
-
-      wlan = {
-        matchConfig.Type = "wlan";
-        dhcpV4Config.RouteMetric = 20;
-      };
-
-      tun = {
+      "10-tun" = {
         matchConfig.Name = "tun*";
         linkConfig.Unmanaged = true;
+      };
+
+      "20-ethernet" = {
+        matchConfig.Name = "eth* ens*";
+
+        DHCP = "yes";
+        dns = [
+          "127.0.0.1:53"
+        ];
+
+        dhcpV4Config = {
+          RouteMetric = 10;
+          UseDNS = false;
+        };
+
+        dhcpV6Config = {
+          RouteMetric = 10;
+          UseDNS = false;
+          UseNTP = false;
+        };
+      };
+
+      "24-tursted-wireless" = {
+        matchConfig = {
+          Type = "wlan";
+          SSID = builtins.concatStringsSep " " secrets.trusted-wireless-networks;
+        };
+
+        DHCP = "yes";
+
+        dhcpV4Config = {
+          RouteMetric = 20;
+          UseDNS = true;
+        };
+
+        dhcpV6Config = {
+          RouteMetric = 20;
+          UseDNS = true;
+        };
+
+        networkConfig = {
+          IPv6AcceptRA = true;
+          IPv6PrivacyExtensions = "prefer-public";
+        };
+      };
+
+      "25-wireless" = {
+        matchConfig.Type = "wlan";
+
+        dns = [
+          "127.0.0.1:53"
+        ];
+        DHCP = "yes";
+
+        dhcpV4Config = {
+          RouteMetric = 20;
+          UseDNS = false;
+          UseNTP = false;
+        };
+
+        dhcpV6Config = {
+          RouteMetric = 20;
+          UseDNS = false;
+          UseNTP = false;
+        };
+      };
+
+      "99-fallback" = {
+        matchConfig.Name = "!docker* virbr* tun* lo";
+
+        dns = [
+          "127.0.0.1:53"
+        ];
+        DHCP = "yes";
+
+        dhcpV4Config = {
+          UseDNS = false;
+          UseNTP = false;
+        };
+
+        dhcpV6Config = {
+          UseDNS = false;
+          UseNTP = false;
+        };
+
+        networkConfig = {
+          IPv6AcceptRA = true;
+          IPv6PrivacyExtensions = "prefer-public";
+        };
       };
     };
   };
