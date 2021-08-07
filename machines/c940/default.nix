@@ -6,6 +6,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/profiles/laptop.nix
     ../../hardware/profiles/intel.nix
+    ../../modules/networking/wireless.nix
     ./hardware-configuration.nix
   ];
 

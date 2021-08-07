@@ -9,11 +9,6 @@
     timeServers = [
       "ntp.ntsc.ac.cn"
     ];
-    wireless = {
-      enable = true;
-      userControlled.enable = true;
-      networks = secrets.wireless-networks;
-    };
   };
 
   services.resolved = {

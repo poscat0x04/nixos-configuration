@@ -7,6 +7,7 @@
     ../../hardware/profiles/laptop.nix
     ../../hardware/profiles/intel.nix
     ../../hardware/profiles/thinkpad.nix
+    ../../modules/networking/wireless.nix
     ./hardware-configuration.nix
   ];
 

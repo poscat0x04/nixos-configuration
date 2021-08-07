@@ -8,6 +8,7 @@
     ../../hardware/profiles/intel.nix
     ../../hardware/profiles/thinkpad.nix
     ../../hardware/gpu/nvidia
+    ../../modules/networking/wirelss.nix
     ./hardware-configuration.nix
   ];
 
