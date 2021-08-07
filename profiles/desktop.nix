@@ -46,6 +46,8 @@ in
 
   environment = {
     systemPackages = with pkgs; [
+      # WPA_supplicant
+      wpa_supplicant_gui
       # VCS
       gitAndTools.gh
       darcs
