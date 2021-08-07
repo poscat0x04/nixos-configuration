@@ -100,9 +100,9 @@ in
     ] ++ haskell-packages;
   };
 
- services.printing.enable = true;
+  services.printing.enable = true;
 
- console = {
+  console = {
     font = if dpi != null && dpi >= 196 then "ter-u28n" else "ter-u18n";
     packages = [ pkgs.terminus_font ];
   };
