@@ -3,6 +3,6 @@
 {
   services.v2ray = {
     enable = true;
-    config = import ./cfg.nix secrets.credentials.v2ray.servers;
+    config = import ./cfg.nix secrets.v2ray-servers;
   };
 }

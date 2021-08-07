@@ -32,7 +32,7 @@ in
       password = mkOption {
         type = types.str;
         visible = false;
-        default = secrets.passwords.users cfg.system.user;
+        default = secrets.hashed-userpwd;
         description = ''
           The user account's password file
         '';

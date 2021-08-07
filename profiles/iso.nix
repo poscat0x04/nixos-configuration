@@ -33,7 +33,7 @@
     wireless = {
       enable = true;
       userControlled.enable = true;
-      networks = secrets.wireless;
+      networks = secrets.wireless-networks;
     };
   };
 

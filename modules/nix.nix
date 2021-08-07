@@ -8,7 +8,7 @@ in
   nix = {
     extraOptions = ''
       experimental-features = flakes nix-command
-      access-tokens = github.com=${secrets.credentials.github}
+      access-tokens = github.com=${secrets.github-token}
       flake-registry = ${flakesEmpty}
     '';
 

@@ -2,7 +2,7 @@
 
 let
   hackage-password = pkgs.writeShellScript "hackage-password" ''
-    echo "${secrets.credentials.haskell}"
+    echo "${secrets.hackage-pwd}"
   '';
 in
 
