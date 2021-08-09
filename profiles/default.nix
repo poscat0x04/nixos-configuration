@@ -65,6 +65,8 @@
 
       git
 
+      gnupg
+
       blktrace
       iotop
       lsof
