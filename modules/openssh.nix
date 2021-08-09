@@ -17,6 +17,9 @@ in
       /_/ |_/_/_/|_|\____//____/
 
     '';
+    extraConfig = ''
+      StreamLocalBindUnlink yes
+    '';
   };
 
   users.users."${uname}".openssh.authorizedKeys.keys = lib.mkAfter [
