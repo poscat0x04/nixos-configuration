@@ -7,6 +7,7 @@
     ../../hardware/cpu/intel
     ../../modules/v2ray
     ../../modules/unbound.nix
+    ../../modules/gnupg-server.nix
     ./hardware-configuration.nix
   ];
 
