@@ -75,6 +75,7 @@
       smartmontools
       sysstat
       usbutils
+      lm_sensors
     ];
   };
 

@@ -87,7 +87,6 @@ in
       # Utils
       bench
       tokei
-      lm_sensors
       flameshot
       flamegraph
       graphviz
