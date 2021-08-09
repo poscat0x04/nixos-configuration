@@ -98,6 +98,11 @@
               ./machines/thinkcentre
             ];
           };
+          microserver = baseSystem {
+            modules = [
+              ./machines/microserver
+            ];
+          };
         };
 
       } // eachDefaultSystem (
