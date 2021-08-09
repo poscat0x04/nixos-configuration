@@ -9,6 +9,14 @@ in
     permitRootLogin = "no";
     passwordAuthentication = false;
     challengeResponseAuthentication = false;
+    banner = ''
+          _   ___      ____  _____
+         / | / (_)  __/ __ \/ ___/
+        /  |/ / / |/_/ / / /\__ \
+       / /|  / />  </ /_/ /___/ /
+      /_/ |_/_/_/|_|\____//____/
+
+    '';
   };
 
   users.users."${uname}".openssh.authorizedKeys.keys = lib.mkAfter [
