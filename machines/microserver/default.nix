@@ -9,6 +9,7 @@
     ../../modules/unbound.nix
     ../../modules/gnupg-server.nix
     ./router/firewall.nix
+    ./router/networks.nix
     ./hardware-configuration.nix
   ];
 
