@@ -10,6 +10,7 @@
     ../../modules/gnupg-server.nix
     ./router/firewall.nix
     ./router/networks.nix
+    ./router/routing.nix
     ./hardware-configuration.nix
   ];
 
