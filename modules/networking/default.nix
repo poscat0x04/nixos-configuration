@@ -114,28 +114,9 @@
         };
       };
 
+      # Brings up the rest interfaces
       "99-fallback" = {
-        matchConfig.Name = "!docker* virbr* tun* lo";
-
-        dns = [
-          "127.0.0.1:53"
-        ];
-        DHCP = "yes";
-
-        dhcpV4Config = {
-          UseDNS = false;
-          UseNTP = false;
-        };
-
-        dhcpV6Config = {
-          UseDNS = false;
-          UseNTP = false;
-        };
-
-        networkConfig = {
-          IPv6AcceptRA = true;
-          IPv6PrivacyExtensions = "prefer-public";
-        };
+        matchConfig.Name = "!lo";
       };
     };
   };
