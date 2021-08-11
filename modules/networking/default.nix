@@ -50,7 +50,7 @@
       };
 
       "20-ethernet" = {
-        matchConfig.Name = "eth* ens*";
+        matchConfig.Type = "ether";
 
         DHCP = "yes";
         dns = [
