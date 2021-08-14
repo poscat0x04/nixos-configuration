@@ -8,6 +8,7 @@
     ../../modules/v2ray
     ../../modules/unbound.nix
     ../../modules/gnupg-server.nix
+    ./router/dhcp.nix
     ./router/firewall.nix
     ./router/networks.nix
     ./router/routing.nix
