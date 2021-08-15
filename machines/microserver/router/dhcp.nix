@@ -22,7 +22,19 @@
           {
             subnet = "10.1.10.0/24";
             pools = [
-              { pool = "10.1.10.1 - 10.1.10.254"; }
+              { pool = "10.1.10.2 - 10.1.10.254"; }
+            ];
+            option-data = [
+              {
+                name = "domain-name-servers";
+                code = 6;
+                data = "10.1.10.1";
+              }
+              {
+                name = "routers";
+                code = 3;
+                data = "10.1.10.1";
+              }
             ];
           }
         ];
