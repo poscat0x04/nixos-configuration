@@ -35,6 +35,11 @@
                 code = 3;
                 data = "10.1.10.1";
               }
+              {
+                name = "interface-mtu";
+                code = 26;
+                data = "1492";
+              }
             ];
           }
         ];
