@@ -60,6 +60,7 @@
         dhcpV4Config = {
           RouteMetric = 10;
           UseDNS = false;
+          UseMTU = true;
         };
 
         dhcpV6Config = {
@@ -80,6 +81,7 @@
         dhcpV4Config = {
           RouteMetric = 20;
           UseDNS = true;
+          UseMTU = true;
         };
 
         dhcpV6Config = {
@@ -105,6 +107,7 @@
           RouteMetric = 20;
           UseDNS = false;
           UseNTP = false;
+          UseMTU = true;
         };
 
         dhcpV6Config = {
