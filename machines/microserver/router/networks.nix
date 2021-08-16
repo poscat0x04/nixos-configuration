@@ -52,6 +52,9 @@
     networks = {
       "11-br-lan" = {
         matchConfig.Name = "br-lan";
+        linkConfig = {
+          MTUBytes = "1492";
+        };
         addresses = [
           {
             addressConfig = {
@@ -67,6 +70,9 @@
         matchConfig.Name = "eno3 eno4 dummy0";
         networkConfig = {
           Bridge = "br-lan";
+        };
+        linkConfig = {
+          MTUBytes = "1492";
         };
       };
       "14-ppp" = {
