@@ -65,6 +65,9 @@
       };
       "12-ppp-eth-disable-dhcp" = {
         matchConfig.Name = "eno1";
+        linkConfig = {
+          Unmanaged = true;
+        };
       };
       "13-bind-br" = {
         matchConfig.Name = "eno3 eno4 dummy0";
@@ -81,6 +84,9 @@
           Type = "ppp";
         };
         DHCP = "ipv6";
+        dns = [
+          "127.0.0.1:53"
+        ];
         networkConfig = {
           IPv6AcceptRA= true;
         };
