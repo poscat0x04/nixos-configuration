@@ -28,6 +28,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # tampermonkey
+      "dhdgffkkebhmkfjojejmpbldmpobfkfo"
       # pixiv downloader
       "dkndmhgdcmjdmkdonmbgjpijejdcilfh"
       # floccus
