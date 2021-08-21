@@ -62,6 +62,24 @@
             };
           }
         ];
+        routingPolicyRules = [
+          {
+            routingPolicyRuleConfig = {
+              FirewallMark = 1;
+              Table = 100;
+              Priority = 100;
+            };
+          }
+        ];
+        routes = [
+          {
+            routeConfig = {
+              Destination = "0.0.0.0/0";
+              Type = "local";
+              Table = 100;
+            };
+          }
+        ];
       };
       "12-ppp-eth-disable-dhcp" = {
         matchConfig.Name = "eno1";
