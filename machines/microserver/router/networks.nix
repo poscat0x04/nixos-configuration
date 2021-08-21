@@ -86,6 +86,7 @@
         ];
         networkConfig = {
           IPv6AcceptRA= true;
+          KeepConfiguration = "static";
         };
         dhcpV6Config = {
           ForceDHCPv6PDOtherInformation = true;
