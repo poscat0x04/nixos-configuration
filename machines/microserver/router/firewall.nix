@@ -5,7 +5,147 @@
     firewall.enable = false;
     nftables = {
       enable = true;
-      ruleset = "";
+      ruleset = ''
+        table inet filter {
+          flowtable f {
+            hook ingress priority 0
+            devices = { ppp0, br-lan }
+          }
+
+          chain input {
+            type filter hook input priority filter; policy accept;
+
+            ct state { established, related } accept comment "Allow established"
+
+            iifname br-lan accept
+            iifname ppp0 jump zone_wan_input
+          }
+
+          chain zone_wan_input {
+            tcp dport 25586 accept comment "Allow hath"
+            tcp dport 5432 accept comment "Allow postgres"
+            tcp dport 2285 accept comment "Allow mtproto"
+            tcp dport 1688 accept comment "Allow vlmcsd"
+            tcp dport 22 accept comment "Allow ssh"
+            udp dport 68 accept comment "Allow DHCP renew"
+            icmp type echo-request accept comment "Allow ping"
+            icmpv6 type echo-request accept comment "Allow ping"
+
+            ct status dnat accept comment "Allow port forwards"
+
+            jump custom_reject
+          }
+
+          chain forward {
+            type filter hook forward priority filter; policy drop;
+
+            meta l4proto { tcp, udp } flow offload @f
+
+            iifname br-lan accept comment "Allow LAN to anywhere"
+            iifname ppp0 jump zone_wan_forward
+          }
+
+          chain zone_wan_forward {
+            ct state { established, related } accept comment "Allow established"
+
+            meta l4proto esp accept comment "Allow IPSec ESP"
+            udp dport 500 accept comment "Allow ISAKMP"
+            ct status dnat accept comment "Allow port forwards"
+
+            oifname ppp0 jump custom_reject
+          }
+
+          chain output {
+            type filter hook output priority filter; policy accept;
+
+            oifname ppp0 ct state invalid drop;
+          }
+
+          # A chain for rejecting packets that accounts for TCP connections
+          chain custom_reject {
+            meta l4proto tcp reject with tcp reset
+            reject with icmpx type port-unreachable
+          }
+        }
+
+        table inet raw {
+          chain forward {
+            type filter hook forward priority mangle; policy accept;
+
+            tcp flags syn tcp option maxseg size set rt mtu
+          }
+        }
+
+        table ip transparent_proxy {
+          set ipv4_private {
+            type ipv4_addr
+            flags interval
+            elements = {
+              10.0.0.0/8,
+              172.16.0.0/12,
+              192.168.0.0/16,
+              169.254.0.0/16
+            }
+          }
+
+          chain prerouting {
+            type filter hook prerouting priority mangle; policy accept;
+            iif ppp0 accept
+            jump proxy
+          }
+
+          chain proxy {
+            ip daddr @ipv4_private return
+            ip daddr 101.6.6.6 return
+            meta mark 255 return
+            ip protocol {tcp, udp} meta mark set 1 tproxy ip to 127.0.0.1:5768
+          }
+
+          chain output {
+            type route hook output priority mangle; policy accept;
+            ip daddr @ipv4_private return
+            ip daddr 101.6.6.6 return
+            meta mark 255 return
+            ip protocol {tcp, udp} meta mark set 1
+          }
+        }
+
+        table ip nat {
+          set ipv4_private {
+            type ipv4_addr
+            flags interval
+            elements = {
+              10.0.0.0/8,
+              172.16.0.0/12,
+              192.168.0.0/16,
+              169.254.0.0/16
+            }
+          }
+
+          chain postrouting {
+            type nat hook postrouting priority srcnat; policy accept;
+            oifname ppp0 masquerade
+          }
+
+          #chain prerouting {
+          #  type nat hook prerouting priority dstnat; policy accept;
+          #  iif ppp0 accept
+          #  jump proxy
+          #}
+
+          #chain output {
+          #  type nat hook output priority 300; policy accept;
+          #  jump proxy
+          #}
+
+          chain proxy {
+            ip daddr @ipv4_private accept
+            ip daddr 101.6.6.6 accept
+            meta mark 255 accept
+            ip protocol tcp dnat to 127.0.0.1:5768
+          }
+        }
+      '';
     };
   };
 }
