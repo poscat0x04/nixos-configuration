@@ -17,8 +17,8 @@
 
             ct state { established, related } accept comment "Allow established"
 
-            iifname br-lan accept
-            iifname ppp0 jump zone_wan_input
+            iif br-lan accept
+            iif ppp0 jump zone_wan_input
           }
 
           chain zone_wan_input {
@@ -41,8 +41,8 @@
 
             meta l4proto { tcp, udp } flow offload @f
 
-            iifname br-lan accept comment "Allow LAN to anywhere"
-            iifname ppp0 jump zone_wan_forward
+            iif br-lan accept comment "Allow LAN to anywhere"
+            iif ppp0 jump zone_wan_forward
           }
 
           chain zone_wan_forward {
@@ -52,13 +52,13 @@
             udp dport 500 accept comment "Allow ISAKMP"
             ct status dnat accept comment "Allow port forwards"
 
-            oifname ppp0 jump custom_reject
+            oif ppp0 jump custom_reject
           }
 
           chain output {
             type filter hook output priority filter; policy accept;
 
-            oifname ppp0 ct state invalid drop;
+            oif ppp0 ct state invalid drop;
           }
 
           # A chain for rejecting packets that accounts for TCP connections
@@ -124,7 +124,7 @@
 
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname ppp0 masquerade
+            oif ppp0 masquerade
           }
 
           #chain prerouting {
