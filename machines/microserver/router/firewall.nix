@@ -103,9 +103,9 @@
 
           chain output {
             type route hook output priority mangle; policy accept;
-            ip daddr @ipv4_private return
-            ip daddr 101.6.6.6 return
-            meta mark 255 return
+            ip daddr @ipv4_private accept
+            ip daddr 101.6.6.6 accept
+            meta mark 255 accept
             ip protocol {tcp, udp} meta mark set 1
           }
         }
