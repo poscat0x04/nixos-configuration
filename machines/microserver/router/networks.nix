@@ -1,4 +1,4 @@
-{ secrets, ... }:
+{ secrets, config, lib, ... }:
 
 {
   boot.kernelModules = [
@@ -31,8 +31,32 @@
           defaultroute
           defaultroute-metric 5
         '';
+        autostart = false;
       };
     };
+  };
+
+  systemd.services."ppp-wait-online" = {
+    requires = [
+      "systemd-networkd.service"
+      "pppd-china_unicom.service"
+    ];
+    after = [
+      "systemd-networkd.service"
+      "pppd-china_unicom.service"
+    ];
+    before = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online -i ppp0";
+      RemainAfterExit = true;
+    };
+  };
+
+  systemd.services.nftables = {
+    requires = [ "ppp-wait-online.service" ];
+    after = [ "ppp-wait-online.service" ];
+    before = lib.mkForce [];
   };
 
   systemd.network = {
