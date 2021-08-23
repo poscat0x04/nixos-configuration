@@ -28,7 +28,8 @@
           user ${secrets.pppoe.china_unicom.user}
           password ${secrets.pppoe.china_unicom.password}
 
-          nodefaultroute
+          defaultroute
+          defaultroute-metric 5
         '';
       };
     };
@@ -109,14 +110,6 @@
         dhcpV6Config = {
           ForceDHCPv6PDOtherInformation = true;
         };
-        routes = [
-          {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Metric = 5;
-            };
-          }
-        ];
       };
     };
   };
