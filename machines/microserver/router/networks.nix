@@ -80,6 +80,9 @@
         linkConfig = {
           MTUBytes = "1492";
         };
+        networkConfig = {
+          DHCPv6PrefixDelegation = true;
+        };
         addresses = [
           {
             addressConfig = {
