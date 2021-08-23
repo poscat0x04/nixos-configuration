@@ -21,7 +21,7 @@ in
     ../modules/lorri.nix
     ../modules/privacy-haters.nix
     ../modules/rust.nix
-    ../modules/unbound.nix
+    ../modules/smartdns.nix
     ../modules/v2ray
     ../modules/xserver
     ../hardware/profiles/wacom.nix

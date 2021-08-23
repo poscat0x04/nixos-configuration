@@ -6,7 +6,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/v2ray
-    ../../modules/unbound.nix
+    ../../modules/smartdns.nix
     ../../modules/gnupg-server.nix
     ./router/dhcp.nix
     ./router/firewall.nix
