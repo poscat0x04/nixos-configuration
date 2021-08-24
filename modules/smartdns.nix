@@ -14,6 +14,7 @@
       enable = true;
       settings = {
         bind = [ "127.0.0.1:53" "[::1]:53" ];
+        bind-tcp = [ "127.0.0.1:53" "[::1]:53" ];
         speed-check-mode = "ping,tcp:80";
         cache-persist = true;
         log-level = "warn";
