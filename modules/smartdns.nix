@@ -28,9 +28,6 @@
         ];
         server-tls = [
           "dns.alidns.com -group cn -exclude-default-group"
-          "8.8.8.8:853"
-          "1.1.1.1:853"
-          "9.9.9.9:853"
           "101.6.6.6:8853"
         ];
       };
