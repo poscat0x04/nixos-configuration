@@ -139,6 +139,12 @@
         };
         dhcpV6Config = {
           ForceDHCPv6PDOtherInformation = true;
+          RouteMetric = 10;
+          WithoutRA= "solicit";
+          PrefixDelegationHint = "::/60";
+        };
+        ipv6AcceptRAConfig = {
+          DHCPv6Client = "always";
         };
         routes = [
           {
