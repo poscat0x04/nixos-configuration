@@ -125,6 +125,10 @@
             sockopt = {
               mark = 255;
             };
+            mux = {
+              enable = true;
+              concurrency = 4;
+            };
           };
         }
         {
