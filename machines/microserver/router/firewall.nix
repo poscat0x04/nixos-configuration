@@ -1,11 +1,27 @@
-{ ... }:
+{ nixosModules, ... }:
 
 {
+  imports = [
+    nixosModules.nftables-china-ip-list-updater
+  ];
+
+  services.nftables-china-ip-list-updater = {
+    enable = true;
+    sets = [
+      {
+        table = "transparent_proxy";
+        set = "cn_ip";
+      }
+    ];
+  };
+
   networking = {
     firewall.enable = false;
     nftables = {
       enable = true;
       ruleset = ''
+        include "/var/lib/nftables-china-ip-list-updater/china-ip-list.nft"
+
         table inet filter {
           flowtable f {
             hook ingress priority 0
@@ -88,6 +104,12 @@
             }
           }
 
+          set cn_ip {
+            type ipv4_addr
+            flags interval
+            elements = $china_ip_list
+          }
+
           chain prerouting {
             type filter hook prerouting priority mangle; policy accept;
             iif ppp0 accept
@@ -95,18 +117,20 @@
           }
 
           chain proxy {
-            ip daddr @ipv4_private return
-            ip daddr 101.6.6.6 return
-            meta mark 255 return
+            jump filter_direct
             ip protocol {tcp, udp} meta mark set 1 tproxy ip to 127.0.0.1:5768
           }
 
           chain output {
             type route hook output priority mangle; policy accept;
-            ip daddr @ipv4_private accept
-            ip daddr 101.6.6.6 accept
-            meta mark 255 accept
+            jump filter_direct
             ip protocol {tcp, udp} meta mark set 1
+          }
+
+          chain filter_direct {
+            ip daddr @ipv4_private accept
+            ip daddr @cn_ip accept
+            meta mark 255 accept
           }
         }
 
