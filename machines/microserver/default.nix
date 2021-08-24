@@ -8,6 +8,7 @@
     ../../modules/v2ray
     ../../modules/smartdns.nix
     ../../modules/gnupg-server.nix
+    ../../modules/vlmcsd.nix
     ./router/dhcp.nix
     ./router/dns.nix
     ./router/firewall.nix
