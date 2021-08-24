@@ -45,7 +45,27 @@
             tcp dport 22 accept comment "Allow ssh"
             udp dport 68 accept comment "Allow DHCP renew"
             icmp type echo-request accept comment "Allow ping"
-            icmpv6 type echo-request accept comment "Allow ping"
+
+            ip6 saddr fc00::/6 ip6 daddr fc00::/6 udp dport 546 accept comment "Allow DHCPv6"
+            ip6 saddr fe80::/10 icmpv6 type {
+              mld-listener-query,
+              mld-listener-report,
+              mld-listener-done,
+              mld-listener-reduction,
+              mld2-listener-report,
+            } accept comment "Allow MLD"
+            icmpv6 type {
+              echo-request,
+              echo-reply,
+              destination-unreachable,
+              packet-too-big,
+              time-exceeded,
+              parameter-problem,
+              nd-router-solicit,
+              nd-router-advert,
+              nd-neighbor-solicit,
+              nd-neighbor-advert,
+            } limit rate 1000/second accept comment "Allow ICMPv6"
 
             ct status dnat accept comment "Allow port forwards"
 
@@ -63,6 +83,15 @@
 
           chain zone_wan_forward {
             ct state { established, related } accept comment "Allow established"
+
+            icmpv6 type {
+              echo-request,
+              echo-reply,
+              destination-unreachable,
+              packet-too-big,
+              time-exceeded,
+              parameter-problem,
+            } limit rate 1000/second accept comment "Allow ICMPv6 Forward"
 
             meta l4proto esp accept comment "Allow IPSec ESP"
             udp dport 500 accept comment "Allow ISAKMP"
