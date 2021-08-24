@@ -3,10 +3,12 @@
 {
   boot.kernelModules = [
     "ppp_generic"
+    "tcp_bbr"
   ];
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_dynaddr" = "1";
+    "net.ipv4.tcp_congestion_control" = "bbr";
   };
 
   services.pppd = {
