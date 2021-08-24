@@ -38,5 +38,6 @@
 
   systemd.services.smartdns = {
     requires = [ "smartdns-china-domain-list-updater.service" ];
+    after = [ "smartdns-china-domain-list-updater" ];
   };
 }
