@@ -84,7 +84,6 @@ with lib;
             tag = "socks";
             listen = "127.0.0.1";
             port = 1080;
-            settings = {};
             sniffing = {
               enabled = true;
               metadataOnly = false;
@@ -95,7 +94,6 @@ with lib;
             tag = "http";
             listen = "127.0.0.1";
             port = 8080;
-            settings = {};
             sniffing = {
               enabled = true;
               metadataOnly = false;
@@ -144,7 +142,6 @@ with lib;
           {
             protocol = "freedom";
             tag = "direct";
-            settings = {};
             streamSettings = {
               sockopt = {
                 mark = 255;
@@ -154,7 +151,6 @@ with lib;
           {
             protocol = "blackhole";
             tag = "blocked";
-            settings = {};
           }
         ];
       };
