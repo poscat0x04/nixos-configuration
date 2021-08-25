@@ -14,6 +14,7 @@
     ./router/firewall.nix
     ./router/networks.nix
     ./router/routing.nix
+    ./services/v2ray.nix
     ./hardware-configuration.nix
   ];
 
