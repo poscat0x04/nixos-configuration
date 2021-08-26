@@ -2,7 +2,7 @@ self: super:
 
 let
   extensions = with self.pkgs.vscode-extensions; [
-    rust-lang.rust
+    matklad.rust-analyzer
     vadimcn.vscode-lldb
     ms-python.python
     redhat.vscode-yaml
