@@ -11,6 +11,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
+    nocargo.nocargo.bin
     rust-stable
     rust-analyzer
     cargo-asm

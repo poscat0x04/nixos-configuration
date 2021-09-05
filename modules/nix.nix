@@ -31,7 +31,7 @@ in
     ];
 
     registry = {
-      config = {
+      nixpkgs = {
         from = {
           id = "pkgs";
           type = "indirect";
@@ -41,6 +41,10 @@ in
           path = toString flakes.self.path;
           type = "path";
         };
+      };
+      nocargo = {
+        from = { id = "nocargo"; type = "indirect"; };
+        to = { path = toString flakes.nocargo.path; type = "path"; };
       };
     };
   };
