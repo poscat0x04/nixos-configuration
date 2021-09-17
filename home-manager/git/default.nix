@@ -9,7 +9,7 @@ in
     userEmail = "poscat@mail.poscat.moe";
     lfs.enable = true;
     signing = {
-      key = "48ADDE10F27BAFB47BB0CCAF2D2595A00D08ACE0";
+      key = "9341EBC1D730368F2677EAE5B07A14730590D73B";
       signByDefault = true;
     };
 
