@@ -24,6 +24,7 @@ in
     ../modules/smartdns.nix
     ../modules/v2ray
     ../modules/xserver
+    ../modules/networking/firewall.nix
     ../hardware/profiles/wacom.nix
     ../hardware/profiles/yubikey.nix
     ./default.nix
