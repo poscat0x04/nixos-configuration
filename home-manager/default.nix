@@ -10,6 +10,7 @@
     ./firefox
     ./haskell.nix
     ./git
+    ./gnupg.nix
     ./konsole.nix
     ./mpv.nix
   ];
