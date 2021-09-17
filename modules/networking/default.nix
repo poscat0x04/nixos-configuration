@@ -1,6 +1,10 @@
 { config, lib, pkgs, secrets, ... }:
 
 {
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.rp_filter" = 2;
+  };
+
   networking = {
     hostName = config.nixos.settings.machine.hostname;
     useDHCP = false;
