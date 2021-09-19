@@ -21,7 +21,7 @@ in
     ../modules/lorri.nix
     ../modules/privacy-haters.nix
     ../modules/rust.nix
-    ../modules/smartdns.nix
+    ../modules/unbound.nix
     ../modules/v2ray
     ../modules/xserver
     ../modules/networking/firewall.nix
