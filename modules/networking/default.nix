@@ -74,6 +74,24 @@
         };
       };
 
+      "23-eduroam" = {
+        matchConfig = {
+          Type = "wlan";
+          SSID = "eduroam";
+        };
+
+        dns = [ "202.38.93.153" ];
+
+        DHCP = "ipv4";
+
+        dhcpV4Config = {
+          RouteMetric = 20;
+          UseDNS = false;
+          UseMTU = true;
+          UseDomains = true;
+        };
+      };
+
       "24-tursted-wireless" = {
         matchConfig = {
           Type = "wlan";
