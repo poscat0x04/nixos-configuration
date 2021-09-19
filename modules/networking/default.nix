@@ -86,6 +86,7 @@
           RouteMetric = 20;
           UseDNS = true;
           UseMTU = true;
+          UseDomains = true;
         };
 
         dhcpV6Config = {
