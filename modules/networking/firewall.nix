@@ -81,6 +81,8 @@ in {
     systemd.services.nftables-tproxy = {
       description = "transpraent proxy using nftables";
       wantedBy = if cfg.enable then [ "multi-user.target" ] else [];
+      after = [ "nftables.service" ];
+      requires = [ "nftables.service" ];
       reloadIfChanged = true;
       serviceConfig = {
         Type = "oneshot";
