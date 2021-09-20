@@ -25,6 +25,8 @@
         outgoing-range = 8192;
         num-queries-per-thread = 4096;
 
+        tls-ciphersuites = "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256";
+
         prefetch = true;
 
         fast-server-permil = 1000;
