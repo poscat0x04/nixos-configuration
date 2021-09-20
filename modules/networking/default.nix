@@ -140,28 +140,6 @@
         };
       };
 
-      "50-lo" = {
-        matchConfig.Name = "lo";
-        routingPolicyRules = [
-          {
-            routingPolicyRuleConfig = {
-              FirewallMark = 1;
-              Table = 100;
-              Priority = 100;
-            };
-          }
-        ];
-        routes = [
-          {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Type = "local";
-              Table = 100;
-            };
-          }
-        ];
-      };
-
       # Brings up the rest interfaces
       "99-fallback" = {
         matchConfig.Name = "!lo";

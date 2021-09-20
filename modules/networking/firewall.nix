@@ -93,6 +93,62 @@ in {
       };
     };
 
+    systemd.network = if cfg.enable then {
+      netdevs = {
+        br = {
+          netdevConfig = {
+            Name = "br";
+            Kind = "bridge";
+          };
+        };
+        dummy0 = {
+          netdevConfig = {
+            Name = "dummy0";
+            Kind = "dummy";
+          };
+        };
+      };
+      networks = {
+        "11-br" = {
+          matchConfig.Name = "br";
+          networkConfig = {
+            DHCPv6PrefixDelegation = true;
+          };
+          addresses = [
+            {
+              addressConfig = {
+                Address = "192.168.10.1/24";
+              };
+            }
+          ];
+          routingPolicyRules = [
+            {
+              routingPolicyRuleConfig = {
+                FirewallMark = 1;
+                Table = 100;
+                Priority = 100;
+              };
+            }
+          ];
+          routes = [
+            {
+              routeConfig = {
+                Destination = "0.0.0.0/0";
+                Type = "local";
+                Table = 100;
+              };
+            }
+          ];
+        };
+        "13-bind-br" = {
+          matchConfig.Name = "dummy0";
+          networkConfig = {
+            Bridge = "br";
+          };
+        };
+      };
+    } else {};
+
     networking = {
       firewall.enable = false;
       nftables = {
