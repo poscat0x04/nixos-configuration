@@ -1,13 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   services.unbound = {
     enable = true;
+    package = pkgs.unbound-full;
+    enableRootTrustAnchor = false;
     settings = {
       server = {
         verbosity = 1;
 
         num-threads = 1;
+
+        module-config = "\"subnetcache iterator\"";
 
         msg-cache-slabs = 2;
         rrset-cache-slabs = 2;
