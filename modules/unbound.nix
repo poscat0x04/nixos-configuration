@@ -26,7 +26,9 @@
         num-queries-per-thread = 4096;
 
         prefetch = true;
-        prefetch-key = true;
+
+        fast-server-permil = 1000;
+        fast-server-num = 1;
 
         cache-min-ttl = "60";
         cache-max-ttl = "86400";
