@@ -85,6 +85,7 @@ in
       transmission-qt
       zotero
       zathura
+      akregator
       # Utils
       bench
       tokei
