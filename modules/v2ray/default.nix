@@ -35,6 +35,10 @@ with lib;
                 "geosite:google-cn"
                 "geosite:category-games@cn"
                 "geosite:cn"
+                "domain:springer.com"
+                "domain:dl.acm.org"
+                "domain:wiley.com"
+                "domain:sciencedirect.com"
               ];
               outboundTag = "direct";
             }
