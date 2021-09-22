@@ -28,6 +28,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # bypass paywall
+      "dcpihecpambacapedldabdbpakmachpb;https://cdn.jsdelivr.net/gh/iamadamdev/bypass-paywalls-chrome/src/updates/updates.xml"
       # tampermonkey
       "dhdgffkkebhmkfjojejmpbldmpobfkfo"
       # pixiv downloader
