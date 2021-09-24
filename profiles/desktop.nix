@@ -63,7 +63,10 @@ in
       discord
       konversation
       # LaTeX
-      texlive.combined.scheme-full
+      (texlive.combine {
+        inherit (texlive) scheme-full;
+        inherit jhwhw-tex;
+      })
       # Build Tools
       gnumake
       gcc
