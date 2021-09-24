@@ -7,7 +7,7 @@
     enableRootTrustAnchor = false;
     settings = {
       server = {
-        verbosity = 1;
+        verbosity = 2;
 
         num-threads = 1;
 
