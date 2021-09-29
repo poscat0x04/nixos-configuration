@@ -18,6 +18,7 @@ in
     };
 
     extraConfig = {
+      init.defaultBranch = "master";
       core = {
         editor = "nvim";
         excludesFile = "${gitignore}";
