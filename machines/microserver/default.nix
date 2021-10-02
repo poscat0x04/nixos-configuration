@@ -6,7 +6,6 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/v2ray
-    ../../modules/smartdns.nix
     ../../modules/gnupg-server.nix
     ../../modules/vlmcsd.nix
     ./router/dhcp.nix

@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  services.smartdns.settings.bind = [ "10.1.10.1:53" ];
+  imports = [
+    ../../../modules/unbound.nix
+  ];
+  services.unbound.additionalInterfaces = [ "10.1.10.1" ];
 }
