@@ -1,26 +1,12 @@
-{ nixosModules, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    nixosModules.nftables-china-ip-list-updater
-  ];
-
-  services.nftables-china-ip-list-updater = {
-    enable = true;
-    sets = [
-      {
-        table = "transparent_proxy";
-        set = "cn_ip";
-      }
-    ];
-  };
-
   networking = {
     firewall.enable = false;
     nftables = {
       enable = true;
       ruleset = ''
-        include "/var/lib/nftables-china-ip-list-updater/china-ip-list.nft"
+        include "${pkgs.china-ip-list-nft}"
 
         table inet filter {
           flowtable f {

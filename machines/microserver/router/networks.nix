@@ -55,11 +55,9 @@
   systemd.services.nftables = {
     requires = [
       "ppp-wait-online.service"
-      "nftables-china-ip-list-updater.service"
     ];
     after = [
       "ppp-wait-online.service"
-      "nftables-china-ip-list-updater.service"
     ];
     before = lib.mkForce [];
   };
