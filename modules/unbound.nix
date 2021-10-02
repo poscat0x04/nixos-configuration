@@ -1,66 +1,83 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-  services.unbound = {
-    enable = true;
-    package = pkgs.unbound-full;
-    enableRootTrustAnchor = false;
-    settings = {
-      server = {
-        verbosity = 2;
+  options = {
+    services.unbound.additionalInterfaces = lib.mkOption {
+      type = lib.types.listOf (lib.types.str);
+      default = [];
+    };
+  };
+  config = {
+    services.unbound = {
+      enable = true;
+      package = pkgs.unbound-full;
+      enableRootTrustAnchor = false;
+      settings = {
+        server = {
+          verbosity = 2;
 
-        num-threads = 1;
+          num-threads = 1;
 
-        module-config = "\"subnetcache iterator\"";
+          module-config = "\"subnetcache iterator\"";
 
-        msg-cache-slabs = 2;
-        rrset-cache-slabs = 2;
-        infra-cache-slabs = 2;
-        key-cache-slabs = 2;
+          interface = [ "127.0.0.1" "::1" ]
+            ++ config.services.unbound.additionalInterfaces;
 
-        msg-cache-size = "8m";
-        rrset-cache-size = "16m";
+          access-control = [
+            "10.0.0.0/8 allow"
+            "127.0.0.1/8 allow"
+            "::1/128 allow"
+          ];
 
-        outgoing-port-permit = "10240-65535";
-        outgoing-range = 8192;
-        num-queries-per-thread = 4096;
+          msg-cache-slabs = 2;
+          rrset-cache-slabs = 2;
+          infra-cache-slabs = 2;
+          key-cache-slabs = 2;
 
-        tls-ciphersuites = "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256";
+          msg-cache-size = "8m";
+          rrset-cache-size = "16m";
 
-        prefetch = true;
+          outgoing-port-permit = "10240-65535";
+          outgoing-range = 8192;
+          num-queries-per-thread = 4096;
 
-        fast-server-permil = 1000;
-        fast-server-num = 1;
+          tls-ciphersuites = "TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256";
 
-        cache-min-ttl = "60";
-        cache-max-ttl = "86400";
+          prefetch = true;
 
-        val-permissive-mode = true;
-        val-log-level = 1;
+          fast-server-permil = 1000;
+          fast-server-num = 1;
 
-        client-subnet-zone = ".";
-        client-subnet-always-forward = true;
+          cache-min-ttl = "60";
+          cache-max-ttl = "86400";
 
-        hide-identity = true;
-        hide-version = true;
+          val-permissive-mode = true;
+          val-log-level = 1;
 
-        private-address = [
-          "10.0.0.0/8"
-          "100.64.0.0/10"
-          "169.254.0.0/16"
-          "172.16.0.0/12"
-          "192.168.0.0/16"
-          "fc00::/7"
-          "fe80::/10"
+          client-subnet-zone = ".";
+          client-subnet-always-forward = true;
+
+          hide-identity = true;
+          hide-version = true;
+
+          private-address = [
+            "10.0.0.0/8"
+            "100.64.0.0/10"
+            "169.254.0.0/16"
+            "172.16.0.0/12"
+            "192.168.0.0/16"
+            "fc00::/7"
+            "fe80::/10"
+          ];
+        };
+        forward-zone = import pkgs.unbound-china-domain-list ++ [
+          {
+            name = ".";
+            forward-addr = "101.6.6.6@8853";
+            forward-tls-upstream = true;
+          }
         ];
       };
-      forward-zone = import pkgs.unbound-china-domain-list ++ [
-        {
-          name = ".";
-          forward-addr = "101.6.6.6@8853";
-          forward-tls-upstream = true;
-        }
-      ];
     };
   };
 }
