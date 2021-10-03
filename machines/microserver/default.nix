@@ -15,6 +15,7 @@
     ./router/routing.nix
     ./services/v2ray.nix
     ./services/ddns.nix
+    ./services/acme.nix
     ./hardware-configuration.nix
   ];
 
