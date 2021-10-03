@@ -13,6 +13,10 @@
       host    all all ::1/128      trust
       host    all all 10.1.10.1/24 scram-sha-256
     '';
+    initdbArgs = [
+      "--locale=en_US.UTF-8"
+      "--encoding=UTF8"
+    ];
     settings = {
       ssl = true;
       ssl_cert_file = "/var/lib/acme/poscat.moe/fullchain.pem";
