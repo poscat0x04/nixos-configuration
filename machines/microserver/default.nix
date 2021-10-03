@@ -17,6 +17,7 @@
     ./services/ddns.nix
     ./services/acme.nix
     ./services/nginx.nix
+    ./services/postgresql.nix
     ./hardware-configuration.nix
   ];
 
