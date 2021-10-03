@@ -25,8 +25,8 @@ in {
 
   home.file = {
     "${homedir}/gpg-agent.conf".text = ''
-      default-cache-ttl 3600
-      default-cache-ttl-ssh 1800
+      default-cache-ttl 7200
+      default-cache-ttl-ssh 3600
       max-cache-ttl 648000
       max-cache-ttl-ssh 86400
     '';
