@@ -16,6 +16,7 @@
     ./services/v2ray.nix
     ./services/ddns.nix
     ./services/acme.nix
+    ./services/nginx.nix
     ./hardware-configuration.nix
   ];
 
