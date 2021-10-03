@@ -29,6 +29,8 @@
 
           user ${secrets.pppoe.china_unicom.user}
           password ${secrets.pppoe.china_unicom.password}
+
+          defaultroute
         '';
         autostart = false;
       };
