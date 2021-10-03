@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     ../../profiles/server.nix
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
@@ -18,7 +19,7 @@
     ./services/acme.nix
     ./services/nginx.nix
     ./services/postgresql.nix
-    ./hardware-configuration.nix
+    ./services/printing.nix
   ];
 
   nixos.settings = {
