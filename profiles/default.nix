@@ -60,7 +60,7 @@
       zip
       zstd
 
-      postgresql_13
+      postgresql_14
       pspg
 
       git
