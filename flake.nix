@@ -8,6 +8,7 @@
     nix-repo = {
       url = github:poscat0x04/nix-repo;
       inputs.nixpkgs.follows = "/nixpkgs";
+      inputs.rust-overlay.follows = "/rust-overlay";
     };
     nix-secrets = {
       url = github:poscat0x04/nix-secrets;
