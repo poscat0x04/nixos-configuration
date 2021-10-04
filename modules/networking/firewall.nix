@@ -164,6 +164,7 @@ in {
               iif lo accept comment "Allow input from loopback"
 
               tcp dport 22 accept comment "Allow ssh"
+              udp dport 5353 accept comment "Allow zeroconf"
 
               icmp type echo-request accept comment "Allow ping"
 
