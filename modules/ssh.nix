@@ -2,6 +2,7 @@
 
 {
   programs.ssh = {
+    setXAuthLocation = true;
     hostKeyAlgorithms = [
       "ssh-ed25519"
       "ssh-rsa"

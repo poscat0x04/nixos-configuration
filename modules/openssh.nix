@@ -20,6 +20,7 @@ in
     extraConfig = ''
       StreamLocalBindUnlink yes
     '';
+    forwardX11 = true;
   };
 
   users.users."${uname}".openssh.authorizedKeys.keys = lib.mkAfter [
