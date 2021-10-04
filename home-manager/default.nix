@@ -30,10 +30,36 @@
         };
         router = {
           hostname = "home.poscat.moe";
-          user = "root";
+          forwardX11 = true;
+          forwardX11Trusted = true;
+          remoteForwards = [
+            {
+              bind.address = "/run/user/1000/gnupg/S.gpg-agent";
+              host.address = "/run/user/1000/gnupg/S.gpg-agent";
+            }
+            {
+              bind.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+              host.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+            }
+          ];
         };
         rpi = {
           hostname = "192.168.1.187";
+        };
+        microserver = {
+          hostname = "10.1.10.1";
+          forwardX11 = true;
+          forwardX11Trusted = true;
+          remoteForwards = [
+            {
+              bind.address = "/run/user/1000/gnupg/S.gpg-agent";
+              host.address = "/run/user/1000/gnupg/S.gpg-agent";
+            }
+            {
+              bind.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+              host.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+            }
+          ];
         };
       };
     };
