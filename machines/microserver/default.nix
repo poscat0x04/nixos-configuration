@@ -20,6 +20,7 @@
     ./services/nginx.nix
     ./services/postgresql.nix
     ./services/printing.nix
+    ./services/vaultwarden.nix
   ];
 
   nixos.settings = {

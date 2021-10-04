@@ -27,12 +27,5 @@
     appendConfig = ''
       worker_processes 6;
     '';
-
-    virtualHosts = {
-      /*
-      "webdav.poscat.moe" = {
-      };
-      */
-    };
   };
 }
