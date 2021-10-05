@@ -118,7 +118,7 @@
         matchConfig.Name = "eno1";
       };
       "13-bind-br" = {
-        matchConfig.Name = "eno3 eno4 dummy0";
+        matchConfig.Name = "eno2 eno3 eno4 dummy0";
         networkConfig = {
           Bridge = "br-lan";
         };
