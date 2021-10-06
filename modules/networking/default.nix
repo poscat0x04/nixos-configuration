@@ -17,6 +17,9 @@
 
   services.resolved = {
     dnssec = lib.mkDefault "false";
+    extraConfig = ''
+      MulticastDNS=no
+    '';
   };
 
   systemd.suppressedSystemUnits = [
