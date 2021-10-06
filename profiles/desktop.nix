@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, secrets, ... }:
 
 let
   dpi = config.nixos.settings.machine.dpi;
@@ -103,6 +103,14 @@ in
       hinit
     ] ++ haskell-packages;
   };
+
+  home-manager.users."${config.nixos.settings.system.user}" = lib.mkForce ({ ... }: {
+    _module.args = { sysConfig = config; inherit secrets; };
+    imports = [
+      ../home-manager/profiles
+      ../home-manager/profiles/desktop.nix
+    ];
+  });
 
   services.printing.enable = true;
 

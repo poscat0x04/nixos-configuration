@@ -11,7 +11,7 @@ with config.nixos;
     useUserPackages = true;
     users."${settings.system.user}" = { ... }: {
       _module.args = { sysConfig = config; inherit secrets; };
-      imports = [ ../home-manager ];
+      imports = [ ../home-manager/profiles ];
     };
   };
 
