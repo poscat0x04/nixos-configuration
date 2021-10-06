@@ -25,5 +25,12 @@
       log_disconnections = "true";
     };
   };
+
+  security.acme.certs."poscat.moe".reloadServices = [ "postgresql.service" ];
+  systemd.services.postgresql = {
+    wants = [ "acme-finished-poscat.moe.target" ];
+    after = [ "acme-finished-poscat.moe.target" ];
+  };
+
   users.users.postgres.extraGroups = [ "acme" ];
 }
