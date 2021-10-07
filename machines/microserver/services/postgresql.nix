@@ -19,8 +19,8 @@
     ];
     settings = {
       ssl = true;
-      ssl_cert_file = "/var/lib/acme/poscat.moe/fullchain.pem";
-      ssl_key_file = "/var/lib/acme/poscat.moe/key.pem";
+      ssl_cert_file = "/run/credentials/postgresql.service/cert.pem";
+      ssl_key_file = "/run/credentials/postgresql.service/key.pem";
       log_statement = "all";
       log_disconnections = "true";
     };
@@ -30,6 +30,10 @@
   systemd.services.postgresql = {
     wants = [ "acme-finished-poscat.moe.target" ];
     after = [ "acme-finished-poscat.moe.target" ];
+    serviceConfig.LoadCredential = [
+      "cert.pem:/var/lib/acme/poscat.moe/cert.pem"
+      "key.pem:/var/lib/acme/poscat.moe/key.pem"
+    ];
   };
 
   users.users.postgres.extraGroups = [ "acme" ];
