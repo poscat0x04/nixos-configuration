@@ -29,6 +29,7 @@
             tcp dport 2285 accept comment "Allow mtproto"
             tcp dport 1688 accept comment "Allow vlmcsd"
             tcp dport 22 accept comment "Allow ssh"
+            tcp dport 8443 accept comment "Allow HTTPS"
             udp dport 68 accept comment "Allow DHCP renew"
             icmp type echo-request accept comment "Allow ping"
 
