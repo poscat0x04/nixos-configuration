@@ -55,10 +55,6 @@ let
     }
   '';
 in {
-  imports = [
-    nixosModules.nftables-china-ip-list-updater
-  ];
-
   options = {
     networking.tproxy = {
       enable = mkEnableOption ''
@@ -68,16 +64,6 @@ in {
   };
 
   config = {
-    services.nftables-china-ip-list-updater = {
-      enable = true;
-      sets = [
-        {
-          table = "transparent_proxy";
-          set = "cn_ip";
-        }
-      ];
-    };
-
     systemd.services.nftables-tproxy = {
       description = "transpraent proxy using nftables";
       wantedBy = if cfg.enable then [ "multi-user.target" ] else [];
