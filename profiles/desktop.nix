@@ -13,6 +13,7 @@ in
   imports = [
     ../modules/agda.nix
     ../modules/audio.nix
+    ../modules/avahi.nix
     ../modules/chromium.nix
     ../modules/firefox.nix
     ../modules/fonts.nix

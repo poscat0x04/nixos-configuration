@@ -3,7 +3,6 @@
 {
   imports = [
     ../options/settings
-    ../modules/avahi.nix
     ../modules/networking
     ../modules/nix.nix
     ../modules/mtr.nix

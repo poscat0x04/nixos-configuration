@@ -6,6 +6,7 @@
     ../../profiles/server.nix
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
+    ../../modules/avahi.nix
     ../../modules/v2ray
     ../../modules/gnupg-server.nix
     ../../modules/vlmcsd.nix
