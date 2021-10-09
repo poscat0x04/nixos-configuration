@@ -17,7 +17,7 @@
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
 
-    resolver.addresses = [ "127.0.0.1" ];
+    resolver.addresses = [ "127.0.0.53" ];
 
     sslCiphers = "ECDHE+AESGCM:DHE+AESGCM";
     sslProtocols = "TLSv1.3";
@@ -25,7 +25,7 @@
       worker_connections 1024;
     '';
     appendConfig = ''
-      worker_processes 6;
+      worker_processes auto;
     '';
   };
 }
