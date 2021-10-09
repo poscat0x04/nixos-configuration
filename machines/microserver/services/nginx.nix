@@ -3,8 +3,6 @@
 {
   services.nginx = {
     enable = true;
-    user = "poscat";
-    group = "acme";
     package = pkgs.nginxMainline;
     enableReload = true;
     additionalModules = with pkgs.nginxModules; [
@@ -28,4 +26,6 @@
       worker_processes auto;
     '';
   };
+
+  users.users.nginx.extraGroups = [ "acme" ];
 }
