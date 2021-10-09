@@ -35,6 +35,4 @@
       "key.pem:/var/lib/acme/poscat.moe/key.pem"
     ];
   };
-
-  users.users.postgres.extraGroups = [ "acme" ];
 }
