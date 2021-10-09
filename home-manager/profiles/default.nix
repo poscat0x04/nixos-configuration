@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -8,6 +8,8 @@
     ../gnupg.nix
     ../ssh.nix
   ];
+
+  home.packages = lib.mkForce [];
 
   programs = {
     home-manager.enable = true;
