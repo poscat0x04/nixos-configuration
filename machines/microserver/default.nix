@@ -10,6 +10,7 @@
     ../../modules/v2ray
     ../../modules/gnupg-server.nix
     ../../modules/vlmcsd.nix
+    ../../modules/nginx.nix
     ./router/dhcp.nix
     ./router/dns.nix
     ./router/firewall.nix
@@ -18,7 +19,6 @@
     ./services/v2ray.nix
     ./services/ddns.nix
     ./services/acme.nix
-    ./services/nginx.nix
     ./services/postgresql.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
