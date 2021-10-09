@@ -32,12 +32,5 @@
 
   networking.tproxy.enable = true;
 
-  nix.binaryCaches = lib.mkForce [
-    "https://mirrors.ustc.edu.cn/nix-channels/store"
-    "https://nix-community.cachix.org"
-    "https://nix-repo.cachix.org"
-  ];
-
-
   system.stateVersion = "21.11";
 }
