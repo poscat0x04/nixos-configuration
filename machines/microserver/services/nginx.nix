@@ -36,11 +36,16 @@
     sslProtocols = "TLSv1.3";
     eventsConfig = ''
       worker_connections 1024;
+      use epoll;
+      multi_accept on;
     '';
     appendConfig = ''
       worker_processes auto;
+      worker_rlimit_nofile 100000;
     '';
   };
+
+  systemd.services.nginx.serviceConfig.LimitNOFILE = "100000";
 
   users.users.nginx.extraGroups = [ "acme" ];
 }
