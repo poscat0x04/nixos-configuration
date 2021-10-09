@@ -37,6 +37,8 @@ in
       package = pkgs.nixUnstable;
       useSandbox = true;
 
+      trustedUsers = [ "root" "@wheel" ];
+
       nixPath = [
         "nixpkgs=${flakes.nixpkgs.path}"
       ];
