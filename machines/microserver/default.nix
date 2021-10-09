@@ -6,6 +6,7 @@
     ../../profiles/server.nix
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
+    ../../modules/acme.nix
     ../../modules/avahi.nix
     ../../modules/v2ray
     ../../modules/gnupg-server.nix
@@ -18,7 +19,6 @@
     ./router/routing.nix
     ./services/v2ray.nix
     ./services/ddns.nix
-    ./services/acme.nix
     ./services/postgresql.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
