@@ -28,10 +28,8 @@
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFiYTB+9JVjER580kp4YTgldaAG9NgjbL+EFh9LD1LIt";
       };
       bwh = {
-        hostNames = [
-          "64.64.228.47"
-        ];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICXeLrM+ORvxE0ZnWEZ9Rc4omXWoBr7Ne0mW6zPdlIa5";
+        hostNames = [ "64.64.227.47" ];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+UBnDMZ76BSYPGj31tFTZtB42413mmExM/Tqrcy7zc";
       };
       router = {
         hostNames = [
