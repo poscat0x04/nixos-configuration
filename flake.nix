@@ -104,6 +104,11 @@
               ./machines/microserver
             ];
           };
+          bwh = baseSystem {
+            modules = [
+              ./machines/bwh
+            ];
+          };
         };
 
       } // eachDefaultSystem (
