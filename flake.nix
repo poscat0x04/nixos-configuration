@@ -21,10 +21,6 @@
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     flake-utils.url = github:poscat0x04/flake-utils;
-    nocargo = {
-      url = github:oxalica/nocargo;
-      inputs.nixpkgs.follows = "/nixpkgs";
-    };
   };
 
 
@@ -38,11 +34,10 @@
     , nixos-emacs
     , rust-overlay
     , flake-utils
-    , nocargo
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay nocargo ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {

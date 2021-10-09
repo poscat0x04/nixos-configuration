@@ -53,10 +53,6 @@ in
             type = "path";
           };
         };
-        nocargo = {
-          from = { id = "nocargo"; type = "indirect"; };
-          to = { path = toString flakes.nocargo.path; type = "path"; };
-        };
       };
     };
 
