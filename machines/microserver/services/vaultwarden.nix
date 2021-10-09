@@ -27,7 +27,7 @@
       additionalModules = [ pkgs.nginxModules.http-digest-auth ];
       virtualHosts."vault.poscat.moe" = {
         onlySSL = true;
-        useACMEHost = "poscat.moe";
+        useACMEHost = "poscat.moe-wildcard";
         listen = [
           {
             addr = "0.0.0.0";

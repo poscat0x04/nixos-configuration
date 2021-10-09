@@ -31,8 +31,8 @@
     wants = [ "acme-finished-poscat.moe.target" ];
     after = [ "acme-finished-poscat.moe.target" ];
     serviceConfig.LoadCredential = [
-      "cert.pem:/var/lib/acme/poscat.moe/cert.pem"
-      "key.pem:/var/lib/acme/poscat.moe/key.pem"
+      "cert.pem:/var/lib/acme/poscat.moe-wildcard/cert.pem"
+      "key.pem:/var/lib/acme/poscat.moe-wildcard/key.pem"
     ];
   };
 }

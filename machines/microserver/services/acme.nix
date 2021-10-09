@@ -8,8 +8,12 @@ in {
   security.acme = {
     email = "poscat@mail.poscat.moe";
     acceptTerms = true;
-    preliminarySelfsigned = false;
     certs."poscat.moe" = {
+      inherit credentialsFile;
+      domain = "poscat.moe";
+      dnsProvider = "cloudflare";
+    };
+    certs."poscat.moe-wildcard" = {
       inherit credentialsFile;
       domain = "*.poscat.moe";
       dnsProvider = "cloudflare";
