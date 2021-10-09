@@ -15,6 +15,21 @@
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
 
+    commonHttpConfig = ''
+      brotli on;
+      brotli_types
+        application/atom+xml
+        application/javascript
+        application/json
+        application/xml
+        application/xml+rss
+        image/svg+xml
+        text/css
+        text/javascript
+        text/plain
+        text/xml;
+    '';
+
     resolver.addresses = [ "127.0.0.53" ];
 
     sslCiphers = "ECDHE+AESGCM:DHE+AESGCM";
