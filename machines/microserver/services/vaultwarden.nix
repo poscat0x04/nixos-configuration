@@ -26,7 +26,7 @@
     nginx = {
       additionalModules = [ pkgs.nginxModules.http-digest-auth ];
       virtualHosts."vault.poscat.moe" = {
-        forceSSL = true;
+        onlySSL = true;
         useACMEHost = "poscat.moe";
         listen = [
           {
@@ -54,6 +54,10 @@
             '';
           };
         };
+        extraConfig = ''
+          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          add_header Strict-Transport-Security 'max-age=31536000' always;
+        '';
       };
     };
   };
