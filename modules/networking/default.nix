@@ -56,6 +56,25 @@
         linkConfig.Unmanaged = true;
       };
 
+      "15-trusted-ethernet" = {
+        matchConfig = {
+          Type = "ether";
+          Virtualization = true;
+        };
+
+        DHCP = "yes";
+
+        networkConfig = {
+          DNSOverTLS = "opportunistic";
+        };
+
+        dhcpV4Config = {
+          RouteMetric = 10;
+          UseDNS = true;
+          UseMTU = true;
+        };
+      };
+
       "20-ethernet" = {
         matchConfig.Type = "ether";
 
