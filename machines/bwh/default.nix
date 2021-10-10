@@ -7,6 +7,7 @@
     ../../modules/gnupg-server.nix
     ../../modules/acme.nix
     ../../modules/nginx.nix
+    ./services/v2ray.nix
   ];
 
   boot = {
