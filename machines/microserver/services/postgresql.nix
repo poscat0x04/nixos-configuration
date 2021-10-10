@@ -26,10 +26,10 @@
     };
   };
 
-  security.acme.certs."poscat.moe".reloadServices = [ "postgresql.service" ];
+  security.acme.certs."poscat.moe-wildcard".reloadServices = [ "postgresql.service" ];
   systemd.services.postgresql = {
-    wants = [ "acme-finished-poscat.moe.target" ];
-    after = [ "acme-finished-poscat.moe.target" ];
+    wants = [ "acme-finished-poscat.moe-wildcard.target" ];
+    after = [ "acme-finished-poscat.moe-wildcard.target" ];
     serviceConfig.LoadCredential = [
       "cert.pem:/var/lib/acme/poscat.moe-wildcard/cert.pem"
       "key.pem:/var/lib/acme/poscat.moe-wildcard/key.pem"
