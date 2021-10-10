@@ -239,6 +239,24 @@ in
           nix eval "$@" "$flakePath#${system}.config.$option"
         }
 
+        nbs () {
+          local flakePath="."
+          local target
+
+          if [ ! -z "$2" ]; then
+            flakePath=$1
+            shift
+          fi
+
+          if [ -z "$1" ]; then
+            target=${config.nixos.settings.machine.hostname};
+          else
+            target=$1
+          fi
+
+          nix build -L "$flakePath#nixosConfigurations.$target.config.system.build.toplevel"
+        }
+
         bindkey '^?' backward-delete-char
 
         export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gnupg/S.gpg-agent.ssh
