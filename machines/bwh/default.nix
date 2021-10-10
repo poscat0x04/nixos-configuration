@@ -20,7 +20,7 @@
   nixos.settings = {
     system.user = "poscat";
     machine = {
-      hostname = "microserver";
+      hostname = "bwh";
     };
   };
 
