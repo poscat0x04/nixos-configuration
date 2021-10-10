@@ -12,6 +12,7 @@
     ../../modules/gnupg-server.nix
     ../../modules/vlmcsd.nix
     ../../modules/nginx.nix
+    ../../modules/postgresql.nix
     ./router/dhcp.nix
     ./router/dns.nix
     ./router/firewall.nix
@@ -19,7 +20,6 @@
     ./router/routing.nix
     ./services/v2ray.nix
     ./services/ddns.nix
-    ./services/postgresql.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
   ];
