@@ -13,7 +13,6 @@
     recommendedOptimisation = true;
     recommendedTlsSettings = true;
     recommendedGzipSettings = true;
-    recommendedProxySettings = true;
 
     commonHttpConfig = ''
       brotli on;
