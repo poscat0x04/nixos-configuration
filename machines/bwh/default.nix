@@ -36,6 +36,8 @@
     "time.cloudflare.com"
   ];
 
+  networking.firewall.enable = false;
+
   networking.hostId = "bd66af60";
 
   system.stateVersion = "21.11";
