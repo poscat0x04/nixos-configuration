@@ -29,6 +29,8 @@ let
     ms-vscode.hexeditor
     be5invis.toml
     jroesch.lean
+    # LDIF
+    jtavin.ldif
     # c stuff
     ms-vscode.cmake-tools
     twxs.cmake
