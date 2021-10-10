@@ -142,6 +142,10 @@
           UseDNS = false;
           UseNTP = false;
         };
+
+        ipv6AcceptRAConfig = {
+          UseDNS = false;
+        };
       };
 
       # Brings up the rest interfaces
