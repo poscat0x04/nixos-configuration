@@ -33,6 +33,7 @@
       VISUAL = "code";
       LESSHISTSIZE = "0";
       PSQL_PAGER = "pspg";
+      NIX_SSHOPTS = "-t";
     };
 
     systemPackages = with pkgs; [
