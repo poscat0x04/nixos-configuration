@@ -50,6 +50,7 @@ let
       chain filter_direct {
         ip daddr @ipv4_private accept
         ip daddr @cn_ip accept
+        #socket cgroupv2 level 2 "system.slice/v2ray.service" accept
         meta mark 255 accept
       }
     }
