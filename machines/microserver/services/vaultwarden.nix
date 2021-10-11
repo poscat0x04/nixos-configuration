@@ -38,19 +38,29 @@
         locations = {
           "/" = {
             proxyPass = "http://localhost:34817";
+            extraConfig = ''
+              proxy_set_header X-Real-IP $remote_addr;
+            '';
           };
           "/notifications/hub" = {
             proxyPass = "http://localhost:3012";
             proxyWebsockets = true;
+            extraConfig = ''
+              proxy_set_header X-Real-IP $remote_addr;
+            '';
           };
           "/notifications/hub/negotiate" = {
             proxyPass = "http://localhost:34817";
+            extraConfig = ''
+              proxy_set_header X-Real-IP $remote_addr;
+            '';
           };
           "/admin" = {
             proxyPass = "http://localhost:34817";
             extraConfig = ''
               auth_digest_user_file ${secrets.http-password-digest};
               auth_digest 'vaultwarden admin';
+              proxy_set_header X-Real-IP $remote_addr;
             '';
           };
         };
