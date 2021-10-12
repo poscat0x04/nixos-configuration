@@ -8,6 +8,7 @@
     ../../modules/acme.nix
     ../../modules/nginx.nix
     ./services/v2ray.nix
+    ./services/redis.nix
   ];
 
   boot = {
