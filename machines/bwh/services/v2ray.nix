@@ -10,7 +10,10 @@ with secrets.v2ray-server;
         assetOverrides = pkgs.extra-files.v2ray-rules-dat;
       };
       config = {
-        log.loglevel = "warning";
+        log = {
+          access = "none";
+          loglevel = "warning";
+        };
         routing = {
           domainStrategy = "IPIfNonMatch";
           domainMatcher = "mph";
