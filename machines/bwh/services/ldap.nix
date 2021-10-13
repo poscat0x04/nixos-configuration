@@ -48,18 +48,26 @@ in {
               ''
                 {0}to dn.children="ou=customers,dc=poscat,dc=moe"
                   by dn="cn=dovecot,ou=service,dc=poscat,dc=moe" read
+                  by dn="cn=postfix,ou=service,dc=poscat,dc=moe" read
               ''
               ''
                 {1}to dn.children="ou=trusted,dc=poscat,dc=moe"
                   by dn="cn=dovecot,ou=service,dc=poscat,dc=moe" read
+                  by dn="cn=postfix,ou=service,dc=poscat,dc=moe" read
               ''
               ''
                 {2}to dn.children="ou=mail-services,dc=poscat,dc=moe"
                   by dn="cn=dovecot,ou=service,dc=poscat,dc=moe" read
+                  by dn="cn=postfix,ou=service,dc=poscat,dc=moe" read
               ''
               ''
-                {3}to *
+                {3}to dn.children="ou=mail-domains,dc=poscat,dc=moe"
+                  by dn="cn=postfix,ou=service,dc=poscat,dc=moe" read
+              ''
+              ''
+                {4}to *
                   by dn="cn=dovecot,ou=service,dc=poscat,dc=moe" search
+                  by dn="cn=postfix,ou=service,dc=poscat,dc=moe" search
                   by self read
                   by * auth
               ''
