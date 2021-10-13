@@ -6,7 +6,7 @@
       enable = true;
       dbBackend = "postgresql";
       config = {
-        databaseUrl = "postgresql://vaultwarden@localhost/vault";
+        databaseUrl = "postgresql://vaultwarden@%2frun%2fpostgresql/vault";
         webVaultEnabled = true;
         websocketEnabled = true;
         websocketAddress = "127.0.0.1";
