@@ -17,7 +17,7 @@ let
     dnpass = abc
     base = dc=poscat,dc=moe
 
-    pass_attrs = uid=user,mailPassword=password
+    pass_attrs = mail=user,mailPassword=password
     pass_filter = ${ldap-filter}
 
     user_attrs = mailQuota=quota_rule=*:storage=%$
