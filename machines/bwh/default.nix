@@ -10,6 +10,7 @@
     ./services/v2ray.nix
     ./services/redis.nix
     ./services/ldap.nix
+    ./services/dovecot.nix
   ];
 
   boot = {
