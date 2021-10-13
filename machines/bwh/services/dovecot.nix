@@ -34,6 +34,7 @@ in {
     enablePAM = false;
     enablePop3 = false;
     enableImap = true;
+    enableLmtp = true;
     mailUser = "vmail";
     mailGroup = "vmail";
     mailPlugins = {
@@ -82,6 +83,14 @@ in {
           group = ${pfCfg.group}
         }
       }
+
+      service lmtp {
+        unix_listener /run/dovecot2/lmtp {
+          mode = 0600
+          user = ${pfCfg.user}
+          group = ${pfCfg.group}
+        }
+      };
 
       passdb {
         driver = ldap
