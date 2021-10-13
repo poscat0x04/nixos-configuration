@@ -38,7 +38,7 @@ in {
     mailGroup = "vmail";
     mailPlugins = {
       globally.enable = [ "zlib" ];
-      perProtocol.imap = [ "imap_zlib" ];
+      perProtocol.imap.enable = [ "imap_zlib" ];
     };
     enableQuota = true;
     quotaGlobalPerUser = "100M";
@@ -62,7 +62,7 @@ in {
       # enable SPECIAL-USE IMAP extension
       imap_capability = +SPECIAL-USE
 
-      mail_server_admin: mailto:admin@poscat.moe
+      mail_server_admin = mailto:admin@poscat.moe
 
       mailbox_list_index_include_inbox = yes
 
@@ -76,7 +76,7 @@ in {
       }
 
       service auth {
-        unix_listener auth {
+        unix_listener /run/dovecot2/auth {
           mode = 0660
           user = ${pfCfg.user}
           group = ${pfCfg.group}
