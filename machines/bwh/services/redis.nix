@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  services.redis.enable = true;
+  services.redis = {
+    enable = true;
+    vmOverCommit = true;
+  };
 }
