@@ -136,14 +136,14 @@ with secrets.v2ray-server;
           proxyPass = "https://mirrors.ocf.berkeley.edu";
         };
         "${path}" = {
-          proxyPass = "http://localhost:47532";
+          proxyPass = "http://127.0.0.1:47532";
           proxyWebsockets = true;
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
           '';
         };
         "${path-2}" = {
-          proxyPass = "http://localhost:47531";
+          proxyPass = "http://127.0.0.1:47531";
           proxyWebsockets = true;
           extraConfig = ''
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
