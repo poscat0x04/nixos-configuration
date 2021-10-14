@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, secrets, ... }:
 
 let
   openldap = config.services.openldap.package;
@@ -75,6 +75,9 @@ in {
           };
         };
       };
+    };
+    declarativeContents = {
+      "dc=poscat,dc=moe" = secrets.openldap-db-content;
     };
     urlList = [ "ldapi://%%2frun%%2fopenldap%%2fldapi" ];
   };
