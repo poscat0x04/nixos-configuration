@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, secrets, ... }:
 
 let
   pfCfg = config.services.postfix;
@@ -14,7 +14,7 @@ let
     uris = ldapi://%2frun%2fopenldap%2fldapi
 
     dn = cn=dovecot,ou=service,dc=poscat,dc=moe
-    dnpass = abc
+    dnpass = ${secrets.dovecot-ldap-password}
     base = dc=poscat,dc=moe
 
     pass_attrs = mail=user,mailPassword=password
