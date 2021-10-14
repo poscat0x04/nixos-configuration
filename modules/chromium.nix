@@ -28,6 +28,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # bitwarden
+      "nngceckbapebfimnlniiiahkandclblb"
       # cxmooc tools
       "kkicgcijebblepmephnfganiiochecfl"
       # bypass paywall
@@ -41,7 +43,6 @@
       "cobieddmkhhnbeldhncnfcgcaccmehgn"
       "jdocbkpgdakpekjlhemmfcncgdjeiika"
       "cjpalhdlnbpafiamejdnhcphjbkeiagm"
-      "fdjamakpfbbddfjaooikfcpapjohcfmg"
       "kbfnbcaeplbcioakkpcpgfkobkghlhen"
       "ekhagklcjbdpajgpjgmbionohlpdbjgc"
       "eebpioaailbjojmdbmlpomfgijnlcemk"
