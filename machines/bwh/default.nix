@@ -12,6 +12,7 @@
     ./services/ldap.nix
     ./services/dovecot.nix
     ./services/rspamd.nix
+    ./services/postfix.nix
   ];
 
   boot = {
