@@ -75,7 +75,6 @@
             name = ".";
             forward-addr = [
               "101.6.6.6@8853"
-              "2001:da8::666"
             ];
             forward-tls-upstream = true;
           }
