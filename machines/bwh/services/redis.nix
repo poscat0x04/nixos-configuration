@@ -5,8 +5,8 @@
     enable = true;
     vmOverCommit = true;
     settings = {
-      maxmemory = "20mb";
-      maxmemory-policy = "allkeys-lru";
+      maxmemory = "50mb";
+      maxmemory-policy = "volatile-lru";
     };
   };
 }
