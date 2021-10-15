@@ -167,6 +167,7 @@ in {
           milter_default_action = "accept";
           smtpd_milters = "unix:/run/rspamd/rspamd-milter.sock";
           non_smtpd_milters = "unix:/run/rspamd/rspamd-milter.sock";
+          milter_mail_macros = "i {mail_addr} {client_addr} {client_name} {auth_authen}";
         };
       };
     };
