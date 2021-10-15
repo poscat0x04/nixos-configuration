@@ -28,7 +28,7 @@ in {
         };
         "dkim_signing.conf" = {
           text = ''
-            path = "/var/lib/rspamd/dkim/$domain.$selector.key;
+            path = "/var/lib/rspamd/dkim/$domain.$selector.key";
             selector = "dkim";
             check_pubkey = true;
             allow_pubkey_mismatch = false;
@@ -41,7 +41,7 @@ in {
         };
         "redis.conf" = {
           text = ''
-            servers = "127.0.0.0.1:6379";
+            servers = "127.0.0.1:6379";
             db = 1;
           '';
         };
@@ -128,7 +128,7 @@ in {
                   weight = 1.0;
                 }
 
-                "SPF_REPUTATION_SPAM {
+                "SPF_REPUTATION_SPAM" {
                   weight = 4.0;
                 }
 
@@ -163,7 +163,7 @@ in {
       postfix = {
         enable = true;
         config = {
-          milter_protocl = "6";
+          milter_protocol = "6";
           milter_default_action = "accept";
           smtpd_milters = "unix:/run/rspamd/rspamd-milter.sock";
           non_smtpd_milters = "unix:/run/rspamd/rspamd-milter.sock";
