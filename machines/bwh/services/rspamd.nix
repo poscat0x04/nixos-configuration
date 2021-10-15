@@ -23,6 +23,8 @@ in {
       locals = {
         "worker-controller.inc" = {
           text = ''
+            password = "$2$68nk41qmi9shpdqz6k7asq6itanhmxbr$w6qgsrff8s7yi39pes8maie46xe3rr7r6nfqp9ydjq891dugkugb";
+            enable_password = "$2$68nk41qmi9shpdqz6k7asq6itanhmxbr$w6qgsrff8s7yi39pes8maie46xe3rr7r6nfqp9ydjq891dugkugb";
             secure_ip = "0.0.0.0/0";
           '';
         };
