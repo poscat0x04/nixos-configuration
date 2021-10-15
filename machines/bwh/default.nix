@@ -11,6 +11,7 @@
     ./services/redis.nix
     ./services/ldap.nix
     ./services/dovecot.nix
+    ./services/rspamd.nix
   ];
 
   boot = {
