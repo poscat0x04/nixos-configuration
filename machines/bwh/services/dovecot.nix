@@ -77,7 +77,7 @@ in {
       }
 
       service auth {
-        unix_listener /run/dovecot2/auth {
+        unix_listener auth {
           mode = 0660
           user = ${pfCfg.user}
           group = ${pfCfg.group}
@@ -85,12 +85,12 @@ in {
       }
 
       service lmtp {
-        unix_listener /run/dovecot2/lmtp {
+        unix_listener lmtp {
           mode = 0600
           user = ${pfCfg.user}
           group = ${pfCfg.group}
         }
-      };
+      }
 
       passdb {
         driver = ldap
