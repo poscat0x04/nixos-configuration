@@ -37,11 +37,9 @@ in {
     mailUser = "vmail";
     mailGroup = "vmail";
     mailPlugins = {
-      globally.enable = [ "zlib" ];
-      perProtocol.imap.enable = [ "imap_zlib" ];
+      globally.enable = [ "zlib" "quota" ];
+      perProtocol.imap.enable = [ "imap_zlib" "imap_quota" ];
     };
-    enableQuota = true;
-    quotaGlobalPerUser = "100M";
     mailLocation = "sdbox:/var/vmail/%d/%n";
     sieve = {
       enable = true;
@@ -108,6 +106,25 @@ in {
 
       plugin {
         imap_compress_deflate_level = 6
+      }
+
+      plugin {
+        quota = count:User quota
+        quota_rule = *:storage=100M
+        quota_grace = 10%%
+        quota_status_success = DUNNO
+        quota_status_nouser = DUNNO
+        quota_status_overquota = "552 5.2.2 Mailbox is full"
+        quota_vsizes = yes
+      }
+
+      service quota-status {
+        executable = ${pkgs.dovecot}/libexec/dovecot/quota-status -p postfix
+        unix_listener quota-status {
+          mode = 0600
+          user = ${pfCfg.user}
+          group = ${pfCfg.group}
+        }
       }
     '';
   };
