@@ -28,6 +28,9 @@ let
     query_filter = (&(objectClass=postfixVirtualAccount)(mailBox=%s))
     result_attribute = mail
   '';
+  recipient-access = pkgs.writeText "recipient_access" ''
+    no-reply@poscat.moe 550 This is a no reply account
+  '';
 in {
   services.postfix = {
     enable = true;
@@ -114,6 +117,7 @@ in {
         "reject_unauth_pipelining"
         "reject_unverified_recipient"
         "check_policy_service unix:/run/dovecot2/quota-status"
+        "check_recipient_access texthash:${recipient-access}"
       ];
 
       smtpd_data_restrictions = lib.concatStringsSep "," [
