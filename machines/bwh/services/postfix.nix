@@ -51,8 +51,7 @@ in {
       smtp_tls_eckey_file = "/var/lib/acme/poscat.moe-wildcard/key.pem";
       smtp_tls_eccert_file = "/var/lib/acme/poscat.moe-wildcard/fullchain.pem";
 
-      smtp_tls_security_level = "dane";
-      smtp_dns_support_level = "dnssec";
+      smtp_tls_security_level = "may";
 
       smtpd_tls_eckey_file = "/var/lib/acme/poscat.moe-wildcard/key.pem";
       smtpd_tls_eccert_file = "/var/lib/acme/poscat.moe-wildcard/fullchain.pem";

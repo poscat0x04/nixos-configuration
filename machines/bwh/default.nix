@@ -33,7 +33,6 @@
   services = {
     zfs.autoScrub.enable = false;
     btrfs.autoScrub.enable = true;
-    resolved.dnssec = "true";
   };
 
   nix.useMirror = false;
