@@ -57,6 +57,9 @@ in {
     extraConfig = ''
       auth_cache_size=1M
 
+      # set the home dirs of virtual users
+      mail_home = /home/virtual/%d/%n
+
       # enable SPECIAL-USE IMAP extension
       imap_capability = +SPECIAL-USE
 
