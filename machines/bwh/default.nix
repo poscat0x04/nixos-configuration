@@ -17,6 +17,14 @@
   ];
 
   boot = {
+    kernelModules = [
+      "ppp_generic"
+      "tcp_bbr"
+    ];
+    kernel.sysctl = {
+      "net.ipv4.ip_dynaddr" = "1";
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
     loader.grub = {
       enable = true;
       device = "/dev/sda";
