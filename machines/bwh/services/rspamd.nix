@@ -159,6 +159,13 @@ in {
             extended_spam_headers = true;
           '';
         };
+        "logging.inc" = {
+          text = ''
+            level = "notice";
+            color = true;
+            systemd = true;
+          '';
+        };
       };
       postfix = {
         enable = true;
