@@ -2,7 +2,6 @@
 
 let
   pfCfg = config.services.postfix;
-  ldap-filter = "(&(objectClass=postfixVirtualAccount)(uid=%u))";
   ldap-config = pkgs.writeText "dovecot-ldap.conf.ext" ''
     ldap_version = 3
     deref = always
@@ -18,10 +17,10 @@ let
     base = dc=poscat,dc=moe
 
     pass_attrs = mail=user,mailPassword=password
-    pass_filter = ${ldap-filter}
+    pass_filter = (&(objectClass=postfixVirtualAccount)(uid=%u))
 
     user_attrs = mailQuota=quota_rule=*:storage=%$
-    user_filter = ${ldap-filter}
+    user_filter = (&(objectClass=postfixVirtualAccount)(mail=%u))
 
     iterate_attrs = uid=user
     iterate_filter = (objectClass=postfixVirtualAccount)
