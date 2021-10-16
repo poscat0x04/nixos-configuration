@@ -38,7 +38,10 @@ in {
     mailGroup = "vmail";
     mailPlugins = {
       globally.enable = [ "zlib" "quota" ];
-      perProtocol.imap.enable = [ "imap_zlib" "imap_quota" ];
+      perProtocol = {
+        imap.enable = [ "imap_zlib" "imap_quota" ];
+        lmtp.enable = [ "quota" ];
+      };
     };
     mailLocation = "sdbox:/var/vmail/%d/%n";
     sieve = {
