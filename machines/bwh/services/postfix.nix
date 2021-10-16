@@ -48,6 +48,9 @@ in {
       swap_bangpath = false;
       recipient_delimiter = "+";
 
+      # force postfix to use only ipv4
+      inet_protocols = "ipv4";
+
       smtp_tls_eckey_file = "/var/lib/acme/poscat.moe-wildcard/key.pem";
       smtp_tls_eccert_file = "/var/lib/acme/poscat.moe-wildcard/fullchain.pem";
 
