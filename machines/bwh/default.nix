@@ -13,6 +13,7 @@
     ./services/dovecot.nix
     ./services/rspamd.nix
     ./services/postfix.nix
+    ./services/tunnel.nix
   ];
 
   boot = {
