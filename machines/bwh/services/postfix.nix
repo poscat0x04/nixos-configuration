@@ -113,6 +113,7 @@ in {
         "reject_unknown_recipient_domain"
         "reject_unauth_pipelining"
         "reject_unverified_recipient"
+        "check_policy_service unix:/run/dovecot2/quota-status"
       ];
 
       smtpd_data_restrictions = lib.concatStringsSep "," [
