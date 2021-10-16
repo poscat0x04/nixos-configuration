@@ -32,8 +32,6 @@ in {
           text = ''
             path = "/var/lib/rspamd/dkim/$domain.$selector.key";
             selector = "dkim";
-            check_pubkey = true;
-            allow_pubkey_mismatch = false;
           '';
         };
         "milter_headers.conf" = {
