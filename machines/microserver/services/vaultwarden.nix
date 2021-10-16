@@ -15,10 +15,10 @@
         rocketAddress = "127.0.0.1";
         rocketPort = "34817";
         smtpHost = "mail.poscat.moe";
-        smtpFrom = "vault@mail.poscat.moe";
+        smtpFrom = "no-reply@poscat.moe";
         smtpFromName = "vaultwarden";
         smtpSsl = true;
-        smtpUsername = "vault@mail.poscat.moe";
+        smtpUsername = "vaultwarden";
         smtpPassword = "${secrets.vaultwarden-smtp-password}";
       };
     };
