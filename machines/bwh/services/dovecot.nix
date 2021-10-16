@@ -42,7 +42,7 @@ in {
     };
     enableQuota = true;
     quotaGlobalPerUser = "100M";
-    mailLocation = "sdbox:/mail/%d/%n";
+    mailLocation = "sdbox:/var/vmail/%d/%n";
     sieve = {
       enable = true;
       enableManageSieve = true;
