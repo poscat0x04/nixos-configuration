@@ -126,6 +126,7 @@ in {
       virtual_mailbox_domains = "ldap:${virtual-domains}";
       virtual_mailbox_maps = "ldap:${virtual-maps}";
       virtual_alias_maps = "ldap:${virtual-alias-maps}";
+      address_verify_cache_cleanup_interval = "1h";
     };
     enableSubmission = true;
     submissionOptions = {
