@@ -6,9 +6,6 @@ in {
   services.openldap = {
     enable = true;
     settings = {
-      attrs = {
-        olcLogLevel = "128";
-      };
       children = {
         "cn=schema".includes = [
           "${openldap}/etc/schema/core.ldif"
