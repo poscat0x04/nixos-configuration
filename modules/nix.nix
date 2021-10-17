@@ -19,7 +19,7 @@ in
   config = {
     nix = {
       extraOptions = ''
-        experimental-features = flakes nix-command ca-derivations ca-references
+        experimental-features = flakes nix-command
         access-tokens = github.com=${secrets.github-token}
         flake-registry = ${flakesEmpty}
       '';
