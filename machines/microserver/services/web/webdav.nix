@@ -59,4 +59,5 @@
       '';
     };
   };
+  systemd.services.nginx.serviceConfig.ReadWritePaths = [ "/srv/http/webdav" ];
 }
