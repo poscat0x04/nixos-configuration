@@ -22,6 +22,7 @@
     ./services/ddns.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
+    ./services/web
   ];
 
   nixos.settings = {
