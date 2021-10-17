@@ -20,6 +20,9 @@
         smtpSsl = true;
         smtpUsername = "vaultwarden";
         smtpPassword = "${secrets.vaultwarden-smtp-password}";
+        signupsVerify = true;
+        orgCreationUsers = "poscat@poscat.moe";
+        showPasswordHint = false;
       };
     };
 
