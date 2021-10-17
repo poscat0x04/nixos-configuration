@@ -19,6 +19,7 @@
     dnssec = lib.mkDefault "false";
     extraConfig = ''
       MulticastDNS=no
+      CacheFromLocalhost=no
     '';
   };
 
