@@ -53,6 +53,7 @@ in
       # VCS
       gitAndTools.gh
       darcs
+      pijul
       # Editors
       #customized-emacs
       customized-neovim-qt
@@ -72,7 +73,6 @@ in
       gnumake
       gcc
       cmake
-      clang
       clang-tools
       binutils-unwrapped
       # ATS
@@ -102,6 +102,9 @@ in
       postman
       standardnotes
       hinit
+      mpv
+      jetbrains.clion
+      jetbrains.idea-ultimate
     ] ++ haskell-packages;
   };
 
