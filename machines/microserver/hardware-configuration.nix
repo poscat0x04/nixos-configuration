@@ -28,6 +28,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/srv" = {
+    device = "storage/data";
+    fsType = "zfs";
+  };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/67DB-A2F4";
       fsType = "vfat";
