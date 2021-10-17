@@ -122,11 +122,11 @@
     },
     "nix-secrets": {
       "locked": {
-        "lastModified": 1634442004,
-        "narHash": "sha256-6IJi7/ProM6ASdWu92waQKQ+txhrtoSwfyN9l+3lc94=",
+        "lastModified": 1634446820,
+        "narHash": "sha256-WMt9ZM3zjqAeKLvAsUksgQShxk7FH2NtTIkGLA+2tYk=",
         "owner": "poscat0x04",
         "repo": "nix-secrets",
-        "rev": "e8bf1d05bf7156478c255a33c155d56c3a126235",
+        "rev": "b93943668d7a97eee67360af04186fa82d6dd02e",
         "type": "github"
       },
       "original": {

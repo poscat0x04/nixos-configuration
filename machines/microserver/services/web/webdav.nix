@@ -17,8 +17,8 @@
         "/" = {
           root = "/srv/http/webdav";
           extraConfig = ''
-            auth_digest_user_file ${secrets.http-password-digest};
-            auth_digest 'webdav users';
+            auth_basic_user_file ${secrets.http-password-basic};
+            auth_basic 'private webdav';
 
             fancyindex on;
             fancyindex_localtime on;
