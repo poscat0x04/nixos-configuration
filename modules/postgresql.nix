@@ -22,7 +22,6 @@
       ssl = true;
       ssl_cert_file = "/run/credentials/postgresql.service/cert.pem";
       ssl_key_file = "/run/credentials/postgresql.service/key.pem";
-      log_statement = "all";
       log_disconnections = "true";
       unix_socket_directories = "/run/postgresql";
     };
