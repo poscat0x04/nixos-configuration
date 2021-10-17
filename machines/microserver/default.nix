@@ -32,6 +32,18 @@
     };
   };
 
+  services.nginx.virtualHosts.default = {
+    onlySSL = true;
+    listen = [
+      {
+        addr = "0.0.0.0";
+        port = 8443;
+        ssl = true;
+      }
+    ];
+    useACMEHost = "poscat.moe-wildcard";
+  };
+
   networking.hostId = "3c7de8b6";
 
   system.stateVersion = "21.11";

@@ -42,6 +42,17 @@
   services = {
     zfs.autoScrub.enable = false;
     btrfs.autoScrub.enable = true;
+    nginx.virtualHosts.default = {
+      forceSSL = true;
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 443;
+          ssl = true;
+        }
+      ];
+      useACMEHost = "poscat.moe-wildcard";
+    };
   };
 
   nix.useMirror = false;

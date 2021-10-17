@@ -42,6 +42,19 @@
       worker_processes auto;
       worker_rlimit_nofile 100000;
     '';
+    virtualHosts.default = {
+      listen = [
+        {
+          addr = "0.0.0.0";
+          port = 80;
+        }
+      ];
+      serverName = "_";
+      default = true;
+      extraConfig = ''
+        return 444;
+      '';
+    };
   };
 
   systemd.services.nginx.serviceConfig.LimitNOFILE = "100000";
