@@ -60,7 +60,7 @@ with secrets.v2ray-server;
               clients = [
                 {
                   inherit id;
-                  email = "poscat@mail.poscat.moe";
+                  email = "poscat@poscat.moe";
                 }
               ];
               decryption = "none";

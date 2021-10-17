@@ -6,7 +6,7 @@ in
   programs.git = {
     enable = true;
     userName = "Poscat";
-    userEmail = "poscat@mail.poscat.moe";
+    userEmail = "poscat@poscat.moe";
     lfs.enable = true;
     signing = {
       key = "9341EBC1D730368F2677EAE5B07A14730590D73B";
