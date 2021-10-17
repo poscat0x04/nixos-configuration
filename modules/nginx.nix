@@ -32,7 +32,7 @@
     resolver.addresses = [ "127.0.0.53" ];
 
     sslCiphers = "ECDHE+AESGCM:DHE+AESGCM";
-    sslProtocols = "TLSv1.3";
+    sslProtocols = "TLSv1.2 TLSv1.3";
     eventsConfig = ''
       worker_connections 1024;
       use epoll;
