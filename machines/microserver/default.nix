@@ -22,6 +22,7 @@
     ./services/ddns.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
+    ./services/thu-checkin.nix
     ./services/web
   ];
 

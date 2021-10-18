@@ -60,6 +60,21 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1607173379,
+        "narHash": "sha256-wKwwwbdvYtm0bY6PaeCWO3k0+Bg+VohC56Vn7Z9ZX/U=",
+        "owner": "poscat0x04",
+        "repo": "flake-utils",
+        "rev": "1841839284bd33948154ccdf73f8712a01bfab64",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "hath-nix": {
       "locked": {
         "lastModified": 1623558647,
@@ -122,11 +137,11 @@
     },
     "nix-secrets": {
       "locked": {
-        "lastModified": 1634517702,
-        "narHash": "sha256-2Dy+3mQ0yXfBhcU6Uyvq/KoahceTPvCZulnaHTLnLhk=",
+        "lastModified": 1634544237,
+        "narHash": "sha256-ZuiiF4AAXU6N6qO2V4hsgAGNuCdP98aBtfYuw87mOj4=",
         "owner": "poscat0x04",
         "repo": "nix-secrets",
-        "rev": "0751a0a05b3ea392a0af558f0787373eb0b58486",
+        "rev": "b9438997e88c917b8cf980cabb1531d9a1471ba0",
         "type": "github"
       },
       "original": {
@@ -175,7 +190,8 @@
         "nix-secrets": "nix-secrets",
         "nixos-emacs": "nixos-emacs",
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "thu-checkin": "thu-checkin"
       }
     },
     "rust-overlay": {
@@ -196,6 +212,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "thu-checkin": {
+      "inputs": {
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1634545074,
+        "narHash": "sha256-2B2V9SezLKnv8/M9uvi/ziv5+SLiz0JR7DXZoLUFBqI=",
+        "owner": "poscat0x04",
+        "repo": "thu-checkin",
+        "rev": "c16228ce5600e0efbf488f3d6bcc396ce626a43a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "thu-checkin",
         "type": "github"
       }
     }

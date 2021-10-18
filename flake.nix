@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "/nixpkgs";
       inputs.rust-overlay.follows = "/rust-overlay";
     };
+    thu-checkin = {
+      url = github:poscat0x04/thu-checkin;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
     nix-secrets = {
       url = github:poscat0x04/nix-secrets;
       inputs.nixpkgs.follows = "/nixpkgs";
@@ -32,12 +36,13 @@
     , nix-repo
     , hath-nix
     , nixos-emacs
+    , thu-checkin
     , rust-overlay
     , flake-utils
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay thu-checkin ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
