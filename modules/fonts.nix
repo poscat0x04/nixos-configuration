@@ -7,7 +7,7 @@
       defaultFonts = {
         sansSerif = lib.mkBefore [ "Roboto" "Noto Sans CJK SC" ];
         serif = lib.mkBefore [ "Noto Serif" ];
-        monospace = lib.mkBefore [ "Consolas" ];
+        monospace = lib.mkBefore [ "Consolas" "Noto Sans CJK SC" ];
         emoji = lib.mkBefore [ "Blobmoji" "Noto Color Emoji" ];
       };
     };
