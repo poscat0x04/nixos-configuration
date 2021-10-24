@@ -14,7 +14,7 @@ in
           };
         };
       };
-      defaultSession = lib.mkDefault "plasma5";
+      defaultSession = lib.mkDefault "plasma";
       autoLogin = {
         enable = true;
         inherit user;
