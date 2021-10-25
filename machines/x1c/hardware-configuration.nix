@@ -40,5 +40,7 @@
 
   swapDevices = [ ];
 
+  services.fprintd.enable = true;
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
