@@ -129,7 +129,7 @@
         dns = [
           "127.0.0.1:53"
         ];
-        DHCP = "yes";
+        DHCP = "ipv4";
 
         dhcpV4Config = {
           RouteMetric = 20;
@@ -144,8 +144,8 @@
           UseNTP = false;
         };
 
-        ipv6AcceptRAConfig = {
-          UseDNS = false;
+        networkConfig = {
+          IPv6AcceptRA = false;
         };
       };
 
