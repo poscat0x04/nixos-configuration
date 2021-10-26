@@ -1,6 +1,11 @@
-self: super:
-rec {
-  customized-neovim = super.pkgs.neovim.override {
+{ pkgs, ... }:
+
+{
+  programs.neovim = {
+    enable = true;
+    vimAlias = true;
+    viAlias = true;
+    defaultEditor = true;
     configure = {
       customRC = ''
         let g:deoplete#enable_at_startup = 1
@@ -68,7 +73,7 @@ rec {
         let mapleader = "\\"
         let maplocalleader = ","
       '';
-      packages.myVimPackage = with super.pkgs.vimPlugins; {
+      packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
           vimtex
           LanguageClient-neovim
@@ -92,9 +97,5 @@ rec {
         opt = [ ];
       };
     };
-  };
-
-  customized-neovim-qt = super.pkgs.neovim-qt.override {
-    neovim = customized-neovim;
   };
 }

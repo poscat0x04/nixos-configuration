@@ -9,6 +9,7 @@
     ../modules/openssh.nix
     ../modules/ssh.nix
     ../modules/users.nix
+    ../modules/neovim.nix
     ../modules/zsh
   ];
 
@@ -29,7 +30,6 @@
 
   environment = {
     sessionVariables = {
-      EDITOR = "nvim";
       VISUAL = "code";
       LESSHISTSIZE = "0";
       PSQL_PAGER = "pspg";
@@ -38,7 +38,6 @@
 
     systemPackages = with pkgs; [
       bat
-      customized-neovim
       file
       fzf
       htop

@@ -56,7 +56,9 @@ in
       pijul
       # Editors
       #customized-emacs
-      customized-neovim-qt
+      (neovim-qt.override {
+        neovim = config.programs.neovim.finalPackage;
+      })
       vscode-with-extensions
       # Consoles
       alacritty

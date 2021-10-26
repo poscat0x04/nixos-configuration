@@ -9,6 +9,7 @@
       ../modules/zsh
       ../modules/ssh.nix
       ../modules/nix.nix
+      ../modules/neovim.nix
       "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     ];
 
@@ -25,7 +26,6 @@
     systemPackages = with pkgs; [
       git
       jq
-      customized-neovim
     ];
   };
 
