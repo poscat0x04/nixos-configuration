@@ -150,6 +150,7 @@
           chain filter_direct {
             ip daddr @ipv4_private accept
             ip daddr @cn_ip accept
+            udp dport 443 accept
             meta mark 255 accept
           }
         }
