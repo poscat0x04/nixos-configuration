@@ -59,6 +59,8 @@
       zip
       zstd
 
+      wireguard-tools
+
       postgresql_14
       pspg
 
