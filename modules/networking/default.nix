@@ -97,6 +97,11 @@
         };
       };
 
+      "23-unmanage-ac1200" = {
+        matchConfig.Driver = "mt76x2u";
+        linkConfig.Unmanaged = true;
+      };
+
       "24-tursted-wireless" = {
         matchConfig = {
           Type = "wlan";
