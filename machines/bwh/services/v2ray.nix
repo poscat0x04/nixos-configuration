@@ -133,7 +133,7 @@ with secrets.v2ray-server;
       ];
       locations = {
         "/" = {
-          proxyPass = "https://mirrors.ocf.berkeley.edu";
+          proxyPass = "https://mirrors.mit.edu/";
         };
         "${path}" = {
           proxyPass = "http://127.0.0.1:47532";
