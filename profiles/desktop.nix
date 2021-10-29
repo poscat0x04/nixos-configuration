@@ -52,7 +52,7 @@ in
       wpa_supplicant_gui
       # VCS
       gitAndTools.gh
-      darcs
+      #darcs
       pijul
       # Editors
       #customized-emacs
@@ -65,7 +65,7 @@ in
       # IMs
       tdesktop
       discord
-      konversation
+      #konversation
       # LaTeX
       (texlive.combine {
         inherit (texlive) scheme-full;
@@ -80,12 +80,12 @@ in
       # ATS
       ats2
       # Dhall
-      dhall
-      dhall-lsp-server
+      #dhall
+      #dhall-lsp-server
       # Misc
       anki
       ark
-      krita
+      #krita
       thunderbird
       qimgv
       transmission-qt
@@ -101,7 +101,7 @@ in
       shellcheck
       youtube-dl
       profile-cleaner
-      postman
+      #postman
       standardnotes
       hinit
       mpv

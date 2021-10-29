@@ -12,14 +12,14 @@
       };
     };
     fonts = with pkgs; [
-      emacs-all-the-icons-fonts
+      #emacs-all-the-icons-fonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji-blob-bin
       noto-fonts-extra
       ttf-ms-win10
-      iosevka
-      sarasa-gothic
+      #iosevka
+      #sarasa-gothic
       roboto
     ];
   };
