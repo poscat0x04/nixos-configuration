@@ -29,6 +29,10 @@ let
     ms-vscode.hexeditor
     be5invis.toml
     jroesch.lean
+    huytd.nord-light
+    akamud.vscode-theme-onelight
+    berberman.vscode-cabal-fmt
+    Gruntfuggly.todo-tree
     # LDIF
     jtavin.ldif
     # c stuff
