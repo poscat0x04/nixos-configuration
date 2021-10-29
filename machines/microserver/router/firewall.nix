@@ -11,7 +11,7 @@
         table inet filter {
           flowtable f {
             hook ingress priority 0
-            devices = { ppp0, br-lan }
+            devices = { ppp0, br-lan, wg0 }
           }
 
           chain input {
@@ -20,6 +20,7 @@
             ct state { established, related } accept comment "Allow established"
 
             iif br-lan accept
+            iif wg0 accept
             iif ppp0 jump zone_wan_input
           }
 
@@ -65,6 +66,7 @@
             meta l4proto { tcp, udp } flow offload @f
 
             iif br-lan accept comment "Allow LAN to anywhere"
+            iif wg0 accept comment "Allow Wireguard to anywhere"
             iif ppp0 jump zone_wan_forward
           }
 

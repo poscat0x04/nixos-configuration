@@ -23,6 +23,7 @@
     ./services/printing.nix
     ./services/vaultwarden.nix
     ./services/thu-checkin.nix
+    ./services/wireguard.nix
     ./services/web
   ];
 
