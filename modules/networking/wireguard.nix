@@ -1,4 +1,4 @@
-{ constants, pkgs, ... }:
+{ constants, pkgs, secrets, ... }:
 
 let
   inherit (constants) wg-ipv4-prefix wg-ipv6-prefix;
@@ -20,6 +20,13 @@ in {
             PublicKey = constants.wg-public-keys.microserver;
             AllowedIPs = [ "0.0.0.0/0" "::/0" ];
             Endpoint = "home.poscat.moe:48927";
+          };
+        }
+        {
+          wireguardPeerConfig = {
+            PublicKey = constants.wg-public-keys.microserver;
+            AllowedIPs = [ "${wg-ipv4-prefix}3" "${wg-ipv6-prefix}3" ];
+            Endpoint = "${secrets.v2ray-server.address}:48927";
           };
         }
       ];

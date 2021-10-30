@@ -21,6 +21,12 @@ in {
             Endpoint = "home.poscat.moe:48927";
           };
         }
+        {
+          wireguardPeerConfig = {
+            PublicKey = constants.wg-public-keys.x1c;
+            AllowedIPs = [ "${wg-ipv4-prefix}2/32" "${wg-ipv6-prefix}2/128" ];
+          };
+        }
       ];
     };
     networks."90-wg0" = {
