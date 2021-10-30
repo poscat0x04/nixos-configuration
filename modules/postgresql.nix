@@ -7,12 +7,13 @@
     package = pkgs.postgresql_14;
     ensureDatabases = [];
     authentication = lib.mkForce ''
-      local   all all              trust
-      host    all all 127.0.0.1/32 trust
-      host    all all ::1/128      trust
-      host    all all 10.1.10.1/24 scram-sha-256
-      hostssl all all 0.0.0.0/0    password
-      hostssl all all ::/0         password
+      local   all all                 trust
+      host    all all    127.0.0.1/32 trust
+      host    all all    ::1/128      trust
+      host    all diesel 10.1.11.1/24 trust
+      host    all all    10.1.10.1/24 scram-sha-256
+      hostssl all all    0.0.0.0/0    password
+      hostssl all all    ::/0         password
     '';
     initdbArgs = [
       "--locale=en_US.UTF-8"
