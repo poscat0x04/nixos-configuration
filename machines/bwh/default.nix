@@ -14,6 +14,7 @@
     ./services/rspamd.nix
     ./services/postfix.nix
     ./services/tunnel.nix
+    ./services/wireguard.nix
   ];
 
   boot = {
