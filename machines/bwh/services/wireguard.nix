@@ -18,6 +18,7 @@ in {
           wireguardPeerConfig = {
             PublicKey = constants.wg-public-keys.microserver;
             AllowedIPs = [ "${wg-ipv4-prefix}1/32" "${wg-ipv6-prefix}1/128" ];
+            Endpoint = "home.poscat.moe:48927";
           };
         }
       ];

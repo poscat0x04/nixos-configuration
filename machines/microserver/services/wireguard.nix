@@ -1,4 +1,4 @@
-{ constants, ... }:
+{ constants, secrets, ... }:
 
 let
   inherit (constants) wg-ipv4-prefix wg-ipv6-prefix;
@@ -18,6 +18,13 @@ in {
           wireguardPeerConfig = {
             PublicKey = constants.wg-public-keys.x1c;
             AllowedIPs = [ "${wg-ipv4-prefix}2/32" "${wg-ipv6-prefix}2/128" ];
+          };
+        }
+        {
+          wireguardPeerConfig = {
+            PublicKey = constants.wg-public-keys.bwh;
+            AllowedIPs = [ "${wg-ipv4-prefix}3/32" "${wg-ipv6-prefix}3/128" ];
+            Endpoint = "${secrets.v2ray-server.address}:48927";
           };
         }
       ];
