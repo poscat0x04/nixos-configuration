@@ -154,8 +154,7 @@
             ip daddr @ipv4_private accept
             ip daddr @cn_ip accept
             udp dport 443 accept
-            udp dport 48927 accept
-            meta mark 255 accept
+            meta mark {200, 255} accept
           }
         }
 

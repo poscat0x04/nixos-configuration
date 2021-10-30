@@ -12,6 +12,7 @@ in {
       wireguardConfig = {
         ListenPort = "48927";
         PrivateKeyFile = "/var/lib/wireguard/wg0.key";
+        FirewallMark = 200;
       };
       wireguardPeers = [
         {
