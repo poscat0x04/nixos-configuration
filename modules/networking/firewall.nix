@@ -52,6 +52,7 @@ let
         ip daddr @cn_ip accept
         #socket cgroupv2 level 2 "system.slice/v2ray.service" accept
         udp dport 443 accept
+        udp dport 48927 accept
         meta mark 255 accept
       }
     }
