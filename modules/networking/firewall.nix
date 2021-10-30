@@ -72,6 +72,7 @@ in {
       after = [ "nftables.service" ];
       requires = [ "nftables.service" ];
       reloadIfChanged = true;
+      unitConfig.ReloadPropagatedFrom = [ "nftables.service" ];
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
