@@ -32,6 +32,7 @@
             tcp dport 22 accept comment "Allow ssh"
             tcp dport 8443 accept comment "Allow HTTPS"
             udp dport 68 accept comment "Allow DHCP renew"
+            udp dport 48927 accept comment "Allow wireguard"
             icmp type echo-request accept comment "Allow ping"
 
             ip6 saddr fc00::/6 ip6 daddr fc00::/6 udp dport 546 accept comment "Allow DHCPv6"
