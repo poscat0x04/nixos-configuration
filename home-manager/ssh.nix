@@ -1,4 +1,4 @@
-{ ... }:
+{ secrets,... }:
 
 {
   programs.ssh = {
@@ -6,6 +6,21 @@
     matchBlocks = {
       bwh = {
         hostname = "64.64.228.47";
+        forwardX11 = true;
+        forwardX11Trusted = true;
+        remoteForwards = [
+          {
+            bind.address = "/run/user/1000/gnupg/S.gpg-agent";
+            host.address = "/run/user/1000/gnupg/S.gpg-agent";
+          }
+          {
+            bind.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+            host.address = "/run/user/1000/gnupg/S.gpg-agent.ssh";
+          }
+        ];
+      };
+      tbwh = {
+        hostname = "10.1.11.3";
         forwardX11 = true;
         forwardX11Trusted = true;
         remoteForwards = [
