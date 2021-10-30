@@ -58,10 +58,16 @@ let
   '';
 in {
   options = {
-    networking.tproxy = {
-      enable = mkEnableOption ''
-        transparent proxy using nftables
-      '';
+    networking = {
+      nftables.extraInputRules = mkOption {
+        type = types.str;
+        default = "";
+      };
+      tproxy = {
+        enable = mkEnableOption ''
+          transparent proxy using nftables
+        '';
+      };
     };
   };
 
@@ -151,6 +157,7 @@ in {
               ct state invalid drop comment "Drop invalid packets"
 
               iif lo accept comment "Allow input from loopback"
+              jump input_other_interfaces
 
               tcp dport 22 accept comment "Allow ssh"
               udp dport 5353 accept comment "Allow zeroconf"
@@ -180,6 +187,10 @@ in {
 
               meta l4proto tcp reject with tcp reset
               reject with icmpx type port-unreachable
+            }
+
+            chain input_other_interfaces {
+              ${config.networking.nftables.extraInputRules}
             }
 
             chain forward {

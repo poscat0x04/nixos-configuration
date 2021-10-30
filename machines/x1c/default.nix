@@ -8,6 +8,7 @@
     ../../hardware/profiles/intel.nix
     ../../hardware/profiles/thinkpad.nix
     ../../modules/networking/wireless.nix
+    ../../modules/networking/wireguard.nix
     ./hardware-configuration.nix
   ];
 
