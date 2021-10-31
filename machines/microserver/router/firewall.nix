@@ -1,6 +1,9 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ../../../modules/networking/wireguard-online-check.nix
+  ];
   networking = {
     firewall.enable = false;
     nftables = {
@@ -20,8 +23,11 @@
             ct state { established, related } accept comment "Allow established"
 
             iif br-lan accept
-            iif wg0 accept
+            jump check_wg
             iif ppp0 jump zone_wan_input
+          }
+
+          chain check_wg {
           }
 
           chain zone_wan_input {

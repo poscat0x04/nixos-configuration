@@ -3,6 +3,9 @@
 let
   inherit (constants) wg-ipv4-prefix wg-ipv6-prefix;
 in {
+  imports = [
+    ./wireguard-online-check.nix
+  ];
   systemd.network = {
     netdevs."wg0" = {
       netdevConfig = {
@@ -44,7 +47,4 @@ in {
       ];
     };
   };
-  networking.nftables.extraInputRules = ''
-    iif wg0 accept comment "Allow input from wireguard"
-  '';
 }
