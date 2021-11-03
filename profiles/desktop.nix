@@ -44,6 +44,9 @@ in
     ];
 
     plymouth.enable = true;
+    extraModprobeConfig = ''
+      options hid_apple fnmode=2
+    '';
   };
 
   environment = {
