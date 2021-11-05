@@ -19,6 +19,7 @@
                      "^/tmp/"
                      "/ssh:"
                      "^/usr/include/"
+                     "^/nix/store/"
                      "bookmarks"
                      "COMMIT_EDITMSG\\'"))
   :preface
