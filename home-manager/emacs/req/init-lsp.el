@@ -7,59 +7,73 @@
 
 ;; The completion engine
 (use-package company
-  :diminish company-mode
-  :defines (company-dabbrev-downcase company-dabbrev-ignore-case)
+  :ensure t
   :hook (prog-mode . company-mode)
-  :bind (:map company-active-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next)
-         ("<tab>" . company-complete-common-or-cycle)
-         :map company-search-map
-         ("C-p" . company-select-previous)
-         ("C-n" . company-select-next))
+  :bind (:map company-mode-map
+         ([remap completion-at-point] . company-complete)
+         :map company-active-map
+         ("C-s"     . company-filter-candidates)
+         ([tab]     . company-complete-common-or-cycle)
+         ([backtab] . company-select-previous-or-abort))
   :config
-  ;; Use Company for completion
-  (bind-key [remap completion-at-point] #'company-complete company-mode-map)
-  (setq company-tooltip-align-annotations t
-        company-show-numbers t  ;; Easy navigation to candidates with M-<n>
-        company-idle-delay 0.1
-        company-minimum-prefix-length 1
-        company-dabbrev-downcase nil
-        company-dabbrev-ignore-case nil)
-  (setq lsp-completion-provider :capf)
-  :diminish company-mode)
-
-;; Sorting & filtering
-(use-package company-prescient
-  :hook (company-mode . company-prescient-mode)
-  :config (prescient-persist-mode +1))
+  (define-advice company-capf--candidates (:around (func &rest args))
+    "Try default completion styles."
+    (let ((completion-styles '(basic partial-completion)))
+      (apply func args)))
+  :custom
+  (company-idle-delay 0)
+  ;; Easy navigation to candidates with M-<n>
+  (company-show-quick-access t)
+  (company-require-match nil)
+  (company-minimum-prefix-length 3)
+  (company-tooltip-width-grow-only t)
+  (company-tooltip-align-annotations t)
+  ;; complete `abbrev' only in current buffer and make dabbrev case-sensitive
+  (company-dabbrev-other-buffers nil)
+  (company-dabbrev-ignore-case nil)
+  (company-dabbrev-downcase nil)
+  ;; make dabbrev-code case-sensitive
+  (company-dabbrev-code-ignore-case nil)
+  (company-dabbrev-code-everywhere t)
+  ;; call `tempo-expand-if-complete' after completion
+  (company-tempo-expand t)
+  ;; Stop annoying me
+  (company-etags-use-main-table-list nil)
+  ;; No icons
+  (company-format-margin-function nil)
+  (company-backends '((company-capf :with company-tempo)
+                      company-files
+                      (company-dabbrev-code company-keywords)
+                      company-dabbrev
+                      ;; HACK: prevent `lsp-mode' to add `company-capf' back.
+                      company-capf)))
 
 ;; lsp-mode
 (use-package lsp-mode
+  :ensure t
   :hook (prog-mode . lsp-deferred)
-  :init (setq flymake-fringe-indicator-position 'right-fringe)
-  :custom
-  (lsp-log-io nil)                     ;; enable log only for debug
-  (lsp-enable-folding nil)             ;; use `evil-matchit' instead
-  (lsp-prefer-flymake :none)           ;; no real time syntax check
-  (lsp-enable-snippet nil)             ;; no snippet
-  (lsp-enable-symbol-highlighting nil) ;; turn off for better performance
-  (lsp-auto-guess-root t)              ;; auto guess root
-  (lsp-keep-workspace-alive nil)       ;; auto kill lsp server
-  (lsp-eldoc-enable-hover nil)         ;; Disable eldoc displays in minibuffer
-  (lsp-rust-server 'rust-analyzer)
   :bind (:map lsp-mode-map
-              ("C-c f" . lsp-format-region)
-              ("C-c d" . lsp-describe-thing-at-point)
-              ("C-c a" . lsp-execute-code-action)
-              ("C-c r" . lsp-rename))
-  )
-
-;; lsp-ui
-(use-package lsp-ui
-  :hook (lsp-mode . lsp-ui-mode)
-  :config
-  (lsp-ui-flycheck-enable t))
+         ("C-c f" . lsp-format-region)
+         ("C-c d" . lsp-describe-thing-at-point)
+         ("C-c a" . lsp-execute-code-action)
+         ("C-c r" . lsp-rename))
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  (lsp-enable-links nil)                 ;; no clickable links
+  (lsp-enable-folding nil)               ;; use `hideshow' instead
+  (lsp-enable-snippet nil)               ;; no snippets, it requires `yasnippet'
+  (lsp-enable-file-watchers nil)         ;; performance matters
+  (lsp-enable-text-document-color nil)   ;; as above
+  (lsp-enable-symbol-highlighting nil)   ;; as above
+  (lsp-enable-on-type-formatting nil)    ;; as above
+  (lsp-enable-indentation nil)           ;; don't change my code without my permission
+  (lsp-headerline-breadcrumb-enable nil) ;; keep headline clean
+  (lsp-modeline-code-actions-enable nil) ;; keep modeline clean
+  (lsp-modeline-diagnostics-enable nil)  ;; as above
+  (lsp-log-io nil)                       ;; debug only
+  (lsp-auto-guess-root t)                ;; auto guess root
+  (lsp-keep-workspace-alive nil)         ;; auto kill lsp server
+  (lsp-eldoc-enable-hover nil))          ;; disable eldoc hover
 
 
 (provide 'init-lsp)
