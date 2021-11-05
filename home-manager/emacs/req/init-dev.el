@@ -146,8 +146,6 @@
 (use-package pkgbuild-mode)
 (use-package dhall-mode
   :mode "\\.dhall\\'")
-(use-package nix-mode
-  :mode "\\.nix\\'")
 
 (use-package rainbow-delimiters
   :hook
@@ -166,6 +164,7 @@
 (require 'init-coq)
 (require 'init-latex)
 (require 'init-nat)
+(require 'init-nix)
 
 (provide 'init-dev)
 
