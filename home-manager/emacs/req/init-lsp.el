@@ -49,7 +49,9 @@
 
 ;; lsp-mode
 (use-package lsp-mode
-  :hook (prog-mode . lsp-deferred)
+  :hook
+  (rust-mode . lsp-deferred)
+  (haskell-mode . lsp-deferred)
   :bind (:map lsp-mode-map
          ("C-c f" . lsp-format-region)
          ("C-c d" . lsp-describe-thing-at-point)
