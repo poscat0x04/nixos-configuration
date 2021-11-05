@@ -56,7 +56,6 @@
 
 ;; DONT use swiper
 (use-package isearch
-  :ensure nil
   :custom
   (lazy-highlight-cleanup nil))
 

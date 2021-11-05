@@ -7,7 +7,6 @@
 
 
 (use-package recentf
-  :ensure nil
   :hook (after-init . recentf-mode)
   :custom
   (recentf-max-saved-items 300)

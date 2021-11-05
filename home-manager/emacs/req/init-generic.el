@@ -79,7 +79,6 @@
 
 ;; Highlight parenthesises
 (use-package paren
-  :ensure nil
   :hook (after-init . show-paren-mode)
   :config
   (setq show-paren-when-point-inside-paren t
@@ -87,12 +86,10 @@
 
 ;; The selected region of text can be deleted
 (use-package delsel
-  :ensure nil
   :hook (after-init . delete-selection-mode))
 
 ;; show line/column number
 (use-package simple
-  :ensure nil
   :hook (after-init . (lambda ()
                         (line-number-mode)
                         (column-number-mode)
@@ -100,12 +97,10 @@
 
 ;; save cursor position
 (use-package saveplace
-  :ensure nil
   :hook (after-init . save-place-mode))
 
 ;; highlight current line
 (use-package hl-line
-  :ensure nil
   :hook (after-init . global-hl-line-mode))
 
 ;(use-package server

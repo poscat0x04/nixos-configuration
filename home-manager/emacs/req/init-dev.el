@@ -7,7 +7,6 @@
 
 ;; Compilation Mode
 (use-package compile
-  :ensure nil
   :preface
   ;; ANSI Coloring
   ;; @see https://stackoverflow.com/questions/13397737/ansi-coloring-in-compilation-mode
@@ -35,7 +34,6 @@
 
 ;; show trailing whitespaces
 (use-package whitespace
-  :ensure nil
   :hook ((prog-mode markdown-mode conf-mode) . whitespace-mode)
   :config
   (setq whitespace-style '(face trailing)))

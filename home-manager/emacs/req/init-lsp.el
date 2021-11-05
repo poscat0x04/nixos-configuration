@@ -7,7 +7,6 @@
 
 ;; The completion engine
 (use-package company
-  :ensure t
   :hook (prog-mode . company-mode)
   :bind (:map company-mode-map
          ([remap completion-at-point] . company-complete)
@@ -50,7 +49,6 @@
 
 ;; lsp-mode
 (use-package lsp-mode
-  :ensure t
   :hook (prog-mode . lsp-deferred)
   :bind (:map lsp-mode-map
          ("C-c f" . lsp-format-region)
