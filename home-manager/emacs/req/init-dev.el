@@ -141,11 +141,6 @@
   ;; as well
   (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
-(use-package xah-math-input
-  :hook
-  (dhall-mode . xah-math-input-mode)
-  (purescript-mode . xah-math-input-mode))
-
 (use-package toml-mode)
 (use-package yaml-mode)
 (use-package pkgbuild-mode)
@@ -162,18 +157,15 @@
   (idris-mode      . rainbow-delimiters-mode))
 
 (use-package direnv
- :config
- (direnv-mode))
+  :config
+  (direnv-mode))
 
 (require 'init-rust)
 (require 'init-haskell)
 (require 'init-agda)
 (require 'init-coq)
-(require 'init-idris)
-(require 'init-purs)
 (require 'init-latex)
 (require 'init-nat)
-(require 'init-ats)
 
 (provide 'init-dev)
 

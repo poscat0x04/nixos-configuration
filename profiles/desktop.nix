@@ -57,7 +57,7 @@ in
       #darcs
       pijul
       # Editors
-      #customized-emacs
+      customized-emacs
       (neovim-qt.override {
         neovim = config.programs.neovim.finalPackage;
       })

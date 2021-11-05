@@ -26,19 +26,13 @@
         company-minimum-prefix-length 1
         company-dabbrev-downcase nil
         company-dabbrev-ignore-case nil)
+  (setq lsp-completion-provider :capf)
   :diminish company-mode)
 
 ;; Sorting & filtering
 (use-package company-prescient
   :hook (company-mode . company-prescient-mode)
   :config (prescient-persist-mode +1))
-
-;; lsp integration
-(use-package company-lsp
-  :after lsp-mode
-  :config
-  (setq company-transformers nil
-        company-lsp-cache-candidates 'auto))
 
 ;; lsp-mode
 (use-package lsp-mode

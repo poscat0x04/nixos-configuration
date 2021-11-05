@@ -45,8 +45,8 @@
 (use-package dashboard
   :diminish
   (dashboard-mode page-break-lines-mode)
+  :hook (after-init . dashboard-setup-startup-hook)
   :custom
-  (dashboard-banner-logo-title "Welcome to Emacs Dashboard")
   (dashboard-startup-banner 'logo)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
@@ -54,10 +54,7 @@
   (dashboard-set-navigator t)
   (dashboard-items '((recents . 10)
                      (projects . 5)
-                     (bookmarks . 5)))
-  :custom-face
-  (dashboard-heading ((t (:foreground "#f1fa8c" :weight bold))))
-  :hook (after-init . dashboard-setup-startup-hook))
+                     (bookmarks . 5))))
 
 (provide 'init-startup)
 

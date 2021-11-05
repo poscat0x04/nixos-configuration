@@ -3,7 +3,7 @@ self: super:
 {
   customized-emacs =
     let
-      emacsPackages = with super; emacsPackagesFor emacsGit;
+      emacsPackages = with super; emacsPackagesFor emacsGcc;
       inherit (emacsPackages) emacsWithPackages;
       extraPackages = epkgs: with epkgs.melpaPackages; [
         epkgs.elpaPackages.auctex
@@ -29,16 +29,13 @@ self: super:
         evil-leader
         evil-nerd-commenter
         evil-surround
-        evil-magit
+        evil-collection
         try
         magit
+        git-modes
         diff-hl
-        gitattributes-mode
-        gitconfig-mode
-        gitignore-mode
         company
         company-prescient
-        company-lsp
         lsp-mode
         lsp-ui
         org-bullets
@@ -72,21 +69,21 @@ self: super:
         haskell-snippets
         flycheck-haskell
         flycheck-liquidhs
-        idris-mode
-        helm-idris
+        #idris-mode
+        #helm-idris
         company-auctex
         company-math
         auctex-latexmk
-        purescript-mode
+        #purescript-mode
         psc-ide
         rust-mode
         cargo
         flycheck-rust
-        xah-math-input
         ormolu
         direnv
         flycheck-aspell
         separedit
       ];
-    in emacsWithPackages extraPackages;
+    in
+    emacsWithPackages extraPackages;
 }
