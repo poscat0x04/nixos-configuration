@@ -1,10 +1,6 @@
 { pkgs, lib, config, ... }:
 
 {
-  imports = [
-    ../options/chromium.nix
-  ];
-
   environment = {
     etc."chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json".source = "${pkgs.plasma-browser-integration}/etc/chromium/native-messaging-hosts/org.kde.plasma.browser_integration.json";
     sessionVariables = {
@@ -18,9 +14,11 @@
           "--ignore-gpu-blacklist"
           "--enable-gpu-rasterization"
           "--use-gl=desktop"
-          "--enable-accelerated-video-decode"
+          "--disable-features=UseOzonePlatform"
           "--enable-features=VaapiVideoDecoder"
-        ] ++ config.programs.chromium.cliArgs);
+          "--disable-features=UseSkiaRenderer"
+          "--enable-accelerated-video-decode"
+        ]);
       })
     ];
   };
@@ -28,6 +26,8 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # hide twitter trends
+      "lapmncfnibdclongbkleadoicnkhknia"
       # bitwarden
       "nngceckbapebfimnlniiiahkandclblb"
       # cxmooc tools
