@@ -40,7 +40,10 @@
 
 ;; quickrun codes, including cpp. awesome!
 (use-package quickrun
-  :bind (("C-c x" . quickrun)))
+  :bind (("C-c x" . quickrun))
+  :custom
+  (quickrun-focus-p nil)
+  (quickrun-input-file-extension ".qr"))
 
 ;; A tree layout file explorer
 (use-package treemacs
