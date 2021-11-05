@@ -10,6 +10,11 @@
     systemPackages = [
       (pkgs.chromium.override {
         commandLineArgs = lib.intersperse " " ([
+          "--no-default-browser-check"
+          "--no-pings"
+          "--no-wifi"
+          "--no-recovery-component"
+          "--no-report-upload"
           "--password-store=basic"
           "--ignore-gpu-blacklist"
           "--enable-gpu-rasterization"
