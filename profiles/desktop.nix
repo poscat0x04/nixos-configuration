@@ -110,6 +110,7 @@ in
       mpv
       jetbrains.clion
       jetbrains.idea-ultimate
+      jetbrains.datagrip
       bitwarden
     ] ++ haskell-packages;
   };
