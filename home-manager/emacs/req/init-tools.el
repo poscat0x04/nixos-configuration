@@ -36,18 +36,47 @@
 
 ;; ivy core
 (use-package ivy
-  :diminish ivy-mode
-  :init (setq ivy-use-virtual-buffers t
-              ivy-count-format "%d/%d"
-              ivy-display-style 'fancy)
+  :diminish "ⓘ"
   :bind (("C-c C-r" . ivy-resume))
-  :hook (after-init . ivy-mode))
+  :hook (after-init . ivy-mode)
+  :custom
+  (ivy-use-virtual-buffers 'recentf)
+  (ivy-count-format "curent: %d; total: %d | ")
+  (ivy-display-style 'fancy)
+  (ivy-height 10)
+  (ivy-fixed-height-minibuffer t)
+  )
+
+(use-package ivy-hydra
+  :after ivy)
+
+(use-package all-the-icons-ivy-rich
+  :custom
+  (all-the-icons-ivy-rich-icon-size 0.80)
+  :config
+  (all-the-icons-ivy-rich-mode 1)
+  )
+
+(use-package ivy-rich
+    :after (ivy all-the-icons-ivy-rich)
+    :hook (ivy-mode . ivy-rich-mode)
+    :custom
+    (ivy-rich-parse-remote-buffer nil)
+    )
+
+(use-package amx)
 
 ;; fuzzy matcher
 (use-package counsel
-  :diminish counsel-mode
+  :after amx
+  :diminish "ⓒ"
   :hook (ivy-mode . counsel-mode)
-  :bind (("M-y" . counsel-yank-pop)
+  :bind (("M-s M-s" . swiper)
+         ("C-c C-r" . ivy-resume)
+         ("C-c v p" . ivy-push-view)
+         ("C-c v o" . ivy-pop-view)
+         ("C-c v ." . ivy-switch-view)
+         ("M-y" . counsel-yank-pop)
          ("M-x" . counsel-M-x)
          ("C-x C-f" . counsel-find-file)
          ("C-x b" . counsel-ibuffer))
