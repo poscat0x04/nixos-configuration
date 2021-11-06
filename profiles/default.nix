@@ -34,6 +34,7 @@
       LESSHISTSIZE = "0";
       PSQL_PAGER = "pspg";
       NIX_SSHOPTS = "-t";
+      GRIPHOME = "~/.config/grip";
     };
 
     systemPackages = with pkgs; [

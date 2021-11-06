@@ -103,6 +103,7 @@ in
       shellcheck
       youtube-dl
       profile-cleaner
+      python3Packages.grip
       #postman
       standardnotes
       hinit
