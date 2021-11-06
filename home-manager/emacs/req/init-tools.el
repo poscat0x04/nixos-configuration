@@ -210,7 +210,8 @@
 
 ;; grip-mode
 (use-package grip-mode
-  :hook ((markdown-mode org-mode) . grip-mode)
+  :disabled
+  :hook (markdown-mode . grip-mode)
   :custom
   (grip-preview-use-webkit t))
 
