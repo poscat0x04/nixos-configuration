@@ -108,8 +108,13 @@
 ;; beautiful term mode & friends
 (use-package vterm
   :hook (vterm-mode . (lambda ()
-                        (setq-local evil-insert-state-cursor 'box)
-                        (evil-insert-state)))
+                         (setq-local evil-insert-state-cursor 'box)
+                         (setq-local evil-default-state 'insert)
+                         (make-variable-buffer-local 'global-hl-line-mode)
+                         (setq global-hl-line-mode nil)
+                         (set (make-local-variable 'buffer-face-mode-face)
+                              '(:family "Consolas" :height 110))
+                         (buffer-face-mode)))
   )
 
 (use-package vterm-toggle
@@ -120,12 +125,13 @@
   :config
   (setq vterm-toggle-fullscreen-p nil)
   (add-to-list 'display-buffer-alist
-               '("^v?term.*"
+               '((lambda(bufname _) (with-current-buffer bufname (equal major-mode 'vterm-mode)))
                  (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)
                  (dedicated . t)
+                 (window-height . 0.3)
                  (reusable-frames . visible)
-                 (window-height . 0.3)))
+                 ))
   )
 
 ;; GC optimization

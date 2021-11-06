@@ -59,7 +59,7 @@
 (setq-default tab-width 4)
 
 ;; font
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 120)
 (set-face-attribute 'default nil :font "consolas")
 ;(set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (set-fontset-font "fontset-default" '(#x2200 . #x2200) (font-spec :height 120 :name "DejaVu Sans Mono"))
