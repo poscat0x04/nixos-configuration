@@ -128,7 +128,6 @@
                '((lambda(bufname _) (with-current-buffer bufname (equal major-mode 'vterm-mode)))
                  (display-buffer-reuse-window display-buffer-in-side-window)
                  (side . bottom)
-                 (dedicated . t)
                  (window-height . 0.3)
                  (reusable-frames . visible)
                  ))
