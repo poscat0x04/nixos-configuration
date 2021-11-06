@@ -6,7 +6,9 @@
 ;;; Code:
 
 (use-package evil
-  :diminish evil
+  :init
+  (setq evil-disable-insert-state-bindings t)
+  (setq evil-want-Y-yank-to-eol t)
   :hook (after-init . evil-mode)
   :config
   (setcdr evil-insert-state-map nil)

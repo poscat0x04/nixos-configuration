@@ -7,36 +7,31 @@
 
 ;; Compilation Mode
 (use-package compile
-  :preface
-  ;; ANSI Coloring
-  ;; @see https://stackoverflow.com/questions/13397737/ansi-coloring-in-compilation-mode
-  (defun my-colorize-compilation-buffer ()
-    "ANSI coloring in compilation buffers."
-    (when (eq major-mode 'compilation-mode)
-      (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . my-colorize-compilation-buffer)
+  :config
+  (defun colorize-compilation-buffer ()
+    "ANSI coloring in compilation buffers."
+    (with-silent-modifications
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :custom
-  (compilation-scroll-output t))
+  (compilation-always-kill t)
+  (compilation-scroll-output t)
+  (compilation-ask-about-save nil))
 
 ;; highlight TODO
 (use-package hl-todo
+  :hook (after-init . global-hl-todo-mode)
   :bind (:map hl-todo-mode-map
               ([C-f3] . hl-todo-occur)
               ("C-c t p" . hl-todo-previous)
               ("C-c t n" . hl-todo-next)
-              ("C-c t o" . hl-todo-occur))
-  :hook (after-init . global-hl-todo-mode)
-  :config
-  (dolist (keyword '("BUG" "ISSUE" "FIXME" "XXX" "NOTE" "NB"))
-    (cl-pushnew `(,keyword . ,(face-foreground 'error)) hl-todo-keyword-faces))
-  (dolist (keyword '("WORKAROUND" "HACK" "TRICK"))
-    (cl-pushnew `(,keyword . ,(face-foreground 'warning)) hl-todo-keyword-faces)))
+              ("C-c t o" . hl-todo-occur)))
 
 ;; show trailing whitespaces
 (use-package whitespace
   :hook ((prog-mode markdown-mode conf-mode) . whitespace-mode)
-  :config
-  (setq whitespace-style '(face trailing)))
+  :custom
+  (whitespace-style '(face trailing)))
 
 ;; quickrun codes, including cpp. awesome!
 (use-package quickrun
@@ -77,32 +72,17 @@
 
 ;; project management
 (use-package projectile
+  :hook (after-init . projectile-mode)
   :bind (:map projectile-mode-map
          ("C-c p" . projectile-command-map))
-  :hook (prog-mode . projectile-mode)
   :custom
+  (projectile-use-git-grep t)
   (projectile-completion-system 'ivy)
   (projectile-indexing-method 'hybrid)
   (projectile-read-command nil) ;; no prompt in projectile-compile-project
-  :config
-  ;; project side rg
-  (use-package ripgrep)
-
-  ;; cmake project build
-  (projectile-register-project-type 'cmake '("CMakeLists.txt")
-                                    :configure "cmake %s"
-                                    :compile "cmake --build Debug"
-                                    :test "ctest")
-
-  (let ((ig-dirs '(".ccls"
-                   ".ccls-cache"
-                   ".clangd"
-                   "bazel-bin"
-                   "bazel-out"
-                   "bazel-testlogs")))
-    (dolist (dir ig-dirs)
-      (push dir projectile-globally-ignored-directories)))
-  )
+  (projectile-ignored-projects `("~/"
+                                 "/tmp/"
+                                 )))
 
 (use-package treemacs-evil
   :after treemacs evil
@@ -122,29 +102,27 @@
   :hook
   (prog-mode . flycheck-mode)
   (text-mode . flycheck-mode)
-  :config
-  (setq flycheck-indication-mode 'right-fringe)
-  (setq-default flycheck-disabled-checkers '(c/c++-clang
-                                             c/c++-cppcheck
-                                             c/c++-gcc
-                                             haskell-stack-ghc))
-  )
+  :custom
+  (flycheck-temp-prefix ".flycheck")
+  (flycheck-check-syntax-automatically '(save mode-enabled))
+  (flycheck-emacs-lisp-load-path 'inherit)
+  (flycheck-indication-mode 'right-fringe))
 
 ;; xref
-(use-package ivy-xref
+(use-package xref
+  :ensure nil
   :init
-  ;; xref initialization is different in Emacs 27 - there are two different
-  ;; variables which can be set rather than just one
-  (when (>= emacs-major-version 27)
-    (setq xref-show-definitions-function #'ivy-xref-show-defs))
-  ;; Necessary in Emacs <27. In Emacs 27 it will affect all xref-based
-  ;; commands other than xref-find-definitions (e.g. project-find-regexp)
-  ;; as well
-  (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+  ;; On Emacs 28, `xref-search-program' can be set to `ripgrep'.
+  ;; `project-find-regexp' benefits from that.
+  (when (>= emacs-major-version 28)
+    (setq xref-search-program 'ripgrep)
+    (setq xref-show-xrefs-function #'xref-show-definitions-completing-read)
+    (setq xref-show-definitions-function #'xref-show-definitions-completing-read))
+  :hook ((xref-after-return xref-after-jump) . recenter))
 
 (use-package toml-mode)
-(use-package yaml-mode)
-(use-package pkgbuild-mode)
+(use-package yaml-mode
+  :mode ("\\.ya?ml\\'" . yaml-mode))
 (use-package dhall-mode
   :mode "\\.dhall\\'")
 
@@ -158,6 +136,14 @@
 (use-package direnv
   :config
   (direnv-mode))
+
+;; Syntax highlighting for systemd files
+(use-package conf-mode
+  :ensure nil
+  :mode ((rx "."
+             (or "automount" "busname" "link" "mount" "netdev" "network"
+                 "path" "service" "slice" "socket" "swap" "target" "timer")
+             string-end) . conf-toml-mode))
 
 (require 'init-rust)
 (require 'init-haskell)
