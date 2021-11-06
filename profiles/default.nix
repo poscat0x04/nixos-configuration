@@ -39,6 +39,7 @@
     systemPackages = with pkgs; [
       bat
       file
+      fd
       fzf
       htop
       jq
