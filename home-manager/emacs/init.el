@@ -36,7 +36,7 @@
 
 (require 'use-package)
 
-(setq debug-on-error nil)
+(setq debug-on-error t)
 (setq-default lexical-binding t)
 
 (add-to-list 'load-path (expand-file-name "req/language-specific" user-emacs-directory))

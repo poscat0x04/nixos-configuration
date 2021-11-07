@@ -185,28 +185,30 @@
 
 ;; pastebin service
 (use-package webpaste
+  :commands webpaste-paste-buffer-or-region
+  :init
+  (add-hook 'webpaste-return-url-hook
+            (lambda (url)
+              (message "Opened URL in chromium: %S" url)
+              (browse-url-chromium-incognito url)))
   :custom
   (webpaste-paste-confirmation t)
   (webpaste-add-to-killring nil)
-  (webpaste-provider-priority '("dpaste.org" "dpaste.com" "ix.io"))
-  :config
-  (add-hook 'webpaste-return-url-hook
-            (lambda (url)
-              (message "Opened URL in browser: %s" url)
-              (browse-url url)))
-  )
+  (webpaste-provider-priority '("paste.mozilla.org" "dpaste.org" "ix.io")))
 
 ;; Edit text for browser with GhostText or AtomicChrome extension
 (use-package atomic-chrome
+  :when (display-graphic-p)
   :hook ((emacs-startup . atomic-chrome-start-server)
          (atomic-chrome-edit-mode . delete-other-windows))
+  :config
+  ;; The browser is in "insert" state, makes it consistent
+  (with-eval-after-load 'evil
+    (evil-set-initial-state 'atomic-chrome-edit-mode 'insert))
   :custom
   (atomic-chrome-buffer-open-style 'frame)
   (atomic-chrome-default-major-mode 'markdown-mode)
-  :config
-  (if (fboundp 'gfm-mode)
-      (setq atomic-chrome-url-major-mode-alist
-            '(("github\\.com" . gfm-mode)))))
+  (atomic-chrome-url-major-mode-alist '(("github\\.com" . gfm-mode))))
 
 ;; grip-mode
 (use-package grip-mode
