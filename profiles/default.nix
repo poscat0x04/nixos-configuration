@@ -18,7 +18,7 @@
     cleanTmpDir = true;
     supportedFilesystems = [ "ntfs" ];
     zfs.enableUnstable = false;
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_5_14;
     kernelParams = [
       "msr.allow_writes=on"
     ];
