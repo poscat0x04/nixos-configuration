@@ -65,9 +65,7 @@ in
       # Consoles
       alacritty
       # IMs
-      tdesktop
       discord
-      #konversation
       # LaTeX
       (texlive.combine {
         inherit (texlive) scheme-full;
@@ -95,6 +93,7 @@ in
       zathura
       akregator
       # Utils
+      pandoc
       bench
       tokei
       flameshot
@@ -104,13 +103,13 @@ in
       youtube-dl
       profile-cleaner
       python3Packages.grip
-      #postman
-      standardnotes
+      python3Packages.pygments
       hinit
       mpv
       jetbrains.clion
       jetbrains.idea-ultimate
       jetbrains.datagrip
+      jetbrains.rider
       bitwarden
     ] ++ haskell-packages;
   };
