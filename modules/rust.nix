@@ -1,11 +1,12 @@
 { lib, pkgs, ... }:
 
 let
-  rust-stable = pkgs.rust-bin.nightly."2021-10-01".minimal.override {
+  rust-stable = pkgs.rust-bin.stable.latest.minimal.override {
     extensions = [
       "rust-src"
       "rustfmt-preview"
       "clippy-preview"
+      "rls-preview"
     ];
   };
 in
