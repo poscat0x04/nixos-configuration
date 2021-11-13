@@ -24,6 +24,7 @@ in
     ../modules/unbound.nix
     ../modules/v2ray
     ../modules/xserver
+    ../modules/ios-tethering.nix
     ../modules/networking/firewall.nix
     ../hardware/profiles/wacom.nix
     ../hardware/profiles/yubikey.nix
