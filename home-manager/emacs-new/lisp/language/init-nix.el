@@ -1,0 +1,14 @@
+
+;;; Code:
+
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
+(use-package nix-company
+  :commands nix-company
+  :hook (nix-mode . (lambda ()
+                        (setq-local company-backends '(nix-company company-files)))))
+
+(provide 'init-nix)
+
+;;; init-nix.el ends here

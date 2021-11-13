@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: displayed formula 
+# key: disp 
+# --
+\begin{equation}
+  $0
+\end{equation}

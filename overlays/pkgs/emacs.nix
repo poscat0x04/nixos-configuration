@@ -3,86 +3,61 @@ self: super:
 {
   customized-emacs =
     let
-      emacsPackages = with super; emacsPackagesFor emacsGcc;
+      emacsPackages = self.emacsPackagesFor self.emacsGcc;
       inherit (emacsPackages) emacsWithPackages;
       extraPackages = epkgs: with epkgs.melpaPackages; [
-        epkgs.elpaPackages.auctex
+        # init
         use-package
-        ripgrep
-        haskell-mode
-        hl-todo
-        quickrun
-        treemacs
-        treemacs-evil
-        treemacs-projectile
-        treemacs-magit
-        flycheck
-        ivy-xref
-        rainbow-delimiters
-        projectile
-        dhall-mode
-        nix-mode
-        toml-mode
-        yaml-mode
-        pkgbuild-mode
-        evil
-        evil-leader
-        evil-nerd-commenter
-        evil-surround
-        evil-collection
-        try
-        magit
-        git-modes
-        diff-hl
-        company
-        company-prescient
-        lsp-mode
-        lsp-ui
-        org-bullets
-        yasnippet-snippets
-        yasnippet
-        page-break-lines
+        # init-ui
+        doom-themes
+        doom-modeline
         dashboard
+        projectile
+        page-break-lines
+        # init-base
+        no-littering
+        # init-evil
+        evil
+        evil-collection
+        evil-surround
+        # init-tools
         which-key
         rg
         fzf
-        avy
         ivy
+        ivy-hydra
+        ivy-rich
         counsel
+        all-the-icons-ivy-rich
+        amx
+        projectile
+        flycheck
         ace-window
         markdown-mode
         vterm
         vterm-toggle
         gcmh
-        dash
-        edit-indirect
-        webpaste
-        atomic-chrome
-        grip-mode
-        doom-themes
-        doom-modeline
-        golden-ratio
-        proof-general
-        company-coq
-        lsp-haskell
+        hl-todo
+        # init-snippet
+        yasnippet
+        yasnippet-snippets
+        # init-git
+        magit
+        diff-hl
+        # init-dev
+        rainbow-delimiters
+        toml-mode
+        yaml-mode
         direnv
-        haskell-snippets
-        flycheck-haskell
-        flycheck-liquidhs
-        #idris-mode
-        #helm-idris
+        # init-nix
+        nix-mode
+        # init-latex
+        epkgs.elpaPackages.auctex
         company-auctex
-        company-math
         auctex-latexmk
-        #purescript-mode
-        psc-ide
-        rust-mode
-        cargo
-        flycheck-rust
-        ormolu
-        direnv
-        flycheck-aspell
-        separedit
+        cdlatex
+        # others
+        hierarchy
       ];
     in
     emacsWithPackages extraPackages;

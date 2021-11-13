@@ -3,8 +3,8 @@
 with lib; with builtins;
 
 let
-  files = attrNames (readDir ./emacs);
-  config = map (filename: nameValuePair ("emacs/" + filename) { source = ./emacs + ("/" + filename); }) files;
+  files = attrNames (readDir ./emacs-new);
+  config = map (filename: nameValuePair ("emacs/" + filename) { source = ./emacs-new + ("/" + filename); }) files;
 in
 
 {

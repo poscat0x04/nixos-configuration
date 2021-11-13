@@ -56,7 +56,7 @@
 
 ;; No tabs
 (setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 ;; font
 (set-face-attribute 'default nil :height 120)
