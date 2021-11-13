@@ -5,9 +5,9 @@
     enableDefaultFonts = lib.mkForce false;
     fontconfig = {
       defaultFonts = {
-        sansSerif = lib.mkBefore [ "Roboto" "Noto Sans CJK SC" ];
-        serif = lib.mkBefore [ "Noto Serif" ];
-        monospace = lib.mkBefore [ "Consolas" "Noto Sans CJK SC" ];
+        sansSerif = lib.mkBefore [ "Microsoft YaHei" "Segoe UI" ];
+        serif = lib.mkBefore [ "Cambria" ];
+        monospace = lib.mkBefore [ "Consolas" "Microsoft YaHei" ];
         emoji = lib.mkBefore [ "Blobmoji" "Noto Color Emoji" ];
       };
     };
@@ -18,8 +18,7 @@
       noto-fonts-emoji-blob-bin
       noto-fonts-extra
       ttf-ms-win10
-      #iosevka
-      #sarasa-gothic
+      sarasa-gothic
       roboto
     ];
   };
