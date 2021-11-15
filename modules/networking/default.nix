@@ -95,6 +95,10 @@
           UseDNS = false;
           UseNTP = false;
         };
+
+        ipv6AcceptRAConfig = {
+          UseDNS = false;
+        };
       };
 
       "23-unmanage-ac1200" = {
