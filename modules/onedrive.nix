@@ -4,7 +4,7 @@
   environment.systemPackages = [ pkgs.onedrive ];
 
   systemd.user.services.onedrive = {
-    wantedBy = [ "defualt.target" ];
+    wantedBy = [ "default.target" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = ''
