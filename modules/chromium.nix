@@ -16,13 +16,14 @@
           "--no-recovery-component"
           "--no-report-upload"
           "--password-store=basic"
-          "--ignore-gpu-blacklist"
+          "--ignore-gpu-blocklist"
           "--enable-gpu-rasterization"
-          "--use-gl=desktop"
+          "--enable-zero-copy"
+          "--enable-accelerated-video-decode"
           "--disable-features=UseOzonePlatform"
           "--enable-features=VaapiVideoDecoder"
           "--disable-features=UseSkiaRenderer"
-          "--enable-accelerated-video-decode"
+          "--use-gl=desktop"
         ]);
       })
     ];
@@ -31,6 +32,10 @@
   programs.chromium = {
     enable = true;
     extensions = [
+      # Google scholar
+      "ldipcbpaocekfooobnbcddclnhejkcpn"
+      # atomic chrome
+      "lhaoghhllmiaaagaffababmkdllgfcmc"
       # hide twitter trends
       "lapmncfnibdclongbkleadoicnkhknia"
       # bitwarden
