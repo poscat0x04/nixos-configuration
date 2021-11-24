@@ -8,6 +8,7 @@
     ../konsole.nix
     ../mpv.nix
     ../grip.nix
+    ../code
   ];
 
   manual.html.enable = true;
