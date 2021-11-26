@@ -28,6 +28,12 @@ in {
             Endpoint = "${secrets.v2ray-server.address}:48927";
           };
         }
+        {
+          wireguardPeerConfig = {
+            PublicKey = constants.wg-public-keys.x1c-win;
+            AllowedIPs = [ "${wg-ipv4-prefix}4/32" ];
+          };
+        }
       ];
     };
     networks."90-wg0" = {
