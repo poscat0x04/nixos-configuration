@@ -9,6 +9,7 @@
     ../mpv.nix
     ../grip.nix
     ../code
+    ../neovim-qt.nix
   ];
 
   manual.html.enable = true;
