@@ -1,0 +1,15 @@
+snippet sn "snippet"
+snippet ${1:Trigger} "${2:Description}" ${3:Options}
+$4
+`!p snip.rv = 'endsnippet'`
+$0
+endsnippet
+
+snippet csn "custom context snippet" b
+context "${1:Expr}"
+snippet ${2:Trigger} "${3:Description}" ${4:Options}
+$5
+`!p snip.rv = 'endsnippet'`
+$0
+endsnippet
+

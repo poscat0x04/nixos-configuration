@@ -1,0 +1,38 @@
+context "math()"
+snippet iff "if and only if" Ai
+\iff
+endsnippet
+
+context "math()"
+snippet => "implies" Ai
+\implies
+endsnippet
+
+context "math()"
+snippet <= "implied by" Ai
+\impliedby
+endsnippet
+
+context "math()"
+snippet /= "not equals" Ai
+\neq
+endsnippet
+
+snippet surj "surjection (arrow)" i
+\twoheadrightarrow
+endsnippet
+
+snippet inj "injection (arrow)" i
+\hookrightarrow
+endsnippet
+
+
+# --------- Fractions --------------
+context "math()"
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet / "Fraction (visual)" i
+\\frac{${VISUAL}}{$1}$0
+endsnippet

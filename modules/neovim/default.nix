@@ -31,6 +31,13 @@
         \}
         let g:vimtex_view_method = 'zathura'
 
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+        let g:UltiSnipsSnippetDirectories = ["${./snippets}"]
+        let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = $HOME . "/Projects/Nix/nixos-configuration/modules/neovim/snippets"
+
         let g:lightline = {
           \ 'colorscheme': 'nord',
           \ }
@@ -121,10 +128,6 @@
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
         map <C-n> :NERDTreeToggle<CR>
 
-        let g:UltiSnipsExpandTrigger="<tab>"
-        let g:UltiSnipsJumpForwardTrigger="<tab>"
-        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
         let g:fcitx5_remote = "fcitx5-remote"
 
         let g:better_whitespace_enabled=1
@@ -162,5 +165,6 @@
       };
     };
   };
+
   environment.systemPackages = with pkgs; [ universal-ctags xdotool xclip ];
 }
