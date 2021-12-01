@@ -33,7 +33,7 @@ in
         let g:vimtex_compiler_latexmk = {
         \ 'build_dir': 'output',
         \ 'callback': 1,
-        \ 'continuous': 1,
+        \ 'continuous': 0,
         \ 'options' : [
         \   '-shell-escape',
         \   '-synctex=1',
@@ -44,6 +44,7 @@ in
         let g:vimtex_view_method = 'zathura'
         let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
 
+        let g:UltiSnipsEnableSnipMate = 0
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
