@@ -1,5 +1,17 @@
 { pkgs, ... }:
 
+let
+  vimtex-pr = pkgs.vimUtils.buildVimPlugin {
+    name = "vimtex-pr";
+    src = pkgs.fetchFromGitHub {
+      owner = "poscat0x04";
+      repo = "vimtex";
+      rev = "7304a4e146c952b8a5c2e2566d25adf1480debd3";
+      sha256 = "lguSzFkQsTsMEg5VG8hkRjsTGO3cvGh/BilS0lI8Oms=";
+      fetchSubmodules = true;
+    };
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -30,6 +42,7 @@
         \ ],
         \}
         let g:vimtex_view_method = 'zathura'
+        let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
 
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -138,7 +151,7 @@
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
-          vimtex
+          vimtex-pr
           LanguageClient-neovim
           dhall-vim
           nord-vim
