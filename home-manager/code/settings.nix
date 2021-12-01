@@ -207,4 +207,5 @@
   "workbench.colorTheme" = "Nord";
   "workbench.iconTheme" = "material-icon-theme";
   "workbench.list.smoothScrolling" = true;
+  "haskell.updateBehavior" = "never-check";
 }
