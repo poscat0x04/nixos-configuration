@@ -9,7 +9,7 @@
     ../modules/openssh.nix
     ../modules/ssh.nix
     ../modules/users.nix
-    ../modules/neovim.nix
+    ../modules/neovim
     ../modules/zsh
   ];
 
