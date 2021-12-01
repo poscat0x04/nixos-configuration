@@ -35,7 +35,6 @@ in
         \ 'callback': 1,
         \ 'continuous': 0,
         \ 'options' : [
-        \   '-shell-escape',
         \   '-synctex=1',
         \   '-file-line-error',
         \   '-interaction=nonstopmode',
@@ -43,6 +42,8 @@ in
         \}
         let g:vimtex_view_method = 'zathura'
         let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
+        autocmd BufWrite *.tex call vimtex#compiler#compile()
+        autocmd User VimtexEventCompileSuccess call vimtex#view#view()
 
         let g:UltiSnipsEnableSnipMate = 0
         let g:UltiSnipsExpandTrigger="<tab>"
@@ -112,7 +113,7 @@ in
                   args = {
                     "\"-y=defaultIndent: '  '\"",
                     "-l",
-                    "--curft=/tmp/"
+                    "--cruft=/tmp/"
                   },
                   stdin = true
                 }
@@ -174,6 +175,7 @@ in
           formatter-nvim
           ale
           vim-gutentags
+          fzf-vim
         ];
         opt = [ ];
       };
