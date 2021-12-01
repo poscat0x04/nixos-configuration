@@ -63,7 +63,8 @@
   (org-link-abbrev-alist '(("GitHub" . "https://github.com/")
                            ("GitLab" . "https://gitlab.com/")
                            ("Google" . "https://google.com/search?q=")
-                           ("RFCs"   . "https://tools.ietf.org/html/"))))
+                           ("RFCs"   . "https://tools.ietf.org/html/")
+                           ("ctan"   . "https://ctan.org/pkg/"))))
 
 ;; Write codes in org-mode
 (use-package org-src
