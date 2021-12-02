@@ -1,8 +1,13 @@
 { ... }:
 
 {
-  programs.zathura.options = {
-    synctex = true;
-    synctex-editor-command = "nvim +%{line} %{input}";
+  programs.zathura = {
+    enable = true;
+    options = {
+      database = "sqlite";
+      window-height = "2000";
+      window-width = "2400";
+      synctex = true;
+    };
   };
 }
