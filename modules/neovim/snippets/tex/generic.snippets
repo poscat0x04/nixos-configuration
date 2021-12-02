@@ -1,0 +1,56 @@
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+  $0
+\end{$1}
+endsnippet
+
+snippet enum "Enumerate environment" bA
+\begin{enumerate}
+  \item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize environment" bA
+\begin{itemize}
+  \item $0
+\end{itemize}
+endsnippet
+
+snippet desc "Description environment" bA
+\begin{description}
+  \item $0
+\end{description}
+endsnippet
+
+snippet ~~ "\sim (tilde)" iA
+\(\sim\)
+endsnippet
+
+snippet || "\mid (bar)" iA
+\(\mid\)
+endsnippet
+
+snippet optb "bracket options" i
+[%
+  $0
+]
+endsnippet
+
+snippet optc "curley bracket options" i
+{%
+  $0
+}
+endsnippet
+
+snippet nc "\newcommand" b
+\\newcommand\\$1{$2}$0
+endsnippet
+
+snippet rnc "\renewcommand" b
+\\renewcommand\\$1{$2}$0
+endsnippet
+
+snippet pc "\providecommand" b
+\\providecommand\\$1{$2}$0
+endsnippet
+

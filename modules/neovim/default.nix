@@ -42,7 +42,7 @@ in
         \}
         let g:vimtex_view_method = 'zathura'
         let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
-        autocmd BufWrite *.tex call vimtex#compiler#compile()
+        autocmd BufWritePost *.tex call vimtex#compiler#compile()
         autocmd User VimtexEventCompileSuccess call vimtex#view#view()
 
         let g:UltiSnipsEnableSnipMate = 0
@@ -50,7 +50,7 @@ in
         let g:UltiSnipsJumpForwardTrigger="<tab>"
         let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-        let g:UltiSnipsSnippetDirectories = ["${./snippets}"]
+        let g:UltiSnipsSnippetDirectories = [ "${./snippets}" ]
         let g:UltiSnipsSnippetStorageDirectoryForUltiSnipsEdit = $HOME . "/Projects/Nix/nixos-configuration/modules/neovim/snippets"
 
         let g:lightline = {
