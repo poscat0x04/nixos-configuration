@@ -3,7 +3,6 @@
 {
   xdg.configFile."nvim/ginit.vim".text = ''
     GuiFont monospace:h12
-    GuiScrollBar 1
     call GuiClipboard()
 
     nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
