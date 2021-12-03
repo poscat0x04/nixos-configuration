@@ -29,6 +29,7 @@ in
                 \})
 
         let g:tex_flavor = 'latex'
+        let g:vimtex_fold_enabled = 1
         let g:vimtex_compiler_method = 'latexmk'
         let g:vimtex_compiler_latexmk = {
         \ 'build_dir': 'output',
@@ -57,6 +58,9 @@ in
           \ 'colorscheme': 'nord',
           \ }
 
+        set conceallevel=2
+        set concealcursor=c
+
         set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab
         set mouse=a
         set nu
@@ -70,6 +74,8 @@ in
         set spelllang=en_us
         inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
+        inoremap <C-e> <Esc>$a
+
         syntax on
         let g:nord_cursor_line_number_background = 1
         let g:nord_uniform_diff_background = 1
@@ -80,8 +86,17 @@ in
         augroup nord-overrides
           autocmd!
           autocmd ColorScheme nord highlight Comment ctermfg=14
+          autocmd ColorScheme nord highlight Folded ctermfg=12 cterm=NONE guifg=#586885
+          autocmd ColorScheme nord highlight helpHyperTextJump guisp=#88C0D0
         augroup END
         colorscheme nord
+
+        function! SynStack()
+          if !exists("*synstack")
+            return
+          endif
+          echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endfunc
 
         let g:lastplace_ignore = "gitcommit"
         let g:lastplace_ignore_buftype = "quickfix,nofile,help"
@@ -112,6 +127,7 @@ in
                   exe = "latexindent",
                   args = {
                     "\"-y=defaultIndent: '  '\"",
+                    "-m",
                     "-l",
                     "--cruft=/tmp/"
                   },
