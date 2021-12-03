@@ -147,7 +147,7 @@ in
 
         let g:ale_disable_lsp = 1
         let g:ale_linters = {'tex': ['chktex'], 'nix': []}
-        let g:ale_tex_chktex_options = '-I -wall -n22 -n30 -e16 -n3'
+        let g:ale_tex_chktex_options = '-I -wall -n21 -n22 -n30 -e16 -n3'
 
         let g:gutentags_project_root = [ ".project" ]
         let g:gutentags_cache_dir = "~/.cache/gutentags"
