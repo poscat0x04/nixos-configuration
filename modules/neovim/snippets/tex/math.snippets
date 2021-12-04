@@ -15,7 +15,7 @@ endglobal
 # ---------- Environment -------------
 
 snippet mk "Inline math" wA
-\(${1}\)`!p
+\\(${1}\\)`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
   snip.rv = ' '
 else:
@@ -24,9 +24,9 @@ else:
 endsnippet
 
 snippet dm "Display math" wA
-\[
+\\[
   $1
-\]
+\\]
 $0
 endsnippet
 
@@ -34,30 +34,57 @@ endsnippet
 
 context "math()"
 snippet iff "if and only if" Ai
-\iff
+\\iff
 endsnippet
 
 context "math()"
 snippet => "implies" Ai
-\implies
+\\implies
 endsnippet
 
 context "math()"
 snippet <= "implied by" Ai
-\impliedby
+\\impliedby
+endsnippet
+
+context "math()"
+snippet forall "\forall expression" iA
+\\forall $1.\\ $0
+endsnippet
+
+context "math()"
+snippet exist "\exist expression" iA
+\\exist $1.\\ $0
+endsnippet
+
+context "math()"
+snippet := ":= (Defines)" iA
+\\coloneqq
 endsnippet
 
 context "math()"
 snippet /= "not equals" Ai
-\neq
+\\neq
+endsnippet
+
+context "math()"
+snippet -> "function type" iA
+\\rightarrow
+endsnippet
+
+snippet func "function with type annotation"
+\\begin{align*}
+  ${1:f} & : ${2:${3:\\mathbb{R}} \\rightarrow ${4:\\mathbb{R}}} \\\\
+  $1 & = \\lambda ${5:x}.\\ ${6:x}
+\\end{align*}
 endsnippet
 
 snippet surj "surjection (arrow)" i
-\twoheadrightarrow
+\\twoheadrightarrow
 endsnippet
 
 snippet inj "injection (arrow)" i
-\hookrightarrow
+\\hookrightarrow
 endsnippet
 
 
@@ -76,58 +103,88 @@ endsnippet
 
 context "math()"
 snippet bbq "\mathbb{Q}" iA
-\mathbb{Q}
+\\mathbb{Q}
 endsnippet
 
 context "math()"
 snippet bbr "\mathbb{R}" iA
-\mathbb{R}
+\\mathbb{R}
 endsnippet
 
 context "math()"
 snippet bbc "\mathbb{C}" iA
-\mathbb{C}
+\\mathbb{C}
+endsnippet
+
+context "math()"
+snippet bbf "\mathbb{F}" iA
+\\mathbb{F}
 endsnippet
 
 context "math()"
 snippet bbh "\mathbb{H}" iA
-\mathbb{H}
+\\mathbb{H}
 endsnippet
 
 context "math()"
 snippet bbo "\mathbb{H}" iA
-\mathbb{O}
-endsnippet
-
-context "math()"
-snippet mfrak "\mathfrak" iA
-\mathfrak{$1}$0
+\\mathbb{O}
 endsnippet
 
 context "math()"
 snippet mbb "\mathbb{H}" iA
-\mathbb{$1}$0
+\\mathbb{$1}$0
 endsnippet
 
 context "math()"
-snippet mrm "\mathrm{H}" iA
-\mathrm{$1}$0
+snippet mrm "\mathrm" iA
+\\mathrm{$1}$0
+endsnippet
+
+context "math()"
+snippet mfrak "\mathfrak" iA
+\\mathfrak{$1}$0
+endsnippet
+
+context "math()"
+snippet mscr "\mathscr" iA
+\\mathscr{$1}$0
+endsnippet
+
+context "math()"
+snippet mbf "\mathbf" iA
+\\mathbf{$1}$0
 endsnippet
 
 context "math()"
 snippet () "\left( \right)" i
-\left($1\right)$0
+\\left($1\\right)$0
+endsnippet
+
+context "math()"
+snippet [] "\left[ \right]" i
+\\left[$1\\right]$0
+endsnippet
+
+context "math()"
+snippet {} "\left{ \right}" i
+\\left{$1\\right}$0
 endsnippet
 
 # --------- Number Theory -------------
 
 context "math()"
 snippet gcd "Greatest common divisor" iA
-\\gcd\left($1, $2\right)$0
+\\gcd\\left($1, $2\\right)$0
 endsnippet
 
 context "math()"
 snippet lcm "Least common multiple" iA
-\\lcm\left($1, $2\right)$0
+\\lcm\\left($1, $2\\right)$0
+endsnippet
+
+context "math()"
+snippet || "| (divides)" iA
+\\mid
 endsnippet
 
