@@ -54,3 +54,14 @@ snippet pc "\providecommand" b
 \\providecommand\\$1{$2}$0
 endsnippet
 
+snippet ne "\newenvironment" b
+\\newenvironment{${1:env name}}$2
+  {${3:env start}}
+  {${4:env end}}$0
+endsnippet
+
+snippet rne "\newenvironment" b
+\\renewenvironment{${1:env name}}$2
+  {${3:env start}}
+  {${4:env end}}$0
+endsnippet

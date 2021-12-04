@@ -33,17 +33,17 @@ endsnippet
 # ---------- Logic Symbols -----------
 
 context "math()"
-snippet iff "if and only if" Ai
+snippet iff "⇔ (if and only if)" iA
 \\iff
 endsnippet
 
 context "math()"
-snippet => "implies" Ai
+snippet => "implies" iA
 \\implies
 endsnippet
 
 context "math()"
-snippet <= "implied by" Ai
+snippet <= "implied by" iA
 \\impliedby
 endsnippet
 
@@ -63,7 +63,12 @@ snippet := ":= (Defines)" iA
 endsnippet
 
 context "math()"
-snippet /= "not equals" Ai
+snippet == "≡ (Equivalence)" iA
+\\equiv
+endsnippet
+
+context "math()"
+snippet /= "not equals" iA
 \\neq
 endsnippet
 
@@ -74,7 +79,7 @@ endsnippet
 
 snippet func "function with type annotation"
 \\begin{align*}
-  ${1:f} & : ${2:${3:\\mathbb{R}} \\rightarrow ${4:\\mathbb{R}}} \\\\
+  ${1:f} & : ${2:${3:\\R} \\rightarrow ${4:\\R}} \\\\
   $1 & = \\lambda ${5:x}.\\ ${6:x}
 \\end{align*}
 endsnippet
@@ -103,22 +108,22 @@ endsnippet
 
 context "math()"
 snippet bbq "\mathbb{Q}" iA
-\\mathbb{Q}
+\\mathbb\{Q\}
 endsnippet
 
 context "math()"
 snippet bbr "\mathbb{R}" iA
-\\mathbb{R}
+\\mathbb\{R\}
 endsnippet
 
 context "math()"
 snippet bbc "\mathbb{C}" iA
-\\mathbb{C}
+\\mathbb\{C\}
 endsnippet
 
 context "math()"
 snippet bbf "\mathbb{F}" iA
-\\mathbb{F}
+\\mathbb\{F\}
 endsnippet
 
 context "math()"

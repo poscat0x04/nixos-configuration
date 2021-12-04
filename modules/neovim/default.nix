@@ -1,14 +1,13 @@
 { pkgs, ... }:
 
 let
-  vimtex-pr = pkgs.vimUtils.buildVimPlugin {
-    name = "vimtex-pr";
+  vimtex-master = pkgs.vimUtils.buildVimPlugin {
+    name = "vimtex-master";
     src = pkgs.fetchFromGitHub {
-      owner = "poscat0x04";
+      owner = "lervag";
       repo = "vimtex";
-      rev = "7304a4e146c952b8a5c2e2566d25adf1480debd3";
-      sha256 = "lguSzFkQsTsMEg5VG8hkRjsTGO3cvGh/BilS0lI8Oms=";
-      fetchSubmodules = true;
+      rev = "178e58a9d65f4e8cd0e646f0b1def0923e24c6f5";
+      sha256 = "JvEN9EavdF4JKxjIplRfmTS4mNSsE1vZOY7dmkrU+ec=";
     };
   };
 in
@@ -43,6 +42,24 @@ in
         \}
         let g:vimtex_view_method = 'zathura'
         let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
+        let g:vimtex_syntax_custom_cmds = [
+        \ {'name': 'WS',     'cmdre': '\ ', 'mathmode': 0, 'concealchar': ' '},
+        \ {'name': 'WS',     'cmdre': '\ ', 'mathmode': 1, 'concealchar': ' '},
+        \ {'name': 'LCBra',  'cmdre': '\{', 'mathmode': 1, 'concealchar': '{'},
+        \ {'name': 'RCBra',  'cmdre': '\}', 'mathmode': 1, 'concealchar': '}'},
+        \ {'name': 'LParen', 'cmdre': '\(', 'mathmode': 1, 'concealchar': '('},
+        \ {'name': 'RParen', 'cmdre': '\)', 'mathmode': 1, 'concealchar': ')'},
+        \ {'name': 'LBra',   'cmdre': '\[', 'mathmode': 1, 'concealchar': '['},
+        \ {'name': 'RBra',   'cmdre': '\]', 'mathmode': 1, 'concealchar': ']'},
+        \ {'name': 'N',                     'mathmode': 1, 'concealchar': 'ℕ'},
+        \ {'name': 'Z',                     'mathmode': 1, 'concealchar': 'ℤ'},
+        \ {'name': 'Q',                     'mathmode': 1, 'concealchar': 'ℚ'},
+        \ {'name': 'R',                     'mathmode': 1, 'concealchar': 'ℝ'},
+        \ {'name': 'C',                     'mathmode': 1, 'concealchar': 'ℂ'},
+        \ {'name': 'H',                     'mathmode': 1, 'concealchar': 'ℍ'},
+        \ {'name': 'O',                     'mathmode': 1, 'concealchar': '𝕆'},
+        \ {'name': 'F',                     'mathmode': 1, 'concealchar': '𝔽'},
+        \]
         autocmd BufWritePost *.tex call vimtex#compiler#compile()
         autocmd User VimtexEventCompileSuccess call vimtex#view#view()
 
@@ -176,7 +193,7 @@ in
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
-          vimtex-pr
+          vimtex-master
           LanguageClient-neovim
           dhall-vim
           nord-vim
