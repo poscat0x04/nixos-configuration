@@ -7,7 +7,7 @@
       defaultFonts = {
         sansSerif = lib.mkBefore [ "Microsoft YaHei" "Segoe UI" ];
         serif = lib.mkBefore [ "Cambria" ];
-        monospace = lib.mkBefore [ "Consolas" "Microsoft YaHei" ];
+        monospace = lib.mkBefore [ "Consolas" "DejaVu Sans" "Microsoft YaHei" ];
         emoji = lib.mkBefore [ "Blobmoji" "Noto Color Emoji" ];
       };
     };
