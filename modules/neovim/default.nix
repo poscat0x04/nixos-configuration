@@ -42,23 +42,36 @@ in
         \}
         let g:vimtex_view_method = 'zathura'
         let g:vimtex_callback_progpath = "/run/current-system/sw/bin/nvim"
+
+        augroup existsu_syntax_hack
+          au!
+          au User VimtexEventInitPost syntax match texMathCmdCExist /\v\\exists?/ contained conceal cchar=∃ contains=texMathCmdCExistUnique nextgroup=texMathCmdCExistUnique
+          au User VimtexEventInitPost highlight def link texMathCmdCExist texMathCmd
+          au User VimtexEventInitPost syntax cluster texClusterMath add=texMathCmdCExist
+          au User VimtexEventInitPost syntax match texMathCmdCExistUnique /\v(U|u)/ contained conceal cchar=!
+          au User VimtexEventInitPost highlight def link texMathCmdCExistUnique texMathCmd
+        augroup END
+
         let g:vimtex_syntax_custom_cmds = [
-        \ {'name': 'WS',     'cmdre': '\ ', 'mathmode': 0, 'concealchar': ' '},
-        \ {'name': 'WS',     'cmdre': '\ ', 'mathmode': 1, 'concealchar': ' '},
-        \ {'name': 'LCBra',  'cmdre': '\{', 'mathmode': 1, 'concealchar': '{'},
-        \ {'name': 'RCBra',  'cmdre': '\}', 'mathmode': 1, 'concealchar': '}'},
-        \ {'name': 'LParen', 'cmdre': '\(', 'mathmode': 1, 'concealchar': '('},
-        \ {'name': 'RParen', 'cmdre': '\)', 'mathmode': 1, 'concealchar': ')'},
-        \ {'name': 'LBra',   'cmdre': '\[', 'mathmode': 1, 'concealchar': '['},
-        \ {'name': 'RBra',   'cmdre': '\]', 'mathmode': 1, 'concealchar': ']'},
-        \ {'name': 'N',                     'mathmode': 1, 'concealchar': 'ℕ'},
-        \ {'name': 'Z',                     'mathmode': 1, 'concealchar': 'ℤ'},
-        \ {'name': 'Q',                     'mathmode': 1, 'concealchar': 'ℚ'},
-        \ {'name': 'R',                     'mathmode': 1, 'concealchar': 'ℝ'},
-        \ {'name': 'C',                     'mathmode': 1, 'concealchar': 'ℂ'},
-        \ {'name': 'H',                     'mathmode': 1, 'concealchar': 'ℍ'},
-        \ {'name': 'O',                     'mathmode': 1, 'concealchar': '𝕆'},
-        \ {'name': 'F',                     'mathmode': 1, 'concealchar': '𝔽'},
+        \ {'name': 'emph', 'mathmode': 0, 'conceal': 1, 'argstyle': 'bold'},
+        \ {'name': 'Emph', 'mathmode': 0, 'conceal': 1, 'argstyle': 'bold'},
+        \ {'name': 'N',                        'mathmode': 1, 'concealchar': 'ℕ'},
+        \ {'name': 'Z',                        'mathmode': 1, 'concealchar': 'ℤ'},
+        \ {'name': 'Q',                        'mathmode': 1, 'concealchar': 'ℚ'},
+        \ {'name': 'R',                        'mathmode': 1, 'concealchar': 'ℝ'},
+        \ {'name': 'C',                        'mathmode': 1, 'concealchar': 'ℂ'},
+        \ {'name': 'H',                        'mathmode': 1, 'concealchar': 'ℍ'},
+        \ {'name': 'O',                        'mathmode': 1, 'concealchar': '𝕆'},
+        \ {'name': 'F',                        'mathmode': 1, 'concealchar': '𝔽'},
+        \ {'name': 'WS',     'cmdre': '\ ',    'mathmode': 0, 'concealchar': ' '},
+        \ {'name': 'WS',     'cmdre': '\ ',    'mathmode': 1, 'concealchar': ' '},
+        \ {'name': 'LCBra',  'cmdre': '\{',    'mathmode': 1, 'concealchar': '{'},
+        \ {'name': 'RCBra',  'cmdre': '\}',    'mathmode': 1, 'concealchar': '}'},
+        \ {'name': 'LParen', 'cmdre': '\(',    'mathmode': 1, 'concealchar': '('},
+        \ {'name': 'RParen', 'cmdre': '\)',    'mathmode': 1, 'concealchar': ')'},
+        \ {'name': 'LBra',   'cmdre': '\[',    'mathmode': 1, 'concealchar': '['},
+        \ {'name': 'RBra',   'cmdre': '\]',    'mathmode': 1, 'concealchar': ']'},
+        \ {'name': 'LDotP',  'cmdre': 'ldotp', 'mathmode': 1, 'concealchar': '.'},
         \]
         autocmd BufWritePost *.tex call vimtex#compiler#compile()
         autocmd User VimtexEventCompileSuccess call vimtex#view#view()
@@ -172,6 +185,7 @@ in
         let g:ale_disable_lsp = 1
         let g:ale_linters = {'tex': ['chktex'], 'nix': []}
         let g:ale_tex_chktex_options = '-I -wall -n21 -n22 -n30 -e16 -n3'
+        let g:ale_virtualtext_cursor = 1
 
         let g:gutentags_project_root = [ ".project" ]
         let g:gutentags_cache_dir = "~/.cache/gutentags"

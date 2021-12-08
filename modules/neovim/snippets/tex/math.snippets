@@ -14,13 +14,8 @@ endglobal
 
 # ---------- Environment -------------
 
-snippet mk "Inline math" wA
-\\(${1}\\)`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-  snip.rv = ' '
-else:
-  snip.rv = ''
-`$2
+snippet mk "Inline math" iA
+\\($1\\)$0
 endsnippet
 
 snippet dm "Display math" wA
@@ -28,6 +23,24 @@ snippet dm "Display math" wA
   $1
 \\]
 $0
+endsnippet
+
+snippet def "\begin{definition} \end{definition}" bA
+\\begin{definition}{${1:Title}}{${2:Tag}}
+  $0
+\\end{definition}
+endsnippet
+
+snippet prop "\begin{proposition} \end{proposition}" bA
+\\begin{proposition}{${1:Title}}{${2:Tag}}
+  $0
+\\end{proposition}
+endsnippet
+
+snippet prf "\begin{myproof} \end{myproof}" bA
+\\begin{myproof}
+  $0
+\\end{myproof}
 endsnippet
 
 # ---------- Logic Symbols -----------
@@ -49,12 +62,17 @@ endsnippet
 
 context "math()"
 snippet forall "\forall expression" iA
-\\forall $1.\\ $0
+\\forall $1\\ldotp $2
 endsnippet
 
 context "math()"
-snippet exist "\exist expression" iA
-\\exist $1.\\ $0
+snippet exists "\exists expression" iA
+\\exists $1\\ldotp $2
+endsnippet
+
+context "math()"
+snippet exuni "exist unique expression" iA
+\\existsU $1\\ldotp $2
 endsnippet
 
 context "math()"
@@ -180,12 +198,12 @@ endsnippet
 
 context "math()"
 snippet gcd "Greatest common divisor" iA
-\\gcd\\left($1, $2\\right)$0
+\\gcd($1, $2)$0
 endsnippet
 
 context "math()"
 snippet lcm "Least common multiple" iA
-\\lcm\\left($1, $2\\right)$0
+\\lcm($1, $2)$0
 endsnippet
 
 context "math()"
