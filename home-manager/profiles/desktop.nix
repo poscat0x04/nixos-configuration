@@ -11,6 +11,7 @@
     ../code
     ../neovim-qt.nix
     ../zathura.nix
+    ../latex.nix
   ];
 
   manual.html.enable = true;

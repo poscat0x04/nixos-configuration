@@ -37,9 +37,9 @@ let
   latexmkrc = ''
     $pdf_mode = 5;
 
-    $compiling_cmd = "nvim --remote-expr 'vimtex#compiler#callback(2)'";
-    $success_cmd = "nvim --remote-expr 'vimtex#compiler#callback(1)'";
-    $failure_cmd = "nvim --remote-expr 'vimtex#compiler#callback(0)'";
+    $compiling_cmd = "nvim --remote-expr 'vimtex#compiler#callback(1)'";
+    $success_cmd = "nvim --remote-expr 'vimtex#compiler#callback(2)'";
+    $failure_cmd = "nvim --remote-expr 'vimtex#compiler#callback(3)'";
   '';
 in {
   home.file = {
