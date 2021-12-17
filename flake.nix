@@ -99,6 +99,11 @@
               ./machines/x1c
             ];
           };
+          x1c-hv = baseSystem {
+            modules = [
+              ./machines/x1c-hv
+            ];
+          };
           thinkcentre = baseSystem {
             modules = [
               ./machines/thinkcentre
