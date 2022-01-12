@@ -155,4 +155,6 @@ with secrets.v2ray-server;
       '';
     };
   };
+
+  systemd.services.v2ray.serviceConfig.Environment = "V2RAY_VMESS_AEAD_FORCED=false";
 }
