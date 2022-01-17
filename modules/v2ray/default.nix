@@ -159,8 +159,10 @@ with lib;
         ];
       };
       package = pkgs.v2ray.override {
-        assetOverrides = pkgs.extra-files.v2ray-rules-dat;
+        assets = with pkgs.extra-files.v2ray-rules-dat; [ geoip-dat geosite-dat ];
       };
     };
+
+    systemd.services.v2ray.serviceConfig.Slice = "system-special-noproxy.slice";
   };
 }

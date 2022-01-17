@@ -50,7 +50,7 @@ let
       chain filter_direct {
         ip daddr @ipv4_private accept
         ip daddr @cn_ip accept
-        #socket cgroupv2 level 2 "system.slice/v2ray.service" accept
+        #socket cgroupv2 level 3 "system.slice/system-special.slice/system-special-noproxy.slice" accept
         udp dport 443 accept
         meta mark {200, 255} accept
       }
@@ -71,8 +71,8 @@ in {
     systemd.services.nftables-tproxy = {
       description = "transpraent proxy using nftables";
       wantedBy = if cfg.enable then [ "multi-user.target" ] else [];
-      after = [ "nftables.service" ];
-      requires = [ "nftables.service" ];
+      after = [ "nftables.service" "system-special-noproxy.slice" ];
+      requires = [ "nftables.service" "system-special-noproxy.slice" ];
       reloadIfChanged = true;
       unitConfig.ReloadPropagatedFrom = [ "nftables.service" ];
       serviceConfig = {

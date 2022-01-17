@@ -7,7 +7,7 @@ with secrets.v2ray-server;
     v2ray = {
       enable = true;
       package = pkgs.v2ray.override {
-        assetOverrides = pkgs.extra-files.v2ray-rules-dat;
+        assets = with pkgs.extra-files.v2ray-rules-dat; [ geoip-dat geosite-dat ];
       };
       config = {
         log = {
