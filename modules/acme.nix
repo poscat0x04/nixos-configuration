@@ -16,7 +16,7 @@ let
   };
 in {
   security.acme = {
-    email = "poscat@poscat.moe";
+    defaults.email = "poscat@poscat.moe";
     acceptTerms = true;
     certs = {
       "poscat.moe" = poscat-moe;
