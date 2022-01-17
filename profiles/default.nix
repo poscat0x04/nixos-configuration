@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -18,7 +18,7 @@
     cleanTmpDir = true;
     supportedFilesystems = [ "ntfs" ];
     zfs.enableUnstable = false;
-    kernelPackages = pkgs.linuxPackages_5_14;
+    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     kernelParams = [
       "msr.allow_writes=on"
     ];
