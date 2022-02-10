@@ -3,9 +3,10 @@
 let
   theme = builtins.fromJSON (builtins.readFile "${pkgs.extra-files.nord-alacritty}");
   base_settings = {
-    window.startup_mode = "Maximized";
-
-    background_opacity = 0.85;
+    window = {
+      startup_mode = "Maximized";
+      opacity = 0.85;
+    };
 
     font = {
       normal.family = "Consolas";

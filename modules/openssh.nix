@@ -8,7 +8,7 @@ in
     enable = true;
     permitRootLogin = "no";
     passwordAuthentication = false;
-    challengeResponseAuthentication = false;
+    kbdInteractiveAuthentication = false;
     banner = ''
           _   ___      ____  _____
          / | / (_)  __/ __ \/ ___/

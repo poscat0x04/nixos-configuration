@@ -24,23 +24,26 @@ in
         flake-registry = ${flakesEmpty}
       '';
 
-      binaryCaches = lib.optional cfg.useMirror cfg.mirrorUrl ++ [
-        "https://nix-community.cachix.org"
-        "https://nix-repo.cachix.org"
-      ];
-
-      binaryCachePublicKeys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "nix-repo.cachix.org-1:npOkN9JTf5FvMkTRrvaDd3GvGVO1mBkNU8y6t5UQllk="
-      ];
-
       package = pkgs.nixUnstable;
-      useSandbox = true;
 
-      trustedUsers = [ "root" "@wheel" ];
+      settings = {
+        sandbox = true;
+
+        trusted-users = [ "root" "@wheel" ];
+
+        substituters = lib.optional cfg.useMirror cfg.mirrorUrl ++ [
+          "https://nix-community.cachix.org"
+          "https://nix-repo.cachix.org"
+        ];
+
+        trusted-public-keys = [
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          "nix-repo.cachix.org-1:npOkN9JTf5FvMkTRrvaDd3GvGVO1mBkNU8y6t5UQllk="
+        ];
+      };
 
       nixPath = [
-        "nixpkgs=${flakes.nixpkgs.path}"
+          "nixpkgs=${flakes.nixpkgs.path}"
       ];
 
       registry = {
