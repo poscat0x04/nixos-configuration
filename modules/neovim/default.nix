@@ -1,16 +1,5 @@
 { pkgs, ... }:
 
-let
-  vimtex-master = pkgs.vimUtils.buildVimPlugin {
-    name = "vimtex-master";
-    src = pkgs.fetchFromGitHub {
-      owner = "lervag";
-      repo = "vimtex";
-      rev = "178e58a9d65f4e8cd0e646f0b1def0923e24c6f5";
-      sha256 = "JvEN9EavdF4JKxjIplRfmTS4mNSsE1vZOY7dmkrU+ec=";
-    };
-  };
-in
 {
   programs.neovim = {
     enable = true;
@@ -207,7 +196,7 @@ in
       '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [
-          vimtex-master
+          vimtex
           LanguageClient-neovim
           dhall-vim
           nord-vim
