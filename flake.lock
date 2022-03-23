@@ -223,11 +223,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1638761166,
-        "narHash": "sha256-skixOTMBqKRI4MwPrks+FQkTddEDGIlFzi69Y+2vT2k=",
+        "lastModified": 1648003361,
+        "narHash": "sha256-9Z2u+GzHHcuTkBGVft8G5FEy+mFg3dqR0iNmHw0KFAM=",
         "owner": "poscat0x04",
         "repo": "thu-checkin",
-        "rev": "52a60dc7d4498e896ef7885e0b7eb839386d33f0",
+        "rev": "75b985466a43699e02f087d8e46ef1d23219005f",
         "type": "github"
       },
       "original": {

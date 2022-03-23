@@ -8,10 +8,9 @@
     config = {
       USERNAME = secrets.thu-username;
       PASSWORD = secrets.thu-password;
-      PROVINCE = "340000";
-      CITY = "340100";
-      COUNTRY = "340104";
-      IS_INSCHOOL = "4";
+      JUZHUDI = "合肥市内校外";
+      REASON = "3";
+      RETURN_COLLEGE = "东校区";
     };
   };
 }
