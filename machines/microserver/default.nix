@@ -24,6 +24,9 @@
     ./services/vaultwarden.nix
     ./services/thu-checkin.nix
     ./services/wireguard.nix
+    ./services/samba.nix
+    ./services/users.nix
+    #./services/minecraft.nix
     ./services/web
   ];
 

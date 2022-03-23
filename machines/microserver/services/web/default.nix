@@ -6,10 +6,4 @@ in {
   imports = [
     ./webdav.nix
   ];
-  users = {
-    users."${cfg.system.user}".extraGroups = [ "http" ];
-    groups = {
-      http = {};
-    };
-  };
 }

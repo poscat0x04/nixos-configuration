@@ -28,6 +28,21 @@
     fsType = "zfs";
   };
 
+  fileSystems."/var/lib/minecraft" = {
+    device = "mainpool/minecraft";
+    fsType = "zfs";
+  };
+
+  fileSystems."/shares/poscat" = {
+    device = "mainpool/storage/share/poscat";
+    fsType = "zfs";
+  };
+
+  fileSystems."/shares/timemachine" = {
+    device = "mainpool/storage/share/timemachine";
+    fsType = "zfs";
+  };
+
   fileSystems."/srv" = {
     device = "storage/data";
     fsType = "zfs";
