@@ -26,7 +26,6 @@
     ./services/wireguard.nix
     ./services/samba.nix
     ./services/users.nix
-    #./services/minecraft.nix
     ./services/web
   ];
 

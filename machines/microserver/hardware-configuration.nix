@@ -44,7 +44,7 @@
   };
 
   fileSystems."/srv" = {
-    device = "storage/data";
+    device = "mainpool/storage/web";
     fsType = "zfs";
   };
 
