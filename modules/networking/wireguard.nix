@@ -23,6 +23,7 @@ in {
             PublicKey = constants.wg-public-keys.microserver;
             AllowedIPs = [ "0.0.0.0/0" "::/0" ];
             Endpoint = "home.poscat.moe:48927";
+            RouteTable = false;
           };
         }
         {
