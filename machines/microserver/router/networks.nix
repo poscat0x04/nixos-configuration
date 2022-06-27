@@ -147,6 +147,7 @@
         };
         ipv6AcceptRAConfig = {
           DHCPv6Client = "always";
+          UseDNS = false;
         };
         routes = [
           {
