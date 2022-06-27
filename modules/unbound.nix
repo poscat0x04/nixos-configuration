@@ -70,7 +70,7 @@
             "fe80::/10"
           ];
         };
-        forward-zone = import pkgs.unbound-china-domain-list ++ [
+        forward-zone = import (pkgs.unbound-china-domain-list.override {servers = ["223.5.5.5" "223.6.6.6"];}) ++ [
           {
             name = ".";
             forward-addr = [
