@@ -31,7 +31,7 @@
 
   networking.hostId = "0edb8488";
 
-  networking.tproxy.enable = true;
+  networking.tproxy.enable = false;
 
   system.stateVersion = "21.11";
 }
