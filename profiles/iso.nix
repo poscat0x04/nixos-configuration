@@ -13,8 +13,6 @@
       "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     ];
 
-  boot.zfs.enableUnstable = true;
-
   console = {
     font = "ter-u28n";
     packages = [ pkgs.terminus_font ];
