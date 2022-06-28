@@ -20,6 +20,8 @@
       ttf-ms-win10
       sarasa-gothic
       roboto
+      libertine
+      stix-two
     ];
   };
 }
