@@ -4,6 +4,9 @@ global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
 
+def notmath():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '0'
+
 def comment():
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 
@@ -25,6 +28,7 @@ snippet dm "Display math" wA
 $0
 endsnippet
 
+context "notmath()"
 snippet def "\begin{definition} \end{definition}" bA
 \\begin{definition}{${1:Title}}{${2:Tag}}
   $0
@@ -77,7 +81,7 @@ endsnippet
 
 context "math()"
 snippet := ":= (Defines)" iA
-\\coloneqq
+\\colonequals
 endsnippet
 
 context "math()"
