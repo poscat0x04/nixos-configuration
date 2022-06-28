@@ -47,7 +47,7 @@
       ldns
       libarchive
       openssl
-      manpages
+      man-pages
       nixpkgs-fmt
       nix-index
       nix-prefetch-github

@@ -3,7 +3,7 @@ self: super:
 {
   customized-emacs =
     let
-      emacsPackages = self.emacsPackagesFor self.emacsGcc;
+      emacsPackages = self.emacsPackagesFor self.emacsNativeComp;
       inherit (emacsPackages) emacsWithPackages;
       extraPackages = epkgs: with epkgs.melpaPackages; [
         # init

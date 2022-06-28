@@ -11,7 +11,7 @@
     "iommu=pt"
   ];
 
-  environment.systemPackages = with pkgs; [ pcm config.boot.kernelPackages.intel-speed-select ];
+  environment.systemPackages = with pkgs; [ pcm ];
 
   hardware = {
     cpu.intel.updateMicrocode = true;

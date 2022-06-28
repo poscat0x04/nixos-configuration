@@ -19,7 +19,10 @@
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     hath-nix.url = github:poscat0x04/hath-nix;
-    nixos-emacs.url = github:nix-community/emacs-overlay;
+    nixos-emacs = {
+      url = github:nix-community/emacs-overlay;
+      inputs.nixpkgs.follows = "/nixpkgs";
+    };
     rust-overlay = {
       url = github:oxalica/rust-overlay;
       inputs.nixpkgs.follows = "/nixpkgs";
