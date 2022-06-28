@@ -26,4 +26,6 @@ in
   users.users."${uname}".openssh.authorizedKeys.keys = lib.mkAfter [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICatYs6qNpoIgNMDcGuJKNDfg3m7JWg3KHGL73rw2GCr openpgp:0x48271015"
   ];
+
+  systemd.services.sshd.serviceConfig.Slice = "system-special-noproxy.slice";
 }

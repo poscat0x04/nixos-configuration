@@ -32,9 +32,12 @@
   systemd.services.postgresql = {
     wants = [ "acme-finished-poscat.moe-wildcard.target" ];
     after = [ "acme-finished-poscat.moe-wildcard.target" ];
-    serviceConfig.LoadCredential = [
-      "cert.pem:/var/lib/acme/poscat.moe-wildcard/cert.pem"
-      "key.pem:/var/lib/acme/poscat.moe-wildcard/key.pem"
-    ];
+    serviceConfig = {
+      LoadCredential = [
+        "cert.pem:/var/lib/acme/poscat.moe-wildcard/cert.pem"
+        "key.pem:/var/lib/acme/poscat.moe-wildcard/key.pem"
+      ];
+      Slice = "system-special-noproxy.slice";
+    };
   };
 }

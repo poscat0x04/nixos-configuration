@@ -57,7 +57,10 @@
     };
   };
 
-  systemd.services.nginx.serviceConfig.LimitNOFILE = "100000";
+  systemd.services.nginx.serviceConfig = {
+    LimitNOFILE = "100000";
+    Slice = "system-special-noproxy.slice";
+  };
 
   users.users.nginx.extraGroups = [ "acme" ];
 }

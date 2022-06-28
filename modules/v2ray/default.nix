@@ -76,7 +76,6 @@ with lib;
             };
             streamSettings = {
               tproxy = "tproxy";
-              mark = 255;
             };
             sniffing = {
               enabled = true;

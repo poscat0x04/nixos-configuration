@@ -160,7 +160,7 @@
             ip daddr @ipv4_private accept
             ip daddr @cn_ip accept
             udp dport 443 accept
-            meta mark {200, 255} accept
+            socket cgroupv2 level 3 "system.slice/system-special.slice/system-special-noproxy.slice" accept
           }
         }
 
