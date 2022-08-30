@@ -28,13 +28,18 @@
     fsType = "zfs";
   };
 
-  fileSystems."/var/lib/minecraft" = {
-    device = "mainpool/minecraft";
+  fileSystems."/var/lib/znc" = {
+    device = "mainpool/znc";
     fsType = "zfs";
   };
 
   fileSystems."/shares/poscat" = {
     device = "mainpool/storage/share/poscat";
+    fsType = "zfs";
+  };
+
+  fileSystems."/shares/poscat/Torrents" = {
+    device = "mainpool/storage/torrents";
     fsType = "zfs";
   };
 
@@ -54,9 +59,6 @@
     };
 
   swapDevices = [
-    {
-      device = "/dev/disk/by-uuid/e04105ed-7230-4858-aec3-a3832392910b";
-    }
   ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

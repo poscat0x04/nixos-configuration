@@ -25,6 +25,7 @@
     ./services/thu-checkin.nix
     ./services/wireguard.nix
     ./services/samba.nix
+    ./services/transmission.nix
     ./services/znc.nix
     ./services/users.nix
     ./services/web
