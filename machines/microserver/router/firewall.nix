@@ -150,19 +150,20 @@
 
           chain proxy {
             jump filter_direct
-            ip protocol {tcp, udp} meta mark set 1 tproxy ip to 127.0.0.1:5768
+            ip protocol {tcp} meta mark set 1 tproxy to 127.0.0.1:5768
           }
 
           chain output {
             type route hook output priority mangle; policy accept;
             jump filter_direct
-            ip protocol {tcp, udp} meta mark set 1
+            ip protocol {tcp} meta mark set 1
           }
 
           chain filter_direct {
             ip daddr @ipv4_private accept
             ip daddr @cn_ip accept
-            udp dport 443 accept
+            ip protocol udp accept
+            meta mark {200, 255} accept
             socket cgroupv2 level 3 "system.slice/system-special.slice/system-special-noproxy.slice" accept
           }
         }

@@ -144,6 +144,7 @@
           RouteMetric = 10;
           WithoutRA= "solicit";
           PrefixDelegationHint = "::/60";
+          UseDNS = false;
         };
         ipv6AcceptRAConfig = {
           DHCPv6Client = "always";
