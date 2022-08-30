@@ -32,6 +32,7 @@ with lib;
               type = "field";
               domain = [
                 "geosite:apple-cn"
+                "geosite:apple"
                 "geosite:google-cn"
                 "geosite:category-games@cn"
                 "geosite:cn"
@@ -39,6 +40,16 @@ with lib;
                 "domain:dl.acm.org"
                 "domain:wiley.com"
                 "domain:sciencedirect.com"
+                "domain:hath.network"
+                "domain:hitomi.la"
+                "domain:kemono.party"
+                "domain:koushoku.org"
+                "domain:i3.nhentai.net"
+                "domain:pximg.net"
+                "domain:ustc.edu.cn"
+                "domain:rateyourmusic.com"
+                "domain:taobao.com"
+                "domain:sharepoint.com"
               ];
               outboundTag = "direct";
             }
@@ -76,6 +87,7 @@ with lib;
             };
             streamSettings = {
               tproxy = "tproxy";
+              mark = 255;
             };
             sniffing = {
               enabled = true;
