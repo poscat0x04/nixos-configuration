@@ -1,9 +1,11 @@
 { pkgs, ... }:
 
-{
+let
+  sambaPkg = pkgs.sambaFull.override { enableCephFS = false; };
+in {
   services.samba = {
     enable = true;
-    package = pkgs.sambaFull;
+    package = sambaPkg;
     extraConfig = ''
       min protocol = SMB2
       workgroup = WORKGROUP
@@ -57,5 +59,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ sambaFull ];
+  environment.systemPackages = with pkgs; [ sambaPkg ];
 }
