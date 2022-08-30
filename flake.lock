@@ -75,18 +75,26 @@
         "type": "github"
       }
     },
-    "flake-utils_5": {
+    "genshin-checkin": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1607173379,
-        "narHash": "sha256-wKwwwbdvYtm0bY6PaeCWO3k0+Bg+VohC56Vn7Z9ZX/U=",
+        "lastModified": 1659158697,
+        "narHash": "sha256-CXkjqzHiyNGtcO3Y5La+JKqPzbtlSVgsH846IXc5PCU=",
         "owner": "poscat0x04",
-        "repo": "flake-utils",
-        "rev": "1841839284bd33948154ccdf73f8712a01bfab64",
+        "repo": "genshin-checkin",
+        "rev": "04de9a0bb060637e0dbefc61260c620bd8aabdcc",
         "type": "github"
       },
       "original": {
         "owner": "poscat0x04",
-        "repo": "flake-utils",
+        "repo": "genshin-checkin",
         "type": "github"
       }
     },
@@ -153,11 +161,11 @@
     },
     "nix-secrets": {
       "locked": {
-        "lastModified": 1646491319,
-        "narHash": "sha256-Op54Q+A28sDg+Hx5cGRLFQmBdKP6/z1ZBmxhpulmMVQ=",
+        "lastModified": 1660135151,
+        "narHash": "sha256-6pcTVxpd7ROobnLW8k0ARfpNmVoh0pz0oUBBcMRwTZs=",
         "owner": "poscat0x04",
         "repo": "nix-secrets",
-        "rev": "d1160c90b9695eda53e1440aaac03540ae631f3a",
+        "rev": "6e3c5a164434b9f03475e613effbd1e7c2e21a9d",
         "type": "github"
       },
       "original": {
@@ -206,6 +214,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "genshin-checkin": "genshin-checkin",
         "hath-nix": "hath-nix",
         "home-manager": "home-manager",
         "nix-repo": "nix-repo",
@@ -239,7 +248,9 @@
     },
     "thu-checkin": {
       "inputs": {
-        "flake-utils": "flake-utils_5",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
