@@ -23,6 +23,16 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/machines/fedora-dev" = {
+    device = "mainpool/containers/fedora-dev";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var/lib/machines/arch-dev" = {
+    device = "mainpool/containers/arch-dev";
+    fsType = "zfs";
+  };
+
   fileSystems."/var/lib/postgresql" = {
     device = "mainpool/postgres";
     fsType = "zfs";

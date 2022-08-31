@@ -20,9 +20,10 @@
     ./router/routing.nix
     ./services/v2ray.nix
     ./services/ddns.nix
+    ./services/containers.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
-    ./services/thu-checkin.nix
+    #./services/thu-checkin.nix
     ./services/wireguard.nix
     ./services/samba.nix
     ./services/genshin-checkin.nix
