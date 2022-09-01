@@ -17,7 +17,6 @@ in
     ../modules/chromium.nix
     ../modules/firefox.nix
     ../modules/fonts.nix
-    ../modules/gnupg.nix
     ../modules/im.nix
     ../modules/lorri.nix
     ../modules/rust.nix
@@ -28,7 +27,6 @@ in
     ../modules/ios-tethering.nix
     ../modules/networking/firewall.nix
     ../hardware/profiles/wacom.nix
-    ../hardware/profiles/yubikey.nix
     ./default.nix
   ];
 

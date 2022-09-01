@@ -5,7 +5,6 @@
     ../direnv.nix
     ../haskell.nix
     ../git
-    ../gnupg.nix
     ../ssh.nix
   ];
 

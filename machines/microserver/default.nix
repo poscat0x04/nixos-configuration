@@ -9,7 +9,6 @@
     ../../modules/acme.nix
     ../../modules/avahi.nix
     ../../modules/v2ray
-    ../../modules/gnupg-server.nix
     ../../modules/vlmcsd.nix
     ../../modules/nginx.nix
     ../../modules/postgresql.nix

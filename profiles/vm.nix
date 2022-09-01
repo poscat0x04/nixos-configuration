@@ -12,7 +12,6 @@ in
   imports = [
     ../modules/agda.nix
     ../modules/fonts.nix
-    ../modules/gnupg.nix
     ../modules/im.nix
     ../modules/lorri.nix
     ../modules/rust.nix

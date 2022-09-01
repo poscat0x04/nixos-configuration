@@ -4,8 +4,6 @@
   imports =
     [
       ../hardware/profiles/linux.nix
-      ../hardware/profiles/yubikey.nix
-      ../modules/gnupg.nix
       ../modules/zsh
       ../modules/ssh.nix
       ../modules/nix.nix
