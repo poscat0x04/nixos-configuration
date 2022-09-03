@@ -10,7 +10,7 @@ in
     lfs.enable = true;
 
     # Use ssh key for signing
-    extraConfig.user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcup9tmRiPbk6wDMOlHLVtlluwbhDXvC7hgUaPnHusD";
+    extraConfig.user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcup9tmRiPbk6wDMOlHLVtlluwbhDXvC7hgUaPnHusD\n";
     extraConfig.commit.gpgSign = true;
     extraConfig.gpg = {
       format = "ssh";
