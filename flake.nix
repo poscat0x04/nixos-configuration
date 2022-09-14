@@ -22,7 +22,6 @@
     };
     nix-secrets = {
       url = github:poscat0x04/nix-secrets;
-      inputs.nixpkgs.follows = "/nixpkgs";
     };
     hath-nix.url = github:poscat0x04/hath-nix;
     nixos-emacs = {
@@ -52,7 +51,7 @@
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs rust-overlay thu-checkin genshin-checkin ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs thu-checkin genshin-checkin ] ++ [ rust-overlay.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
