@@ -23,13 +23,8 @@
       fsType = "zfs";
     };
 
-  fileSystems."/var/lib/machines/fedora-dev" = {
-    device = "mainpool/containers/fedora-dev";
-    fsType = "zfs";
-  };
-
-  fileSystems."/var/lib/machines/arch-dev" = {
-    device = "mainpool/containers/arch-dev";
+  fileSystems."/var/lib/machines/arch" = {
+    device = "mainpool/containers/arch";
     fsType = "zfs";
   };
 
@@ -68,8 +63,7 @@
       fsType = "vfat";
     };
 
-  swapDevices = [
-  ];
+  swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
