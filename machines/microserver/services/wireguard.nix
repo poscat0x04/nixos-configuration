@@ -40,6 +40,12 @@ in {
             AllowedIPs = [ "${wg-ipv4-prefix}5/32" ];
           };
         }
+        {
+          wireguardPeerConfig = {
+            PublicKey = constants.wg-public-keys.owrt;
+            AllowedIPs = [ "${wg-ipv4-prefix}6/32" ];
+          };
+        }
       ];
     };
     networks."90-wg0" = {
