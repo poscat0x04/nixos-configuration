@@ -6,6 +6,7 @@
     extraConfig = ''
       AddKeysToAgent yes
     '';
+    forwardAgent = true;
     matchBlocks = {
       bwh = {
         hostname = "64.64.228.47";
