@@ -26,6 +26,7 @@ let
     "rsync"
     "scp"
     "sftp"
+    "rg"
   ];
   disable-correction = modify-commands "nocorrect" disable-correction-commands;
   disable-globbing = modify-commands "noglob" disable-globbing-commands;
