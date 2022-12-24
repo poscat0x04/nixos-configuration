@@ -122,7 +122,7 @@ with lib;
             settings = {
               vnext = [
                 {
-                  inherit address;
+                  address = "2606:4700:3031::ac43:85c4";
                   port = 443;
                   users = [
                     {

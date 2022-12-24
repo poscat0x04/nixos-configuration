@@ -30,7 +30,7 @@ in {
           wireguardPeerConfig = {
             PublicKey = constants.wg-public-keys.bwh;
             AllowedIPs = [ "${wg-ipv4-prefix}3" "${wg-ipv6-prefix}3" ];
-            Endpoint = "${secrets.v2ray-server.address}:48927";
+            Endpoint = "64.64.228.47:48927";
           };
         }
       ];
