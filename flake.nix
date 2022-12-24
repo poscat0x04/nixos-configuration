@@ -32,6 +32,7 @@
       url = github:oxalica/rust-overlay;
       inputs.nixpkgs.follows = "/nixpkgs";
     };
+    vscode-server.url = github:msteen/nixos-vscode-server;
     flake-utils.url = github:poscat0x04/flake-utils;
   };
 

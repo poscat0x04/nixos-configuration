@@ -12,6 +12,7 @@
     ../../modules/vlmcsd.nix
     ../../modules/nginx.nix
     ../../modules/postgresql.nix
+    ../../modules/vscode-server.nix
     ./router/dhcp.nix
     ./router/dns.nix
     ./router/firewall.nix
