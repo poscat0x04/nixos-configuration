@@ -236,7 +236,6 @@
         "nixos-emacs": "nixos-emacs",
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay",
-        "thu-checkin": "thu-checkin",
         "vscode-server": "vscode-server"
       }
     },
@@ -258,29 +257,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "thu-checkin": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1648003361,
-        "narHash": "sha256-9Z2u+GzHHcuTkBGVft8G5FEy+mFg3dqR0iNmHw0KFAM=",
-        "owner": "poscat0x04",
-        "repo": "thu-checkin",
-        "rev": "75b985466a43699e02f087d8e46ef1d23219005f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "poscat0x04",
-        "repo": "thu-checkin",
         "type": "github"
       }
     },

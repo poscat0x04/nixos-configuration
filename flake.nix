@@ -10,11 +10,6 @@
       inputs.nixpkgs.follows = "/nixpkgs";
       inputs.rust-overlay.follows = "/rust-overlay";
     };
-    thu-checkin = {
-      url = github:poscat0x04/thu-checkin;
-      inputs.nixpkgs.follows = "/nixpkgs";
-      inputs.flake-utils.follows = "/flake-utils";
-    };
     genshin-checkin = {
       url = github:poscat0x04/genshin-checkin;
       inputs.nixpkgs.follows = "/nixpkgs";
@@ -45,14 +40,13 @@
     , nix-repo
     , hath-nix
     , nixos-emacs
-    , thu-checkin
     , genshin-checkin
     , rust-overlay
     , flake-utils
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs thu-checkin genshin-checkin ] ++ [ rust-overlay.overlays.default ];
+      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin ] ++ [ rust-overlay.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {

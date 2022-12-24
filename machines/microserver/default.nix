@@ -23,7 +23,6 @@
     ./services/containers.nix
     ./services/printing.nix
     ./services/vaultwarden.nix
-    #./services/thu-checkin.nix
     ./services/wireguard.nix
     ./services/samba.nix
     ./services/genshin-checkin.nix
