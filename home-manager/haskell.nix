@@ -9,8 +9,8 @@ in
 {
   home.file.".cabal/config".text = ''
     repository hackage.haskell.org
-      url: http://hackage.haskell.org/
-      -- secure: True
+      url: https://hackage.haskell.org/
+      secure: True
       -- root-keys:
       -- key-threshold: 3
 
