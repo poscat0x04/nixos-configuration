@@ -54,12 +54,13 @@
       nix-prefetch-scripts
       pass
       ripgrep
-      rnix-lsp
       tree
       unrar
       unzip
       zip
       zstd
+
+      nil
 
       wireguard-tools
 
