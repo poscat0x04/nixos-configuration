@@ -18,7 +18,6 @@
     ./router/firewall.nix
     ./router/networks.nix
     ./router/routing.nix
-    ./services/v2ray.nix
     ./services/ddns.nix
     ./services/containers.nix
     ./services/printing.nix

@@ -86,7 +86,7 @@
           MTUBytes = "1492";
         };
         networkConfig = {
-          DHCPv6PrefixDelegation = true;
+          DHCPPrefixDelegation = true;
         };
         addresses = [
           {
@@ -140,7 +140,7 @@
           KeepConfiguration = "static";
         };
         dhcpV6Config = {
-          ForceDHCPv6PDOtherInformation = true;
+          UseDelegatedPrefix = true;
           RouteMetric = 10;
           WithoutRA= "solicit";
           PrefixDelegationHint = "::/60";
@@ -150,6 +150,11 @@
           DHCPv6Client = "always";
           UseDNS = false;
         };
+        #dhcpPrefixDelegationConfig = {
+        #  UplinkInterface = ":self";
+        #  SubnetId = 1;
+        #  Announce = false;
+        #};
         routes = [
           {
             routeConfig = {
