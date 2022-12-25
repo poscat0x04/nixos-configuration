@@ -1,34 +1,34 @@
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.11;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     home-manager = {
-      url = github:nix-community/home-manager;
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     nix-repo = {
-      url = github:poscat0x04/nix-repo;
+      url = "github:poscat0x04/nix-repo";
       inputs.nixpkgs.follows = "/nixpkgs";
       inputs.rust-overlay.follows = "/rust-overlay";
     };
     genshin-checkin = {
-      url = github:poscat0x04/genshin-checkin;
+      url = "github:poscat0x04/genshin-checkin";
       inputs.nixpkgs.follows = "/nixpkgs";
       inputs.flake-utils.follows = "/flake-utils";
     };
     nix-secrets = {
-      url = github:poscat0x04/nix-secrets;
+      url = "github:poscat0x04/nix-secrets";
     };
-    hath-nix.url = github:poscat0x04/hath-nix;
+    hath-nix.url = "github:poscat0x04/hath-nix";
     nixos-emacs = {
-      url = github:nix-community/emacs-overlay;
+      url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "/nixpkgs";
     };
     rust-overlay = {
-      url = github:oxalica/rust-overlay;
+      url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "/nixpkgs";
     };
-    vscode-server.url = github:msteen/nixos-vscode-server;
-    flake-utils.url = github:poscat0x04/flake-utils;
+    vscode-server.url = "github:msteen/nixos-vscode-server";
+    flake-utils.url = "github:poscat0x04/flake-utils";
   };
 
 
