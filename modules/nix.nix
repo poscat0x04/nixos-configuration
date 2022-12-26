@@ -47,7 +47,7 @@ in
       ];
 
       registry = {
-        nixpkgs = {
+        nixpkgs = lib.mkForce {
           from = {
             id = "pkgs";
             type = "indirect";

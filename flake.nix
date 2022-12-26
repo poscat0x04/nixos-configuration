@@ -88,7 +88,7 @@
           ];
         });
         nixosConfigurations = {
-          c940 = baseSystem rec {
+          c940 = baseSystem {
             modules = [
               ./machines/c940
             ];
