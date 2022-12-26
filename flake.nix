@@ -118,6 +118,11 @@
               ./machines/bwh
             ];
           };
+          nuc = baseSystem {
+            modules = [
+              ./machines/nuc
+            ];
+          };
         };
 
       } // eachDefaultSystem (
