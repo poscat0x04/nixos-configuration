@@ -2,8 +2,6 @@
 
 {
   imports = [
-    ../direnv.nix
-    ../haskell.nix
     ../git
     ../ssh.nix
   ];
