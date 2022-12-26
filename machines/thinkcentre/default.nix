@@ -16,7 +16,7 @@
     system.user = "poscat";
     machine = {
       hostname = "thinkcentre";
-      undervolt = rec {
+      undervolt = {
         core = -140;
         gpu = -140;
       };

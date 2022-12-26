@@ -22,7 +22,7 @@
     system.user = "poscat";
     machine = {
       hostname = "t460p";
-      undervolt = rec {
+      undervolt = {
         core = -140;
         gpu = -140;
       };
