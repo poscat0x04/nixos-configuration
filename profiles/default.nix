@@ -20,7 +20,10 @@
     zfs.enableUnstable = false;
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     kernelParams = [
-      "msr.allow_writes=on"
+      # Trust RDRAND
+      "random.trust_cpu=on"
+      # Turn off CPU mitigations
+      "mitigations=off"
     ];
   };
 

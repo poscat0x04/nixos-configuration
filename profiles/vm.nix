@@ -27,10 +27,6 @@ in
     kernelParams = [
       # Silent boot
       "quiet"
-      # Trust RDRAND
-      "random.trust_cpu=on"
-      # Turn off CPU mitigations
-      "mitigations=off"
     ];
   };
 
