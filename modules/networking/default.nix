@@ -1,20 +1,29 @@
+# The network configuration shared by all machines
 { config, lib, pkgs, secrets, ... }:
 
 {
+  # Enable loose mode reverse filtering, that is, incoming packets will have their sources
+  # checked, if the source ip is unreachable from any interface, then it is dropped.
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.rp_filter" = 2;
   };
 
   networking = {
+    # Use the hostname configured in nixos.settings.machine
     hostName = config.nixos.settings.machine.hostname;
+    domain = "home.arpa";
+
+    # We use systemd-networkd solely to manage out networks
     useDHCP = false;
     useNetworkd = true;
-    resolvconf.useLocalResolver = false;
+
+    # Use NTSC's NTP service by default since most of my machines are located in China
     timeServers = [
       "ntp.ntsc.ac.cn"
     ];
   };
 
+  # Use systemd-resolved as a pure stub resolver
   services.resolved = {
     dnssec = lib.mkDefault "false";
     extraConfig = ''
@@ -23,10 +32,15 @@
     '';
   };
 
+  # Replace systemd-networkd-wait-online.service with a custom service
+  # that finishes starting as soon as one interface is up.
+  #
+  # Also blocks the starting of network-online.target
+  #
+  # TODO: support the ability to customize the interface to listen to.
   systemd.suppressedSystemUnits = [
     "systemd-networkd-wait-online.service"
   ];
-
   systemd.services."systemd-network-wait-online" = {
     description = "Wait for Network to be Configured";
     documentation = [ "man:systemd-networkd-wait-online.service(8)" ];
@@ -48,15 +62,24 @@
     };
   };
 
+  # A sane default configuration for systemd-networkd
+  #
+  # The rules are the following:
+  # 1. For interfaces whose names start with "tun" we ignore them
+  # 2. For ethernet and wireless interfaces, we run DHCP clients on them to try to obtain ip addresses
+  # 3. For any other interfaces, we simply bring them up
   systemd.network = {
     enable = true;
 
     networks = {
+      # Ignore TUN devices created by VPN software
       "10-tun" = {
         matchConfig.Name = "tun*";
         linkConfig.Unmanaged = true;
       };
 
+      # Always assume ethernet is untrustworthy
+      # By default ethernet networks have a higher route metric of 10
       "20-ethernet" = {
         matchConfig.Type = "ether";
 
@@ -82,11 +105,8 @@
         };
       };
 
-      "23-unmanage-ac1200" = {
-        matchConfig.Driver = "mt76x2u";
-        linkConfig.Unmanaged = true;
-      };
-
+      # Trusted wireless networks
+      # By default, wireless networks have a route metric of 20
       "24-tursted-wireless" = {
         matchConfig = {
           Type = "wlan";
@@ -104,7 +124,6 @@
 
         dhcpV6Config = {
           RouteMetric = 20;
-          UseDNS = true;
         };
 
         networkConfig = {
