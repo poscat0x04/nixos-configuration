@@ -66,6 +66,7 @@
         PoolSize = 200;
         DefaultLeaseTimeSec = "1d";
         MaxLeaseTimeSec = "7d";
+        DNS = "10.1.20.1";
       };
     };
 
