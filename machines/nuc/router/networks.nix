@@ -12,11 +12,11 @@
 
   systemd.network.networks = {
     "11-ignore-wan" = {
-      matchConfig.name = "enp2s3";
+      matchConfig.Name = "enp2s3";
     };
 
     "12-lan" = {
-      matchConfig.name = "enp2s4";
+      matchConfig.Name = "enp2s4";
 
       networkConfig = {
         DHCPPrefixDelegation = true;
@@ -31,7 +31,7 @@
     };
 
     "13-upstream" = {
-      matchConfig.name = "enp2s5";
+      matchConfig.Name = "enp2s5";
 
       DHCP = "yes";
       dhcpV4Config = {
