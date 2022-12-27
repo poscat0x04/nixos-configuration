@@ -18,9 +18,6 @@
     "12-lan" = {
       matchConfig.Name = "enp2s4";
 
-      networkConfig = {
-        DHCPPrefixDelegation = true;
-      };
       addresses = [
         {
           addressConfig = {
@@ -28,6 +25,11 @@
           };
         }
       ];
+
+      networkConfig = {
+        DHCPPrefixDelegation = true;
+        IPv6SendRA = true;
+      };
     };
 
     "13-upstream" = {
