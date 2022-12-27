@@ -30,6 +30,12 @@
         DHCPPrefixDelegation = true;
         IPv6SendRA = true;
       };
+
+      dhcpServerConfig = {
+        PoolSize = 200;
+        DefaultLeaseTimeSec = "1d";
+        MaxLeaseTimeSec = "7d";
+      };
     };
 
     "13-upstream" = {
