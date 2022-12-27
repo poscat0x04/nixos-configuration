@@ -7,6 +7,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ./router/networks.nix
+    ./router/dns.nix
   ];
 
   nixos.settings = {
