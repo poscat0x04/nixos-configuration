@@ -13,5 +13,10 @@
     machine.hostname = "nuc";
   };
 
+  virtualisation.vmware.guest = {
+    enable = true;
+    headless = true;
+  };
+
   system.stateVersion = "21.11";
 }
