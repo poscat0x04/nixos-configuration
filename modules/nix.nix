@@ -12,8 +12,11 @@ in
       default = true;
     };
     mirrorUrl = lib.mkOption {
-      type = lib.types.str;
-      default = "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store";
+      type = lib.types.listOf lib.types.str;
+      default = [
+        "https://mirror.sjtu.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      ];
     };
   };
   config = {
@@ -31,7 +34,7 @@ in
 
         trusted-users = [ "root" "@wheel" ];
 
-        substituters = lib.optional cfg.useMirror cfg.mirrorUrl ++ [
+        substituters = lib.optionals cfg.useMirror cfg.mirrorUrl ++ [
           "https://nix-community.cachix.org"
           "https://nix-repo.cachix.org"
         ];
