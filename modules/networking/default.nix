@@ -71,6 +71,11 @@
   systemd.network = {
     enable = true;
 
+    config.routeTables = {
+      cn = 25;
+      warp = 30;
+    };
+
     networks = {
       # Ignore TUN devices created by VPN software
       "10-tun" = {
