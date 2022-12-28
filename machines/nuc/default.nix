@@ -9,6 +9,7 @@
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
+    ./router/warp.nix
   ];
 
   nixos.settings = {
