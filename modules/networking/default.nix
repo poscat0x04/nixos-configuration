@@ -29,6 +29,7 @@
     extraConfig = ''
       MulticastDNS=no
       CacheFromLocalhost=no
+      DNSStubListener=no
     '';
   };
 
