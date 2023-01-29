@@ -101,5 +101,7 @@
     zfs.autoScrub.enable = lib.mkDefault true;
   };
 
+  programs.nix-ld.enable = true;
+
   time.timeZone = "Asia/Shanghai";
 }
