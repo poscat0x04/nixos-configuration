@@ -28,6 +28,53 @@
         "172.16.0.2/32"
         "2606:4700:110:88a9:c600:230:a4c0:54c8/128"
       ];
+      routes = [
+        {
+          routeConfig = {
+            Destination = "0.0.0.0/0";
+            Table = "warp";
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "::/0";
+            Table = "warp";
+          };
+        }
+      ];
+      routingPolicyRules = [
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 100;
+            Table = "main";
+            SuppressPrefixLength = 0;
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 101;
+            Table = "cn";
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 102;
+            Table = "others-direct";
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 103;
+            Table = "warp";
+            InvertRule = true;
+            FirewallMark = 1000;
+          };
+        }
+      ];
     };
   };
 }
