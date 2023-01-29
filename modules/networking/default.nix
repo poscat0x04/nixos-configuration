@@ -74,6 +74,8 @@
 
     config.routeTables = {
       cn = 25;
+      others-direct = 26;
+      symmetry = 27;
       warp = 30;
     };
 
