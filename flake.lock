@@ -134,6 +134,21 @@
         "type": "github"
       }
     },
+    "nix-filter": {
+      "locked": {
+        "lastModified": 1666547822,
+        "narHash": "sha256-razwnAybPHyoAyhkKCwXdxihIqJi1G6e1XP4FQOJTEs=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "1a3b735e13e90a8d2fd5629f2f8363bd7ffbbec7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
     "nix-repo": {
       "inputs": {
         "NUR": "NUR",
@@ -235,8 +250,33 @@
         "nix-secrets": "nix-secrets",
         "nixos-emacs": "nixos-emacs",
         "nixpkgs": "nixpkgs",
+        "routeupd": "routeupd",
         "rust-overlay": "rust-overlay",
         "vscode-server": "vscode-server"
+      }
+    },
+    "routeupd": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix-filter": "nix-filter",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675054184,
+        "narHash": "sha256-8zFBsmvmzp350oV+Y+u3LR4HSq8HLkKLVTYn9LpYBVo=",
+        "owner": "poscat0x04",
+        "repo": "routeupd",
+        "rev": "497d86345b4fa3426171473e87508ea9d7ece101",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "routeupd",
+        "type": "github"
       }
     },
     "rust-overlay": {

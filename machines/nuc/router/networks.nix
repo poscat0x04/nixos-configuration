@@ -1,6 +1,37 @@
 # Network configuration for NUC router VM
-{ secrets, ... }:
-{
+{ secrets, nixosModules, ... }:
+let
+  # This should cover all possible genshin (Asian) server IPs
+  alibaba-tokyo-ip = [
+    "47.74.0.0/18"
+    "47.74.32.0/19"
+    "47.91.0.0/19"
+    "47.91.16.0/20"
+    "47.245.0.0/18"
+    "47.245.32.0/19"
+    "47.245.48.0/20"
+    "8.209.192.0/18"
+    "8.209.224.0/19"
+    "8.211.128.0/18"
+  ];
+  # additional IP ranges that should not be proxied
+  more-direct = [
+    # quad101 dns
+    "101.101.101.101"
+    # dns666
+    "101.6.6.6"
+  ];
+  extra-route-config = map (ip: {
+    routeConfig = {
+      Destination = ip;
+      Table = "others-direct";
+    };
+  }) (alibaba-tokyo-ip ++ more-direct);
+in {
+  imports = [
+    nixosModules.routeupd
+  ];
+
   boot.kernelModules = [
     "ppp_generic"
     "tcp_bbr"
@@ -33,8 +64,15 @@
 
         defaultroute
       '';
-      autostart = false;
+      autostart = true;
     };
+  };
+
+  services.routeupd = {
+    enable = true;
+    interface = "ppp0";
+    table = 25;
+    dependency = "pppd-china_unicom.service";
   };
 
   networking.firewall.enable = false;
@@ -59,6 +97,7 @@
       networkConfig = {
         DHCPPrefixDelegation = true;
         IPv6SendRA = true;
+        IPv6AcceptRA = false;
         DHCPServer = true;
       };
 
@@ -67,6 +106,10 @@
         DefaultLeaseTimeSec = "1d";
         MaxLeaseTimeSec = "7d";
         DNS = "10.1.20.1";
+      };
+
+      linkConfig = {
+        RequiredForOnline = false;
       };
     };
 
@@ -113,11 +156,16 @@
         {
           routeConfig = {
             Destination = "0.0.0.0/0";
-            Type = "unicast";
             Metric = 5;
           };
         }
-      ];
+        {
+          routeConfig = {
+            Destination = "0.0.0.0/0";
+            Table = "symmetry";
+          };
+        }
+      ] ++ extra-route-config;
     };
   };
 }
