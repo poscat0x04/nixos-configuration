@@ -24,6 +24,9 @@
 
     networks."90-wg0" = {
       matchConfig.Name = "wg-warp0";
+      linkConfig = {
+        RequiredForOnline = false;
+      };
       address = [
         "172.16.0.2/32"
         "2606:4700:110:88a9:c600:230:a4c0:54c8/128"
