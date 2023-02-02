@@ -23,6 +23,7 @@
     nix-secrets = {
       url = "github:poscat0x04/nix-secrets";
     };
+    nixos-firewall-ng.url = "github:poscat0x04/nixos-firewall-ng";
     hath-nix.url = "github:poscat0x04/hath-nix";
     nixos-emacs = {
       url = "github:nix-community/emacs-overlay";

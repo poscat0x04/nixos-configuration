@@ -20,6 +20,8 @@ let
     "101.101.101.101"
     # dns666
     "101.6.6.6"
+    # kemono.party
+    "190.115.31.142"
   ];
   extra-route-config = map (ip: {
     routeConfig = {
