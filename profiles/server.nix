@@ -3,6 +3,7 @@
 {
   imports = [
     ./default.nix
+    ../modules/sops-nix.nix
   ];
 
   boot = {

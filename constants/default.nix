@@ -6,6 +6,7 @@
     x1c-win = "4lVFuuhzh2Ywx+Yj1JeCXDdl0+Ur9Hbsmqm49PoBtgU=";
     mba = "pWBN/L65AGXIBwWW2xm3nPBSI76KMBRlb8gnFVCO4Wg=";
     owrt = "rTj60RhIIfEKGqS2Y3N4UHuJjMyaRP1muUeUT/OF/hM=";
+    nuc = "U271RhqD16Nts2tSjWZefoNDTVrTG7Th2oovcl1nM0s=";
   };
   wg-ipv6-prefix = "fdce:5d3f:04ca:6eb1::";
   wg-ipv4-prefix = "10.1.11.";

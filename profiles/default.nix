@@ -63,6 +63,10 @@
       zip
       zstd
 
+      age
+      sops
+      ssh-to-age
+
       nil
 
       wireguard-tools

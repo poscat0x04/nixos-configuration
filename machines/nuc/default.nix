@@ -22,5 +22,9 @@
     headless = true;
   };
 
+  sops.secrets = {
+    wg-private-key = {};
+  };
+
   system.stateVersion = "22.11";
 }

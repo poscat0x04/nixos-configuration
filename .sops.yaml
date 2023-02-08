@@ -1,0 +1,10 @@
+keys:
+  - &admin age1zpuz0t9gssn7xj0eq5l0dt62z8vm0efwvhde3axtw0jse67sj9cq96hnck
+  - &nuc   age17gfnkryf5520k8q6fx9y73uqk3ph8g3y3nyr67gywkw0xfenqy7q58rtk8
+
+creation_rules:
+  - path_regex: ^secrets/nuc.yaml$
+    key_groups:
+      - age:
+        - *admin
+        - *nuc
