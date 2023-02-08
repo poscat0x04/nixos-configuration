@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   systemd.network = {
     netdevs."wg0" = {
@@ -7,7 +9,7 @@
       };
 
       wireguardConfig = {
-        PrivateKeyFile = /tmp/key;
+        PrivateKeyFile = config.sops.secrets.wg-private-key.path;
         FirewallMark = 1000;
       };
       wireguardPeers = [
@@ -29,7 +31,7 @@
       };
       address = [
         "172.16.0.2/32"
-        "2606:4700:110:88a9:c600:230:a4c0:54c8/128"
+        "2606:4700:110:857c:de77:ab8d:f751:28f8/128"
       ];
       routes = [
         {
@@ -80,4 +82,8 @@
       ];
     };
   };
+
+  systemd.services.systemd-networkd.serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+
+  sops.secrets.wg-private-key.owner = "systemd-network";
 }

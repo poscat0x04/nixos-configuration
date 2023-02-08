@@ -28,7 +28,7 @@
             interface = "wg-warp0";
             offload = true;
             nat.snatTarget = "172.16.0.2";
-            nat66.snatTarget = "2606:4700:110:88a9:c600:230:a4c0:54c8";
+            nat66.snatTarget = "2606:4700:110:857c:de77:ab8d:f751:28f8";
           };
         };
       };
