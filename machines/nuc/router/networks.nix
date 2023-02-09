@@ -146,9 +146,8 @@ in {
       dhcpV6Config = {
         UseDelegatedPrefix = true;
         RouteMetric = 5;
-        WithoutRA = "solicit";
-        PrefixDelegationHint = "::/60";
         UseDNS = false;
+        UseNTP = false;
       };
       ipv6AcceptRAConfig = {
         DHCPv6Client = "always";

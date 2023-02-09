@@ -184,4 +184,6 @@
       description = "Slice for services that should not be affected by transparent proxy";
     };
   };
+
+  # systemd.services.systemd-networkd.serviceConfig.Environment = [ "SYSTEMD_LOG_LEVEL=debug" ];
 }
