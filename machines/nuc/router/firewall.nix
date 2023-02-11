@@ -21,16 +21,6 @@
             nat.masquerade = true;
           };
         };
-        wg-warp0-rules = {
-          description = "Set up nftables rules (forwarding, filtering) when wg-warp0 is created";
-          deviceMode = {
-            enable = true;
-            interface = "wg-warp0";
-            offload = true;
-            nat.snatTarget = "172.16.0.2";
-            nat66.snatTarget = "2606:4700:110:857c:de77:ab8d:f751:28f8";
-          };
-        };
       };
     };
   };

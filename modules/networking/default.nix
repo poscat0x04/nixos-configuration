@@ -2,6 +2,7 @@
 { config, lib, networklib, pkgs, secrets, ... }:
 
 {
+  imports = [ ./warp.nix ];
 
   boot= {
     # Load bbr kernel module

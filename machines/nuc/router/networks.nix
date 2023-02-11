@@ -1,35 +1,7 @@
 # Network configuration for NUC router VM
 { secrets, nixosModules, networklib, ... }:
-let
-  # This should cover all possible genshin (Asian) server IPs
-  alibaba-tokyo-ip = [
-    "47.74.0.0/18"
-    "47.74.32.0/19"
-    "47.91.0.0/19"
-    "47.91.16.0/20"
-    "47.245.0.0/18"
-    "47.245.32.0/19"
-    "47.245.48.0/20"
-    "8.209.192.0/18"
-    "8.209.224.0/19"
-    "8.211.128.0/18"
-  ];
-  # additional IP ranges that should not be proxied
-  more-direct = [
-    # quad101 dns
-    "101.101.101.101"
-    # dns666
-    "101.6.6.6"
-    # kemono.party
-    "190.115.31.142"
-  ];
-  extra-route-config = map (ip: {
-    routeConfig = {
-      Destination = ip;
-      Table = "others-direct";
-    };
-  }) (alibaba-tokyo-ip ++ more-direct);
-in {
+
+{
   imports = [ nixosModules.routeupd ];
 
   # Enable IP forwarding
