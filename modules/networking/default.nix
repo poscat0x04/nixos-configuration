@@ -33,7 +33,7 @@
     ];
   };
 
-  # Use systemd-resolved as a pure stub resolver
+  # Use resolved only to manage /etc/resolv.conf
   services.resolved = {
     dnssec = lib.mkDefault "false";
     extraConfig = ''
