@@ -1,5 +1,5 @@
 # Network configuration for NUC router VM
-{ secrets, nixosModules, networklib, ... }:
+{ secrets, nixosModules, networklib, pkgs, ... }:
 
 {
   imports = [ nixosModules.routeupd ];
@@ -28,6 +28,14 @@
       '';
       autostart = true;
     };
+  };
+
+  environment.etc."ppp/ip-up" = {
+    mode = "0555";
+    text = ''
+      #!/bin/sh
+      ${pkgs.systemd}/bin/networkctl reconfigure $1
+    '';
   };
 
   services.routeupd = {
