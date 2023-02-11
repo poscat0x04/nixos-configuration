@@ -1,5 +1,5 @@
 # Network configuration for NUC router VM
-{ secrets, nixosModules, networklib, pkgs, ... }:
+{ secrets, nixosModules, networklib, ... }:
 
 {
   imports = [ nixosModules.routeupd ];
@@ -7,42 +7,17 @@
   # Enable IP forwarding
   networking.forward = true;
 
-  services.pppd = {
+  networking.pppoe = {
     enable = true;
-    peers.china_unicom = {
-      config = ''
-        plugin pppoe.so
-        ifname ppp0
-        nic-enp2s3
-
-        lcp-echo-failure 5
-        lcp-echo-interval 1
-        maxfail 1
-
-        mru 1492
-        mtu 1492
-
-        user ${secrets.pppoe.china_unicom.user}
-        password ${secrets.pppoe.china_unicom.password}
-
-      '';
-      autostart = true;
-    };
-  };
-
-  environment.etc."ppp/ip-up" = {
-    mode = "0555";
-    text = ''
-      #!/bin/sh
-      ${pkgs.systemd}/bin/networkctl reconfigure $1
-    '';
+    underlyingIF = "enp2s3";
+    user = secrets.pppoe.china_unicom.user;
+    password = secrets.pppoe.china_unicom.password;
   };
 
   services.routeupd = {
     enable = true;
     interface = "ppp0";
     table = 25;
-    dependency = "pppd-china_unicom.service";
   };
 
   systemd.network.networks = {

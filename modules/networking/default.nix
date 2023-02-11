@@ -2,7 +2,11 @@
 { config, lib, networklib, pkgs, secrets, ... }:
 
 {
-  imports = [ ./warp.nix ./ip-forward.nix ];
+  imports = [
+    ./warp.nix
+    ./ip-forward.nix
+    ./pppoe.nix
+  ];
 
   boot= {
     # Load bbr kernel module

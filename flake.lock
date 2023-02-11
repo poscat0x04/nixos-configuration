@@ -299,11 +299,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675054184,
-        "narHash": "sha256-8zFBsmvmzp350oV+Y+u3LR4HSq8HLkKLVTYn9LpYBVo=",
+        "lastModified": 1676118846,
+        "narHash": "sha256-J/TyVdaiEkVXub5Qo6SfxfZFKq3ZtsfAlmlDT6TEk5o=",
         "owner": "poscat0x04",
         "repo": "routeupd",
-        "rev": "497d86345b4fa3426171473e87508ea9d7ece101",
+        "rev": "e0d89ec4b7054e693ac03362d404155e1decd5e5",
         "type": "github"
       },
       "original": {
