@@ -1,11 +1,20 @@
 # The network configuration shared by all machines
-{ config, lib, pkgs, secrets, ... }:
+{ config, lib, networklib, pkgs, secrets, ... }:
 
 {
-  # Enable loose mode reverse filtering, that is, incoming packets will have their sources
-  # checked, if the source ip is unreachable from any interface, then it is dropped.
-  boot.kernel.sysctl = {
-    "net.ipv4.conf.all.rp_filter" = 2;
+
+  boot= {
+    # Load bbr kernel module
+    kernelModules = [ "tcp_bbr" ];
+    kernel.sysctl = {
+      # Enable loose mode reverse filtering, that is, incoming packets will have their sources
+      # checked, if the source ip is unreachable from any interface, then it is dropped.
+      "net.ipv4.conf.all.rp_filter" = 2;
+      # Always enable dynamic address suport
+      "net.ipv4.ip_dynaddr" = "1";
+      # Always use bbr for congestion control
+      "net.ipv4.tcp_congestion_control" = "bbr";
+    };
   };
 
   networking = {
@@ -88,87 +97,27 @@
 
       # Always assume ethernet is untrustworthy
       # By default ethernet networks have a higher route metric of 10
-      "20-ethernet" = {
+      "20-ethernet" = networklib.makeUntrustedDHCPConfig {metric = 10;} // {
         matchConfig.Type = "ether";
-
-        DHCP = "yes";
-        dns = [
-          "127.0.0.1:53"
-        ];
-
-        dhcpV4Config = {
-          RouteMetric = 10;
-          UseDNS = false;
-          UseMTU = true;
-        };
-
-        dhcpV6Config = {
-          RouteMetric = 10;
-          UseDNS = false;
-          UseNTP = false;
-        };
-
-        ipv6AcceptRAConfig = {
-          UseDNS = false;
-        };
       };
 
       # Trusted wireless networks
       # By default, wireless networks have a route metric of 20
-      "24-tursted-wireless" = {
+      "24-tursted-wireless" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
         matchConfig = {
           Type = "wlan";
           SSID = builtins.concatStringsSep " " secrets.trusted-wireless-networks;
         };
-
-        DHCP = "yes";
-
-        dhcpV4Config = {
-          RouteMetric = 20;
-          UseDNS = true;
-          UseMTU = true;
-          UseDomains = true;
-        };
-
-        dhcpV6Config = {
-          RouteMetric = 20;
-        };
-
-        networkConfig = {
-          IPv6AcceptRA = true;
-          IPv6PrivacyExtensions = "prefer-public";
-        };
       };
 
-      "25-wireless" = {
+      "25-wireless" = networklib.makeUntrustedDHCPConfig {metric = 20;} // {
         matchConfig.Type = "wlan";
-
-        dns = [
-          "127.0.0.1:53"
-        ];
-        DHCP = "ipv4";
-
-        dhcpV4Config = {
-          RouteMetric = 20;
-          UseDNS = false;
-          UseNTP = false;
-          UseMTU = true;
-        };
-
-        dhcpV6Config = {
-          RouteMetric = 20;
-          UseDNS = false;
-          UseNTP = false;
-        };
-
-        networkConfig = {
-          IPv6AcceptRA = false;
-        };
       };
 
       # Brings up the rest interfaces
       "99-fallback" = {
         matchConfig.Name = "!lo";
+        linkConfig.RequiredForOnline = false;
       };
     };
   };
@@ -185,5 +134,5 @@
     };
   };
 
-  # systemd.services.systemd-networkd.serviceConfig.Environment = [ "SYSTEMD_LOG_LEVEL=debug" ];
+  systemd.services.systemd-networkd.serviceConfig.Environment = [ "SYSTEMD_LOG_LEVEL=debug" ];
 }

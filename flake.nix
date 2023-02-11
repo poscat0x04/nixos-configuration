@@ -78,6 +78,7 @@
                     }
                 );
               constants = import ./constants;
+              networklib = import ./networklib;
               nixosModules = foldl recursiveUpdate {} (map (flake: flake.nixosModules or {}) (attrValues flakes));
             };
 

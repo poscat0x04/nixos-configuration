@@ -1,5 +1,5 @@
 # Network configuration for NUC router VM
-{ secrets, nixosModules, ... }:
+{ secrets, nixosModules, networklib, ... }:
 let
   # This should cover all possible genshin (Asian) server IPs
   alibaba-tokyo-ip = [
@@ -30,18 +30,10 @@ let
     };
   }) (alibaba-tokyo-ip ++ more-direct);
 in {
-  imports = [
-    nixosModules.routeupd
-  ];
+  imports = [ nixosModules.routeupd ];
 
-  boot.kernelModules = [
-    "ppp_generic"
-    "tcp_bbr"
-  ];
-
+  # Enable IP forwarding
   boot.kernel.sysctl = {
-    "net.ipv4.ip_dynaddr" = "1";
-    "net.ipv4.tcp_congestion_control" = "bbr";
     "net.ipv4.ip_forward" = true;
     "net.ipv6.conf.all.forwarding" = true;
   };
@@ -64,7 +56,6 @@ in {
         user ${secrets.pppoe.china_unicom.user}
         password ${secrets.pppoe.china_unicom.password}
 
-        defaultroute
       '';
       autostart = true;
     };
@@ -77,96 +68,18 @@ in {
     dependency = "pppd-china_unicom.service";
   };
 
-  networking.firewall.enable = false;
-
   systemd.network.networks = {
-    "11-ignore-wan" = {
-      matchConfig.Name = "enp2s3";
-      networkConfig.LinkLocalAddressing = "no";
+    "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s3";};
+
+    "12-lan" = networklib.makeLanConfig {
+      ifname = "enp2s4";
+      addr = "10.1.20.1";
     };
 
-    "12-lan" = {
-      matchConfig.Name = "enp2s4";
-
-      addresses = [
-        {
-          addressConfig = {
-            Address = "10.1.20.1/24";
-          };
-        }
-      ];
-
-      networkConfig = {
-        DHCPPrefixDelegation = true;
-        IPv6SendRA = true;
-        IPv6AcceptRA = false;
-        DHCPServer = true;
-      };
-
-      dhcpServerConfig = {
-        PoolSize = 200;
-        DefaultLeaseTimeSec = "1d";
-        MaxLeaseTimeSec = "7d";
-        DNS = "10.1.20.1";
-      };
-
-      linkConfig = {
-        RequiredForOnline = false;
-      };
-    };
-
-    "13-upstream" = {
+    "13-upstream" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
       matchConfig.Name = "enp2s5";
-
-      DHCP = "yes";
-      dhcpV4Config = {
-        RouteMetric = 20;
-        UseDNS = true;
-        UseMTU = true;
-        UseDomains = true;
-      };
-      dhcpV6Config = {
-        RouteMetric = 20;
-      };
-
-      networkConfig = {
-        IPv6AcceptRA = true;
-        IPv6PrivacyExtensions = "prefer-public";
-      };
     };
 
-    "14-ppp" = {
-      matchConfig.Type = "ppp";
-      DHCP = "ipv6";
-      dns = [ "127.0.0.1:53" ];
-      networkConfig = {
-        IPv6AcceptRA = true;
-        KeepConfiguration = "static";
-      };
-      dhcpV6Config = {
-        UseDelegatedPrefix = true;
-        RouteMetric = 5;
-        UseDNS = false;
-        UseNTP = false;
-      };
-      ipv6AcceptRAConfig = {
-        DHCPv6Client = "always";
-        UseDNS = false;
-      };
-      routes = [
-        {
-          routeConfig = {
-            Destination = "0.0.0.0/0";
-            Metric = 5;
-          };
-        }
-        {
-          routeConfig = {
-            Destination = "0.0.0.0/0";
-            Table = "symmetry";
-          };
-        }
-      ] ++ extra-route-config;
-    };
+    "14-ppp" = networklib.makePPPConfig {metric = 5;};
   };
 }
