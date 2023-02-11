@@ -64,7 +64,7 @@ in {
         ];
       };
 
-      networks."90-wg-warp0" = {
+      networks."95-wg-warp0" = {
         matchConfig = {
           Name = "wg-warp0";
           Type = "wireguard";
