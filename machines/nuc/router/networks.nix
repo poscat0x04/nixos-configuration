@@ -5,10 +5,7 @@
   imports = [ nixosModules.routeupd ];
 
   # Enable IP forwarding
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = true;
-    "net.ipv6.conf.all.forwarding" = true;
-  };
+  networking.forward = true;
 
   services.pppd = {
     enable = true;
