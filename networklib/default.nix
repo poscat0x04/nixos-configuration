@@ -72,6 +72,7 @@ rec {
 
     # DHCPv4 server config
     dhcpServerConfig = {
+      BindToInterface = true;
       PoolSize = poolSize;
       DefaultLeaseTimeSec = "1d";
       MaxLeaseTimeSec = "7d";
