@@ -16,7 +16,7 @@ in {
 
     server = mkOption {
       type = types.str;
-      default = "162.159.192.204";
+      default = "162.159.192.24";
     };
 
     port = mkOption {
