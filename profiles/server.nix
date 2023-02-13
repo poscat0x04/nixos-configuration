@@ -1,10 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ./default.nix
-    ../modules/sops-nix.nix
-  ];
+  imports = [ ./default.nix ];
 
   boot = {
     consoleLogLevel = 4;
