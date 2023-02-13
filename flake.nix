@@ -100,41 +100,14 @@
           ];
         });
         nixosConfigurations = {
-          t460p = baseSystem {
-            modules = [
-              ./machines/t460p
-            ];
-          };
-          x1c = baseSystem {
-            modules = [
-              ./machines/x1c
-            ];
-          };
-          x1c-hv = baseSystem {
-            modules = [
-              ./machines/x1c-hv
-            ];
-          };
-          thinkcentre = baseSystem {
-            modules = [
-              ./machines/thinkcentre
-            ];
-          };
-          microserver = baseSystem {
-            modules = [
-              ./machines/microserver
-            ];
-          };
-          bwh = baseSystem {
-            modules = [
-              ./machines/bwh
-            ];
-          };
-          nuc = baseSystem {
-            modules = [
-              ./machines/nuc
-            ];
-          };
+          t460p       = baseSystem { modules = [ ./machines/t460p ]; };
+          x1c         = baseSystem { modules = [ ./machines/x1c ]; };
+          x1c-hv      = baseSystem { modules = [ ./machines/x1c-hv ]; };
+          thinkcentre = baseSystem { modules = [ ./machines/thinkcentre ]; };
+          microserver = baseSystem { modules = [ ./machines/microserver ]; };
+          bwh         = baseSystem { modules = [ ./machines/bwh ]; };
+          nuc         = baseSystem { modules = [ ./machines/nuc ]; };
+          titan       = baseSystem { modules = [ ./machines/titan ]; };
         };
 
       } // eachDefaultSystem (
