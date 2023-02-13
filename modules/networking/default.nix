@@ -3,7 +3,6 @@
 
 {
   imports = [
-    ./warp.nix
     ./ip-forward.nix
     ./pppoe.nix
   ];

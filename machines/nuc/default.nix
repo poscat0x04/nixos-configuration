@@ -6,6 +6,7 @@
     ../../profiles/server.nix
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
+    ../../modules/networking/warp.nix
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
