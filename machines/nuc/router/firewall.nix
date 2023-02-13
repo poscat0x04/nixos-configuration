@@ -1,7 +1,6 @@
 { ... }:
-{
-  imports = [ ../../../modules/networking/firewall.nix ];
 
+{
   networking = {
     firewall = {
       trustedInterfaces = [ "ens36" "ens37" ];

@@ -5,6 +5,7 @@
   imports = [
     ./ip-forward.nix
     ./pppoe.nix
+    ./firewall.nix
   ];
 
   boot= {
