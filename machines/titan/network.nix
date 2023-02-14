@@ -31,6 +31,8 @@
     "13-upstream" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
       matchConfig.Name = "enp2s3";
     };
+
+    "14-ppp" = networklib.makePPPConfig {metric = 5;};
   };
 
   networking = {
