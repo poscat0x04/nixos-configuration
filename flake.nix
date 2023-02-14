@@ -108,6 +108,7 @@
           bwh         = baseSystem { modules = [ ./machines/bwh ]; };
           nuc         = baseSystem { modules = [ ./machines/nuc ]; };
           titan       = baseSystem { modules = [ ./machines/titan ]; };
+          hyperion    = baseSystem { modules = [ ./machines/hyperion ]; };
         };
 
       } // eachDefaultSystem (
