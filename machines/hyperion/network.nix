@@ -13,9 +13,8 @@
   systemd.network.networks = {
     "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s1";};
 
-    "12-lan" = networklib.makeLanConfig {
-      ifname = "enp2s2";
-      addr = "10.1.10.1";
+    "12-lan" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
+      matchConfig.Name = "enp2s2";
     };
 
     "13-ppp" = networklib.makePPPConfig {metric = 5;};
