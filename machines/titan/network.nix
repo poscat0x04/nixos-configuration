@@ -1,9 +1,7 @@
 { secrets, networklib, nixosModules, ... }:
 
 {
-  imports = [
-    nixosModules.routeupd
-  ];
+  imports = [ nixosModules.routeupd ];
 
   networking.forward = true;
 
@@ -11,7 +9,7 @@
 
   networking.pppoe = {
     enable = true;
-    underlyingIF = "enp2s2";
+    underlyingIF = "enp2s1";
     user = secrets.pppoe.china_unicom.user;
     password = secrets.pppoe.china_unicom.password;
   };
@@ -23,25 +21,25 @@
   };
 
   systemd.network.networks = {
-    "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s2";};
+    "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s1";};
 
     "12-lan" = networklib.makeLanConfig {
-      ifname = "enp2s3";
+      ifname = "enp2s2";
       addr = "10.1.10.1";
     };
 
     "13-upstream" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
-      matchConfig.Name = "enp2s4";
+      matchConfig.Name = "enp2s3";
     };
   };
 
   networking = {
     firewall = {
-      trustedInterfaces = [ "ens35" "ens36" ];
+      trustedInterfaces = [ "ens34" "ens35" ];
       logRefusedConnections = false;
     };
     fwng = {
-      flowtable.devices = [ "ens35" "ens36" ];
+      flowtable.devices = [ "ens34" "ens35" ];
       nat.enable = true;
       nat66.enable = true;
       nftables-service = {
