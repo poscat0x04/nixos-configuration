@@ -1,4 +1,4 @@
-{ config, flakes, ... }:
+{ config, nixosModules, ... }:
 
 let
   machine = config.nixos.settings.machine.hostname;

@@ -2,16 +2,40 @@
   "nodes": {
     "NUR": {
       "locked": {
-        "lastModified": 1675812476,
-        "narHash": "sha256-TPa1y3ljjMVIgRlHr7hyoXZr3bP6sJLr9LSDxKU3DWQ=",
+        "lastModified": 1676597347,
+        "narHash": "sha256-jSgx0yNPajW4JddkbPxrUUPKM/H+Is4DjnrZEUKBk8o=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8f76860148b8df4f9a024082e21234b44ae7d386",
+        "rev": "872cfba641b00bdc0b3db0607b81d971f94a5dbd",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "NUR",
+        "type": "github"
+      }
+    },
+    "cloudflare-ddns": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix-filter": "nix-filter",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1676646143,
+        "narHash": "sha256-ddMvpqFbx/aMRAsBQRe/TbW5RYjjm6tk4usbt2oUVcQ=",
+        "owner": "poscat0x04",
+        "repo": "cloudflare-ddns-rs",
+        "rev": "698b52133c564e22b1e3d6a5665dc2f120038390",
+        "type": "github"
+      },
+      "original": {
+        "owner": "poscat0x04",
+        "repo": "cloudflare-ddns-rs",
         "type": "github"
       }
     },
@@ -136,6 +160,21 @@
     },
     "nix-filter": {
       "locked": {
+        "lastModified": 1676294984,
+        "narHash": "sha256-hdLUa/3RH1VJ+gMUysQE0JGM4F2Q/tIIFbtoxAOurJQ=",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "fc282c5478e4141842f9644c239a41cfe9586732",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "type": "github"
+      }
+    },
+    "nix-filter_2": {
+      "locked": {
         "lastModified": 1666547822,
         "narHash": "sha256-razwnAybPHyoAyhkKCwXdxihIqJi1G6e1XP4FQOJTEs=",
         "owner": "numtide",
@@ -161,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675851776,
-        "narHash": "sha256-++L4aZLdDsN22dowxxRg/v/2tX17tfoKfDr0aqLpU7E=",
+        "lastModified": 1676642005,
+        "narHash": "sha256-OtMb2Hk/guI4B1qGZCizfhsYolWBsthVYS2kzUe8Wqg=",
         "owner": "poscat0x04",
         "repo": "nix-repo",
-        "rev": "ad2b93c5e17be516a296530d949cba923d0907c1",
+        "rev": "e948e92110dd74bfcd738fece8977b60fa7546ff",
         "type": "github"
       },
       "original": {
@@ -273,6 +312,7 @@
     },
     "root": {
       "inputs": {
+        "cloudflare-ddns": "cloudflare-ddns",
         "flake-utils": "flake-utils",
         "genshin-checkin": "genshin-checkin",
         "hath-nix": "hath-nix",
@@ -293,7 +333,7 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "nix-filter": "nix-filter",
+        "nix-filter": "nix-filter_2",
         "nixpkgs": [
           "nixpkgs"
         ]

@@ -20,6 +20,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    cloudflare-ddns = {
+      url = "github:poscat0x04/cloudflare-ddns-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,12 +57,14 @@
     , nixos-emacs
     , genshin-checkin
     , routeupd
+    , cloudflare-ddns
     , rust-overlay
     , flake-utils
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
-      overlays = map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin routeupd ] ++ [ rust-overlay.overlays.default ];
+      overlays =
+        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {

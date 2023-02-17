@@ -1,7 +1,10 @@
-{ secrets, networklib, nixosModules, ... }:
+{ config, secrets, networklib, nixosModules, ... }:
 
 {
-  imports = [ nixosModules.routeupd ];
+  imports = [
+    nixosModules.routeupd
+    nixosModules.cloudflare-ddns
+  ];
 
   networking.forward = true;
 
@@ -14,12 +17,14 @@
     password = secrets.pppoe.china_unicom.password;
   };
 
+  # update routing table
   services.routeupd = {
     enable = true;
     interface = "ppp0";
     table = 25;
   };
 
+  # networkd
   systemd.network.networks = {
     "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s1";};
 
@@ -35,6 +40,7 @@
     "14-ppp" = networklib.makePPPConfig {metric = 5;};
   };
 
+  # firewalls
   networking = {
     firewall = {
       trustedInterfaces = [ "ens34" "ens35" ];
@@ -55,6 +61,19 @@
           };
         };
       };
+    };
+  };
+
+  # DDNS
+  sops.secrets.cloudflare-auth-token = {};
+  services.cloudflare-ddns = {
+    enable = true;
+    bindToInterface = true;
+    tokenPath = config.sops.secrets.cloudflare-auth-token.path;
+    config = {
+      name = "home.poscat.moe";
+      interface = "ppp0";
+      zoneId = "87cc420fd7bc4eada2b956854578ae8e";
     };
   };
 }
