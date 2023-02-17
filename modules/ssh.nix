@@ -33,7 +33,7 @@
       };
       router = {
         extraHostNames = [
-          secrets.ddns-domain
+          "home.poscat.moe"
           "10.1.10.1"
         ];
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOH3IXHQFOETkbtfUJdfgM9M38GnLjU1ssBahgPJv4wv";
