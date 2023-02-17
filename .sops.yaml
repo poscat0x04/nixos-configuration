@@ -1,8 +1,9 @@
 keys:
-  - &admin age1zpuz0t9gssn7xj0eq5l0dt62z8vm0efwvhde3axtw0jse67sj9cq96hnck
-  - &nuc   age17gfnkryf5520k8q6fx9y73uqk3ph8g3y3nyr67gywkw0xfenqy7q58rtk8
-  - &bwh   age1d823ahwr8scxknjcwm8khn5uzcnsq2jjamddpp3trerlsv6xv5qsp9q233
-  - &titan age1f4hcqmtx9tlchprg2s2kk3e2j47k25sxnlp64ywqlgs0rcxs5fnqdkxh5l
+  - &admin    age1zpuz0t9gssn7xj0eq5l0dt62z8vm0efwvhde3axtw0jse67sj9cq96hnck
+  - &nuc      age17gfnkryf5520k8q6fx9y73uqk3ph8g3y3nyr67gywkw0xfenqy7q58rtk8
+  - &bwh      age1d823ahwr8scxknjcwm8khn5uzcnsq2jjamddpp3trerlsv6xv5qsp9q233
+  - &titan    age1f4hcqmtx9tlchprg2s2kk3e2j47k25sxnlp64ywqlgs0rcxs5fnqdkxh5l
+  - &hyperion age1vk30q20e67ucnemqe22mtxcc2ztdaz427yvjc0dasrptk9wjceaqdqhdkl
 
 creation_rules:
   - path_regex: ^secrets/nuc.yaml$
@@ -11,6 +12,11 @@ creation_rules:
         - *admin
         - *nuc
   - path_regex: ^secrets/titan.yaml$
+    key_groups:
+      - age:
+        - *admin
+        - *titan
+  - path_regex: ^secrets/hyperion.yaml$
     key_groups:
       - age:
         - *admin
