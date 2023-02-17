@@ -156,6 +156,7 @@ rec {
     # Use IPv6 RA to acquire IPv6 address
     networkConfig = {
       IPv6AcceptRA = true;
+      IPv6PrivacyExtensions = "no";
       KeepConfiguration = "static";
     };
     ipv6AcceptRAConfig = {
