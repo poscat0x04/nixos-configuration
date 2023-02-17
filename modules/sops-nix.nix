@@ -3,7 +3,7 @@
 let
   machine = config.nixos.settings.machine.hostname;
 in {
-  imports = [ flakes.sops-nix.nixosModules.sops ];
+  imports = [ nixosModules.sops ];
 
   sops = {
     defaultSopsFile = ../secrets + "/${machine}.yaml";

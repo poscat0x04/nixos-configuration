@@ -18,7 +18,6 @@ in
     ../modules/firefox.nix
     ../modules/fonts.nix
     ../modules/im.nix
-    ../modules/lorri.nix
     ../modules/rust.nix
     ../modules/unbound.nix
     ../modules/v2ray
