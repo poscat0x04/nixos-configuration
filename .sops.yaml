@@ -20,4 +20,4 @@ creation_rules:
     key_groups:
       - age:
         - *admin
-        - *titan
+        - *hyperion
