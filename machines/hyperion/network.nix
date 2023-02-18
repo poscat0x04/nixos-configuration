@@ -42,6 +42,7 @@
             enable = true;
             interface = "ppp0";
             offload = true;
+            mark = "1000";
             nat.masquerade = true;
           };
         };

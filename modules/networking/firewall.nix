@@ -5,6 +5,11 @@
 
   networking = {
     firewall.rejectPackets = true;
-    fwng.enable = true;
+    fwng = {
+      enable = true;
+      cgroupMarks = {
+        "system.slice/system-noproxy.slice" = "1000";
+      };
+    };
   };
 }
