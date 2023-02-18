@@ -128,14 +128,8 @@
   };
 
   systemd.slices = {
-    "system-special" = {
-      #wantedBy = [ "multi-user.target" ];
-      description = "Special system slices";
-    };
-
-    "system-special-noproxy" = {
-      #wantedBy = [ "multi-user.target" ];
-      description = "Slice for services that should not be affected by transparent proxy";
+    "system-noproxy" = {
+      description = "Slice for services that should not be affected by proxy";
     };
   };
 

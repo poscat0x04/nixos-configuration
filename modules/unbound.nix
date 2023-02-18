@@ -82,6 +82,6 @@
         ];
       };
     };
-    systemd.services.unbound.serviceConfig.Slice = "system-special-noproxy.slice";
+    systemd.services.unbound.serviceConfig.Slice = "system-noproxy.slice";
   };
 }

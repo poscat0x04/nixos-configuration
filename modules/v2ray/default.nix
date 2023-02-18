@@ -165,5 +165,5 @@
     };
   };
 
-  systemd.services.v2ray.serviceConfig.Slice = "system-special-noproxy.slice";
+  systemd.services.v2ray.serviceConfig.Slice = "system-noproxy.slice";
 }

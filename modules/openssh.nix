@@ -28,5 +28,5 @@ in
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcup9tmRiPbk6wDMOlHLVtlluwbhDXvC7hgUaPnHusD poscat"
   ];
 
-  systemd.services.sshd.serviceConfig.Slice = "system-special-noproxy.slice";
+  systemd.services.sshd.serviceConfig.Slice = "system-noproxy.slice";
 }

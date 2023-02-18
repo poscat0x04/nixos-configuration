@@ -7,5 +7,5 @@
 
   services.vlmcsd.enable = true;
 
-  systemd.services.vlmcsd.serviceConfig.Slice = "system-special-noproxy.slice";
+  systemd.services.vlmcsd.serviceConfig.Slice = "system-noproxy.slice";
 }
