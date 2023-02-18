@@ -71,7 +71,7 @@
     bindToInterface = true;
     tokenPath = config.sops.secrets.cloudflare-auth-token.path;
     config = {
-      name = "home.poscat.moe";
+      name = "titan.poscat.moe";
       interface = "ppp0";
       zoneId = "87cc420fd7bc4eada2b956854578ae8e";
     };
