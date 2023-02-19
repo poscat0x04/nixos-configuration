@@ -51,6 +51,7 @@
       flowtable.devices = [ "ens34" "ens35" ];
       nat.enable = true;
       nat66.enable = true;
+      warpId = "0xde98d0";
       nftables-service = {
         ppp0-rules = {
           description = "Set up nftables rules (forwarding, filtering) when ppp0 is created";
