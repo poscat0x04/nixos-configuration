@@ -36,7 +36,6 @@ in {
 
     v6addr = mkOption {
       type = types.str;
-      default = "2606:4700:110:857c:de77:ab8d:f751:28f8";
     };
   };
 

@@ -7,7 +7,6 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
-    ../../modules/networking/warp.nix
     ./network.nix
   ];
 

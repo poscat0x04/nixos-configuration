@@ -4,6 +4,7 @@
   imports = [
     nixosModules.routeupd
     nixosModules.cloudflare-ddns
+    ../../modules/networking/warp.nix
   ];
 
   networking.forward = true;
@@ -77,4 +78,6 @@
       zoneId = "87cc420fd7bc4eada2b956854578ae8e";
     };
   };
+
+  networking.warp.v6addr = "2606:4700:110:8f0e:aae0:595e:676:c3c2";
 }
