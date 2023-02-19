@@ -59,7 +59,6 @@
 
   systemd.services.nginx.serviceConfig = {
     LimitNOFILE = "100000";
-    Slice = "system-noproxy.slice";
   };
 
   users.users.nginx.extraGroups = [ "acme" ];

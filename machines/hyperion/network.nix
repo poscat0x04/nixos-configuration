@@ -62,4 +62,5 @@
       zoneId = "87cc420fd7bc4eada2b956854578ae8e";
     };
   };
+  systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
 }

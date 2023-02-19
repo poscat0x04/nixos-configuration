@@ -51,7 +51,6 @@
       flowtable.devices = [ "ens34" "ens35" ];
       nat.enable = true;
       nat66.enable = true;
-      warpId = "0xde98d0";
       nftables-service = {
         ppp0-rules = {
           description = "Set up nftables rules (forwarding, filtering) when ppp0 is created";
@@ -79,6 +78,9 @@
       zoneId = "87cc420fd7bc4eada2b956854578ae8e";
     };
   };
+  systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
 
+  # WARP
   networking.warp.v6addr = "2606:4700:110:8f0e:aae0:595e:676:c3c2";
+  networking.fwng.warpId = "0xde98d0";
 }
