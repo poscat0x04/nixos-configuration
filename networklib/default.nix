@@ -180,4 +180,6 @@ rec {
       }
     ] ++ makeDirectRoutes { metric = metric; };
   };
+
+  wireguard = import ./wg.nix;
 }
