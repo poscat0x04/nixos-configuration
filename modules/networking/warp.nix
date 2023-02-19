@@ -46,7 +46,6 @@ in {
           Name = "wg-warp0";
           Kind = "wireguard";
         };
-
         wireguardConfig = {
           PrivateKeyFile = config.sops.secrets.wg-private-key.path;
           FirewallMark = 1000;
@@ -57,6 +56,7 @@ in {
               PublicKey = "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=";
               AllowedIPs = [ "0.0.0.0/0" "::/0" ];
               Endpoint = "${cfg.server}:${builtins.toString cfg.port}";
+              RouteTable = "warp";
               PersistentKeepalive = 20;
             };
           }
@@ -73,20 +73,6 @@ in {
           ActivationPolicy = lib.mkIf cfg.manualActivation "manual";
         };
         address = [ "${cfg.v4addr}/32" "${cfg.v6addr}/128" ];
-        routes = [
-          {
-            routeConfig = {
-              Destination = "0.0.0.0/0";
-              Table = "warp";
-            };
-          }
-          {
-            routeConfig = {
-              Destination = "::/0";
-              Table = "warp";
-            };
-          }
-        ];
         routingPolicyRules = [
           {
             routingPolicyRuleConfig = {
