@@ -71,7 +71,7 @@
 
       wireguard-tools
 
-      postgresql_14
+      postgresql_15
       pspg
 
       git

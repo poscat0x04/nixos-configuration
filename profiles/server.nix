@@ -8,9 +8,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    traceroute
     iptraf-ng
-    speedtest-cli
     iftop
     nethogs
   ];

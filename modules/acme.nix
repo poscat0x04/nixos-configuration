@@ -1,9 +1,7 @@
-{ pkgs, secrets, ... }:
+{ config, ... }:
 
 let
-  credentialsFile = pkgs.writeText "lego-credentials" ''
-    CLOUDFLARE_DNS_API_TOKEN=${secrets.ddns-cloudflare-token}
-  '';
+  credentialsFile = config.sops.secrets.acme-secret.path;
   poscat-moe = {
     inherit credentialsFile;
     domain = "poscat.moe";
@@ -15,6 +13,10 @@ let
     dnsProvider = "cloudflare";
   };
 in {
+  imports = [ ./sops-nix.nix ];
+
+  sops.secrets.acme-secret = {};
+
   security.acme = {
     defaults.email = "poscat@poscat.moe";
     acceptTerms = true;
