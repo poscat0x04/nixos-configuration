@@ -10,8 +10,8 @@
   networking.pppoe = {
     enable = true;
     underlyingIF = "enp2s3";
-    user = secrets.pppoe.china_unicom.user;
-    password = secrets.pppoe.china_unicom.password;
+    user = secrets.pppoe.china_telecom.user;
+    password = secrets.pppoe.china_telecom.password;
   };
 
   services.routeupd = {
@@ -34,4 +34,8 @@
 
     "14-ppp" = networklib.makePPPConfig {metric = 5;};
   };
+
+  # WARP
+  networking.warp.v6addr = "2606:4700:110:857c:de77:ab8d:f751:28f8";
+  networking.fwng.warpId = "0x033573";
 }
