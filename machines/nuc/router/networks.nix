@@ -1,8 +1,11 @@
 # Network configuration for NUC router VM
-{ secrets, nixosModules, networklib, ... }:
+{ config, secrets, nixosModules, networklib, ... }:
 
 {
-  imports = [ nixosModules.routeupd ];
+  imports = [
+    nixosModules.cloudflare-ddns
+    nixosModules.routeupd
+  ];
 
   # Enable IP forwarding
   networking.forward = true;
@@ -34,6 +37,21 @@
 
     "14-ppp" = networklib.makePPPConfig {metric = 5;};
   };
+
+  # DDNS
+  sops.secrets.cloudflare-auth-token = {};
+  services.cloudflare-ddns = {
+    enable = true;
+    bindToInterface = true;
+    tokenPath = config.sops.secrets.cloudflare-auth-token.path;
+    config = {
+      name = "nuc.poscat.moe";
+      interface = "ppp0";
+      zoneId = "87cc420fd7bc4eada2b956854578ae8e";
+      ipv4 = false;
+    };
+  };
+  systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
 
   # WARP
   networking.warp.v6addr = "2606:4700:110:857c:de77:ab8d:f751:28f8";
