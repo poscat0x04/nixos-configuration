@@ -26,15 +26,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1676646143,
-        "narHash": "sha256-ddMvpqFbx/aMRAsBQRe/TbW5RYjjm6tk4usbt2oUVcQ=",
+        "lastModified": 1676886240,
+        "narHash": "sha256-al+CbpvIUTaave0BcKm9C+8IdLI1sae4O52ayaNBrMc=",
         "owner": "poscat0x04",
         "repo": "cloudflare-ddns-rs",
-        "rev": "698b52133c564e22b1e3d6a5665dc2f120038390",
+        "rev": "0ba864b54cc643924f1f946ed53f64792ea5eab2",
         "type": "github"
       },
       "original": {
         "owner": "poscat0x04",
+        "ref": "v0.2.0",
         "repo": "cloudflare-ddns-rs",
         "type": "github"
       }
@@ -325,15 +326,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1676561970,
-        "narHash": "sha256-6yS6dDL/H1UrO4LWU/0pkHWZ3wHLs64WuwKC7oVvUS0=",
+        "lastModified": 1676889699,
+        "narHash": "sha256-Tr8B7LgFCs/Xr6l4hMcSJpXAN9hrnMMNfQ+gRvkVrKo=",
         "owner": "poscat0x04",
         "repo": "routeupd",
-        "rev": "6f46c85430d2d9db7c90974ba0c63ec028db318c",
+        "rev": "44d44f587206103e4b333480e7b88b90530dcb91",
         "type": "github"
       },
       "original": {
         "owner": "poscat0x04",
+        "ref": "v0.1.0",
         "repo": "routeupd",
         "type": "github"
       }

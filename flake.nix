@@ -16,12 +16,12 @@
       inputs.flake-utils.follows = "/flake-utils";
     };
     routeupd = {
-      url = "github:poscat0x04/routeupd";
+      url = "github:poscat0x04/routeupd/v0.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
     cloudflare-ddns = {
-      url = "github:poscat0x04/cloudflare-ddns-rs";
+      url = "github:poscat0x04/cloudflare-ddns-rs/v0.2.0";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
