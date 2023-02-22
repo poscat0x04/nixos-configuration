@@ -1,6 +1,7 @@
 { config, networklib, ... }:
 
 {
+  networking.firewall.allowedUDPPorts = [ 48927 ];
   systemd.network = with networklib.wireguard; with machines; {
     netdevs."wg0" = {
       netdevConfig = {
