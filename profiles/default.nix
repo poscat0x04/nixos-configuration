@@ -82,6 +82,7 @@
       nload
       pciutils
       smartmontools
+      hdparm
       sysstat
       usbutils
       lm_sensors
