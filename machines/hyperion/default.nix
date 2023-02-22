@@ -8,6 +8,7 @@
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
     ./network.nix
+    ./services/mtproto.nix
   ];
 
   nixos.settings = {
