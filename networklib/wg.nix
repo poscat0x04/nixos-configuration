@@ -5,8 +5,8 @@ rec {
   makeWgPeer' = allowedIPs: machine: {
     wireguardPeerConfig = {
       PublicKey = machine.key;
-      AllowedIPs = allowedIPs ++ [ "${subnetPrefix}.${builtins.toString machine.id}/${builtins.toString prefixLength}" ];
-    } // (if machine.addr == null then {} else {
+      AllowedIPs = allowedIPs ++ [ "${subnetPrefix}.${toString machine.id}/32" ];
+    } // (if !(builtins.hasAttr "addr" machine) then {} else {
       Endpoint = "${machine.addr}:48927";
     });
   };

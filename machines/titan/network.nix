@@ -5,6 +5,7 @@
     nixosModules.routeupd
     nixosModules.cloudflare-ddns
     ../../modules/networking/warp.nix
+    ./wg.nix
   ];
 
   networking.forward = true;
