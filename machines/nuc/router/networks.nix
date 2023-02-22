@@ -5,6 +5,7 @@
   imports = [
     nixosModules.cloudflare-ddns
     nixosModules.routeupd
+    ./wg.nix
   ];
 
   # Enable IP forwarding
