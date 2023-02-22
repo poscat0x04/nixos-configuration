@@ -4,7 +4,7 @@
   imports = [
     nixosModules.routeupd
     nixosModules.cloudflare-ddns
-    ../../modules/sops-nix.nix
+    ../../modules/networking/warp.nix
   ];
 
   networking.pppoe = {
@@ -63,4 +63,8 @@
     };
   };
   systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
+
+  # WARP
+  networking.warp.v6addr = "2606:4700:110:889f:69da:797a:1461:a409";
+  networking.fwng.warpId = "0x5440ec";
 }
