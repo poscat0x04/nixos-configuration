@@ -252,11 +252,11 @@
     },
     "nixos-firewall-ng": {
       "locked": {
-        "lastModified": 1676794719,
-        "narHash": "sha256-OK+GUOMz879oZzFo9EvwicGV/J9OWEDG5ILIew38IC4=",
+        "lastModified": 1677037641,
+        "narHash": "sha256-E0+oAuUDy/Uehtvz8mPODlTxzfTEeysRi5Q0I3iGXTc=",
         "owner": "poscat0x04",
         "repo": "nixos-firewall-ng",
-        "rev": "67d3300bb01dc0951f8daadadae0c63bd83dc538",
+        "rev": "bed762758c994bea12c311041a17089ca02da39d",
         "type": "github"
       },
       "original": {

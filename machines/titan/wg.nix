@@ -13,11 +13,23 @@
         PrivateKeyFile = config.sops.secrets.wg-private-key.path;
         RouteTable = "main";
       };
-      wireguardPeers = makeWgPeers [ nuc bwh mba ];
+      wireguardPeers = makeWgPeers [ bwh mba ] ++ [ (makeWgPeer' [ "10.1.20.0/24" ] nuc) ] ;
     };
     networks."90-wg0" = {
       matchConfig.Name = "wg0";
       address = [ "${subnetPrefix}.${toString titan.id}/32" ];
+    };
+  };
+
+  networking.fwng.nftables-service = {
+    wg0-rules = {
+      description = "Set up nftables rules (forwarding, filtering) when wg0 is created";
+      deviceMode = {
+        enable = true;
+        interface = "wg0";
+        offload = true;
+        trust = true;
+      };
     };
   };
 }
