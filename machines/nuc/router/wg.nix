@@ -9,7 +9,7 @@
         Kind = "wireguard";
       };
       wireguardConfig = {
-        ListenPort = "48927";
+        ListenPort = 48927;
         PrivateKeyFile = config.sops.secrets.wg-private-key.path;
         RouteTable = "main";
       };
