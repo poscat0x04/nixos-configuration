@@ -107,5 +107,7 @@
 
   programs.nix-ld.enable = true;
 
+  zramSwap.enable = true;
+
   time.timeZone = "Asia/Shanghai";
 }
