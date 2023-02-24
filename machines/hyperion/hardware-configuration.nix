@@ -11,6 +11,8 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  boot.zfs.extraPools = [ "tank" ];
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/86bca01c-ae25-462f-84a3-d87bd20da396";
       fsType = "xfs";
