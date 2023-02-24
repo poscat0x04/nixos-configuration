@@ -12,6 +12,7 @@
         ListenPort = 48927;
         PrivateKeyFile = config.sops.secrets.wg-private-key.path;
         RouteTable = "main";
+        FirewallMark = 1000;
       };
       wireguardPeers = makeWgPeers [ bwh mba ] ++ [ (makeWgPeer' [ "10.1.20.0/24" ] nuc) ] ;
     };
