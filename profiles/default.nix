@@ -5,6 +5,7 @@
     ../options/settings
     ../modules/networking
     ../modules/nix.nix
+    ../modules/memory.nix
     ../modules/mtr.nix
     ../modules/openssh.nix
     ../modules/ssh.nix
@@ -113,8 +114,6 @@
   };
 
   programs.nix-ld.enable = true;
-
-  zramSwap.enable = true;
 
   time.timeZone = "Asia/Shanghai";
 }
