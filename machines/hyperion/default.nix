@@ -7,6 +7,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
+    ../../modules/postgresql.nix
     ./network.nix
     ./services/mtproto.nix
   ];
