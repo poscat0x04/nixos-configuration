@@ -47,34 +47,10 @@
     '';
   };
 
-  # Replace systemd-networkd-wait-online.service with a custom service
-  # that finishes starting as soon as one interface is up.
-  #
-  # Also blocks the starting of network-online.target
-  #
-  # TODO: support the ability to customize the interface to listen to.
-  systemd.suppressedSystemUnits = [
-    "systemd-networkd-wait-online.service"
-  ];
-  systemd.services."systemd-network-wait-online" = {
-    description = "Wait for Network to be Configured";
-    documentation = [ "man:systemd-networkd-wait-online.service(8)" ];
-    conflicts = [ "shutdown.target" ];
-    requires = [ "systemd-networkd.service" ];
-    after = [ "systemd-networkd.service" ];
-    before = [
-      "network-online.target"
-      "shutdown.target"
-    ];
-    wantedBy = [ "network-online.target" ];
-    unitConfig = {
-      DefaultDependencies = false;
-    };
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any";
-      RemainAfterExit = true;
-    };
+  # override systemd-networkd-wait-online so that the system is considered online
+  # if any interface is online
+  systemd.services.systemd-networkd-wait-online = {
+    serviceConfig.ExecStart = lib.mkForce [ "" "${config.systemd.package}/lib/systemd/systemd-networkd-wait-online --any" ];
   };
 
   # A sane default configuration for systemd-networkd
