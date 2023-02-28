@@ -18,8 +18,29 @@
   systemd.network.networks = {
     "11-ignore-wan" = networklib.makeWANConfig {ifname = "enp2s1";};
 
-    "12-lan" = networklib.makeTrustedDHCPConfig {metric = 20;} // {
+    "12-lan" = {
       matchConfig.Name = "enp2s2";
+      DHCP = "no";
+      addresses = [ {addressConfig.Address = "10.1.10.3/24";} ];
+      routes = [
+        {
+          routeConfig = {
+            Destination = "0.0.0.0/0";
+            Metric = 20;
+            Scope = "global";
+            Gateway = "10.1.10.1";
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "10.1.20.0/24";
+            Scope = "site";
+            Gateway = "10.1.10.1";
+          };
+        }
+      ];
+      networkConfig.IPv6AcceptRA = true;
+      ipv6AcceptRAConfig.RouteMetric = 20;
     };
 
     "13-ppp" = networklib.makePPPConfig {metric = 5;};

@@ -169,6 +169,7 @@ rec {
       {
         routeConfig = {
           Destination = "0.0.0.0/0";
+          Scope = "global";
           Metric = metric;
         };
       }
