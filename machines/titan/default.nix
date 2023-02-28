@@ -7,6 +7,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
+    ../../modules/journal-upload.nix
     ./network.nix
   ];
 
