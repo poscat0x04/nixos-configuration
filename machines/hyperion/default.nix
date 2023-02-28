@@ -10,6 +10,7 @@
     ../../modules/postgresql.nix
     ./network.nix
     ./services/mtproto.nix
+    ./services/journal.nix
   ];
 
   nixos.settings = {
