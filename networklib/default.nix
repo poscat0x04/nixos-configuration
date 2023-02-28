@@ -49,7 +49,7 @@ rec {
     };
   };
 
-  makeLanConfig = {addr, ifname, poolSize ? 200}: {
+  makeLanConfig = {addr, ifname}: {
     matchConfig.Name = ifname;
 
     addresses = [
@@ -73,7 +73,7 @@ rec {
     # DHCPv4 server config
     dhcpServerConfig = {
       BindToInterface = true;
-      PoolSize = poolSize;
+      PoolOffset = 50;
       DefaultLeaseTimeSec = "1d";
       MaxLeaseTimeSec = "7d";
       DNS = addr;
