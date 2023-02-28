@@ -1,11 +1,18 @@
 rec {
+  mkIf = b: a: {
+    _type = "if";
+    condition = b;
+    content = a;
+  };
+
+  mkNull = a: mkIf (a != null) a;
+
   makeRouteConfig = {metric ? null, table}: ip: {
     routeConfig = {
       Destination = ip;
       Table = table;
-    } // (if metric == null then {} else {
-      Metric = metric;
-    });
+      Metric = mkNull metric;
+    };
   };
 
   # This should cover all possible genshin (Asian) server IPs
