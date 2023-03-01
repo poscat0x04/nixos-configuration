@@ -8,5 +8,11 @@
 
   systemd.additionalUpstreamSystemUnits = [ "systemd-journal-upload.service" ];
 
-  systemd.services.systemd-journal-upload.wantedBy = [ "multi-user.target" ];
+  systemd.services.systemd-journal-upload = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Restart = "always";
+      RestartSec = "2s";
+    };
+  };
 }

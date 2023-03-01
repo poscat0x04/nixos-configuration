@@ -27,9 +27,8 @@
 
   systemd.services.systemd-journal-upload = {
     wantedBy = lib.mkForce [ "sys-subsystem-net-devices-ppp0.device" ];
-    requires = [ "sys-subsystem-net-devices-ppp0.device" ];
-    after = [ "sys-subsystem-net-devices-ppp0.device" ];
-    serviceConfig.ExecStartPre = "/run/current-system/sw/bin/sleep 5";
+    requires = [ "sys-subsystem-net-devices-ppp0.device" "network-online.target" ];
+    after = [ "sys-subsystem-net-devices-ppp0.device" "network-online.target" ];
   };
 
   system.stateVersion = "22.11";
