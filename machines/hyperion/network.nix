@@ -36,6 +36,15 @@
             Destination = "10.1.20.0/24";
             Scope = "site";
             Gateway = "10.1.10.1";
+            PreferredSource = "10.1.10.3";
+          };
+        }
+        {
+          routeConfig = {
+            Destination = "10.1.100.0/24";
+            Scope = "site";
+            Gateway = "10.1.10.1";
+            PreferredSource = "10.1.10.3";
           };
         }
       ];
