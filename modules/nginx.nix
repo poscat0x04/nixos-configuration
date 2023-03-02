@@ -1,9 +1,12 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./acme.nix ];
+
   services.nginx = {
     enable = true;
-    package = pkgs.nginxMainline;
+    group = "acme";
+    package = pkgs.nginxQuic;
     enableReload = true;
     additionalModules = with pkgs.nginxModules; [
       brotli
@@ -29,7 +32,7 @@
         text/xml;
     '';
 
-    resolver.addresses = [ "127.0.0.53" ];
+    resolver.addresses = [ "127.0.0.1" ];
 
     sslCiphers = "ECDHE+AESGCM:DHE+AESGCM";
     sslProtocols = "TLSv1.2 TLSv1.3";
@@ -60,6 +63,4 @@
   systemd.services.nginx.serviceConfig = {
     LimitNOFILE = "100000";
   };
-
-  users.users.nginx.extraGroups = [ "acme" ];
 }

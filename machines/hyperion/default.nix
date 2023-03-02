@@ -12,6 +12,7 @@
     ./services/mtproto.nix
     ./services/journal.nix
     ./services/genshin-checkin.nix
+    ./services/vaultwarden.nix
   ];
 
   nixos.settings = {
