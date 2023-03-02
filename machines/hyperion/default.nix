@@ -8,6 +8,7 @@
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
     ../../modules/postgresql.nix
+    ../../modules/redis.nix
     ./network.nix
     ./services/mtproto.nix
     ./services/journal.nix
