@@ -69,6 +69,7 @@
       ssh-to-age
 
       nil
+      attic-client
 
       wireguard-tools
 

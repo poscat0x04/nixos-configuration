@@ -65,13 +65,14 @@
     , genshin-checkin
     , routeupd
     , cloudflare-ddns
+    , attic
     , rust-overlay
     , flake-utils
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
       overlays =
-        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default ];
+        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default attic.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
