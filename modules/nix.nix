@@ -15,7 +15,7 @@ in
       type = lib.types.listOf lib.types.str;
       default = [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        #"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       ];
     };
   };
@@ -34,15 +34,9 @@ in
 
         trusted-users = [ "root" "@wheel" ];
 
-        substituters = lib.optionals cfg.useMirror cfg.mirrorUrl ++ [
-          "https://nix-community.cachix.org"
-          "https://nix-repo.cachix.org"
-        ];
+        substituters = lib.optionals cfg.useMirror cfg.mirrorUrl ++ [ "https://cache.poscat.moe:8443/dev/" ];
 
-        trusted-public-keys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-          "nix-repo.cachix.org-1:npOkN9JTf5FvMkTRrvaDd3GvGVO1mBkNU8y6t5UQllk="
-        ];
+        trusted-public-keys = [ "dev:ZPWlFkQ5XmcK3N/nxuKC+eqtPm+S82vTUYEU18LoSbI" ];
       };
 
       nixPath = [
