@@ -6,13 +6,9 @@
   services.nginx = {
     enable = true;
     group = "acme";
-    package = pkgs.nginxQuic;
+    package = pkgs.nginxMainline;
     enableReload = true;
-    additionalModules = with pkgs.nginxModules; [
-      brotli
-      moreheaders
-      dav
-    ];
+    additionalModules = [ pkgs.nginxModules.brotli ];
     recommendedOptimisation = true;
     recommendedTlsSettings = true;
     recommendedGzipSettings = true;

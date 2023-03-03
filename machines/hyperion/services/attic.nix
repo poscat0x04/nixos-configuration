@@ -31,7 +31,6 @@
     nginx.virtualHosts."cache.poscat.moe" = {
       onlySSL = true;
       useACMEHost = "poscat.moe-wildcard";
-      http3 = true;
       kTLS = true;
       listen = [
         {
