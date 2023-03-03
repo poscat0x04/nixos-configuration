@@ -9,6 +9,7 @@
     ../../modules/unbound.nix
     ../../modules/postgresql.nix
     ../../modules/redis.nix
+    ../../modules/vlmcsd.nix
     ./network.nix
     ./services/mtproto.nix
     ./services/journal.nix
