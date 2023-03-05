@@ -16,6 +16,7 @@
     ./services/genshin-checkin.nix
     ./services/vaultwarden.nix
     ./services/attic.nix
+    ./services/samba.nix
   ];
 
   nixos.settings = {
