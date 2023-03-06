@@ -43,6 +43,15 @@
         printable = "no";
         browsable = "yes";
       };
+      poscat_alt = {
+        path = "/share/poscat_alt";
+        "valid users" = "poscat";
+        "guest ok" = "no";
+        public = "no";
+        writable = "yes";
+        printable = "no";
+        browsable = "yes";
+      };
       tm_share = {
         path = "/share/timemachine";
         "valid users" = "poscat";
