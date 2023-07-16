@@ -185,29 +185,6 @@
         "type": "github"
       }
     },
-    "genshin-checkin": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1676962192,
-        "narHash": "sha256-qyTl6PCgUNsPrr/yQL2iVOIFNK1E7G0iU5+5iX3YPuU=",
-        "owner": "poscat0x04",
-        "repo": "genshin-checkin",
-        "rev": "8568d774f02bac29dded8b5e0c215f4e98282fec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "poscat0x04",
-        "repo": "genshin-checkin",
-        "type": "github"
-      }
-    },
     "hath-nix": {
       "locked": {
         "lastModified": 1623558647,
@@ -400,7 +377,6 @@
         "attic": "attic",
         "cloudflare-ddns": "cloudflare-ddns",
         "flake-utils": "flake-utils_2",
-        "genshin-checkin": "genshin-checkin",
         "hath-nix": "hath-nix",
         "home-manager": "home-manager",
         "nix-repo": "nix-repo",

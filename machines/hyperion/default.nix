@@ -13,7 +13,6 @@
     ./network.nix
     ./services/mtproto.nix
     ./services/journal.nix
-    ./services/genshin-checkin.nix
     ./services/vaultwarden.nix
     ./services/attic.nix
     ./services/samba.nix

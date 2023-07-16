@@ -9,11 +9,6 @@
       url = "github:poscat0x04/nix-repo";
       inputs.nixpkgs.follows = "/nixpkgs";
     };
-    genshin-checkin = {
-      url = "github:poscat0x04/genshin-checkin";
-      inputs.nixpkgs.follows = "/nixpkgs";
-      inputs.flake-utils.follows = "/flake-utils";
-    };
     routeupd = {
       url = "github:poscat0x04/routeupd/v0.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,7 +56,6 @@
     , nix-repo
     , hath-nix
     , nixos-emacs
-    , genshin-checkin
     , routeupd
     , cloudflare-ddns
     , attic
@@ -71,7 +65,7 @@
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
       overlays =
-        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs genshin-checkin routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default attic.overlays.default ];
+        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default attic.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
