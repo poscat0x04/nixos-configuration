@@ -8,7 +8,6 @@
     nix-repo = {
       url = "github:poscat0x04/nix-repo";
       inputs.nixpkgs.follows = "/nixpkgs";
-      inputs.rust-overlay.follows = "/rust-overlay";
     };
     genshin-checkin = {
       url = "github:poscat0x04/genshin-checkin";
