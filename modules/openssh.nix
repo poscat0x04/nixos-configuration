@@ -6,9 +6,6 @@ in
 {
   services.openssh = {
     enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = false;
-    kbdInteractiveAuthentication = false;
     banner = ''
           _   ___      ____  _____
          / | / (_)  __/ __ \/ ___/
@@ -17,10 +14,15 @@ in
       /_/ |_/_/_/|_|\____//____/
 
     '';
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      X11Forwarding = true;
+    };
     extraConfig = ''
       StreamLocalBindUnlink yes
     '';
-    forwardX11 = true;
   };
 
   users.users."${uname}".openssh.authorizedKeys.keys = lib.mkAfter [

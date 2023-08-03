@@ -15,8 +15,10 @@
   ];
 
   boot = {
-    tmpOnTmpfs = true;
-    cleanTmpDir = true;
+    tmp = {
+      useTmpfs = true;
+      cleanOnBoot = true;
+    };
     supportedFilesystems = [ "ntfs" ];
     zfs.enableUnstable = false;
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
