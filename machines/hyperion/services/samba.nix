@@ -52,6 +52,15 @@
         printable = "no";
         browsable = "yes";
       };
+      torrent = {
+        path = "/share/torrents";
+        "valid users" = "poscat";
+        "guest ok" = "no";
+        public = "no";
+        writable = "yes";
+        printable = "no";
+        browsable = "yes";
+      };
       tm_share = {
         path = "/share/timemachine";
         "valid users" = "poscat";

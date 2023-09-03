@@ -14,6 +14,7 @@
     ./services/mtproto.nix
     ./services/journal.nix
     ./services/vaultwarden.nix
+    ./services/transmission.nix
     ./services/attic.nix
     ./services/samba.nix
   ];
