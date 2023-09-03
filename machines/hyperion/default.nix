@@ -10,6 +10,7 @@
     ../../modules/postgresql.nix
     ../../modules/redis.nix
     ../../modules/vlmcsd.nix
+    ../../modules/minecraft.nix
     ./network.nix
     ./services/mtproto.nix
     ./services/journal.nix
