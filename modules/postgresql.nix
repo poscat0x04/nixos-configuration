@@ -28,7 +28,7 @@
       authentication_timeout = "10";
 
       # optimizations
-      shared_buffers = "4GB";
+      shared_buffers = "1GB";
       max_wal_size = "2GB";
       full_page_writes = false;
 
