@@ -90,6 +90,7 @@
       sysstat
       usbutils
       lm_sensors
+      libhugetlbfs.bin
     ];
   };
 
