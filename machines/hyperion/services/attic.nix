@@ -40,6 +40,11 @@
             port = 8443;
             ssl = true;
           }
+          {
+            addr = "[::0]";
+            port = 8443;
+            ssl = true;
+          }
         ];
         locations = {
           "/" = {
@@ -60,6 +65,11 @@
         listen = [
           {
             addr = "0.0.0.0";
+            port = 8443;
+            ssl = true;
+          }
+          {
+            addr = "[::0]";
             port = 8443;
             ssl = true;
           }
