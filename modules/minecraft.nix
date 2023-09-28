@@ -52,6 +52,7 @@ in {
       package = fabric-server;
       whitelist = {
         poscat = "abeab01a-1723-4562-8927-238910074ec6";
+        ".DerivingVia" = "00000000-0000-0000-0009-01fa4fef969e";
       };
       serverProperties = {
         enable-query = true;
@@ -113,7 +114,10 @@ in {
     };
   };
 
-  systemd.services.minecraft-server.serviceConfig.RestrictAddressFamilies = [ "AF_UNIX" ];
+  systemd.services.minecraft-server.serviceConfig = {
+    RestrictAddressFamilies = [ "AF_UNIX" ];
+    Slice = "system-noproxy.slice";
+  };
 
   environment.systemPackages = [ pkgs.mcrcon pkgs.ferium ];
 }
