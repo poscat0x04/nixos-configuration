@@ -51,6 +51,7 @@
           "/" = {
             proxyPass = "http://localhost:34817";
             extraConfig = ''
+              client_max_body_size 500M;
               proxy_set_header X-Real-IP $remote_addr;
             '';
           };
