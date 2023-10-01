@@ -12,6 +12,7 @@
     ../../modules/vlmcsd.nix
     ../../modules/minecraft.nix
     ./network.nix
+    ./services/znc.nix
     ./services/mtproto.nix
     ./services/journal.nix
     ./services/vaultwarden.nix
