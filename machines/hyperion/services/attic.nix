@@ -87,5 +87,10 @@
     };
   };
 
+  systemd.services.atticd = {
+    requires = [ "postgresql.service" ];
+    after = [ "postgresql.service" ];
+  };
+
   environment.systemPackages = [ pkgs.attic-client ];
 }
