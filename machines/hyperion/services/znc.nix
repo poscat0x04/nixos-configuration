@@ -54,14 +54,10 @@ in {
               "#fedora-zh" = def;
             };
           };
-          /*
           orpheus = {
             Server = "irc.orpheus.network +7000";
-            LoadModule = [ "simple_away" "sasl" ];
-            Chan = {
-            };
+            LoadModule = [ "simple_away" "sasl" "perform" ];
           };
-          */
           redacted = {
             Server = "irc.scratch-network.net +6697";
             LoadModule = [ "simple_away" "nickserv" ];
