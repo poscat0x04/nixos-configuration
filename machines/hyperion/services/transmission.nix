@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services = {
@@ -6,13 +6,13 @@
       enable = true;
       user = "poscat";
       group = "users";
-      home = "/share/torrents";
+      home = "/share/torrents/Transmission";
       openPeerPorts = true;
       settings = {
         download-queue-size = 10;
         umask = 18;
-        incomplete-dir = "/share/torrents/.incomplete";
-        download-dir = "/share/torrents";
+        incomplete-dir = "/share/torrents/Transmission/.incomplete";
+        download-dir = "/share/torrents/Transmission";
         peer-socket-tos = "lowcost";
         speed-limit-up-enabled = false;
 

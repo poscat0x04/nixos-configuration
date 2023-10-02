@@ -17,6 +17,7 @@
     ./services/journal.nix
     ./services/vaultwarden.nix
     ./services/transmission.nix
+    ./services/rtorrent.nix
     ./services/attic.nix
     ./services/samba.nix
   ];
