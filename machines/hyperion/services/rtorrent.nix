@@ -100,6 +100,7 @@ in {
       wantedBy = [ "multi-user.target" ];
       wants = [ "rtorrent.service" ];
       after = [ "rtorrent.service" ];
+      path = [ pkgs.mediainfo ];
       serviceConfig = {
         User = "poscat";
         Group = "users";
