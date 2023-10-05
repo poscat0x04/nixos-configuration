@@ -86,7 +86,7 @@ in {
         "cert.pem:/var/lib/acme/poscat.moe-wildcard/cert.pem"
         "key.pem:/var/lib/acme/poscat.moe-wildcard/key.pem"
       ];
-      Slice = "system-special-noproxy.slice";
+      Slice = "system-noproxy.slice";
     };
   };
 }

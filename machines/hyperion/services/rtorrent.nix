@@ -66,8 +66,13 @@ in {
           extraConfig = ''
             auth_digest_user_file ${secrets.http-password-digest};
             auth_digest 'flood';
+            auth_digest_expires 600s;
+            auth_digest_replays 1024;
           '';
         };
+        extraConfig = ''
+            auth_digest_shm_size 32m;
+        '';
       };
     };
   };
@@ -95,6 +100,7 @@ in {
       RestrictSUIDSGID = true;
       SystemCallArchitectures = "native";
       SystemCallFilter = [ "@system-service" "~@privileged" ];
+      Slice = "system-noproxy.slice";
     };
     flood = {
       wantedBy = [ "multi-user.target" ];
