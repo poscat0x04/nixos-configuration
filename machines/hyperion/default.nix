@@ -20,6 +20,7 @@
     ./services/rtorrent.nix
     ./services/attic.nix
     ./services/samba.nix
+    ./services/stunnel.nix
   ];
 
   nixos.settings = {

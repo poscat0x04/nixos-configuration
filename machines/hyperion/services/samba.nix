@@ -5,14 +5,17 @@
     enable = true;
     package = pkgs.sambaFull;
     extraConfig = ''
-      min protocol = SMB2
+      min protocol = SMB3
       workgroup = WORKGROUP
       server string = smbsrv
       netbios name = smbsrv
 
       inherit owner = unix only
 
-      hosts allow = 10.1.10. 10.1.20. 10.1.100. localhost
+      server signing = mandatory
+      server smb encrypt = off
+
+      hosts allow = 127.0.0.1 10.1.10. 10.1.20. 10.1.100. localhost
       hosts deny = 0.0.0.0/0
 
       deadtime = 1200
@@ -43,6 +46,7 @@
         printable = "no";
         browsable = "yes";
       };
+      /*
       poscat_alt = {
         path = "/share/poscat_alt";
         "valid users" = "poscat";
@@ -52,6 +56,7 @@
         printable = "no";
         browsable = "yes";
       };
+      */
       torrent = {
         path = "/share/torrents";
         "valid users" = "poscat";
