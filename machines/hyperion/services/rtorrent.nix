@@ -63,6 +63,7 @@ in {
         ];
         locations."/" = {
           proxyPass = "http://127.0.0.1:${builtins.toString flood-port}";
+          recommendedProxySettings = true;
           extraConfig = ''
             auth_digest_user_file ${secrets.http-password-digest};
             auth_digest 'flood';
@@ -71,7 +72,9 @@ in {
           '';
         };
         extraConfig = ''
-            auth_digest_shm_size 32m;
+          auth_digest_shm_size 32m;
+          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
       };
     };

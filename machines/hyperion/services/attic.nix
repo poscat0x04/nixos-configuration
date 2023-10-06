@@ -46,16 +46,13 @@
             ssl = true;
           }
         ];
-        locations = {
-          "/" = {
-            proxyPass = "http://127.0.0.1:20843";
-            extraConfig = ''
-              # disable upload size limit
-              client_max_body_size 0;
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header Host $host;
-            '';
-          };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:20843";
+          recommendedProxySettings = true;
+          extraConfig = ''
+            # disable upload size limit
+            client_max_body_size 0;
+          '';
         };
       };
       "cache.poscat.moe" = {
@@ -74,15 +71,14 @@
             ssl = true;
           }
         ];
-        locations = {
-          "/" = {
-            proxyPass = "http://127.0.0.1:20843";
-            extraConfig = ''
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header Host $host;
-            '';
-          };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:20843";
+          recommendedProxySettings = true;
         };
+        extraConfig = ''
+          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          add_header Strict-Transport-Security 'max-age=31536000' always;
+        '';
       };
     };
   };

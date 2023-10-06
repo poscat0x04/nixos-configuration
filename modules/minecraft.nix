@@ -89,15 +89,14 @@ in {
             ssl = true;
           }
         ];
-        locations = {
-          "/" = {
-            proxyPass = "http://127.0.0.1:8100";
-            extraConfig = ''
-              proxy_set_header X-Real-IP $remote_addr;
-              proxy_set_header Host $host;
-            '';
-          };
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8100";
+          recommendedProxySettings = true;
         };
+        extraConfig = ''
+          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          add_header Strict-Transport-Security 'max-age=31536000' always;
+        '';
       };
     };
     sanoid = {
