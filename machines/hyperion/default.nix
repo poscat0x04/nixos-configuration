@@ -11,6 +11,8 @@
     ../../modules/redis.nix
     ../../modules/vlmcsd.nix
     ../../modules/minecraft.nix
+    ../../modules/promethus/node.nix
+    ../../modules/promethus/smartctl.nix
     ./network.nix
     ./services/znc.nix
     ./services/mtproto.nix
@@ -21,6 +23,7 @@
     ./services/attic.nix
     ./services/samba.nix
     ./services/stunnel.nix
+    ./services/prometheus.nix
   ];
 
   nixos.settings = {
@@ -30,6 +33,8 @@
 
   boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "a6b7ab53";
+
+  services.prometheus.exporters.smartctl.devices = [ "/dev/disk/by-id/ata-HGST_HUS728T8TALE6L4_VRGNZV8K" ];
 
   # vmware tools
   virtualisation.vmware.guest = {
