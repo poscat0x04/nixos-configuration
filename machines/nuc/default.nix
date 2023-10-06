@@ -7,6 +7,7 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/networking/warp.nix
+    ../../modules/warp-svc.nix
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
@@ -21,8 +22,6 @@
     enable = true;
     headless = true;
   };
-
-  services.timesyncd.enable = false;
 
   system.stateVersion = "22.11";
 }

@@ -44,6 +44,9 @@
       url = "github:msteen/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wolfangaukang = {
+      url = "git+https://codeberg.org/wolfangaukang/nix-agordoj?ref=main";
+    };
     flake-utils.url = "github:poscat0x04/flake-utils";
   };
 
