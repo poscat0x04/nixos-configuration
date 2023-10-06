@@ -8,7 +8,7 @@
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
-    package = pkgs.postgresql_15;
+    package = pkgs.postgresql_15_jit;
     checkConfig = false;
     authentication = lib.mkForce ''
       local   all all                  peer
