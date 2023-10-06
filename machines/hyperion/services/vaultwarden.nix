@@ -1,12 +1,15 @@
-{ pkgs, secrets, ... }:
+{ config, pkgs, secrets, ... }:
 
 {
   imports = [ ../../../modules/nginx.nix ];
+
+  sops.secrets.vaultwarden-secret = {};
 
   services = {
     vaultwarden = {
       enable = true;
       dbBackend = "postgresql";
+      environmentFile = config.sops.secrets.vaultwarden-secret.path;
       config = {
         databaseUrl = "postgresql://vaultwarden@%2frun%2fpostgresql/vaultwarden";
         webVaultEnabled = true;
@@ -16,12 +19,11 @@
         domain = "https://vault.poscat.moe:8443";
         rocketAddress = "127.0.0.1";
         rocketPort = "34817";
-        smtpHost = "mail.poscat.moe";
+        smtpHost = "smtp.mail.me.com";
+        smtpPort = "587";
         smtpFrom = "no-reply@poscat.moe";
         smtpFromName = "vaultwarden";
         smtpSecurity = "starttls";
-        smtpUsername = "vaultwarden";
-        smtpPassword = "${secrets.vaultwarden-smtp-password}";
         signupsVerify = true;
         orgCreationUsers = "poscat@poscat.moe";
         showPasswordHint = false;
@@ -50,9 +52,9 @@
         locations = {
           "/" = {
             proxyPass = "http://localhost:34817";
+            recommendedProxySettings = true;
             extraConfig = ''
               client_max_body_size 500M;
-              proxy_set_header X-Real-IP $remote_addr;
             '';
           };
           "/notifications/hub" = {
@@ -64,16 +66,14 @@
           };
           "/notifications/hub/negotiate" = {
             proxyPass = "http://localhost:34817";
-            extraConfig = ''
-              proxy_set_header X-Real-IP $remote_addr;
-            '';
+            recommendedProxySettings = true;
           };
           "/admin" = {
             proxyPass = "http://localhost:34817";
+            recommendedProxySettings = true;
             extraConfig = ''
               auth_digest_user_file ${secrets.http-password-digest};
               auth_digest 'vaultwarden admin';
-              proxy_set_header X-Real-IP $remote_addr;
             '';
           };
         };
