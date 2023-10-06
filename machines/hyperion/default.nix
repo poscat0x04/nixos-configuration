@@ -24,6 +24,7 @@
     ./services/samba.nix
     ./services/stunnel.nix
     ./services/prometheus.nix
+    ./services/grafana.nix
   ];
 
   nixos.settings = {
