@@ -9,6 +9,7 @@
       "logind"
       "cgroups"
       "interrupts"
+      "ethtool"
     ];
   };
 }
