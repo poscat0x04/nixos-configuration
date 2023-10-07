@@ -41,6 +41,7 @@
           mode = "console";
           level = "warn";
         };
+        analytics.reporting_enabled = false;
         external_image_storage.provider = "local";
       };
       provision = {
