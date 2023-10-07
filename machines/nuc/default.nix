@@ -8,6 +8,7 @@
     ../../hardware/cpu/intel
     ../../modules/networking/warp.nix
     ../../modules/warp-svc.nix
+    ../../modules/promethus/node.nix
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
