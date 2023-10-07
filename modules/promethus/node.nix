@@ -8,6 +8,7 @@
       "systemd"
       "logind"
       "cgroups"
+      "interrupts"
     ];
   };
 }
