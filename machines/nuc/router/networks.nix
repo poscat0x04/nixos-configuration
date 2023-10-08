@@ -57,8 +57,6 @@
   # WARP
   networking.warp = {
     v6addr = "2606:4700:110:857c:de77:ab8d:f751:28f8";
-    #server = "[2606:4700:d0::a29f:c111]";
-    server = "162.159.192.204";
   };
   #networking.fwng.warpId = "0x033573";
 }
