@@ -3,10 +3,11 @@
 let
   flood-port = 48573;
 in {
+  environment.systemPackages = [ pkgs.pyrosimple ];
   services = {
     rtorrent = {
       enable = true;
-      package = pkgs.jesec-rtorrent;
+      package = pkgs.rtorrent;
       user = "poscat";
       group = "users";
       openFirewall = true;
@@ -25,7 +26,6 @@ in {
         throttle.min_peers.seed.set = -1
         throttle.max_peers.seed.set = -1
 
-        trackers.numwant.set = 200
         trackers.use_udp.set = yes
 
         pieces.memory.max.set = 4096M
@@ -62,17 +62,41 @@ in {
           }
         ];
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${builtins.toString flood-port}";
+          proxyPass = "http://127.0.0.1:${toString flood-port}";
           recommendedProxySettings = true;
           extraConfig = ''
-            auth_digest_user_file ${secrets.http-password-digest};
-            auth_digest 'flood';
-            auth_digest_expires 600s;
-            auth_digest_replays 1024;
+            access_by_lua_block {
+              local opts = {
+                redirect_uri_path = "/callback",
+                discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+                client_id = "9b136a46-a695-4319-8eb2-05816b0a9c1c",
+                client_secret = secret.rtorrent_client_secret,
+                ssl_verify = "yes",
+                scope = "openid email profile groups",
+                redirect_uri_scheme = "https",
+              }
+
+              local res, err = require("resty.openidc").authenticate(opts)
+
+              if err then
+                ngx.status = 500
+                ngx.say(err)
+                ngx.log(ngx.STDERR, opts.client_secret)
+                ngx.log(ngx.STDERR, err)
+                ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
+              end
+
+              if res.user.preferred_username ~= "poscat" then
+                ngx.status = 403
+                ngx.say('Access Denied')
+                ngx.exit(ngx.HTTP_FORBIDDEN)
+              end
+
+              ngx.req.set_header("X-USER", res.id_token.sub)
+            }
           '';
         };
         extraConfig = ''
-          auth_digest_shm_size 32m;
           error_page 497 301 =307 https://$host:$server_port$request_uri;
           add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
@@ -115,7 +139,7 @@ in {
         Group = "users";
         Type = "simple";
         Restart = "always";
-        ExecStart = "${pkgs.flood-git}/bin/flood --host 127.0.0.1 --port ${builtins.toString flood-port} --auth none --rtsocket /run/rtorrent/rpc.sock --rundir $STATE_DIRECTORY";
+        ExecStart = "${pkgs.flood-git}/bin/flood --host 127.0.0.1 --port ${toString flood-port} --auth none --rtsocket /run/rtorrent/rpc.sock --rundir $STATE_DIRECTORY";
         StateDirectory = "flood";
         StateDirectoryMode = "700";
         CapabilityBoundingSet = "";
@@ -132,6 +156,7 @@ in {
         ProtectKernelTunables = true;
         ProtectProc = "invisible";
         ProtectSystem = "strict";
+        ReadWritePaths = [ "/share/torrents" ];
         RestrictAddressFamilies = [ "AF_UNIX" "AF_INET" ];
         RestrictNamespaces = true;
         RestrictRealtime = true;
