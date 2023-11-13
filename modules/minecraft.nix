@@ -92,6 +92,35 @@ in {
         locations."/" = {
           proxyPass = "http://127.0.0.1:8100";
           recommendedProxySettings = true;
+          extraConfig = ''
+            access_by_lua_block {
+              local opts = {
+                redirect_uri_path = "/callback",
+                discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+                client_id = "33104ea6-830b-45a0-a334-507cb89cc011",
+                client_secret = secret.mc_client_secret,
+                ssl_verify = "yes",
+                scope = "openid email profile groups",
+                redirect_uri_scheme = "https",
+              }
+
+              local res, err = require("resty.openidc").authenticate(opts)
+
+              if err then
+                ngx.status = 500
+                ngx.say(err)
+                ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
+              end
+
+              if res.user.preferred_username ~= "poscat" then
+                ngx.status = 403
+                ngx.exit(ngx.HTTP_FORBIDDEN)
+                ngx.say('Access Denied')
+              end
+
+              ngx.req.set_header("X-USER", res.id_token.sub)
+            }
+          '';
         };
         extraConfig = ''
           error_page 497 301 =307 https://$host:$server_port$request_uri;
