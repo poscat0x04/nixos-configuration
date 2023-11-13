@@ -45,6 +45,7 @@
 
     systemPackages = with pkgs; [
       bat
+      du-dust
       file
       fd
       fzf
