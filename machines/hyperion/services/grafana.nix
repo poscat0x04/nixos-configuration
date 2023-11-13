@@ -94,9 +94,12 @@
 
   systemd.services = {
     nginx.serviceConfig.SupplementaryGroups = [ "grafana" ];
-    grafana.serviceConfig.LoadCredential = [
-      "smtp-username:${config.sops.secrets.grafana-smtp-username.path}"
-      "smtp-password:${config.sops.secrets.grafana-smtp-password.path}"
-    ];
+    grafana.serviceConfig = {
+      SupplementaryGroups = [ "redis" ];
+      LoadCredential = [
+        "smtp-username:${config.sops.secrets.grafana-smtp-username.path}"
+        "smtp-password:${config.sops.secrets.grafana-smtp-password.path}"
+      ];
+    };
   };
 }
