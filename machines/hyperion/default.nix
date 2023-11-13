@@ -25,6 +25,7 @@
     ./services/stunnel.nix
     ./services/prometheus.nix
     ./services/grafana.nix
+    ./services/gitea.nix
     ./services/ocis.nix
     ./services/code-server.nix
   ];
