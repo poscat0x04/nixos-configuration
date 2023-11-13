@@ -13,6 +13,7 @@
     ../../modules/minecraft.nix
     ../../modules/promethus/node.nix
     ../../modules/promethus/smartctl.nix
+    ../../modules/promethus/ping.nix
     ./network.nix
     ./services/znc.nix
     ./services/mtproto.nix

@@ -1,6 +1,13 @@
 { config, ... }:
 
-{
+let
+  lh = "127.0.0.1";
+  np = toString config.services.prometheus.exporters.node.port;
+  sp = toString config.services.prometheus.exporters.smartctl.port;
+  pp = toString config.services.prometheus.exporters.smokeping.port;
+  mkcfg = name: target: { targets = [ target ]; labels.exporter_name = name; };
+  mkhost = ip: port: "${ip}:${port}";
+in {
   services.prometheus = {
     enable = true;
     stateDir = "prometheus";
@@ -13,56 +20,26 @@
       {
         job_name = "hyperion";
         static_configs = [
-          {
-            targets = [
-              "127.0.0.1:${toString config.services.prometheus.exporters.node.port}"
-              "127.0.0.1:${toString config.services.prometheus.exporters.smartctl.port}"
-              "127.0.0.1:25585"
-            ];
-            labels = {
-              hostname = "hyperion";
-            };
-          }
+          (mkcfg "node" (mkhost lh np))
+          (mkcfg "smartctl" (mkhost lh sp))
+          (mkcfg "minecraft" (mkhost lh "25585"))
+          (mkcfg "ping" (mkhost lh pp))
         ];
       }
       {
         job_name = "nuc";
         static_configs = [
-          {
-            targets = [
-              "10.1.20.1:${toString config.services.prometheus.exporters.node.port}"
-            ];
-            labels = {
-              hostname = "nuc";
-            };
-          }
+          (mkcfg "node" (mkhost "10.1.20.1" np))
+          (mkcfg "ping" (mkhost "10.1.20.1" pp))
         ];
       }
       {
         job_name = "dione";
-        static_configs = [
-          {
-            targets = [
-              "10.1.10.4:9100"
-            ];
-            labels = {
-              hostname = "dione";
-            };
-          }
-        ];
+        static_configs = [ (mkcfg "node" "10.1.10.4:9100") ];
       }
       {
         job_name = "titan";
-        static_configs = [
-          {
-            targets = [
-              "10.1.10.1:${toString config.services.prometheus.exporters.node.port}"
-            ];
-            labels = {
-              hostname = "titan";
-            };
-          }
-        ];
+        static_configs = [ (mkcfg "node" (mkhost "10.1.10.1" np)) ];
       }
     ];
   };
