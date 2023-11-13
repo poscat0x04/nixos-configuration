@@ -33,10 +33,9 @@ rec {
   more-direct = [
     # quad101 dns
     "101.101.101.101"
+    "101.102.103.104"
     # dns666
     "101.6.6.6"
-    # kemono.party
-    "190.115.31.142"
   ];
 
   direct-ips = alibaba-tokyo-ip ++ more-direct;

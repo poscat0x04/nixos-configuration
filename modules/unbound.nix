@@ -14,9 +14,9 @@
       enableRootTrustAnchor = false;
       settings = {
         server = {
-          verbosity = 2;
+          verbosity = 1;
 
-          num-threads = 1;
+          num-threads = 2;
 
           module-config = "\"subnetcache iterator\"";
 
@@ -74,14 +74,14 @@
           {
             name = ".";
             forward-addr = [
-              "101.101.101.101@853"
-              "101.6.6.6@8853"
+              "101.102.103.104@853"
+              "1.1.1.1@853"
+              "8.8.8.8@853"
             ];
             forward-tls-upstream = true;
           }
         ];
       };
     };
-    systemd.services.unbound.serviceConfig.Slice = "system-noproxy.slice";
   };
 }
