@@ -32,7 +32,6 @@
     };
 
     nginx = {
-      additionalModules = [ pkgs.nginxModules.http-digest-auth ];
       virtualHosts."vault.poscat.moe" = {
         onlySSL = true;
         useACMEHost = "poscat.moe-wildcard";
@@ -72,8 +71,33 @@
             proxyPass = "http://localhost:34817";
             recommendedProxySettings = true;
             extraConfig = ''
-              auth_digest_user_file ${secrets.http-password-digest};
-              auth_digest 'vaultwarden admin';
+              access_by_lua_block {
+                local opts = {
+                  redirect_uri_path = "/admin/callback",
+                  discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+                  client_id = "f77649ce-5860-4927-9565-17e726c62627",
+                  client_secret = secret.vaultwarden_client_secret,
+                  ssl_verify = "yes",
+                  scope = "openid email profile groups",
+                  redirect_uri_scheme = "https",
+                }
+
+                local res, err = require("resty.openidc").authenticate(opts)
+
+                if err then
+                  ngx.status = 500
+                  ngx.say(err)
+                  ngx.exit(ngx.HTTP_INTERNAL_SERVER_ERROR)
+                end
+
+                if res.user.preferred_username ~= "poscat" then
+                  ngx.status = 403
+                  ngx.exit(ngx.HTTP_FORBIDDEN)
+                  ngx.say('Access Denied')
+                end
+
+                ngx.req.set_header("X-USER", res.id_token.sub)
+              }
             '';
           };
         };
