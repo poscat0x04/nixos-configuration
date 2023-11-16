@@ -30,6 +30,7 @@
     ./services/gitea.nix
     ./services/ocis.nix
     ./services/code-server.nix
+    ./services/opentracker.nix
   ];
 
   nixos.settings = {
