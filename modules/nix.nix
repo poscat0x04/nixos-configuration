@@ -27,7 +27,7 @@ in
         flake-registry = ${flakesEmpty}
       '';
 
-      package = pkgs.nixUnstable;
+      package = pkgs.nixFlakes;
 
       settings = {
         sandbox = true;
@@ -62,10 +62,6 @@ in
       overlays = [
         (
           final: prev: {
-            nixos-option = prev.nixos-option.override {
-              nix = config.nix.package;
-            };
-
             nix-prefetch-scripts = prev.nix-prefetch-scripts.override {
               nix = config.nix.package;
             };
