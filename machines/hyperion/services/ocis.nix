@@ -13,7 +13,7 @@ let
   ocis-test-bin = pkgs.fetchurl {
     name = "ocis";
     url = "https://download.owncloud.com/ocis/ocis/daily/ocis-testing-linux-amd64";
-    sha256 = "17wgn8prnygkv6d3zp6pnw7sblw495fz2ipi45incdpr5ysna2pm";
+    sha256 = "09hky46mvch03z35j4g6zdsbvfp9pqv6b0qkhc1hp8nwi06zwq12";
     executable = true;
   };
 
