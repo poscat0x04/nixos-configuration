@@ -15,7 +15,6 @@ in
       type = lib.types.listOf lib.types.str;
       default = [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
-        #"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       ];
     };
   };
@@ -78,6 +77,11 @@ in
       config = {
         allowUnfree = true;
       };
+    };
+
+    systemd.services.nix-daemon = {
+      environment.TMPDIR = "/run/nix-daemon";
+      serviceConfig.RuntimeDirectory = "nix-daemon";
     };
   };
 }
