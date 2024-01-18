@@ -32,6 +32,7 @@
     ./services/code-server.nix
     ./services/opentracker.nix
     ./services/docs.nix
+    ./services/ipfs.nix
   ];
 
   nixos.settings = {
