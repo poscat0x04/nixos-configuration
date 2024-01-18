@@ -36,6 +36,8 @@ rec {
     "101.102.103.104"
     # dns666
     "101.6.6.6"
+    # bwh
+    "64.64.228.47"
   ];
 
   direct-ips = alibaba-tokyo-ip ++ more-direct;
