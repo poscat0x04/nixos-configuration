@@ -86,6 +86,9 @@
           ENABLE = true;
           REFRESH_TOKEN_EXPIRATION_TIME = 2160;
         };
+        security = {
+          LOGIN_REMEMBER_DAYS = 90;
+        };
       };
       lfs.enable = true;
     };
