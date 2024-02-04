@@ -8,6 +8,7 @@
     ../../hardware/cpu/intel
     ../../modules/unbound.nix
     ../../modules/journal-upload.nix
+    ../../modules/promethus/node.nix
     ./network.nix
   ];
 
