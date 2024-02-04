@@ -77,6 +77,7 @@
       name = "titan.poscat.moe";
       interface = "ppp0";
       zoneId = "87cc420fd7bc4eada2b956854578ae8e";
+      ipv6 = false;
     };
   };
   systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
