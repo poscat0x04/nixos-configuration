@@ -1,7 +1,11 @@
 { ... }:
 
 {
+  imports = [ ./wg.nix ];
+
+  # networkd
   systemd.network = {
+    # HE tunnel
     netdevs = {
       "he-tunnel" = {
         netdevConfig = {
@@ -23,12 +27,33 @@
         gateway = [ "2001:470:c:b75::1" ];
         dns = [ "2001:4860:4860::8888" ];
       };
+
       "15-trusted-ethernet" = {
         matchConfig = {
           Name = "ens18";
         };
+
+        DHCP = "yes";
+        dns = [ "1.1.1.1" ];
+
+        dhcpV4Config = {
+          RouteMetric = 5;
+          UseMTU = true;
+          UseDNS = false;
+        };
+
         tunnel = [ "he-ipv6" ];
       };
+    };
+  };
+
+  # firewalls
+  networking = {
+    firewall.logRefusedConnections = false;
+    fwng = {
+      flowtable.devices = [ "ens18" "ens19" "he-ipv6" ];
+      nat.enable = true;
+      nat66.enable = true;
     };
   };
 }

@@ -21,3 +21,8 @@ creation_rules:
       - age:
         - *admin
         - *hyperion
+  - path_regex: ^secrets/bwh.yaml$
+    key_groups:
+      - age:
+        - *admin
+        - *bwh
