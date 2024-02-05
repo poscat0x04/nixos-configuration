@@ -6,6 +6,7 @@
     ../../profiles/server.nix
     ../../modules/acme.nix
     ./network.nix
+    ./services/proxy.nix
   ];
 
   boot = {

@@ -6,7 +6,6 @@ rec {
     wireguardPeerConfig = {
       PublicKey = machine.key;
       AllowedIPs = allowedIPs ++ [ "${subnetPrefix}.${toString machine.id}/32" ];
-      PersistentKeepalive = 20;
     } // (if !(builtins.hasAttr "addr" machine) then {} else {
       Endpoint = "${machine.addr}:48927";
     });

@@ -11,5 +11,6 @@
     iptraf-ng
     iftop
     nethogs
+    iperf3
   ];
 }
