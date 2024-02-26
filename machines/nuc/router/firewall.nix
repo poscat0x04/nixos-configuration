@@ -1,4 +1,4 @@
-{ ... }:
+{ networklib, ... }:
 
 {
   networking = {
@@ -17,7 +17,7 @@
             enable = true;
             interface = "ppp0";
             offload = true;
-            mark = "1000";
+            mark = builtins.toString networklib.wireguard.fwmark;
             nat.masquerade = true;
           };
         };

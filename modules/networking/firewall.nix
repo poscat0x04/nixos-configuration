@@ -1,4 +1,4 @@
-{ nixosModules, ... }:
+{ nixosModules, networklib, ... }:
 
 {
   imports = [ nixosModules.nixos-firewall-ng ];
@@ -8,7 +8,7 @@
     fwng = {
       enable = true;
       cgroupMarks = {
-        "system.slice/system-noproxy.slice" = "1000";
+        "system.slice/system-noproxy.slice" = builtins.toString networklib.wireguard.fwmark;
       };
     };
   };

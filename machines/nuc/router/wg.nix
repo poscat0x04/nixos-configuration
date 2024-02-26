@@ -1,18 +1,20 @@
 { config, networklib, ... }:
 
+with networklib.wireguard;
+
 {
-  networking.firewall.allowedUDPPorts = [ 48927 ];
-  systemd.network = with networklib.wireguard; with machines; {
+  networking.firewall.allowedUDPPorts = [ port ];
+  systemd.network = with machines; {
     netdevs."wg0" = {
       netdevConfig = {
         Name = "wg0";
         Kind = "wireguard";
       };
       wireguardConfig = {
-        ListenPort = 48927;
+        ListenPort = port;
         PrivateKeyFile = config.sops.secrets.wg-private-key.path;
         RouteTable = "main";
-        FirewallMark = 1000;
+        FirewallMark = fwmark;
       };
       wireguardPeers = makeWgPeers [ bwh ] ++ [ (makeWgPeer' [ "10.1.10.0/24" ] titan) ];
     };

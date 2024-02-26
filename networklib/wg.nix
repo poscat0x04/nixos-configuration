@@ -1,13 +1,15 @@
 rec {
   subnetPrefix = "10.1.100";
   prefixLength = 24;
+  port = 51196;
+  fwmark = 1000;
 
   makeWgPeer' = allowedIPs: machine: {
     wireguardPeerConfig = {
       PublicKey = machine.key;
       AllowedIPs = allowedIPs ++ [ "${subnetPrefix}.${toString machine.id}/32" ];
     } // (if !(builtins.hasAttr "addr" machine) then {} else {
-      Endpoint = "${machine.addr}:48927";
+      Endpoint = "${machine.addr}:${toString port}";
     });
   };
 

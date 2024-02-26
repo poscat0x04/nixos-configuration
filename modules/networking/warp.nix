@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, networklib, ... }:
 
 let
   cfg = config.networking.warp;
@@ -48,7 +48,7 @@ in {
         };
         wireguardConfig = {
           PrivateKeyFile = config.sops.secrets.wg-private-key.path;
-          FirewallMark = 1000;
+          FirewallMark = networklib.wireguard.fwmark;
         };
         wireguardPeers = [
           {
@@ -102,7 +102,7 @@ in {
               Priority = 103;
               Table = "warp";
               InvertRule = true;
-              FirewallMark = 1000;
+              FirewallMark = networklib.wireguard.fwmark;
             };
           }
         ];
