@@ -49,11 +49,21 @@
 
   # firewalls
   networking = {
-    firewall.logRefusedConnections = false;
+    forward = true;
+    firewall = {
+      logRefusedConnections = false;
+      trustedInterfaces = [ "wg0" ];
+    };
     fwng = {
       flowtable.devices = [ "ens18" "ens19" "he-ipv6" ];
-      nat.enable = true;
-      nat66.enable = true;
+      nat = {
+        enable = true;
+        masquerade = [ "ens18" ];
+      };
+      nat66= {
+        enable = true;
+        masquerade = [ "he-ipv6" ];
+      };
     };
   };
 }
