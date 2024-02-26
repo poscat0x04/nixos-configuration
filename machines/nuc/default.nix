@@ -7,7 +7,6 @@
     ../../hardware/profiles/uefi.nix
     ../../hardware/cpu/intel
     ../../modules/networking/warp.nix
-    ../../modules/warp-svc.nix
     ../../modules/promethus/node.nix
     ../../modules/promethus/ping.nix
     ./router/dns.nix
