@@ -27,8 +27,6 @@
       "random.trust_cpu=on"
       # Turn off CPU mitigations
       "mitigations=off"
-      # Avoid triggering ZFS data corruptions
-      "zfs.zfs_dmu_offset_next_sync=0"
     ];
   };
 
