@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   services.kubo = {
@@ -14,4 +14,5 @@
       };
     };
   };
+  boot.kernel.sysctl."net.core.wmem_max" = lib.mkForce 2500000;
 }
