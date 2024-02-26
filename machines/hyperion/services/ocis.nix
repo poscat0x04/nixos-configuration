@@ -12,8 +12,8 @@ let
 
   ocis-test-bin = pkgs.fetchurl {
     name = "ocis";
-    url = "https://download.owncloud.com/ocis/ocis/testing/5.0.0-rc.2/ocis-5.0.0-rc.2-linux-amd64";
-    sha256 = "1jbnpbz35qy59lqj1isax69qkkj514hlg336vpi11fwra689nfm2";
+    url = "https://download.owncloud.com/ocis/ocis/testing/5.0.0-rc.3/ocis-5.0.0-rc.3-linux-amd64";
+    sha256 = "14ixm2jhfm83mzjxqpf0j88gygb9fir4af8nan8cw0y279a1cmbb";
     executable = true;
   };
 
@@ -107,6 +107,8 @@ let
     gateway:
       storage_registry:
         storage_users_mount_id: d6c47e8e-066a-4c3a-81a8-b0b25b699eff
+    idp:
+      refresh_token_duration_seconds: 7776000
   '';
   proxy = cfg "proxy" ''
     http:
