@@ -5,6 +5,7 @@
   systemd.services.systemd-journal-flush = {
     requires = [ "zfs-mount.service" ];
     after = [ "zfs-mount.service" ];
+    serviceConfig.ExecStartPre = "/run/current-system/sw/bin/sleep 5";
   };
 
   services.journald = {
