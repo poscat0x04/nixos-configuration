@@ -10,7 +10,6 @@
     ../../modules/postgresql.nix
     ../../modules/redis.nix
     ../../modules/vlmcsd.nix
-    ../../modules/minecraft.nix
     ../../modules/promethus/node.nix
     ../../modules/promethus/smartctl.nix
     ../../modules/promethus/ping.nix

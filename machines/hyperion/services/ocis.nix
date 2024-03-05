@@ -12,8 +12,8 @@ let
 
   ocis-test-bin = pkgs.fetchurl {
     name = "ocis";
-    url = "https://download.owncloud.com/ocis/ocis/testing/5.0.0-rc.3/ocis-5.0.0-rc.3-linux-amd64";
-    sha256 = "14ixm2jhfm83mzjxqpf0j88gygb9fir4af8nan8cw0y279a1cmbb";
+    url = "https://download.owncloud.com/ocis/ocis/testing/5.0.0-rc.4/ocis-5.0.0-rc.4-linux-amd64";
+    sha256 = "0xk5lvspkb012z8xn6jl5czc37pnrxdrxfr2s88vc8803jryr8b4";
     executable = true;
   };
 
