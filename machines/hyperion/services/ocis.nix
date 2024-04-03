@@ -4,9 +4,9 @@ let
   cfg = name: content: pkgs.writeTextDir "${name}.yaml" content;
   ocis-bin = pkgs.fetchurl {
     name = "ocis";
-    url = "https://download.owncloud.com/ocis/ocis/stable/4.0.2/ocis-4.0.2-linux-amd64";
+    url = "https://download.owncloud.com/ocis/ocis/stable/5.0.0/ocis-5.0.0-linux-amd64";
     # use nix-prefetch-url --executable to get the hash
-    sha256 = "sha256-ME6yRDv0t1tVmQyk/vw0IpeNFvS0aaeJ/85brZi+u5o=";
+    sha256 = "1w6fwkcqdvib265zcdsx9x2zf0h2nn66cjrwgfszy995ml0qhql2";
     executable = true;
   };
 
@@ -203,10 +203,11 @@ in {
         "OCIS_URL=https://own.poscat.moe:8443"
         "OCIS_BASE_DATA_PATH=/var/lib/ocis"
         "OCIS_CONFIG_DIR=${cfgDir}"
+        "PROXY_ENABLE_BASIC_AUTH=true"
       ];
       EnvironmentFile = config.sops.secrets.ocis-secret.path;
       Restart = "always";
-      ExecStart = "${ocis-test-bin} server";
+      ExecStart = "${ocis-bin} server";
       SupplementaryGroups = [ "redis" ];
     };
   };
