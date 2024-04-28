@@ -1,9 +1,14 @@
 { pkgs, ... }:
 
-{
+let
+  smb = pkgs.samba.override {
+    enablePrinting = true;
+    enableMDNS = true;
+  };
+in {
   services.samba = {
     enable = true;
-    package = pkgs.sambaFull;
+    package = smb;
     extraConfig = ''
       min protocol = SMB3
       workgroup = WORKGROUP
@@ -80,5 +85,5 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.sambaFull ];
+  environment.systemPackages = [ smb ];
 }
