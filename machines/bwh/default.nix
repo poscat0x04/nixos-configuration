@@ -5,8 +5,8 @@
     ./hardware-configuration.nix
     ../../profiles/server.nix
     ../../modules/acme.nix
+    ../../modules/xray
     ./network.nix
-    ./services/proxy.nix
   ];
 
   boot = {

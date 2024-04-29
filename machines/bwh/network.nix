@@ -53,6 +53,7 @@
     firewall = {
       logRefusedConnections = false;
       trustedInterfaces = [ "wg0" ];
+      allowedTCPPorts = [ 443 ];
     };
     fwng = {
       flowtable.devices = [ "ens18" "ens19" "he-ipv6" ];
