@@ -27,10 +27,10 @@ in {
           sniff = true;
         }
         {
-          type = "socks";
-          tag = "socks-in";
-          listen = "10.1.20.1";
-          listen_port = 1081;
+          type = "mixed";
+          tag = "mixed-in";
+          listen = "0.0.0.0";
+          listen_port = 1080;
           sniff = true;
         }
       ];
