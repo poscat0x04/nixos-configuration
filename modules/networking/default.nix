@@ -67,6 +67,7 @@
       others-direct = 26;
       symmetry = 27;
       warp = 30;
+      sing-box = 31;
     };
 
     networks = {

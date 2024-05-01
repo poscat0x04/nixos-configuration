@@ -9,6 +9,7 @@
     ../../modules/networking/warp.nix
     ../../modules/promethus/node.nix
     ../../modules/promethus/ping.nix
+    ../../modules/sing-box.nix
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
