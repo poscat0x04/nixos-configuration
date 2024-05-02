@@ -20,7 +20,6 @@
       cleanOnBoot = true;
     };
     supportedFilesystems = [ "ntfs" ];
-    zfs.enableUnstable = false;
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
     kernelParams = [
       # Trust RDRAND
