@@ -9,7 +9,7 @@
   };
 
   services.journald = {
-    enableHttpGateway = true;
+    gateway.enable = true;
     extraConfig = ''
       Compress=no
       SystemMaxUse=200G
