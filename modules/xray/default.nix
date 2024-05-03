@@ -1,6 +1,5 @@
 { config, ... }:
 
-
 {
   sops.secrets.xray-config = {};
   services.xray = {

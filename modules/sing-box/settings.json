@@ -1,0 +1,717 @@
+{
+  "dns": {
+    "final": "101dns",
+    "rules": [
+      {
+        "mode": "or",
+        "rules": [
+          {
+            "rule_set": "accel-cn"
+          },
+          {
+            "rule_set": "apple-cn"
+          },
+          {
+            "rule_set": "google-cn"
+          }
+        ],
+        "server": "223dns",
+        "type": "logical"
+      }
+    ],
+    "servers": [
+      {
+        "address": "tls://101.101.101.101",
+        "detour": "direct",
+        "tag": "101dns"
+      },
+      {
+        "address": "223.5.5.5",
+        "detour": "direct",
+        "tag": "223dns"
+      }
+    ],
+    "strategy": "prefer_ipv6"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true
+    }
+  },
+  "inbounds": [
+    {
+      "auto_route": false,
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
+      "interface_name": "tun0",
+      "mtu": 9000,
+      "sniff": true,
+      "stack": "gvisor",
+      "strict_route": false,
+      "tag": "tun-in",
+      "type": "tun"
+    }
+  ],
+  "log": {
+    "level": "warning"
+  },
+  "outbounds": [
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "network": "tcp",
+      "server": {
+        "_secret": "/run/secrets/sing-box/addr"
+      },
+      "server_port": 443,
+      "tag": "vless-out",
+      "tls": {
+        "enabled": true,
+        "reality": {
+          "enabled": true,
+          "public_key": {
+            "_secret": "/run/secrets/sing-box/publicKey"
+          },
+          "short_id": {
+            "_secret": "/run/secrets/sing-box/shortId"
+          }
+        },
+        "server_name": {
+          "_secret": "/run/secrets/sing-box/sn"
+        },
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": {
+        "_secret": "/run/secrets/sing-box/id"
+      }
+    },
+    {
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+      ],
+      "mtu": 1420,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "private_key": {
+        "_secret": "/run/secrets/wg-private-key"
+      },
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "server": "162.159.192.24",
+      "server_port": 2408,
+      "system_interface": false,
+      "tag": "wg0-out",
+      "type": "wireguard",
+      "workers": 4
+    },
+    {
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+      ],
+      "mtu": 1420,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "private_key": {
+        "_secret": "/run/secrets/wg-private-key"
+      },
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "server": "162.159.192.204",
+      "server_port": 2408,
+      "system_interface": false,
+      "tag": "wg1-out",
+      "type": "wireguard",
+      "workers": 4
+    },
+    {
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+      ],
+      "mtu": 1420,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "private_key": {
+        "_secret": "/run/secrets/wg-private-key"
+      },
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "server": "162.159.193.1",
+      "server_port": 2408,
+      "system_interface": false,
+      "tag": "wg2-out",
+      "type": "wireguard",
+      "workers": 4
+    },
+    {
+      "local_address": [
+        "172.16.0.2/32",
+        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+      ],
+      "mtu": 1420,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "private_key": {
+        "_secret": "/run/secrets/wg-private-key"
+      },
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "server": "2606:4700:100::a29f:c109",
+      "server_port": 2408,
+      "system_interface": false,
+      "tag": "wg3-out",
+      "type": "wireguard",
+      "workers": 4
+    },
+    {
+      "idle_timeout": "10m",
+      "interrupt_exist_connections": false,
+      "interval": "10s",
+      "outbounds": [
+        "vless-out",
+        "wg0-out",
+        "wg1-out",
+        "wg2-out",
+        "wg3-out"
+      ],
+      "tag": "optimized-out",
+      "tolerance": 10,
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "default_mark": 1000,
+    "final": "direct",
+    "rule_set": [
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "accel-cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/Dreista/sing-box-rule-set-cn@rule-set/accelerated-domains.china.conf.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "apple-cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/Dreista/sing-box-rule-set-cn@rule-set/apple.china.conf.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "google-cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/Dreista/sing-box-rule-set-cn@rule-set/google.china.conf.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geoip-cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geoip@rule-set/geoip-cn.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-youtube.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-google",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-google.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-twitter",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-twitter.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-facebook",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-facebook.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-scmp",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-scmp.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-reddit",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-reddit.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-bbc",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-bbc.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-archive",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-archive.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-discord",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-discord.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-github",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-github.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-libgen",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-libgen.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-afp",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-afp.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-gravatar",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-gravatar.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-imgur",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-imgur.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-bing",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-bing.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-pixiv",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-pixiv.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-matrix",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-matrix.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-fandom",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-fandom.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-nyaa",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-nyaa.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-telegram.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-wikimedia",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-wikimedia.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-patreon",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-patreon.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-signal",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-signal.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-blogspot",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-blogspot.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-bloomberg",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-bloomberg.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-theguardian",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-theguardian.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-economist",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-economist.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-nytimes",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-nytimes.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-reuters",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-reuters.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-wsj",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-wsj.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-twitch",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-twitch.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-zaobao",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-zaobao.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-z-library",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-z-library.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-golang",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-golang.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-disqus",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-disqus.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-greatfire",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-greatfire.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-geolocation-cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-category-ads",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-category-ads.srs"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "mode": "or",
+        "outbound": "direct",
+        "rules": [
+          {
+            "rule_set": "geoip-cn"
+          },
+          {
+            "rule_set": "geosite-geolocation-cn"
+          },
+          {
+            "wifi_ssid": [
+              "ZF",
+              "AX3-Home"
+            ]
+          }
+        ],
+        "type": "logical"
+      },
+      {
+        "outbound": "block",
+        "rule_set": "geosite-category-ads"
+      },
+      {
+        "mode": "or",
+        "outbound": "optimized-out",
+        "rules": [
+          {
+            "rule_set": "geosite-youtube"
+          },
+          {
+            "rule_set": "geosite-google"
+          },
+          {
+            "rule_set": "geosite-twitter"
+          },
+          {
+            "rule_set": "geosite-facebook"
+          },
+          {
+            "rule_set": "geosite-scmp"
+          },
+          {
+            "rule_set": "geosite-reddit"
+          },
+          {
+            "rule_set": "geosite-bbc"
+          },
+          {
+            "rule_set": "geosite-archive"
+          },
+          {
+            "rule_set": "geosite-discord"
+          },
+          {
+            "rule_set": "geosite-github"
+          },
+          {
+            "rule_set": "geosite-libgen"
+          },
+          {
+            "rule_set": "geosite-afp"
+          },
+          {
+            "rule_set": "geosite-gravatar"
+          },
+          {
+            "rule_set": "geosite-imgur"
+          },
+          {
+            "rule_set": "geosite-bing"
+          },
+          {
+            "rule_set": "geosite-pixiv"
+          },
+          {
+            "rule_set": "geosite-matrix"
+          },
+          {
+            "rule_set": "geosite-fandom"
+          },
+          {
+            "rule_set": "geosite-nyaa"
+          },
+          {
+            "rule_set": "geosite-telegram"
+          },
+          {
+            "rule_set": "geosite-wikimedia"
+          },
+          {
+            "rule_set": "geosite-patreon"
+          },
+          {
+            "rule_set": "geosite-signal"
+          },
+          {
+            "rule_set": "geosite-blogspot"
+          },
+          {
+            "rule_set": "geosite-bloomberg"
+          },
+          {
+            "rule_set": "geosite-theguardian"
+          },
+          {
+            "rule_set": "geosite-economist"
+          },
+          {
+            "rule_set": "geosite-nytimes"
+          },
+          {
+            "rule_set": "geosite-reuters"
+          },
+          {
+            "rule_set": "geosite-wsj"
+          },
+          {
+            "rule_set": "geosite-twitch"
+          },
+          {
+            "rule_set": "geosite-zaobao"
+          },
+          {
+            "rule_set": "geosite-z-library"
+          },
+          {
+            "rule_set": "geosite-golang"
+          },
+          {
+            "rule_set": "geosite-disqus"
+          },
+          {
+            "rule_set": "geosite-greatfire"
+          },
+          {
+            "rule_set": "geoip-telegram"
+          },
+          {
+            "domain_suffix": [
+              "hoyolab.com",
+              "eff.org",
+              "nhentai.net",
+              "npr.org",
+              "wikileaks.org",
+              "whatismyipaddress.com",
+              "huggingface.co"
+            ]
+          }
+        ],
+        "type": "logical"
+      }
+    ]
+  }
+}

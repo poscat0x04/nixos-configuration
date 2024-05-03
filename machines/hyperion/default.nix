@@ -13,7 +13,7 @@
     ../../modules/promethus/node.nix
     ../../modules/promethus/smartctl.nix
     ../../modules/promethus/ping.nix
-    ../../modules/sing-box.nix
+    ../../modules/sing-box
     ./network.nix
     ./services/znc.nix
     ./services/mtproto.nix
