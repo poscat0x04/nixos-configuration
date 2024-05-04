@@ -8,19 +8,13 @@ let
       name = "lua";
       owner = "openresty";
       repo = "lua-nginx-module";
-      rev = "v0.10.22";
-      sha256 = "sha256-TyeTL7/0dI2wS2eACS4sI+9tu7UpDq09aemMaklkUss=";
+      rev = "v0.10.26";
+      sha256 = "sha256-007up/XncaSBimBumHpbwgB1WnkXgBe8e/q/yT6vthI=";
     };
 
     inputs = [ luajit ];
 
-    preConfigure = let
-      # fix compilation against nginx 1.23.0
-      nginx-1-23-patch = pkgs.fetchpatch {
-        url = "https://github.com/openresty/lua-nginx-module/commit/b6d167cf1a93c0c885c28db5a439f2404874cb26.patch";
-        sha256 = "sha256-l7GHFNZXg+RG2SIBjYJO1JHdGUtthWnzLIqEORJUNr4=";
-      };
-    in ''
+    preConfigure = ''
       export LUAJIT_LIB="${luajit}/lib"
       export LUAJIT_INC="$(realpath ${luajit}/include/luajit-*)"
 
@@ -28,7 +22,6 @@ let
       lua_src=$TMPDIR/lua-src
       cp -r "${src}/" "$lua_src"
       chmod -R +w "$lua_src"
-      patch -p1 -d $lua_src -i ${nginx-1-23-patch}
       export configureFlags="''${configureFlags//"${src}"/"$lua_src"}"
       unset lua_src
     '';
