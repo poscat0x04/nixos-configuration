@@ -50,6 +50,19 @@
       "strict_route": false,
       "tag": "tun-in",
       "type": "tun"
+    },
+    {
+      "listen": "0.0.0.0",
+      "listen_port": 1080,
+      "sniff": true,
+      "tag": "mixed-in",
+      "type": "mixed",
+      "users": [
+        {
+          "password": "poscat",
+          "username": "poscat"
+        }
+      ]
     }
   ],
   "log": {
@@ -565,6 +578,86 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-apkpure",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-apkpure.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-dropbox",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-dropbox.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-ehentai",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-ehentai.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-ft",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-ft.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-hoyoverse",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-hoyoverse.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-icloudprivaterelay",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-icloudprivaterelay.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-kemono",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-kemono.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-medium",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-medium.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-openai",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-openai.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-thetimes",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-thetimes.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-geolocation-cn",
         "type": "remote",
         "update_interval": "1d",
@@ -729,19 +822,52 @@
             "rule_set": "geosite-torproject"
           },
           {
+            "rule_set": "geosite-apkpure"
+          },
+          {
+            "rule_set": "geosite-dropbox"
+          },
+          {
+            "rule_set": "geosite-ehentai"
+          },
+          {
+            "rule_set": "geosite-ft"
+          },
+          {
+            "rule_set": "geosite-hoyoverse"
+          },
+          {
+            "rule_set": "geosite-icloudprivaterelay"
+          },
+          {
+            "rule_set": "geosite-kemono"
+          },
+          {
+            "rule_set": "geosite-medium"
+          },
+          {
+            "rule_set": "geosite-openai"
+          },
+          {
+            "rule_set": "geosite-thetimes"
+          },
+          {
             "rule_set": "geoip-telegram"
           },
           {
             "domain_suffix": [
-              "hoyolab.com",
               "eff.org",
               "nhentai.net",
               "npr.org",
               "wikileaks.org",
               "whatismyipaddress.com",
               "huggingface.co",
-              "mastodon.social"
+              "mastodon.social",
+              "one.one.one.one"
             ]
+          },
+          {
+            "inbound": "mixed-in"
           }
         ],
         "type": "logical"
