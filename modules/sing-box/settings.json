@@ -541,6 +541,30 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-letsencrypt",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-letsencrypt.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-tor",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-tor.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-torproject",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-torproject.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-geolocation-cn",
         "type": "remote",
         "update_interval": "1d",
@@ -696,6 +720,15 @@
             "rule_set": "geosite-greatfire"
           },
           {
+            "rule_set": "geosite-letsencrypt"
+          },
+          {
+            "rule_set": "geosite-tor"
+          },
+          {
+            "rule_set": "geosite-torproject"
+          },
+          {
             "rule_set": "geoip-telegram"
           },
           {
@@ -706,7 +739,8 @@
               "npr.org",
               "wikileaks.org",
               "whatismyipaddress.com",
-              "huggingface.co"
+              "huggingface.co",
+              "mastodon.social"
             ]
           }
         ],
