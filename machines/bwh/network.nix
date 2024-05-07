@@ -23,7 +23,7 @@
     networks = {
       "9-he-tunnel" = {
         name = "he-ipv6";
-        address = [ "2001:470:c:b75::2/64" ];
+        address = [ "2001:470:f2cc::/48" ];
         gateway = [ "2001:470:c:b75::1" ];
         dns = [ "2001:4860:4860::8888" ];
       };
