@@ -204,7 +204,7 @@
     {
       "idle_timeout": "10m",
       "interrupt_exist_connections": false,
-      "interval": "10s",
+      "interval": "60s",
       "outbounds": [
         "vless-out",
         "wg0-out",
@@ -658,6 +658,30 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-mega",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-mega.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-openstreetmap",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-openstreetmap.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-organicmaps",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-organicmaps.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-geolocation-cn",
         "type": "remote",
         "update_interval": "1d",
@@ -850,6 +874,15 @@
           },
           {
             "rule_set": "geosite-thetimes"
+          },
+          {
+            "rule_set": "geosite-mega"
+          },
+          {
+            "rule_set": "geosite-openstreetmap"
+          },
+          {
+            "rule_set": "geosite-organicmaps"
           },
           {
             "rule_set": "geoip-telegram"
