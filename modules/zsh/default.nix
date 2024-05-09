@@ -38,6 +38,7 @@ let
   aliasesStr = concatMapStringsSep "\n" (alias: "alias ${alias.fst}=${escapeShellArg alias.snd}") aliases;
 
   custom-aliases = {
+    ip = "ip -c";
     l = "ls -1A";
     ll = "ls -lh";
     lr = "ll -R";
