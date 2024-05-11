@@ -69,6 +69,10 @@
             "fc00::/7"
             "fe80::/10"
           ];
+
+          local-data = [
+            "'cdn.sstatic.net.  60     IN      A       172.64.147.34'"
+          ];
         };
         forward-zone = import (pkgs.unbound-china-domain-list.override {servers = ["223.5.5.5" "223.6.6.6"];}) ++ [
           {
