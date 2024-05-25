@@ -714,10 +714,82 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-steam",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-steam.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-geolocation-cn",
         "type": "remote",
         "update_interval": "1d",
         "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-geolocation-cn.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-azure",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-azure.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-msn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-msn.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-onedrive",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-onedrive.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-xbox",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-xbox.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-microsoft-dev",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-microsoft-dev.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-microsoft-pki",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-microsoft-pki.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-microsoft@cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-microsoft@cn.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-steam@cn",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-steam@cn.srs"
       },
       {
         "download_detour": "direct",
@@ -742,6 +814,30 @@
           },
           {
             "rule_set": "geosite-geolocation-cn"
+          },
+          {
+            "rule_set": "geosite-azure"
+          },
+          {
+            "rule_set": "geosite-msn"
+          },
+          {
+            "rule_set": "geosite-onedrive"
+          },
+          {
+            "rule_set": "geosite-xbox"
+          },
+          {
+            "rule_set": "geosite-microsoft-dev"
+          },
+          {
+            "rule_set": "geosite-microsoft-pki"
+          },
+          {
+            "rule_set": "geosite-microsoft@cn"
+          },
+          {
+            "rule_set": "geosite-steam@cn"
           },
           {
             "wifi_ssid": [
@@ -929,6 +1025,9 @@
             "rule_set": "geosite-goodreads"
           },
           {
+            "rule_set": "geosite-steam"
+          },
+          {
             "rule_set": "geoip-telegram"
           },
           {
@@ -940,7 +1039,13 @@
               "whatismyipaddress.com",
               "huggingface.co",
               "mastodon.social",
-              "one.one.one.one"
+              "one.one.one.one",
+              "substack.com",
+              "brew.sh",
+              "discuss-cdn.kde.org",
+              "kdab.com",
+              "challenges.cloudflare.com",
+              "chatgpt.com"
             ]
           },
           {
