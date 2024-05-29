@@ -82,6 +82,13 @@
           MIGRATE = 3600;
           MIRROR = 1800;
         };
+        indexer = {
+          ISSUE_INDEXER_TYPE = "elasticsearch";
+          ISSUE_INDEXER_CONN_STR = "http://127.0.0.1:9201";
+          REPO_INDEXER_ENABLED = true;
+          REPO_INDEXER_TYPE = "elasticsearch";
+          REPO_INDEXER_CONN_STR = "http://127.0.0.1:9201";
+        };
         oauth2 = {
           ENABLE = true;
           REFRESH_TOKEN_EXPIRATION_TIME = 2160;
