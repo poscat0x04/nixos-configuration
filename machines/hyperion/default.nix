@@ -15,6 +15,7 @@
     ../../modules/promethus/ping.nix
     ../../modules/sing-box
     ./network.nix
+    ./services/elasticsearch.nix
     ./services/znc.nix
     ./services/mtproto.nix
     ./services/journal.nix
