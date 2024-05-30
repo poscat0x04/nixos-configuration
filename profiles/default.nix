@@ -27,6 +27,20 @@
       # Turn off CPU mitigations
       "mitigations=off"
     ];
+    kernel.sysctl = {
+      "kernel.kexec_load_disabled" = 1;
+      "kernel.kptr_restrict" = 2;
+      "net.ipv4.conf.all.accept_redirects" = false;
+      "net.ipv4.conf.default.accept_redirects" = false;
+      "net.ipv4.conf.all.secure_redirects" = false;
+      "net.ipv4.conf.default.secure_redirects" = false;
+      "net.ipv6.conf.all.accept_redirects" = false;
+      "net.ipv6.conf.default.accept_redirects" = false;
+      "net.ipv4.conf.all.send_redirects" = false;
+      "net.ipv4.conf.default.send_redirects" = false;
+      "net.ipv4.conf.default.log_martians" = false;
+      "net.ipv4.conf.all.log_martians" = false;
+    };
   };
 
   console.earlySetup = true;
