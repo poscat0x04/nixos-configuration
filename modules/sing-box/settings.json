@@ -338,14 +338,6 @@
       {
         "download_detour": "direct",
         "format": "binary",
-        "tag": "geosite-github",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-github.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
         "tag": "geosite-libgen",
         "type": "remote",
         "update_interval": "1d",
@@ -634,14 +626,6 @@
       {
         "download_detour": "direct",
         "format": "binary",
-        "tag": "geosite-kemono",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-kemono.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
         "tag": "geosite-medium",
         "type": "remote",
         "update_interval": "1d",
@@ -854,7 +838,7 @@
       },
       {
         "mode": "or",
-        "outbound": "optimized-out",
+        "outbound": "vless-out",
         "rules": [
           {
             "rule_set": "geosite-youtube"
@@ -882,9 +866,6 @@
           },
           {
             "rule_set": "geosite-discord"
-          },
-          {
-            "rule_set": "geosite-github"
           },
           {
             "rule_set": "geosite-libgen"
@@ -993,9 +974,6 @@
           },
           {
             "rule_set": "geosite-icloudprivaterelay"
-          },
-          {
-            "rule_set": "geosite-kemono"
           },
           {
             "rule_set": "geosite-medium"
