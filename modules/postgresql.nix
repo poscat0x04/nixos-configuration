@@ -5,8 +5,6 @@
 
   networking.firewall.allowedTCPPorts = [ 5432 ];
 
-  boot.kernel.sysctl."vm.nr_hugepages" = lib.mkOverride 90 600;
-
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
@@ -31,7 +29,6 @@
 
       # optimizations
       shared_buffers = "1GB";
-      huge_pages = "on";
       max_wal_size = "2GB";
       full_page_writes = false;
 
