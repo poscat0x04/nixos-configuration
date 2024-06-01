@@ -2,39 +2,6 @@
 
 let
   luajit = pkgs.luajit_openresty;
-  lua = rec {
-    name = "lua";
-    src = pkgs.fetchFromGitHub {
-      name = "lua";
-      owner = "openresty";
-      repo = "lua-nginx-module";
-      rev = "v0.10.26";
-      sha256 = "sha256-007up/XncaSBimBumHpbwgB1WnkXgBe8e/q/yT6vthI=";
-    };
-
-    inputs = [ luajit ];
-
-    preConfigure = ''
-      export LUAJIT_LIB="${luajit}/lib"
-      export LUAJIT_INC="$(realpath ${luajit}/include/luajit-*)"
-
-      # make source directory writable to allow generating src/ngx_http_lua_autoconf.h
-      lua_src=$TMPDIR/lua-src
-      cp -r "${src}/" "$lua_src"
-      chmod -R +w "$lua_src"
-      export configureFlags="''${configureFlags//"${src}"/"$lua_src"}"
-      unset lua_src
-    '';
-
-    allowMemoryWriteExecute = true;
-
-    meta = with pkgs.lib; {
-      description = "Embed the Power of Lua";
-      homepage = "https://github.com/openresty/lua-nginx-module";
-      license = with licenses; [ bsd2 ];
-      maintainers = with maintainers; [ ];
-    };
-  };
 
   lua-resty-core = pkgs.fetchFromGitHub {
     owner = "openresty";
@@ -79,12 +46,30 @@ let
      sha256 = "l3zN6amZ6uUbOl7vt5XF+Uyz0nbDrYgcaQCWRFSN22Q=";
    };
 
+   lua-resty-jwt = pkgs.luajitPackages.buildLuarocksPackage {
+     pname = "lua-resty-jwt";
+     version = "0.2.3-0";
+     knownRockspec = (pkgs.fetchurl {
+       url    = "mirror://luarocks/lua-resty-jwt-0.2.3-0.rockspec";
+       sha256 = "1fxdwfr4pna3fdfm85kin97n53caq73h807wjb59wpqiynbqzc8c";
+     }).outPath;
+     src = pkgs.fetchFromGitHub {
+       owner = "cdbattags";
+       repo = "lua-resty-jwt";
+       rev = "v0.2.3";
+       hash = "sha256-5lnr0ka6ijfujiRjqwCPb6jzItXx45FIN8CvhR/KiB8=";
+       fetchSubmodules = true;
+     };
+
+     propagatedBuildInputs = [ pkgs.luajitPackages.lua-resty-openssl ];
+   };
+
    luaPkgPath = builtins.concatStringsSep ";" [
      "${pkgs.luajitPackages.lua-resty-core}/lib/lua/5.1/?.lua"
      "${pkgs.luajitPackages.lua-resty-lrucache}/lib/lua/5.1/?.lua"
      "${pkgs.luajitPackages.lua-resty-http}/share/lua/5.1/?.lua"
      "${pkgs.luajitPackages.lua-cjson}/share/lua/5.1/?.lua"
-     "${pkgs.luajitPackages.lua-resty-jwt}/share/lua/5.1/?.lua"
+     "${lua-resty-jwt}/share/lua/5.1/?.lua"
      "${pkgs.luajitPackages.lua-resty-openssl}/share/lua/5.1/?.lua"
      "${lua-resty-session}/lib/?.lua"
      "${lua-resty-string}/lib/?.lua"
@@ -107,7 +92,7 @@ in{
     package = pkgs.nginxMainline;
     enableReload = true;
     additionalModules = [
-      lua
+      pkgs.nginxModules.lua
       pkgs.nginxModules.brotli
       pkgs.nginxModules.develkit
     ];
