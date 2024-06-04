@@ -13,9 +13,7 @@ in
     };
     mirrorUrl = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [
-        "https://mirror.sjtu.edu.cn/nix-channels/store"
-      ];
+      default = [ "https://mirrors.ustc.edu.cn/nix-channels/store" ];
     };
   };
   config = {
