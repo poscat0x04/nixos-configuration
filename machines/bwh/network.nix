@@ -8,7 +8,6 @@ in{
   # networkd
   systemd.network = {
     # HE tunnel
-    /*
     netdevs = {
       "he-tunnel" = {
         netdevConfig = {
@@ -22,20 +21,22 @@ in{
         };
       };
     };
-    */
     networks = {
       "9-he-tunnel" = {
         name = "he-ipv6";
-        linkConfig.Unmanaged = true;
-        /*
-        address = [ "2001:470:f085::1/64" ];
-        gateway = [ "2001:470:c:b75::1" ];
+        address = [ "2001:470:f085::1/48" ];
         dns = [ "2001:4860:4860::8888" ];
         networkConfig = {
           ConfigureWithoutCarrier = true;
           LinkLocalAddressing = "ipv6";
         };
-        */
+        routes = [
+          {
+            routeConfig = {
+              Gateway = "::";
+            };
+          }
+        ];
       };
 
       "15-trusted-ethernet" = {
@@ -54,26 +55,6 @@ in{
 
         tunnel = [ "he-ipv6" ];
       };
-    };
-  };
-  systemd.services.he-ipv6 = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
-    path = [ pkgs.iproute2 ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = [
-        "${ip} tunnel add he-ipv6 mode sit remote 66.220.18.42 local 64.64.228.47"
-        "${ip} link set he-ipv6 up mtu 1480"
-        "${ip} addr add 2001:470:f085::/48 dev he-ipv6"
-        "${ip} -6 route add ::/0 dev he-ipv6"
-      ];
-      ExecStop = [
-        "${ip} -6 route del ::/0 dev he-ipv6"
-        "${ip} link set he-ipv6 down"
-        "${ip} tunnel del he-ipv6"
-      ];
-      RemainAfterExit = true;
     };
   };
 
