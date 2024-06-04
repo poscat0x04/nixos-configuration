@@ -338,6 +338,14 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-flatpak",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-flatpak.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-libgen",
         "type": "remote",
         "update_interval": "1d",
@@ -594,14 +602,6 @@
       {
         "download_detour": "direct",
         "format": "binary",
-        "tag": "geosite-ehentai",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-ehentai.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
         "tag": "geosite-ft",
         "type": "remote",
         "update_interval": "1d",
@@ -702,6 +702,14 @@
         "type": "remote",
         "update_interval": "1d",
         "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-steam.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-protonmail",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-protonmail.srs"
       },
       {
         "download_detour": "direct",
@@ -868,6 +876,9 @@
             "rule_set": "geosite-discord"
           },
           {
+            "rule_set": "geosite-flatpak"
+          },
+          {
             "rule_set": "geosite-libgen"
           },
           {
@@ -964,9 +975,6 @@
             "rule_set": "geosite-dropbox"
           },
           {
-            "rule_set": "geosite-ehentai"
-          },
-          {
             "rule_set": "geosite-ft"
           },
           {
@@ -1006,6 +1014,9 @@
             "rule_set": "geosite-steam"
           },
           {
+            "rule_set": "geosite-protonmail"
+          },
+          {
             "rule_set": "geoip-telegram"
           },
           {
@@ -1023,7 +1034,10 @@
               "discuss-cdn.kde.org",
               "kdab.com",
               "challenges.cloudflare.com",
-              "chatgpt.com"
+              "newyorker.com",
+              "e-hentai.org",
+              "exhentai.org",
+              "ehtracker.org"
             ]
           },
           {
