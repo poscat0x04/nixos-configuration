@@ -4,16 +4,9 @@ let
   cfg = name: content: pkgs.writeTextDir "${name}.yaml" content;
   ocis-bin = pkgs.fetchurl {
     name = "ocis";
-    url = "https://download.owncloud.com/ocis/ocis/stable/5.0.0/ocis-5.0.0-linux-amd64";
+    url = "https://download.owncloud.com/ocis/ocis/stable/5.0.5/ocis-5.0.5-linux-amd64";
     # use nix-prefetch-url --executable to get the hash
-    sha256 = "1w6fwkcqdvib265zcdsx9x2zf0h2nn66cjrwgfszy995ml0qhql2";
-    executable = true;
-  };
-
-  ocis-test-bin = pkgs.fetchurl {
-    name = "ocis";
-    url = "https://download.owncloud.com/ocis/ocis/testing/5.0.0-rc.4/ocis-5.0.0-rc.4-linux-amd64";
-    sha256 = "0xk5lvspkb012z8xn6jl5czc37pnrxdrxfr2s88vc8803jryr8b4";
+    sha256 = "1fcimg4rq1q9vgj0ys5kyrykj6hn58m76aiv27n2p45i9xqjhbyi";
     executable = true;
   };
 
