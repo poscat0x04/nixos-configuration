@@ -1,7 +1,7 @@
-{ config, pkgs, nixosModules, ... }:
+{ config, pkgs, flakes, ... }:
 
 {
-  imports = [ nixosModules.atticd ];
+  imports = [ (flakes.attic.path + "/nixos/atticd.nix") ];
 
   sops.secrets.attic-secret = {};
 
@@ -9,6 +9,7 @@
     atticd = {
       enable = true;
       credentialsFile = config.sops.secrets.attic-secret.path;
+      useFlakeCompatOverlay = false;
       settings = {
         listen = "127.0.0.1:20843";
         allowed-hosts = [ "cache.poscat.moe" "attic.poscat.moe" ];

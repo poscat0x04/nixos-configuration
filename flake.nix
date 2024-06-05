@@ -31,11 +31,6 @@
       url = "github:poscat0x04/nix-secrets";
     };
     nixos-firewall-ng.url = "github:poscat0x04/nixos-firewall-ng";
-    hath-nix.url = "github:poscat0x04/hath-nix";
-    nixos-emacs = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "/nixpkgs";
-    };
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "/nixpkgs";
@@ -54,18 +49,15 @@
     , home-manager
     , nix-secrets
     , nix-repo
-    , hath-nix
-    , nixos-emacs
     , routeupd
     , cloudflare-ddns
-    , attic
     , rust-overlay
     , flake-utils
     , ...
     }@inputs: with flake-utils; with nixpkgs.lib;
     let
       overlays =
-        map (f: f.overlay) [ nix-repo hath-nix nixos-emacs routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default attic.overlays.default ];
+        map (f: f.overlay) [ nix-repo routeupd cloudflare-ddns ] ++ [ rust-overlay.overlays.default ];
       baseSystem =
         { system ? "x86_64-linux", modules ? [], overlay ? true }@config:
           nixosSystem {
