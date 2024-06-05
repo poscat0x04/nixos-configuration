@@ -15,9 +15,12 @@
   ];
 
   boot = {
+    # We have compression
+    runSize = "200%";
     tmp = {
       useTmpfs = true;
       cleanOnBoot = true;
+      tmpfsSize = "100%";
     };
     supportedFilesystems = [ "ntfs" ];
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
