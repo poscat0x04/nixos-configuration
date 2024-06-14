@@ -222,7 +222,6 @@
           fcitx-vim
           formatter-nvim
           ale
-          vim-gutentags
           fzf-vim
         ];
         opt = [ ];
