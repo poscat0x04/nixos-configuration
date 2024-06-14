@@ -56,6 +56,7 @@
 
   # WARP
   networking.warp = {
+    manualActivation = true;
     v6addr = "2606:4700:110:857c:de77:ab8d:f751:28f8";
   };
   #networking.fwng.warpId = "0x033573";
