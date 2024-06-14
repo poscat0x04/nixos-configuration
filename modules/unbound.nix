@@ -79,8 +79,6 @@
             name = ".";
             forward-addr = [
               "101.102.103.104@853"
-              "1.1.1.1@853"
-              "8.8.8.8@853"
             ];
             forward-tls-upstream = true;
           }
