@@ -10,6 +10,7 @@
     ../../modules/promethus/node.nix
     ../../modules/promethus/ping.nix
     ../../modules/sing-box
+    ../../modules/avahi.nix
     ./router/dns.nix
     ./router/firewall.nix
     ./router/networks.nix
