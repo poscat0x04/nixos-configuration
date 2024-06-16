@@ -56,8 +56,9 @@
 
   # WARP
   networking.warp = {
+    enable = false;
     manualActivation = true;
-    v6addr = "2606:4700:110:857c:de77:ab8d:f751:28f8";
+    v6addr = "2606:4700:110:820a:b28f:1fc:d6ed:17f";
   };
-  #networking.fwng.warpId = "0x033573";
+  services.sing-box.reserved = [ 83 167 32 ];
 }

@@ -116,19 +116,21 @@
     {
       "local_address": [
         "172.16.0.2/32",
-        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+        {
+          "_secret": "/run/secrets/sing-box/v6addr"
+        }
       ],
       "mtu": 1420,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
       "private_key": {
-        "_secret": "/run/secrets/wg-private-key"
+        "_secret": "/run/secrets/sing-box/wgPrivateKey"
       },
       "reserved": [
         0,
         0,
         0
       ],
-      "server": "162.159.192.24",
+      "server": "2606:4700:d0:0:3b35:c1fe:c432:73e5",
       "server_port": 2408,
       "system_interface": false,
       "tag": "wg0-out",
@@ -138,66 +140,24 @@
     {
       "local_address": [
         "172.16.0.2/32",
-        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
+        {
+          "_secret": "/run/secrets/sing-box/v6addr"
+        }
       ],
       "mtu": 1420,
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
       "private_key": {
-        "_secret": "/run/secrets/wg-private-key"
+        "_secret": "/run/secrets/sing-box/wgPrivateKey"
       },
       "reserved": [
         0,
         0,
         0
       ],
-      "server": "162.159.192.204",
+      "server": "2606:4700:d0:0:27:f643:19c1:534c",
       "server_port": 2408,
       "system_interface": false,
       "tag": "wg1-out",
-      "type": "wireguard",
-      "workers": 4
-    },
-    {
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
-      ],
-      "mtu": 1420,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "private_key": {
-        "_secret": "/run/secrets/wg-private-key"
-      },
-      "reserved": [
-        0,
-        0,
-        0
-      ],
-      "server": "162.159.193.1",
-      "server_port": 2408,
-      "system_interface": false,
-      "tag": "wg2-out",
-      "type": "wireguard",
-      "workers": 4
-    },
-    {
-      "local_address": [
-        "172.16.0.2/32",
-        "2606:4700:110:851c:5937:1e98:fe6b:4bab/128"
-      ],
-      "mtu": 1420,
-      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "private_key": {
-        "_secret": "/run/secrets/wg-private-key"
-      },
-      "reserved": [
-        0,
-        0,
-        0
-      ],
-      "server": "2606:4700:100::a29f:c109",
-      "server_port": 2408,
-      "system_interface": false,
-      "tag": "wg3-out",
       "type": "wireguard",
       "workers": 4
     },
@@ -206,11 +166,8 @@
       "interrupt_exist_connections": false,
       "interval": "60s",
       "outbounds": [
-        "vless-out",
         "wg0-out",
-        "wg1-out",
-        "wg2-out",
-        "wg3-out"
+        "wg1-out"
       ],
       "tag": "optimized-out",
       "tolerance": 10,
@@ -634,14 +591,6 @@
       {
         "download_detour": "direct",
         "format": "binary",
-        "tag": "geosite-openai",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-openai.srs"
-      },
-      {
-        "download_detour": "direct",
-        "format": "binary",
         "tag": "geosite-thetimes",
         "type": "remote",
         "update_interval": "1d",
@@ -710,6 +659,22 @@
         "type": "remote",
         "update_interval": "1d",
         "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-protonmail.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-f-droid",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-f-droid.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
+        "tag": "geosite-openai",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://cdn.jsdelivr.net/gh/SagerNet/sing-geosite@rule-set/geosite-openai.srs"
       },
       {
         "download_detour": "direct",
@@ -847,6 +812,22 @@
       {
         "mode": "or",
         "outbound": "vless-out",
+        "rules": [
+          {
+            "rule_set": "geosite-openai"
+          },
+          {
+            "domain_suffix": [
+              "kdab.com",
+              "challenges.cloudflare.com"
+            ]
+          }
+        ],
+        "type": "logical"
+      },
+      {
+        "mode": "or",
+        "outbound": "optimized-out",
         "rules": [
           {
             "rule_set": "geosite-youtube"
@@ -987,9 +968,6 @@
             "rule_set": "geosite-medium"
           },
           {
-            "rule_set": "geosite-openai"
-          },
-          {
             "rule_set": "geosite-thetimes"
           },
           {
@@ -1017,6 +995,9 @@
             "rule_set": "geosite-protonmail"
           },
           {
+            "rule_set": "geosite-f-droid"
+          },
+          {
             "rule_set": "geoip-telegram"
           },
           {
@@ -1032,12 +1013,12 @@
               "substack.com",
               "brew.sh",
               "discuss-cdn.kde.org",
-              "kdab.com",
-              "challenges.cloudflare.com",
               "newyorker.com",
               "e-hentai.org",
               "exhentai.org",
-              "ehtracker.org"
+              "ehtracker.org",
+              "syosetu.com",
+              "knowyourmeme.com"
             ]
           },
           {
