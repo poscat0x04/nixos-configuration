@@ -11,12 +11,12 @@ in {
   options.networking.warp = with lib; {
     enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
     };
 
     server = mkOption {
       type = types.str;
-      default = "162.159.193.1";
+      default = "[2606:4700:100::a29f:c102]";
     };
 
     port = mkOption {
@@ -40,7 +40,7 @@ in {
   };
 
   config = {
-    systemd.network =  {
+    systemd.network = lib.mkIf cfg.enable {
       netdevs."wg-warp0" = {
         netdevConfig = {
           Name = "wg-warp0";
@@ -57,7 +57,6 @@ in {
               AllowedIPs = [ "0.0.0.0/0" "::/0" ];
               Endpoint = "${cfg.server}:${builtins.toString cfg.port}";
               RouteTable = "warp";
-              PersistentKeepalive = 20;
             };
           }
         ];
@@ -110,7 +109,7 @@ in {
     };
 
     # Setup SNAT
-    networking.fwng.nftables-service = {
+    networking.fwng.nftables-service = lib.mkIf cfg.enable {
       wg-warp0-rules = {
         description = "Set up nftables rules (forwarding, filtering) when wg-warp0 is created";
         deviceMode = {
