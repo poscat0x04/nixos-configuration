@@ -76,6 +76,18 @@ in {
       ];
     };
 
+    networking.fwng.nftables-service = {
+      tun0-rules = {
+        description = "trust tun0";
+        deviceMode = {
+          enable = true;
+          interface = "tun0";
+          offload = true;
+          trust = true;
+        };
+      };
+    };
+
     systemd.services.sing-box.serviceConfig.Slice = "system-noproxy.slice";
   };
 }
