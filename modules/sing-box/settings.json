@@ -188,7 +188,7 @@
     {
       "idle_timeout": "10m",
       "interrupt_exist_connections": false,
-      "interval": "60s",
+      "interval": "10m",
       "outbounds": [
         "wg0-out",
         "wg1-out",
@@ -865,7 +865,7 @@
       },
       {
         "mode": "or",
-        "outbound": "wg1-out",
+        "outbound": "optimized-out",
         "rules": [
           {
             "rule_set": "geosite-youtube"
@@ -1062,7 +1062,9 @@
               "knowyourmeme.com",
               "repos.fyralabs.com",
               "copr.fedorainfracloud.org",
-              "crates.io"
+              "crates.io",
+              "foreignaffairs.com",
+              "theatlantic.com"
             ]
           },
           {
