@@ -83,6 +83,5 @@
   systemd.services.cloudflare-ddns.serviceConfig.Slice = "system-noproxy.slice";
 
   # WARP
-  networking.warp.v6addr = "2606:4700:110:8f0e:aae0:595e:676:c3c2";
-  networking.fwng.warpId = "0xde98d0";
+  services.sing-box.reserved = [ 24 206 240 ];
 }
