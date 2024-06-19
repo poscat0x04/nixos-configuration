@@ -1,9 +1,10 @@
-{ pkgs, secrets, ... }:
+{ pkgs, ... }:
 
 let
   flood-port = 48573;
 in {
   environment.systemPackages = [ pkgs.pyrosimple ];
+  networking.firewall.allowedUDPPorts = [ 6881 ];
   services = {
     rtorrent = {
       enable = true;
@@ -41,6 +42,10 @@ in {
 
         schedule_remove2 = monitor_diskspace
         schedule2 = watch_start, 11, 10, ((load.start_verbose, (cat, (cfg.watch), "start/*.torrent"), "d.delete_tied="))
+
+        dht = auto
+        dht_port = 6881
+        protocol.pex.set= yes
       '';
     };
 
