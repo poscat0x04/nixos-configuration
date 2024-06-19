@@ -137,7 +137,7 @@
           \ 'dhall': ['dhall-lsp-server'],
           \ 'haskell': ['haskell-language-server', '--lsp'],
           \ 'purescript': ['purs', 'ide', 'server'],
-          \ 'nix': ['nil']
+          \ 'nix': ['nixd']
           \ }
 
         nnoremap <F5> :call LanguageClient_contextMenu()<CR>

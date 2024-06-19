@@ -87,7 +87,7 @@
       sops
       ssh-to-age
 
-      nil
+      nixd
       attic-client
 
       wireguard-tools
