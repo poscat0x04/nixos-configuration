@@ -10,6 +10,7 @@
     ../../modules/journal-upload.nix
     ../../modules/promethus/node.nix
     ../../modules/sing-box
+    ../../modules/avahi.nix
     ./network.nix
   ];
 
