@@ -696,6 +696,14 @@
       {
         "download_detour": "direct",
         "format": "binary",
+        "tag": "geosite-fedora",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://github.com/SagerNet/sing-geosite/raw/rule-set/geosite-fedora.srs"
+      },
+      {
+        "download_detour": "direct",
+        "format": "binary",
         "tag": "geosite-openai",
         "type": "remote",
         "update_interval": "1d",
@@ -825,6 +833,11 @@
             "wifi_ssid": [
               "ZF",
               "AX3-Home"
+            ]
+          },
+          {
+            "domain_suffix": [
+              "mirrors.fedoraproject.org"
             ]
           }
         ],
@@ -1021,6 +1034,9 @@
           },
           {
             "rule_set": "geosite-f-droid"
+          },
+          {
+            "rule_set": "geosite-fedora"
           },
           {
             "rule_set": "geoip-telegram"

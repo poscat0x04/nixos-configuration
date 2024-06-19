@@ -67,7 +67,23 @@ in {
         {
           routingPolicyRuleConfig = {
             Family = "both";
-            Priority = 108;
+            Priority = 107;
+            Table = "main";
+            IPProtocol = "icmp";
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 107;
+            Table = "main";
+            IPProtocol = "icmpv6";
+          };
+        }
+        {
+          routingPolicyRuleConfig = {
+            Family = "both";
+            Priority = 109;
             Table = "sing-box";
             InvertRule = true;
             FirewallMark = networklib.wireguard.fwmark;
