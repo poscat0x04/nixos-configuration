@@ -24,7 +24,7 @@ in
         flake-registry = ${flakesEmpty}
       '';
 
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.latest;
 
       settings = {
         sandbox = true;
