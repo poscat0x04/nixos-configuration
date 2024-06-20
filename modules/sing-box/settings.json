@@ -131,7 +131,7 @@
         0
       ],
       "server": "2606:4700:d0:0:3b35:c1fe:c432:73e5",
-      "server_port": 2408,
+      "server_port": 500,
       "system_interface": false,
       "tag": "wg0-out",
       "type": "wireguard",
@@ -155,7 +155,7 @@
         0
       ],
       "server": "2606:4700:d0:0:27:f643:19c1:534c",
-      "server_port": 2408,
+      "server_port": 500,
       "system_interface": false,
       "tag": "wg1-out",
       "type": "wireguard",
@@ -179,9 +179,33 @@
         0
       ],
       "server": "2606:4700:100::a29f:c102",
-      "server_port": 2408,
+      "server_port": 500,
       "system_interface": false,
       "tag": "wg2-out",
+      "type": "wireguard",
+      "workers": 4
+    },
+    {
+      "local_address": [
+        "172.16.0.2/32",
+        {
+          "_secret": "/run/secrets/sing-box/v6addr"
+        }
+      ],
+      "mtu": 1420,
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "private_key": {
+        "_secret": "/run/secrets/sing-box/wgPrivateKey"
+      },
+      "reserved": [
+        0,
+        0,
+        0
+      ],
+      "server": "2606:4700:100::a29f:c10a",
+      "server_port": 500,
+      "system_interface": false,
+      "tag": "wg3-out",
       "type": "wireguard",
       "workers": 4
     },
@@ -192,7 +216,8 @@
       "outbounds": [
         "wg0-out",
         "wg1-out",
-        "wg2-out"
+        "wg2-out",
+        "wg3-out"
       ],
       "tag": "optimized-out",
       "tolerance": 10,
@@ -1064,7 +1089,8 @@
               "copr.fedorainfracloud.org",
               "crates.io",
               "foreignaffairs.com",
-              "theatlantic.com"
+              "theatlantic.com",
+              "libgen.lol"
             ]
           },
           {
