@@ -149,18 +149,10 @@ in {
       ];
       locations."/" = {
         proxyPass = "http://127.0.0.1:9200";
-        extraConfig = ''
-          proxy_set_header        Host $host:$server_port;
-          proxy_set_header        X-Real-IP $remote_addr;
-          proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header        X-Forwarded-Proto $scheme;
-          proxy_set_header        X-Forwarded-Host $host;
-          proxy_set_header        X-Forwarded-Server $host;
-          client_max_body_size 0;
-        '';
+        recommendedProxySettings = true;
       };
       extraConfig = ''
-        error_page 497 301 =307 https://$host:$server_port$request_uri;
+        error_page 497 301 =307 https://$host$request_uri;
         add_header Strict-Transport-Security 'max-age=31536000' always;
       '';
     };
@@ -193,7 +185,7 @@ in {
       SystemCallArchitectures = "native";
       Environment = [
         "OCIS_RUN_SERVICES=${serviceStr}"
-        "OCIS_URL=https://own.poscat.moe:8443"
+        "OCIS_URL=https://own.poscat.moe"
         "OCIS_BASE_DATA_PATH=/var/lib/ocis"
         "OCIS_CONFIG_DIR=${cfgDir}"
         "PROXY_ENABLE_BASIC_AUTH=true"

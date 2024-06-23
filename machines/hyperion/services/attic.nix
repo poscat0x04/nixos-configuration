@@ -13,8 +13,8 @@
       settings = {
         listen = "127.0.0.1:20843";
         allowed-hosts = [ "cache.poscat.moe" "attic.poscat.moe" ];
-        api-endpoint = "https://attic.poscat.moe:8443/";
-        substituter-endpoint = "https://cache.poscat.moe:8443/";
+        api-endpoint = "https://attic.poscat.moe/";
+        substituter-endpoint = "https://cache.poscat.moe/";
         database.url = "postgresql://atticd@%2frun%2fpostgresql/attic";
         chunking = {
           nar-size-threshold = 64 * 1024;
@@ -77,7 +77,7 @@
           recommendedProxySettings = true;
         };
         extraConfig = ''
-          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          error_page 497 301 =307 https://$host$request_uri;
           add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
       };

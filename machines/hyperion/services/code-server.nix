@@ -21,17 +21,12 @@
       locations."/" = {
         proxyPass = "http://10.1.10.4:8023";
         proxyWebsockets = true;
+        recommendedProxySettings = true;
         extraConfig = ''
-          proxy_set_header        Host $host:$server_port;
-          proxy_set_header        X-Real-IP $remote_addr;
-          proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
-          proxy_set_header        X-Forwarded-Proto $scheme;
-          proxy_set_header        X-Forwarded-Host $host:$server_port;
-          proxy_set_header        X-Forwarded-Server $host;
           access_by_lua_block {
             local opts = {
               redirect_uri_path = "/callback",
-              discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+              discovery = "https://git.poscat.moe/.well-known/openid-configuration",
               client_id = "bda9d2e6-a344-4769-b121-f1308cecb191",
               client_secret = secret.code_client_secret,
               ssl_verify = "yes",
@@ -58,7 +53,7 @@
         '';
       };
       extraConfig = ''
-        error_page 497 301 =307 https://$host:$server_port$request_uri;
+        error_page 497 301 =307 https://$host$request_uri;
         add_header Strict-Transport-Security 'max-age=31536000' always;
       '';
     };

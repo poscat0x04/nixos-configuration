@@ -31,7 +31,7 @@ in
 
         trusted-users = [ "root" "@wheel" ];
 
-        substituters = lib.optionals cfg.useMirror cfg.mirrorUrl ++ [ "https://cache.poscat.moe:8443/dev/" ];
+        substituters = lib.optionals cfg.useMirror cfg.mirrorUrl ++ [ "https://cache.poscat.moe/dev/" ];
 
         trusted-public-keys = [ "dev:ZPWlFkQ5XmcK3N/nxuKC+eqtPm+S82vTUYEU18LoSbI" ];
       };

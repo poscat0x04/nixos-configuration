@@ -78,9 +78,11 @@ in {
       ];
       locations."/" = {
         proxyPass = "http://127.0.0.1:${toString ot-port}";
+        recommendedProxySettings = true;
       };
       locations."/v6/" = {
         proxyPass = "http://[::1]:${toString ot-port}/";
+        recommendedProxySettings = true;
       };
       extraConfig = ''
         set_real_ip_from 173.245.48.0/20;
@@ -107,14 +109,7 @@ in {
         set_real_ip_from 2c0f:f248::/32;
         real_ip_header CF-Connecting-IP;
 
-        proxy_set_header        Host $host:$server_port;
-        proxy_set_header        X-Real-IP $remote_addr;
-        proxy_set_header        X-Forwarded-For $remote_addr;
-        proxy_set_header        X-Forwarded-Proto $scheme;
-        proxy_set_header        X-Forwarded-Host $host;
-        proxy_set_header        X-Forwarded-Server $host;
-
-        error_page 497 301 =307 https://$host:$server_port$request_uri;
+        error_page 497 301 =307 https://$host$request_uri;
         add_header Strict-Transport-Security 'max-age=31536000' always;
       '';
     };

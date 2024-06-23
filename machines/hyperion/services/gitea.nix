@@ -34,7 +34,8 @@
           HTTP_ADDR = "127.0.0.1";
           HTTP_PORT = 23000;
           DOMAIN = "git.poscat.moe";
-          ROOT_URL = "https://git.poscat.moe:8443/";
+          ROOT_URL = "https://git.poscat.moe/";
+          SSH_DOMAIN = "ssh.git.poscat.moe";
         };
         service = {
           REGISTER_EMAIL_CONFIRM = true;
@@ -121,7 +122,7 @@
           recommendedProxySettings = true;
         };
         extraConfig = ''
-          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          error_page 497 301 =307 https://$host$request_uri;
           add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
       };

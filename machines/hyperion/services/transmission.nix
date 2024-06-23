@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   services = {
@@ -49,7 +49,7 @@
             access_by_lua_block {
               local opts = {
                 redirect_uri_path = "/callback",
-                discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+                discovery = "https://git.poscat.moe/.well-known/openid-configuration",
                 client_id = "c7352e25-4e47-4240-b8d1-d3518db43762",
                 client_secret = secret.transmission_client_secret,
                 ssl_verify = "yes",
@@ -76,7 +76,7 @@
           '';
         };
         extraConfig = ''
-          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          error_page 497 301 =307 https://$host$request_uri;
           add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
       };

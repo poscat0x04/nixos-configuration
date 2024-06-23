@@ -16,7 +16,7 @@
         websocketEnabled = true;
         websocketAddress = "127.0.0.1";
         disableAdminToken = true;
-        domain = "https://vault.poscat.moe:8443";
+        domain = "https://vault.poscat.moe";
         rocketAddress = "127.0.0.1";
         rocketPort = "34817";
         smtpHost = "smtp.mail.me.com";
@@ -74,7 +74,7 @@
               access_by_lua_block {
                 local opts = {
                   redirect_uri_path = "/admin/callback",
-                  discovery = "https://git.poscat.moe:8443/.well-known/openid-configuration",
+                  discovery = "https://git.poscat.moe/.well-known/openid-configuration",
                   client_id = "f77649ce-5860-4927-9565-17e726c62627",
                   client_secret = secret.vaultwarden_client_secret,
                   ssl_verify = "yes",
@@ -102,7 +102,7 @@
           };
         };
         extraConfig = ''
-          error_page 497 301 =307 https://$host:$server_port$request_uri;
+          error_page 497 301 =307 https://$host$request_uri;
           add_header Strict-Transport-Security 'max-age=31536000' always;
         '';
       };

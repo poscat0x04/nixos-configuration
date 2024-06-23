@@ -30,7 +30,7 @@
         recommendedProxySettings = true;
       };
       extraConfig = ''
-        error_page 497 301 =307 https://$host:$server_port$request_uri;
+        error_page 497 301 =307 https://$host$request_uri;
         add_header Strict-Transport-Security 'max-age=31536000' always;
       '';
     };
